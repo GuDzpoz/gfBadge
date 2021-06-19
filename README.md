@@ -1,5 +1,9 @@
 # gfwiki-badge
 
+## Demo
+
+The project is live on GitHub Pages https://gudzpoz.github.io/gfBadge/
+
 ## Project setup
 ```
 yarn install
