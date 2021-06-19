@@ -5,10 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages --dist 'dist' --branch 'gh-pages'"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "gh-pages": "^3.2.2",
     "vue": "^3.0.0",
     "vue-i18n": "^9.1.6",
     "wave-ui": "^2.19.6"

@@ -15,6 +15,13 @@ yarn serve
 yarn build
 ```
 
+#### Deploy
+After `yarn build`, use:
+```
+yarn deploy
+```
+to commit and push the `dist` directory to remote `gh-pages` branch. If the project is hosted on GitHub, it will then be deploy in the corresponding GitHub Pages.
+
 ### Lints and fixes files
 ```
 yarn lint
