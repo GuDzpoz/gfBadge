@@ -1,0 +1,23 @@
+export const backgrounds = {
+  '宿舍': 'http://www.gfwiki.org/images/6/63/BG-Dorm.png',
+  '草地': 'http://www.gfwiki.org/images/e/e1/BG-Grass.png',
+  '厨房': 'http://www.gfwiki.org/images/a/a8/BG-Kitchen.png',
+  '夜晚海滩': 'http://www.gfwiki.org/images/2/23/BG-BeachNight.png',
+  '海滩': 'http://www.gfwiki.org/images/a/a1/BG-Beach.png',
+  '婚礼草地': 'http://www.gfwiki.org/images/f/fc/BG-GrassWedding.png',
+  '万圣节酒吧': 'http://www.gfwiki.org/images/9/9a/BG-BarHallow.png',
+  '春节酒吧': 'http://www.gfwiki.org/images/d/d2/BG-BarSpring.png',
+  '酒吧': 'http://www.gfwiki.org/images/6/65/BG-Bar.png',
+  '街道涂鸦': 'http://www.gfwiki.org/images/4/4b/BG_Street.png',
+  '圣诞节酒吧': 'http://www.gfwiki.org/images/c/c6/BG-BarXmas.png',
+  '临时作战室': 'http://www.gfwiki.org/images/b/b8/BG_Inner.png',
+  '城市': 'http://www.gfwiki.org/images/0/0d/BG_City.png',
+  '冰湖': 'http://www.gfwiki.org/images/f/f7/%E5%86%B0%E6%B9%96.png',
+  '基地': 'http://www.gfwiki.org/images/d/dc/BG_Base.png',
+  '大桥': 'http://www.gfwiki.org/images/0/0a/%E5%A4%A7%E6%A1%A5.png',
+  '机场': 'http://www.gfwiki.org/images/b/b7/%E6%9C%BA%E5%9C%BA.png',
+  '街道': 'http://www.gfwiki.org/images/0/02/%E8%A1%97%E9%81%93.png',
+  '雪地': 'http://www.gfwiki.org/images/7/7d/%E9%9B%AA%E5%9C%B0.png',
+  '树林': 'http://www.gfwiki.org/images/0/00/%E6%A0%91%E6%9E%97.png',
+  '主界面': 'http://www.gfwiki.org/images/6/60/%E4%B8%BB%E7%95%8C%E9%9D%A2%E8%83%8C%E6%99%AF.png'
+}
