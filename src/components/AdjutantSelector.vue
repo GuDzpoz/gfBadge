@@ -73,7 +73,7 @@ export default {
       return [Object.values(skins)[0]]
     },
     select (skin) {
-      this.$emit('update:modelValue', '//www.gfwiki.org/images' + skin.value)
+      this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + skin.value)
     }
   }
 }
