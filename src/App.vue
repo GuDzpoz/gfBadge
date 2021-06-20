@@ -4,11 +4,16 @@
     <w-select :items="servers" v-model="server" :label="t('selectServer')" class="title4 xs6" />
     <w-select :items="langs" v-model="$i18n.locale" :label="t('selectLang')" class="title4 xs6" />
     <h1 class="xs12 ma5">{{ t("title") }}</h1>
-    <DollCollection :ui="ui" :dolls="typedDolls" :background="ui.background" :adjutant="ui.adjutant" :thumbnail="thumbnail" class="xs12" />
+    <DollCollection :ui="ui"
+                    :dolls="typedDolls" :modDolls="typedModDolls"
+                    :background="ui.background" :adjutant="ui.adjutant"
+                    :thumbnail="thumbnail" :mod="mod"
+                    class="xs12" />
+    <w-switch v-model="mod" thin :label="t('tabMod.title')" />
     <w-switch v-model="thumbnail" thin :label="t('thumbnail')" />
     <w-button @click="saveToLocal()" class="ma2">{{ t("btnSaveCfg") }}</w-button>
     <w-button @click="loadFromLocal()" class="ma2">{{ t("btnLoadCfg") }}</w-button>
-    <w-tabs :items="[{}, {}, {}, {}, {}, {}]" class="xs12 ma2 mb6">
+    <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]" class="xs12 ma2 mb6">
       <template v-slot:[`item-title.1`]>
         {{ t('tabPoster.title') }}
       </template>
@@ -44,6 +49,12 @@
       </template>
       <template v-slot:[`item-content.6`]>
         <ParameterDashboard v-model="ui" />
+      </template>
+      <template v-slot:[`item-title.7`]>
+        {{ t("tabMod.title") }}
+      </template>
+      <template v-slot:[`item-content.7`]>
+        <DollSelector v-model="ui.modCollection" :dolls="typedModDolls" />
       </template>
     </w-tabs>
   </w-flex>
@@ -83,18 +94,21 @@ export default {
       server: jsonTexts.servers[0],
       dolls: dolls,
       thumbnail: false,
+      mod: false,
       ui: {
         collection: {},
+        modCollection: {},
         info: {
           name: '',
           uid: 0,
           level: 0,
           server: '',
+          avatar: '',
         },
         background: {
           url: '',
           x: 50,
-          y: 230,
+          y: -230,
           scale: 1,
           opacity: 0.7
         },
@@ -132,7 +146,16 @@ export default {
         dollTypes.forEach(type => typed[type] = this.filterDolls(type))
       }
       return typed
-    }
+    },
+    typedModDolls () {
+      var typed = {}
+      if(this.dolls) {
+        dollTypes.forEach(type => {
+          typed[type] = this.filterModDolls(type)
+        })
+      }
+      return typed
+    },
   },
   methods: {
     saveToLocal () {
@@ -165,6 +188,13 @@ export default {
     },
     filterDolls (type) {
       return this.dolls.filter(doll => doll['data-tdoll-class'] === type)
+    },
+    filterModDolls (type) {
+      var dolls = this.dolls.filter(doll =>
+        doll['data-tdoll-class'] === type && doll['data-mod'] === '1'
+      )
+      dolls.forEach(doll => doll['data-avatar'] = doll['data-avatar-mod'])
+      return dolls
     },
   }
 }

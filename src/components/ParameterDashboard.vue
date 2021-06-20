@@ -13,10 +13,10 @@
   
   <div class="title3 ma4">{{ $t('tabAdjust.background') }}</div>
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundOffsetX') }}</div>
-  <w-slider v-model="ui.background.x" :step="1" :min="0" :max="800"
+  <w-slider v-model="ui.background.x" :step="1" :min="-800" :max="800"
             thumb-label />
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundOffsetY') }}</div>
-  <w-slider v-model="ui.background.y" :step="1" :min="-400" :max="400"
+  <w-slider v-model="ui.background.y" :step="1" :min="-800" :max="800"
             thumb-label />
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundScaleFactor') }}</div>
   <w-slider v-model="ui.background.scale" :min="0" :max="3"

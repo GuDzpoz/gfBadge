@@ -6,6 +6,9 @@
   <w-select :items="serverInfo"
             v-model="info.server"
             class="xs3 ma2" />
+  {{ $t("tabGeneral.avatar.name") }}
+  <input type="file" v-on:change="changeAvatar" id="avatarInput" />
+  <w-button @click="clearAvatar">{{ $t("tabGeneral.avatar.clear") }}</w-button>
 </w-flex>
 </template>
 
@@ -44,6 +47,15 @@ export default {
         label: info.text,
         value: info.value
       }})
+    }
+  },
+  methods: {
+    changeAvatar (event) {
+      this.info.avatar = URL.createObjectURL(event.target.files[0])
+    },
+    clearAvatar () {
+      document.getElementById('avatarInput').value = null
+      this.info.avatar = ''
     }
   }
 }
