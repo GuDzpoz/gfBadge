@@ -5,30 +5,6 @@
 </template>
 
 <script>
-const backgroundUrls = [
-  'File:BG-Kitchen.png',
-  'File:BG-Grass.png',
-  'File:BG-GrassWedding.png',
-  'File:BG-Dorm.png',
-  'File:BG-Beach.png',
-  'File:BG-BeachNight.png',
-  'File:BG-Bar.png',
-  'File:BG-BarHallow.png',
-  'File:BG-BarSpring.png',
-  'File:BG-BarXmas.png',
-  'File:BG Street.png',
-  'File:BG Inner.png',
-  'File:BG City.png',
-  'File:BG Base.png',
-  'File:冰湖.png',
-  'File:大桥.png',
-  'File:机场.png',
-  'File:街道.png',
-  'File:树林.png',
-  'File:雪地.png',
-  'File:主界面背景.png'
-]
-
 import { initGunPosition2, drawGunBlank, drawGun, drawText } from '../lib/canvas.js'
 
 const defaultBackground = {
@@ -37,6 +13,14 @@ const defaultBackground = {
   y: 230,
   scale: 1,
   opacity: 0.7,
+}
+
+const defaultAdjutant = {
+  url: '',
+  x: 300,
+  y: 100,
+  scale: 0.45,
+  opacity: 0.9,
 }
 
 export default {
@@ -49,12 +33,10 @@ export default {
       default: 13
     },
     background: {
-      type: Object,
-      default: () => { return defaultBackground }
+      type: Object
     },
     adjutant: {
-      type: [Object, null],
-      default: null,
+      type: Object
     }
   },
   data () {
@@ -77,6 +59,9 @@ export default {
     },
     mergedBackground () {
       return { ...defaultBackground, ...this.background }
+    },
+    mergedAdjutant () {
+      return { ...defaultAdjutant, ...this.adjutant }
     }
   },
   created () {
@@ -115,7 +100,7 @@ export default {
       if(this.mergedBackground.url != '') {
         remainingImages += 1
       }
-      if(this.adjutant) {
+      if(this.mergedAdjutant.url != '') {
         remainingImages += 1
       }
       if(remainingImages === 0) {
@@ -130,9 +115,7 @@ export default {
         background.onload = loaded
         adjutant.onload = loaded
         background.src = this.mergedBackground.url
-        if(this.adjutant) {
-          adjutant.src = this.adjutant.url
-        }
+        adjutant.src = this.mergedAdjutant.url
       }
     },
     drawImage (background, adjutant) {
@@ -143,15 +126,20 @@ export default {
       context.drawImage(background,
                         this.mergedBackground.x,
                         this.mergedBackground.y,
-                        canvas.width,
-                        canvas.height,
+                        canvas.width * this.mergedBackground.scale,
+                        canvas.height * this.mergedBackground.scale,
                         0,
                         0,
                         canvas.width,
                         canvas.height
                        )
-      // TODO
-      console.log(adjutant)
+      context.globalAlpha = this.mergedAdjutant.opacity
+      context.drawImage(adjutant,
+                        this.mergedAdjutant.x,
+                        this.mergedAdjutant.y,
+                        adjutant.width * this.mergedAdjutant.scale,
+                        adjutant.height * this.mergedAdjutant.scale
+                       )
       var allCollection = Object.fromEntries(
         [].concat(...
                   Object.values(this.ui.collection)
@@ -181,17 +169,6 @@ export default {
         }
       }
     },
-    getBackgrounds () {
-      var all = []
-      for(var background of backgroundUrls) {
-        fetch("http://www.gfwiki.org/api.php?action=query&titles=" + background + "&prop=imageinfo&iiprop=url&format=json")
-          .then(response => response.json())
-          .then(json => {
-            all.push(Object.values(json.query.pages)[0].imageinfo[0].url)
-            console.log(all)
-          })
-      }
-    }
   }
 }
 </script>
