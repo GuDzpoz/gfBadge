@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="canvasContainer" :style="divStyle" :class="{ thumbnail: thumbnail || outOfView }">
   <canvas :width="width" :height="height" id="resultCanvas" />
 </div>
 </template>
@@ -23,11 +23,14 @@ const defaultAdjutant = {
   opacity: 0.9,
 }
 
+var imageCache = {}
+
 export default {
   name: 'DollCollection',
   props: {
     ui: Object,
     dolls: Object,
+    thumbnail: Boolean,
     radius: {
       type: Number,
       default: 13
@@ -42,9 +45,11 @@ export default {
   data () {
     return {
       updating: false,
+      outOfView: false,
       width: 850,
       height: 510,
-      positions: {}
+      positions: {},
+      observer: null,
     }
   },
   computed: {
@@ -62,6 +67,9 @@ export default {
     },
     mergedAdjutant () {
       return { ...defaultAdjutant, ...this.adjutant }
+    },
+    divStyle () {
+      return 'height: ' + this.height + 'px'
     }
   },
   created () {
@@ -79,6 +87,17 @@ export default {
   },
   mounted () {
     this.redraw()
+    var container = document.getElementById('canvasContainer')
+    const observeOptions = {
+      rootMargin: '0px',
+      threshold: 0,
+    }
+    if(this.observer === null) {
+      this.observer =
+        new IntersectionObserver(this.showThumbnail, observeOptions)
+    }
+    this.observer.unobserve(container)
+    this.observer.observe(container)
   },
   watch: {
     ui: {
@@ -140,6 +159,12 @@ export default {
                         adjutant.width * this.mergedAdjutant.scale,
                         adjutant.height * this.mergedAdjutant.scale
                        )
+      this.drawDolls(context)
+      context.globalAlpha = 1
+      this.drawDollTexts(context)
+      this.drawInfoTexts(context)
+    },
+    drawDolls (context) {
       var allCollection = Object.fromEntries(
         [].concat(...
                   Object.values(this.ui.collection)
@@ -150,25 +175,73 @@ export default {
         drawGunBlank(context, this.positions.guns[id], this.radius, 1)
         if(allCollection[id]) {
           context.globalAlpha = 1
-          let img = new Image()
-          img.onload = drawGun(context, img, doll, this.radius, 2)
-          img.src = doll.img
+          if(doll.img in imageCache) {
+            drawGun(context, imageCache[doll.img], doll, this.radius, 2)()
+          } else {
+            let img = new Image()
+            img.onload = drawGun(context, img, doll, this.radius, 2)
+            img.src = doll.img
+            imageCache[doll.img] = img
+          }
         }
       }
+    },
+    drawDollTexts (context) {
       for(var type in this.positions.text) {
         var texts = this.positions.text[type]
         if(texts.num) {
           drawText(context, this.collectionStats[type] + '/' + texts.num.text,
                    texts.num.x + this.radius, texts.num.y,
-                   'Arial', 'white', 2, 'black', 'left', 'middle')
+                   '0.8rem Arial', 'white', 2, 'black', 'left', 'middle')
         }
         if(texts.name) {
           drawText(context, texts.name.text,
                    texts.name.x - this.radius, texts.name.y,
-                   'Arial', 'white', 2, 'black', 'right', 'middle')
+                   '0.8rem Arial', 'white', 2, 'black', 'right', 'middle')
         }
       }
     },
+    drawInfoTexts (context) {
+      const textConfig = {
+        name: {
+          x: 30,
+          y: 18,
+          prefix: '',
+        },
+        uid: {
+          x: 700,
+          y: 18,
+          prefix: 'UID: ',
+        },
+        level: {
+          x: 850 / 2,
+          y: 18,
+          prefix: 'Lv. ',
+        },
+        server: {
+          x: 30,
+          y: 510 - 30,
+          prefix: '',
+        },
+      }
+      for(var key in this.ui.info) {
+        if(key in textConfig) {
+          var config = textConfig[key]
+          drawText(context, config.prefix + this.ui.info[key],
+                   config.x, config.y, '1.1rem Arial',
+                   'white', 2, 'black', 'left', 'middle')
+        }
+      }
+    },
+    showThumbnail (entries) {
+      if(entries.length === 1) {
+        if(entries[0].isIntersecting) {
+          this.outOfView = false
+        } else {
+          this.outOfView = true
+        }
+      }
+    }
   }
 }
 </script>
@@ -182,5 +255,19 @@ div {
 
 canvas {
   border: 1px dashed gold;
+}
+
+#canvasContainer {
+  margin: 0;
+  padding: 0;
+}
+
+.thumbnail canvas {
+  position: fixed;
+  z-index: 99;
+  right: 0;
+  top: 0;
+  background-color: #ffffff88;
+  width: 19rem;
 }
 </style>

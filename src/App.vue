@@ -4,10 +4,11 @@
     <w-select :items="servers" v-model="server" :label="t('selectServer')" class="title4 xs6" />
     <w-select :items="langs" v-model="$i18n.locale" :label="t('selectLang')" class="title4 xs6" />
     <h1 class="xs12 ma5">{{ t("title") }}</h1>
-    <DollCollection :ui="ui" :dolls="typedDolls" :background="ui.background" :adjutant="ui.adjutant" class="xs12" />
+    <DollCollection :ui="ui" :dolls="typedDolls" :background="ui.background" :adjutant="ui.adjutant" :thumbnail="thumbnail" class="xs12" />
+    <w-switch v-model="thumbnail" thin :label="t('thumbnail')" />
     <w-button @click="saveToLocal()" class="ma2">{{ t("btnSaveCfg") }}</w-button>
     <w-button @click="loadFromLocal()" class="ma2">{{ t("btnLoadCfg") }}</w-button>
-    <w-tabs :items="[{}, {}, {}, {}, {}, {}]" class="xs12 ma2">
+    <w-tabs :items="[{}, {}, {}, {}, {}, {}]" class="xs12 ma2 mb6">
       <template v-slot:[`item-title.1`]>
         {{ t('tabPoster.title') }}
       </template>
@@ -81,9 +82,15 @@ export default {
     return {
       server: jsonTexts.servers[0],
       dolls: dolls,
+      thumbnail: false,
       ui: {
         collection: {},
-        info: {},
+        info: {
+          name: '',
+          uid: 0,
+          level: 0,
+          server: '',
+        },
         background: {
           url: '',
           x: 50,
@@ -134,7 +141,7 @@ export default {
     loadFromLocal () {
       if(localStorage.config) {
         this.ui = this.deepMerge(this.ui, JSON.parse(localStorage.config))
-        console.log(this.ui)
+        console.log(this.ui.info)
       }
     },
     // keep the normal (current config) structured as always
@@ -151,9 +158,7 @@ export default {
         return residue
       } else {
         for(var key in residue) {
-          if(key in normal) {
-            normal[key] = this.deepMerge(normal[key], residue[key])
-          }
+          normal[key] = this.deepMerge(normal[key], residue[key])
         }
         return normal
       }

@@ -1,5 +1,5 @@
 export const jsonTexts = {
-  "locale": "en",
+  "locale": "cn",
   "ver": "20191117",
   "langs": {
     "cn": "简中",
@@ -27,6 +27,7 @@ export const jsonTexts = {
       },
       "selectLang": "语言",
       "selectServer": "服务器",
+      "thumbnail": "缩略图",
       "btnSaveCfg": "保存配置",
       "btnLoadCfg": "读取配置",
       "btnSaveCfgJSON": "导出配置",
@@ -238,6 +239,7 @@ export const jsonTexts = {
       },
       "selectLang": "Language",
       "selectServer": "Server",
+      "thumbnail": "Thumbnail",
       "btnSaveCfg": "Save Config",
       "btnLoadCfg": "Load Config",
       "btnSaveCfgJSON": "Save JSON Config",
