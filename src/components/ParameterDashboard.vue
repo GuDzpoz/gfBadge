@@ -10,6 +10,9 @@
   <div class="title4 ma4">{{ $t('tabAdjust.adjutantScaleFactor') }}</div>
   <w-slider v-model="ui.adjutant.scale" :min="0" :max="1"
             thumb-label />
+  <div class="title4 ma4">{{ $t('tabAdjust.backgroundAplha') }}</div>
+  <w-slider v-model="ui.adjutant.opacity" :min="0" :max="1"
+            thumb-label />
   
   <div class="title3 ma4">{{ $t('tabAdjust.background') }}</div>
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundOffsetX') }}</div>
@@ -20,6 +23,9 @@
             thumb-label />
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundScaleFactor') }}</div>
   <w-slider v-model="ui.background.scale" :min="0" :max="3"
+            thumb-label />
+  <div class="title4 ma4">{{ $t('tabAdjust.backgroundAplha') }}</div>
+  <w-slider v-model="ui.background.opacity" :min="0" :max="1"
             thumb-label />
 </div>
 </template>
