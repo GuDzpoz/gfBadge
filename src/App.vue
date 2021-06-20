@@ -133,7 +133,29 @@ export default {
     },
     loadFromLocal () {
       if(localStorage.config) {
-        this.ui = JSON.parse(localStorage.config)
+        this.ui = this.deepMerge(this.ui, JSON.parse(localStorage.config))
+        console.log(this.ui)
+      }
+    },
+    // keep the normal (current config) structured as always
+    deepMerge (normal, residue) {
+      if(Array.isArray(residue) || Array.isArray(normal)) {
+        return residue
+      } else if(
+        normal === null
+        || typeof(normal) === 'number'
+        || typeof(normal) === 'boolean'
+        || typeof(normal) === 'bigint'
+        || typeof(normal) === 'string'
+      ) {
+        return residue
+      } else {
+        for(var key in residue) {
+          if(key in normal) {
+            normal[key] = this.deepMerge(normal[key], residue[key])
+          }
+        }
+        return normal
       }
     },
     filterDolls (type) {
