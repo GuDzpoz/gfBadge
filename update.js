@@ -177,6 +177,8 @@ async function getNPCs(callback) {
 
 const level = 2
 function getWikiMediaUrl(filename) {
+  // capitalize the first letter
+  filename = filename.charAt(0).toUpperCase() + filename.substring(1)
   var hash = md5(filename)
   var url = '/'
   for(var i = 0; i < level; ++i) {
@@ -191,31 +193,25 @@ console.log('NPCs: Updating NPC illustrations from gfwiki...')
 const npcsJsPath = './src/assets/npcs.js'
 getNPCs(async (NPCs) => {
   console.log('NPCs: Collected ' + NPCs.length + ' NPCs.')
-  var illustrations = []
+  var NPCData = {}
   for(var NPC of NPCs) {
+    var illustrations = {}
     var pictureKeys = Object.keys(NPC).filter(key => key.startsWith('pic'))
     for(var pictureKey of pictureKeys) {
       // extract 1, 2, 3, ... from pic1, pic2, pic3, ...
       var index = pictureKey.substring('pic'.length)
       if(NPC['name' + index]) {
-        illustrations.push({
-          name: NPC['name' + index],
-          npc: NPC['中文名称'],
-          url: getWikiMediaUrl(NPC[pictureKey])
-        })
+        illustrations[NPC['name' + index]] = getWikiMediaUrl(NPC[pictureKey])
       } else {
-        illustrations.push({
-          name: NPC['中文名称'],
-          npc: NPC['中文名称'],
-          url: getWikiMediaUrl(NPC[pictureKey])
-        })
+        illustrations[NPC['中文名称']] = getWikiMediaUrl(NPC[pictureKey])
       }
     }
+    NPCData[NPC['中文名称']] = illustrations
   }
-  console.log('NPCs: Collected ' + illustrations.length + ' illustrations in total.')
+  console.log('NPCs: Collected ' + Object.keys(NPCData).length + 'NPCs in total.')
   console.log('NPCs: Saving to "' + npcsJsPath + '"...')
   await fs.writeFile(npcsJsPath,
-                     'export const npcs = ' + JSON.stringify(illustrations)
+                     'export const npcs = ' + JSON.stringify(NPCData)
                     )
   console.log('NPCs: Saved.')
 })
