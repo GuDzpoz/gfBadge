@@ -15,6 +15,7 @@
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
                     :background="ui.background" :adjutant="ui.adjutant"
+                    ref="canvas"
                     :thumbnail="thumbnail" :mod="mod"
                     class="xs12" />
     <w-switch v-model="mod" thin :label="t('tabMod.title')" />
@@ -40,9 +41,10 @@
       {{ t("btnLoadCfgJSON") }}
     </w-button>
     <w-button @click="saveToImage"
+              disabled
               bg-color="warning" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-image-move</w-icon>
-      {{ t("btnExportPNG") }}
+      {{ t("btnExportPNG") + ' (' + t("rightClickToSave") + ')' }}
     </w-button>
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
             card class="xs12 ma2 mb6">
@@ -228,7 +230,15 @@ export default {
           this.ui = this.deepMerge(this.ui, JSON.parse(text))
         })
     },
+    // not until GFWiki allows CORS uses
+    // or we store the images locally
     saveToImage () {
+      this.$refs.canvas.getCanvas().toBlob(blob => {
+        fileSave(blob, {
+          fileName: 'gfBadge.png',
+          extensions: ['.png'],
+        })
+      }, 'image/png')
     },
     // keep the normal (current config) structured as always
     deepMerge (normal, residue) {

@@ -12,7 +12,7 @@
     {{ $t("tabGeneral.avatar.name") }}
   </span>
   <input type="file" v-on:change="changeAvatar"
-         id="avatarInput" class="ma2" />
+         ref="avatarInput" id="avatarInput" class="ma2" />
   <w-button @click="clearAvatar" class="ma2">
     {{ $t("tabGeneral.avatar.clear") }}
   </w-button>
@@ -75,7 +75,7 @@ export default {
       this.info.avatar = URL.createObjectURL(event.target.files[0])
     },
     clearAvatar () {
-      document.getElementById('avatarInput').value = null
+      this.$refs.avatarInput.value = null
       this.info.avatar = ''
     }
   }

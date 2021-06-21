@@ -33,6 +33,7 @@ export const jsonTexts = {
       "btnSaveCfgJSON": "导出配置",
       "btnLoadCfgJSON": "导入配置",
       "btnExportPNG": "保存为图片",
+      "rightClickToSave": "请右键点击图片手动保存",
       "btnToTop": "回顶部",
       "tabGeneral": {
         "title": "指挥官信息",
@@ -139,6 +140,7 @@ export const jsonTexts = {
       "btnSaveCfgJSON": "導出配置",
       "btnLoadCfgJSON": "導入配置",
       "btnExportPNG": "保存為圖片",
+      "rightClickToSave": "請右鍵點擊圖片手動保存",
       "btnToTop": "回頂部",
       "tabGeneral": {
         "title": "指揮官信息",
@@ -245,6 +247,7 @@ export const jsonTexts = {
       "btnSaveCfgJSON": "Save JSON Config",
       "btnLoadCfgJSON": "Load JSON Config",
       "btnExportPNG": "Save Image",
+      "rightClickToSave": "Please right click on the image and save manually",
       "btnToTop": "Top",
       "tabGeneral": {
         "title": "General",
@@ -340,6 +343,7 @@ export const jsonTexts = {
       "btnSaveCfgJSON": "構成のエクスポート",
       "btnLoadCfgJSON": "構成のインポート",
       "btnExportPNG": "画像として保存",
+      "rightClickToSave": "画像を右クリックして手動で保存してください",
       "btnToTop": "トップに戻る",
       "tabGeneral": {
         "title": "指揮官情報",
@@ -442,6 +446,7 @@ export const jsonTexts = {
       "btnSaveCfgJSON": "내보내기 구성",
       "btnLoadCfgJSON": "가져 오기 구성",
       "btnExportPNG": "그림으로 저장",
+      "rightClickToSave": "이미지를 마우스 오른쪽 버튼으로 클릭하고 수동으로 저장하십시오",
       "btnToTop": "맨 위로 이동",
       "tabGeneral": {
         "title": "사령관 정보",

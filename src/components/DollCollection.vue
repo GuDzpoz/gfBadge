@@ -1,10 +1,10 @@
 <template>
-<div id="canvasContainer" :style="divStyle"
+<div ref="canvasContainer" id="canvasContainer" :style="divStyle"
      :class="{ thumbnail: thumbnail || outOfView }">
-  <canvas :width="modWidth" :height="modHeight"
+  <canvas ref="modCanvas" :width="modWidth" :height="modHeight"
           :class="{ notChosen: !mod }"
           id="modResultCanvas" />
-  <canvas :width="width" :height="height"
+  <canvas ref="canvas" :width="width" :height="height"
           :class="{ notChosen: mod }"
           id="resultCanvas" />
 </div>
@@ -108,7 +108,7 @@ export default {
   },
   mounted () {
     this.redraw()
-    var container = document.getElementById('canvasContainer')
+    var container = this.$refs.canvasContainer
     const observeOptions = {
       rootMargin: '0px',
       threshold: 0,
@@ -141,12 +141,21 @@ export default {
       }
       return stats
     },
+    getCanvas () {
+      if(this.mod) {
+        return this.$refs.modCanvas
+      } else {
+        return this.$refs.canvas
+      }
+    },
     // reconstructed from https://github.com/fc4soda/gfBadge
     // redraw: load background and adjutant images
     //         and pass them to drawBoth
     redraw () {
       var background = new Image()
+      // background.crossOrigin = 'Anonymous'
       var adjutant = new Image()
+      // adjutant.crossOrigin = 'Anonymous'
       let remainingImages = 0
       if(this.background.url != '') {
         remainingImages += 1
@@ -177,13 +186,13 @@ export default {
     },
     // drawBoth: pass the arguments to draw, where most logic lies
     drawBoth (background, adjutant) {
-      var modCanvas = document.getElementById('modResultCanvas')
+      var modCanvas = this.$refs.modCanvas
       var modContext = modCanvas.getContext('2d')
       this.draw(modContext, modCanvasConfig,
                 this.modPositions, this.ui.modCollection,
                 background, adjutant)
       
-      var canvas = document.getElementById('resultCanvas')
+      var canvas = this.$refs.canvas
       var context = canvas.getContext('2d')
       this.draw(context, dollCanvasConfig,
                 this.positions, this.ui.collection,
@@ -232,6 +241,7 @@ export default {
             drawGun(context, imageCache[doll.img], doll, radius, 2)()
           } else {
             let img = new Image()
+            // img.crossOrigin = 'Anonymous'
             img.onload = drawGun(context, img, doll, radius, 2)
             img.src = doll.img
             imageCache[doll.img] = img
