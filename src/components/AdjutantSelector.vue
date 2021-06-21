@@ -1,21 +1,26 @@
 <template>
-<w-accordion :items="typedDolls">
-  <template #item-title="{ item }">{{ item.type }}</template>
-  <template #item-content="{ item }">
-    <w-menu v-for="doll in item.dolls" :key="doll['data-id']"
-      custom hide-on-menu-click shadow>
-      <template #activator="{ on }">
-        <w-button v-on="on" outline class="ma1">
-          {{ doll["data-name-ingame"] }}
-        </w-button>
-      </template>
-      <w-list :items="skinItems(skins[doll['data-id']])"
-              v-on:item-select="select"
-              :model-value="firstSkinItem(skins[doll['data-id']])"
-              class="white--bg" />
-    </w-menu>
-  </template>
-</w-accordion>
+<div>
+  <!-- w-switch cannot be used with label-on-left now -->
+  <w-switch v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
+            class="ma3" />
+  <w-accordion :items="typedDolls" shadow>
+    <template #item-title="{ item }">{{ item.type }}</template>
+    <template #item-content="{ item }">
+      <w-menu v-for="doll in item.dolls" :key="doll['data-id']"
+              custom hide-on-menu-click shadow>
+        <template #activator="{ on }">
+          <w-button v-on="on" outline class="ma1">
+            {{ doll["data-name-ingame"] }}
+          </w-button>
+        </template>
+        <w-list :items="skinItems(skins[doll['data-id']])"
+                v-on:item-select="select"
+                :model-value="firstSkinItem(skins[doll['data-id']])"
+                class="white--bg" />
+      </w-menu>
+    </template>
+  </w-accordion>
+</div>
 </template>
 
 <script>
@@ -32,11 +37,14 @@ export default {
     modelValue: String,
   },
   created () {
+    this.currentSkin = this.modelValue
   },
   data () {
     return {
       mutableValue: {},
+      adjutantOn: true,
       urls: [],
+      currentSkin: '',
       npcs: npcs
     }
   },
@@ -46,6 +54,15 @@ export default {
         this.mutableValue = this.modelValue
       },
       deep: true
+    },
+    adjutantOn (value) {
+      if(value) {
+        if(this.currentSkin !== '') {
+          this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + this.currentSkin)
+        }
+      } else {
+        this.$emit('update:modelValue', '')
+      }
     }
   },
   computed: {
@@ -89,7 +106,12 @@ export default {
       return [Object.values(skins)[0]]
     },
     select (skin) {
-      this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + skin.value)
+      this.currentSkin = skin.value
+      if(this.adjutantOn) {
+        this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + skin.value)
+      } else {
+        this.$emit('update:modelValue', '')
+      }
     }
   }
 }
