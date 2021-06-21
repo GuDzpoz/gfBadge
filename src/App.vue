@@ -29,17 +29,17 @@
       <w-icon class="mr2">mdi mdi-database-export</w-icon>
       {{ t("btnLoadCfg") }}
     </w-button>
-    <w-button
+    <w-button @click="saveToFile"
               bg-color="info" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-download</w-icon>
       {{ t("btnSaveCfgJSON") }}
     </w-button>
-    <w-button
+    <w-button @click="loadFromFile"
               bg-color="info" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-upload</w-icon>
       {{ t("btnLoadCfgJSON") }}
     </w-button>
-    <w-button
+    <w-button @click="saveToImage"
               bg-color="warning" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-image-move</w-icon>
       {{ t("btnExportPNG") }}
@@ -108,6 +108,7 @@ import License from './components/License'
 import ParameterDashboard from './components/ParameterDashboard'
 import PlayerInfo from './components/PlayerInfo'
 import { useI18n } from 'vue-i18n'
+import { fileOpen, fileSave } from 'browser-fs-access'
 import { jsonTexts } from './assets/langs.js'
 import { dolls } from './assets/dolls.js'
 import { coalitionDolls } from './assets/coalition.js'
@@ -206,23 +207,38 @@ export default {
     saveToLocal () {
       localStorage.config = JSON.stringify(this.ui)
     },
+    saveToFile () {
+      var blob = new Blob([JSON.stringify(this.ui)],
+                           {type: "application/json;charset=utf-8"})
+      fileSave(blob, {
+        fileName: 'gfBadgeConfig.json',
+        extensions: ['.json']
+      })
+    },
     loadFromLocal () {
       if(localStorage.config) {
         this.ui = this.deepMerge(this.ui, JSON.parse(localStorage.config))
-        console.log(this.ui.info)
       }
+    },
+    loadFromFile () {
+      fileOpen({
+        mimeTypes: ['application/json']
+      }).then(blob => blob.text())
+        .then(text => {
+          this.ui = this.deepMerge(this.ui, JSON.parse(text))
+        })
+    },
+    saveToImage () {
     },
     // keep the normal (current config) structured as always
     deepMerge (normal, residue) {
-      if(Array.isArray(residue) || Array.isArray(normal)) {
-        return residue
-      } else if(
-        normal === null
-        || typeof(normal) === 'number'
-        || typeof(normal) === 'boolean'
-        || typeof(normal) === 'bigint'
-        || typeof(normal) === 'string'
-      ) {
+      if(normal === undefined
+         || normal === null
+         || typeof(normal) === 'number'
+         || typeof(normal) === 'boolean'
+         || typeof(normal) === 'bigint'
+         || typeof(normal) === 'string'
+         || Array.isArray(normal)) {
         return residue
       } else {
         for(var key in residue) {

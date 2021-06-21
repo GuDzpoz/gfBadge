@@ -200,7 +200,6 @@ export default {
       this.drawInfoTexts(context, config.textConfig, config.avatar)
     },
     drawImages (context, background, adjutant) {
-      console.log(background)
       var [ backgroundImage, backgroundConfig ] = background
       var [ adjutantImage, adjutantConfig ] = adjutant
       context.globalAlpha = backgroundConfig.opacity

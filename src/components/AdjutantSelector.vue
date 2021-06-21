@@ -32,7 +32,6 @@ export default {
     modelValue: String,
   },
   created () {
-    console.log(this.typedDolls)
   },
   data () {
     return {

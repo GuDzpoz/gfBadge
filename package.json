@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdi/font": "^5.9.55",
     "blueimp-md5": "^2.18.0",
+    "browser-fs-access": "^0.17.3",
     "core-js": "^3.6.5",
     "fetch-retry": "^4.1.1",
     "gh-pages": "^3.2.2",
