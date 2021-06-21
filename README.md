@@ -9,13 +9,32 @@ The project is live on GitHub Pages https://gudzpoz.github.io/gfBadge/
 yarn install
 ```
 
+### Update doll info
+
 You would probably want to refresh information of dolls, illustrations, backgrounds etc.
 
 Run
 ```
 yarn update-data
 ```
-to fetch such information from [GFWiki](www.gfwiki.org). It is going to take a while.
+to fetch such information from [GFWiki](www.gfwiki.org). It is going to take a while, especially when it comes to skins.
+
+More usages:
+```
+$ node update.js --help
+update.js: Update doll data from GFWiki
+Usage: 1) node update.js [option]
+       2) yarn update-data [option]
+
+Available option:
+  --help, -h       Display this info
+  dolls            Fetch doll info
+  skins            Fetch doll skins
+  coalition        Fetch coalition doll info
+  coalitionSkins   Fetch coalition doll skins
+  npcs             Fetch npc illustrations
+  backgrounds      Fetch background images
+```
 
 ### Compiles and hot-reloads for development
 ```

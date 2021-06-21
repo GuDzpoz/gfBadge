@@ -26,8 +26,14 @@ async function main() {
     case 'backgrounds':
       await taskBackgrounds()
       break
+    case '--help':
+    case '-h':
+      printHelp()
+      break
     default:
       console.log('Unrecognized option: ' + process.argv[2])
+      printHelp()
+      break
     }
   } else {
     taskDolls(true)
@@ -35,6 +41,23 @@ async function main() {
     taskNPCs()
     taskBackgrounds()
   }
+}
+
+function printHelp() {
+  console.log(
+    'update.js: Update doll data from GFWiki\n'
+      + 'Usage: 1) node update.js [option]\n'
+      + '       2) yarn update-data [option]\n'
+      + '\n'
+      + 'Available option:\n'
+      + '  --help, -h       Display this info\n'
+      + '  dolls            Fetch doll info\n'
+      + '  skins            Fetch doll skins\n'
+      + '  coalition        Fetch coalition doll info\n'
+      + '  coalitionSkins   Fetch coalition doll skins\n'
+      + '  npcs             Fetch npc illustrations\n'
+      + '  backgrounds      Fetch background images'
+  )
 }
 
 const dollCollectionPage = 'http://www.gfwiki.org/api.php?action=parse&prop=text&page=%E6%88%98%E6%9C%AF%E4%BA%BA%E5%BD%A2%E5%9B%BE%E9%89%B4&format=json'
