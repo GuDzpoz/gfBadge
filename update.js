@@ -4,9 +4,42 @@ const nodeFetch = require('node-fetch')
 const fetch = require('fetch-retry')(nodeFetch)
 const { JSDOM } = require("jsdom")
 
+// or else could not use await
+async function main() {
+  if(process.argv.length > 2) {
+    switch(process.argv[2]) {
+    case 'dolls':
+      await taskDolls(false)
+      break
+    case 'skins':
+      await taskDolls(true)
+      break
+    case 'coalition':
+      await taskCoalition(false)
+      break
+    case 'coalitionSkins':
+      await taskCoalition(true)
+      break
+    case 'npcs':
+      await taskNPCs()
+      break
+    case 'backgrounds':
+      await taskBackgrounds()
+      break
+    default:
+      console.log('Unrecognized option: ' + process.argv[2])
+    }
+  } else {
+    taskDolls(true)
+    taskCoalition(true)
+    taskNPCs()
+    taskBackgrounds()
+  }
+}
+
 const dollCollectionPage = 'http://www.gfwiki.org/api.php?action=parse&prop=text&page=%E6%88%98%E6%9C%AF%E4%BA%BA%E5%BD%A2%E5%9B%BE%E9%89%B4&format=json'
 async function getDolls(callback) {
-  fetch(dollCollectionPage)
+  await fetch(dollCollectionPage)
     .then(response => {
       console.log('DOLLS: Status: ' + response.status)
       return response.json()
@@ -41,28 +74,128 @@ function deduplicateDolls(dolls) {
   })
 }
 
-const dollsJsPath = './src/assets/dolls.js'
-const skinsJsPath = './src/assets/skins.js'
-console.log('DOLLS: Updating doll data from gfwiki...')
-getDolls(async (dolls) => {
-  console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
-  console.log('DOLLS: Checking duplicates...')
-  dolls = deduplicateDolls(dolls)
-  console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
-  console.log('DOLLS: Saving to "' + dollsJsPath + '"...')
-  await fs.writeFile(dollsJsPath,
-               'export const dolls = ' + JSON.stringify(dolls)
-              )
-  console.log('DOLLS: Saved.')
-  console.log('SKINS: Updating doll skins from gfwiki...')
-  await getSkins(dolls, async (skins) => {
-    console.log('SKINS: Saving to "' + skinsJsPath + '"...')
-    await fs.writeFile(skinsJsPath,
-                       'export const skins = ' + JSON.stringify(skins)
+async function taskDolls(wantsSkins) {
+  const dollsJsPath = './src/assets/dolls.js'
+  const skinsJsPath = './src/assets/skins.js'
+  console.log('DOLLS: Updating doll data from gfwiki...')
+  await getDolls(async (dolls) => {
+    console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
+    console.log('DOLLS: Checking duplicates...')
+    dolls = deduplicateDolls(dolls)
+    console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
+    console.log('DOLLS: Saving to "' + dollsJsPath + '"...')
+    await fs.writeFile(dollsJsPath,
+                       'export const dolls = ' + JSON.stringify(dolls)
                       )
-    console.log('SKINS: Saved.')
+    console.log('DOLLS: Saved.')
+    if(wantsSkins) {
+      console.log('SKINS: Updating doll skins from gfwiki...')
+      await getSkins(dolls, async (skins) => {
+        console.log('SKINS: Saving to "' + skinsJsPath + '"...')
+        await fs.writeFile(skinsJsPath,
+                           'export const skins = ' + JSON.stringify(skins)
+                          )
+        console.log('SKINS: Saved.')
+      })
+    }
   })
-})
+}
+
+const coalitionCollectionPage = 'http://www.gfwiki.org/api.php?action=parse&prop=text&page=%E8%9E%8D%E5%90%88%E5%8A%BF%E5%8A%9B%E5%9B%BE%E9%89%B4&format=json'
+async function getCoalitionDolls(callback) {
+  await fetch(coalitionCollectionPage)
+    .then(response => {
+      console.log("CDOLLs: Status: " + response.status)
+      return response.json()
+    }).then(async json => {
+      var dom = new JSDOM(json.parse.text['*'])
+      var coalitionDolls = []
+      for(var div of
+          dom.window.document.querySelectorAll('.sfdata[data-star="3"]')) {
+        var doll = {}
+        for(var attr of div.attributes) {
+          if(attr.name.startsWith('data')) {
+            if(attr.name === 'data-id') {
+              doll['data-id'] = 'c' + attr.value
+            } else {
+              doll[attr.name] = attr.value
+            }
+          }
+          if(!('data-tdoll-class' in doll)) {
+            doll['data-tdoll-class'] = 'Coalition'
+          }
+          if(!('data-rarity' in doll)) {
+            doll['data-rarity'] = '5'
+          }
+        }
+        coalitionDolls.push(doll)
+      }
+      await callback(coalitionDolls)
+    })
+}
+
+async function taskCoalition(wantsSkins) {
+  const coalitionJsPath = './src/assets/coalition.js'
+  const coalitionSkinsJsPath = './src/assets/coalitionSkins.js'
+  console.log('CDOLLS: Updating coalition doll data from gfwiki...')
+  await getCoalitionDolls(async (dolls) => {
+    console.log('CDOLLS: Collected ' + dolls.length + ' dolls.')
+    console.log('CDOLLS: Saving to "' + coalitionJsPath + '"...')
+    await fs.writeFile(coalitionJsPath,
+                       'export const coalitionDolls = ' + JSON.stringify(dolls)
+                      )
+    console.log('CDOLLS: Saved.')
+    if(wantsSkins) {
+      console.log('CSKINS: Updating coalition doll skins from gfwiki...')
+      await getCoalitionSkins(dolls, async (skins) => {
+        console.log('CSKINS: Saving to "' + coalitionSkinsJsPath + '"...')
+        await fs.writeFile(coalitionSkinsJsPath,
+                           'export const coalitionSkins = ' + JSON.stringify(skins)
+                          )
+        console.log('CSKINS: Saved.')
+      })
+    }
+  })
+}
+
+async function getCoalitionSkins(dolls, callback) {
+  var dollSkins = {}
+  var count = 0
+  var promises = []
+  for(var doll of dolls) {
+    var pageUrl = doll['data-url'] // '/w/THE_NAME'
+    var url = 'http://gfwiki.org/api.php?action=parse&prop=wikitext&format=json&page=' + pageUrl.substring(3)
+    var promise = (fetch(url, { retries: 3, retryDelay: 1000 })
+      .then(response => response.json())
+      .then(async json => {
+        var skins = {}
+        var wikitext = json.parse.wikitext['*']
+            .replace(/<!--(.*?)-->/gm, '')
+        var info = parseWikiTag(wikitext)
+        for(var key of Object.keys(info).filter(
+          key => key.startsWith('立绘')
+        )) {
+          var name = key
+          var filename = info[key]
+          skins[name] = getWikiMediaUrl(filename)
+        }
+        dollSkins[doll['data-id']] = skins
+        count += 1
+        console.log(skins)
+        console.log('SKINS: '
+                    + count + '/' + dolls.length
+                    + ' Collected '
+                    + Object.keys(skins).length + ' skins of '
+                    + doll['data-name-ingame'] + '.')
+      }))
+    // rapid fetching might cause problems
+    await promise
+    promises.push(promise)
+  }
+  await Promise.all(promises).then(async () => {
+    await callback(dollSkins)
+  })
+}
 
 function getDollDefaultSkinFilename(code) {
   return [
@@ -101,14 +234,13 @@ async function getSkins(dolls, callback) {
   for(var doll of dolls) {
     var pageUrl = doll['data-url'] // '/w/THE_NAME'
     var url = 'http://gfwiki.org/api.php?action=parse&prop=wikitext&format=json&page=' + pageUrl.substring(3)
-    var promise =  (fetch(url, { retries: 3, retryDelay: 1000 })
+    var promise = (fetch(url, { retries: 3, retryDelay: 1000 })
       .then(response => response.json())
-      .then(json => {
+      .then(async json => {
         var skins = {}
         var wikitext = json.parse.wikitext['*']
-        var match = wikitext.match(
-          /\{\{战术少女信息3\n*(\|[^\{\}=]+(=[^\{\}\|]*)?)+\}\}/gm)
-        var info = parseWikiTag(match[0])
+            .replace(/<!--(.*?)-->/gm, '')
+        var info = parseWikiTag(wikitext)
         addBothSkins(skins, doll['data-name-ingame'],
                      getDollDefaultSkinFilename(info.code))
         if(doll['data-mod'] === '1') {
@@ -136,29 +268,42 @@ async function getSkins(dolls, callback) {
     await promise
     promises.push(promise)
   }
-  Promise.all(promises).then(async () => {
+  await Promise.all(promises).then(async () => {
     await callback(dollSkins)
   })
 }
 
 function parseWikiTag(wikiString) {
   var info = {}
-  var contents =
-      wikiString.substring(2, wikiString.length - 2).split('|')
-  for(var pairString of contents) {
-    var separation = pairString.indexOf('=')
-    if(separation !== -1) {
-      var key = pairString.substring(0, separation)
-      var value = pairString.substring(separation + 1)
-      info[key.trim()] = value.trim()
+  /*
+    Original solution without ways to deal with hierarchical structures
+    var match = wikitext.match(
+    /\{\{融合势力信息2\n*(\|[^\{\}=]+(=[^\{\}\|]*)?)+\}\}/gm)
+    var match = wikitext.match(
+    /\{\{战术少女信息3\n*(\|[^\{\}=]+(=[^\{\}\|]*)?)+\}\}/gm)
+  */
+  var start = wikiString.indexOf('{{')
+  var end = wikiString.lastIndexOf('}}')
+  if(start === -1 || end === -1) {
+    return info;
+  } else {
+    var contents =
+        wikiString.substring(start + 2, end).split('|')
+    for(var pairString of contents) {
+      var separation = pairString.indexOf('=')
+      if(separation !== -1) {
+        var key = pairString.substring(0, separation)
+        var value = pairString.substring(separation + 1)
+        info[key.trim()] = value.trim()
+      }
     }
+    return info
   }
-  return info
 }
 
 const npcCollectionPage = 'http://gfwiki.org/api.php?page=%E7%99%BB%E5%9C%BA%E4%BA%BA%E7%89%A9&action=parse&prop=wikitext&format=json'
 async function getNPCs(callback) {
-  fetch(npcCollectionPage)
+  await fetch(npcCollectionPage)
     .then(response => {
       console.log('NPCs: Status: ' + response.status)
       return response.json()
@@ -189,32 +334,34 @@ function getWikiMediaUrl(filename) {
   return url
 }
 
-console.log('NPCs: Updating NPC illustrations from gfwiki...')
-const npcsJsPath = './src/assets/npcs.js'
-getNPCs(async (NPCs) => {
-  console.log('NPCs: Collected ' + NPCs.length + ' NPCs.')
-  var NPCData = {}
-  for(var NPC of NPCs) {
-    var illustrations = {}
-    var pictureKeys = Object.keys(NPC).filter(key => key.startsWith('pic'))
-    for(var pictureKey of pictureKeys) {
-      // extract 1, 2, 3, ... from pic1, pic2, pic3, ...
-      var index = pictureKey.substring('pic'.length)
-      if(NPC['name' + index]) {
-        illustrations[NPC['name' + index]] = getWikiMediaUrl(NPC[pictureKey])
-      } else {
-        illustrations[NPC['中文名称']] = getWikiMediaUrl(NPC[pictureKey])
+async function taskNPCs() {
+  console.log('NPCs: Updating NPC illustrations from gfwiki...')
+  const npcsJsPath = './src/assets/npcs.js'
+  await getNPCs(async (NPCs) => {
+    console.log('NPCs: Collected ' + NPCs.length + ' NPCs.')
+    var NPCData = {}
+    for(var NPC of NPCs) {
+      var illustrations = {}
+      var pictureKeys = Object.keys(NPC).filter(key => key.startsWith('pic'))
+      for(var pictureKey of pictureKeys) {
+        // extract 1, 2, 3, ... from pic1, pic2, pic3, ...
+        var index = pictureKey.substring('pic'.length)
+        if(NPC['name' + index]) {
+          illustrations[NPC['name' + index]] = getWikiMediaUrl(NPC[pictureKey])
+        } else {
+          illustrations[NPC['中文名称']] = getWikiMediaUrl(NPC[pictureKey])
+        }
       }
+      NPCData[NPC['中文名称']] = illustrations
     }
-    NPCData[NPC['中文名称']] = illustrations
-  }
-  console.log('NPCs: Collected ' + Object.keys(NPCData).length + 'NPCs in total.')
-  console.log('NPCs: Saving to "' + npcsJsPath + '"...')
-  await fs.writeFile(npcsJsPath,
-                     'export const npcs = ' + JSON.stringify(NPCData)
-                    )
-  console.log('NPCs: Saved.')
-})
+    console.log('NPCs: Collected ' + Object.keys(NPCData).length + 'NPCs in total.')
+    console.log('NPCs: Saving to "' + npcsJsPath + '"...')
+    await fs.writeFile(npcsJsPath,
+                       'export const npcs = ' + JSON.stringify(NPCData)
+                      )
+    console.log('NPCs: Saved.')
+  })
+}
 
 const backgroundUrls = {
   '厨房': 'BG-Kitchen.png',
@@ -245,16 +392,20 @@ async function getBackgrounds(callback) {
   for(var i in backgroundUrls) {
     backgrounds[i] = 'http://www.gfwiki.org/images' + getWikiMediaUrl(backgroundUrls[i])
   }
-  callback(backgrounds)
+  await callback(backgrounds)
 }
 
-const bgsJsPath = './src/assets/backgrounds.js'
-console.log('BGs: Computing background image urls...')
-getBackgrounds(async (backgrounds) => {
-  console.log('BGs: Collected ' + Object.keys(backgrounds).length + ' background images.')
-  console.log('BGs: Saving to "' + bgsJsPath + '"...')
-  await fs.writeFile(bgsJsPath,
-                     'export const backgrounds = ' + JSON.stringify(backgrounds)
-                    )
-  console.log('BGs: Saved.')
-})
+async function taskBackgrounds() {
+  const bgsJsPath = './src/assets/backgrounds.js'
+  console.log('BGs: Computing background image urls...')
+  await getBackgrounds(async (backgrounds) => {
+    console.log('BGs: Collected ' + Object.keys(backgrounds).length + ' background images.')
+    console.log('BGs: Saving to "' + bgsJsPath + '"...')
+    await fs.writeFile(bgsJsPath,
+                       'export const backgrounds = ' + JSON.stringify(backgrounds)
+                      )
+    console.log('BGs: Saved.')
+  })
+}
+
+main()
