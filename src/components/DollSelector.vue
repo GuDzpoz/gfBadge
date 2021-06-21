@@ -1,12 +1,22 @@
 <template>
-<w-accordion :items="typedDolls">
-  <template #item-title="{ item }">{{ item.type }}</template>
+<w-accordion :items="typedDolls" shadow>
+  <template #item-title="{ item }">
+    <span class="ma2">{{ item.type }}</span>
+    <w-button @click="selectAll(item.dolls, $event)" outline class="ma2">
+      <w-icon class="mr2">mdi mdi-select-all</w-icon>
+      {{ $t('ui.selectTypeAll') }}
+    </w-button>
+    <w-button @click="deselectAll(item.dolls, $event)" outline>
+      <w-icon class="mr2">mdi mdi-selection-off</w-icon>
+      {{ $t('ui.deselectTypeAll') }}
+    </w-button>
+  </template>
   <template #item-content="{ item }">
     <w-tooltip v-for="doll in item.dolls" :key="doll['data-id']" top>
       <template #activator="{ on }">
         <label :for="doll['data-id']" class="avatar-label" v-on="on">
           <input
-            v-on:input="select(doll, $event)"
+            v-on:input="select(doll, $event.target.checked)"
             :checked="modelValue[doll['data-tdoll-class']][doll['data-id']]"
             :id="doll['data-id']" class="avatar" type="checkbox"  />
           <img :src="'http:' + doll['data-avatar']" />
@@ -66,10 +76,22 @@ export default {
     }
   },
   methods: {
-    select (doll, event) {
-      this.mutableValue[doll['data-tdoll-class']][doll['data-id']] = event.target.checked
+    select (doll, isSelected) {
+      this.mutableValue[doll['data-tdoll-class']][doll['data-id']] = isSelected
       this.$emit('update:modelValue', this.mutableValue)
-    }
+    },
+    selectAll (dolls, event) {
+      event.stopPropagation()
+      for(var doll of dolls) {
+        this.select(doll, true)
+      }
+    },
+    deselectAll (dolls, event) {
+      event.stopPropagation()
+      for(var doll of dolls) {
+        this.select(doll, false)
+      }
+    },
   }
 }
 </script>

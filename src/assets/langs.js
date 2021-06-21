@@ -117,6 +117,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "全选",
+        "deselectTypeAll": "取消全选",
         "selectAll": "全选所有",
         "visitCount": "总访问量",
         "saveCfgTip": "保存到浏览器缓存",
@@ -224,6 +225,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "全選",
+        "deselectTypeAll": "取消全選",
         "selectAll": "全選所有",
         "visitCount": "總訪問量",
         "saveCfgTip": "保存到瀏覽器緩存",
@@ -322,6 +324,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "Select All",
+        "deselectTypeAll": "Uncheck All",
         "selectAll": "Select All Guns",
         "visitCount": "Visit",
         "saveCfgTip": "Save to browser cache",
@@ -426,6 +429,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "すべて選択",
+        "deselectTypeAll": "すべての選択を解除",
         "selectAll": "すべて選択",
         "visitCount": "合計訪問数",
         "saveCfgTip": "ブラウザキャッシュに保存",
@@ -531,6 +535,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "모두 선택",
+        "deselectTypeAll": "모두의 선택을 취소합니다",
         "selectAll": "모두 선택",
         "visitCount": "총 방문수",
         "saveCfgTip": "브라우저 캐시에 저장",
