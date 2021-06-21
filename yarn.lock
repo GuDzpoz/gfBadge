@@ -1000,6 +1000,11 @@
     "@intlify/runtime" "9.1.6"
     "@intlify/shared" "9.1.6"
 
+"@mdi/font@^5.9.55":
+  version "5.9.55"
+  resolved "https://registry.nlark.com/@mdi/font/download/@mdi/font-5.9.55.tgz#41acd50b88073ded7095fc3029d8712b6e12f38e"
+  integrity sha1-QazVC4gHPe1wlfwwKdhxK24S844=
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npm.taobao.org/@mrmlnc/readdir-enhanced/download/@mrmlnc/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

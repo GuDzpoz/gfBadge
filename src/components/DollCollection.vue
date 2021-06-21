@@ -297,11 +297,13 @@ div {
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 canvas {
   border: 1px dashed gold;
   margin-top: auto;
+  max-width: 100%;
 }
 
 #canvasContainer {

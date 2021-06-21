@@ -10,6 +10,7 @@
     "update-data": "node update.js"
   },
   "dependencies": {
+    "@mdi/font": "^5.9.55",
     "blueimp-md5": "^2.18.0",
     "core-js": "^3.6.5",
     "fetch-retry": "^4.1.1",

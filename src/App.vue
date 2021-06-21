@@ -1,8 +1,16 @@
 <template>
 <w-app>
   <w-flex wrap>
-    <w-select :items="servers" v-model="server" :label="t('selectServer')" class="title4 xs6" />
-    <w-select :items="langs" v-model="$i18n.locale" :label="t('selectLang')" class="title4 xs6" />
+    <w-select :items="servers" v-model="server"
+              :label="t('selectServer')"
+              outline shadow class="title3 xs5 ma3"
+              label-position="inside"
+              inner-icon-left="mdi mdi-server title4" />
+    <w-select :items="langs" v-model="$i18n.locale"
+              :label="t('selectLang')"
+              outline shadow class="title3 xs5 ma3"
+              label-position="inside"
+              inner-icon-left="mdi mdi-translate title4" />
     <h1 class="xs12 ma5">{{ t("title") }}</h1>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
@@ -11,52 +19,83 @@
                     class="xs12" />
     <w-switch v-model="mod" thin :label="t('tabMod.title')" />
     <w-switch v-model="thumbnail" thin :label="t('thumbnail')" />
-    <w-button @click="saveToLocal()" class="ma2">{{ t("btnSaveCfg") }}</w-button>
-    <w-button @click="loadFromLocal()" class="ma2">{{ t("btnLoadCfg") }}</w-button>
-    <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]" class="xs12 ma2 mb6">
+    <w-button @click="saveToLocal()"
+              bg-color="success" class="ma2" height="1.6rem">
+      <w-icon class="mr2">mdi mdi-database-import</w-icon>
+      {{ t("btnSaveCfg") }}
+    </w-button>
+    <w-button @click="loadFromLocal()"
+              bg-color="success" class="ma2" height="1.6rem">
+      <w-icon class="mr2">mdi mdi-database-export</w-icon>
+      {{ t("btnLoadCfg") }}
+    </w-button>
+    <w-button
+              bg-color="info" class="ma2" height="1.6rem">
+      <w-icon class="mr2">mdi mdi-download</w-icon>
+      {{ t("btnSaveCfgJSON") }}
+    </w-button>
+    <w-button
+              bg-color="info" class="ma2" height="1.6rem">
+      <w-icon class="mr2">mdi mdi-upload</w-icon>
+      {{ t("btnLoadCfgJSON") }}
+    </w-button>
+    <w-button
+              bg-color="warning" class="ma2" height="1.6rem">
+      <w-icon class="mr2">mdi mdi-image-move</w-icon>
+      {{ t("btnExportPNG") }}
+    </w-button>
+    <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
+            card class="xs12 ma2 mb6">
       <template v-slot:[`item-title.1`]>
+        <w-icon class="mr2">mdi mdi-face-woman</w-icon>
         {{ t('tabPoster.title') }}
       </template>
       <template v-slot:[`item-content.1`]>
         <DollSelector v-model="ui.collection" :dolls="typedAllDolls" />
       </template>
       <template v-slot:[`item-title.2`]>
-        {{ t('tabBackground.title') }}
+        <w-icon class="mr2">mdi mdi-face-woman-shimmer</w-icon>
+        {{ t("tabMod.title") }}
       </template>
       <template v-slot:[`item-content.2`]>
-        <w-radios :items="backgrounds" v-model="ui.background.url" inline />
+        <DollSelector v-model="ui.modCollection" :dolls="typedModDolls" />
       </template>
       <template v-slot:[`item-title.3`]>
-        {{ t('tabGeneral.title') }}
-      </template>
-      <template v-slot:[`item-content.3`]>
-        <PlayerInfo v-model="ui.info" />
-      </template>
-      <template v-slot:[`item-title.4`]>
-        *
-      </template>
-      <template v-slot:[`item-content.4`]>
-        <License />
-      </template>
-      <template v-slot:[`item-title.5`]>
+        <w-icon class="mr2">mdi mdi-account-alert</w-icon>
         {{ t("tabTeam.title") }}
       </template>
-      <template v-slot:[`item-content.5`]>
+      <template v-slot:[`item-content.3`]>
         <AdjutantSelector v-model="ui.adjutant.url" :dolls="typedDolls" />
       </template>
+      <template v-slot:[`item-title.4`]>
+        <w-icon class="mr2">mdi mdi-camera-image</w-icon>
+        {{ t('tabBackground.title') }}
+      </template>
+      <template v-slot:[`item-content.4`]>
+        <w-radios :items="backgrounds" v-model="ui.background.url" inline />
+      </template>
+      <template v-slot:[`item-title.5`]>
+        <w-icon class="mr2">mdi mdi-information</w-icon>
+        {{ t('tabGeneral.title') }}
+      </template>
+      <template v-slot:[`item-content.5`]>
+        <PlayerInfo v-model="ui.info" />
+      </template>
       <template v-slot:[`item-title.6`]>
+        <w-icon class="mr2">mdi mdi-tune</w-icon>
         {{ t("tabAdjust.title") }}
       </template>
       <template v-slot:[`item-content.6`]>
         <ParameterDashboard v-model="ui" />
       </template>
       <template v-slot:[`item-title.7`]>
-        {{ t("tabMod.title") }}
+        <w-icon class="mr2">mdi mdi-license</w-icon>
       </template>
       <template v-slot:[`item-content.7`]>
-        <DollSelector v-model="ui.modCollection" :dolls="typedModDolls" />
+        <License />
       </template>
     </w-tabs>
+    <div class="placeholderDiv"></div>
   </w-flex>
 </w-app>
 </template>
@@ -217,5 +256,10 @@ export default {
 
 h1 {
   text-align: center;
+}
+
+div.placeholderDiv {
+  height: 80vh;
+  content: "";
 }
 </style>
