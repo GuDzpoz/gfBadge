@@ -153,7 +153,7 @@ export default {
           x: -70,
           y: -230,
           scale: 1,
-          opacity: 0.7
+          opacity: 1,
         },
         adjutant: {
           url: '',
@@ -264,7 +264,10 @@ export default {
       var dolls = this.shallowCopyArray(this.dolls.filter(doll =>
         doll['data-tdoll-class'] === type && doll['data-mod'] === '1'
       ))
-      dolls.forEach(doll => doll['data-avatar'] = doll['data-avatar-mod'])
+      dolls.forEach(doll => {
+        doll['data-avatar'] = doll['data-avatar-mod']
+        doll['data-rarity'] = doll['data-mod-rarity']
+      })
       return dolls
     },
     shallowCopyArray (value) {

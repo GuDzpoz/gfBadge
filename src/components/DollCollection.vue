@@ -30,8 +30,8 @@ const dollCanvasConfig = {
   textConfig: {
     name: { x: 30, y: 18, prefix: '', show: true },
     uid: { x: 700, y: 18, prefix: 'UID: ', show: true },
-    level: { x: 850 / 2, y: 18, prefix: 'Lv. ', show: true },
-    server: { x: 30, y: 510 - 30,  prefix: '', show: true },
+    level: { x: 477, y: 18, prefix: 'Lv. ', show: true },
+    server: { x: 253, y: 18,  prefix: '', show: true },
   },
   offsets: {
     background: { x: 0, y: 0 },
