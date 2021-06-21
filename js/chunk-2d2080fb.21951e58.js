@@ -1,0 +1,4 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2080fb"],{a2d8:function(e,n,i){"use strict";i.r(n);
+// @license © 2020 Google LLC. Licensed under the Apache License, Version 2.0.
+const t=async e=>{const n=await e.getFile();return n.handle=e,n};n["default"]=async(e={})=>{const n={};e.mimeTypes?e.mimeTypes.map(i=>{n[i]=e.extensions||[]}):n["*/*"]=e.extensions||[];const i=await window.showOpenFilePicker({types:[{description:e.description||"",accept:n}],multiple:e.multiple||!1}),s=await Promise.all(i.map(t));return e.multiple?s:s[0]}}}]);
+//# sourceMappingURL=chunk-2d2080fb.21951e58.js.map
