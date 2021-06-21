@@ -60,7 +60,9 @@ export default {
       return dollTypes.map(type => { return { title: type, type: type } })
     },
     typedDolls () {
-      return dollTypes.map(type => { return { type, dolls: this.dolls[type]} })
+      return dollTypes
+        .filter(type => this.dolls[type])
+        .map(type => { return { type, dolls: this.dolls[type]} })
     }
   },
   methods: {
