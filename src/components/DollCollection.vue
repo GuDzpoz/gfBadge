@@ -1,12 +1,22 @@
 <template>
-<div ref="canvasContainer" id="canvasContainer" :style="divStyle"
-     :class="{ thumbnail: thumbnail || outOfView }">
-  <canvas ref="modCanvas" :width="modWidth" :height="modHeight"
-          :class="{ notChosen: !mod }"
-          id="modResultCanvas" />
-  <canvas ref="canvas" :width="width" :height="height"
-          :class="{ notChosen: mod }"
-          id="resultCanvas" />
+<div>
+  <div ref="canvasContainer" id="canvasContainer" :style="divStyle"
+       :class="{ thumbnail: thumbnail || outOfView }">
+    <canvas ref="modCanvas" :width="modWidth" :height="modHeight"
+            :class="{ notChosen: !mod }"
+            id="modResultCanvas" />
+    <canvas ref="canvas" :width="width" :height="height"
+            :class="{ notChosen: mod }"
+            id="resultCanvas" />
+  </div>
+  <w-notification
+    v-model="notification.show"
+    timeout="2000"
+    :success="notification.success"
+    :error="!notification.success"
+    plain round shadow transition="bounce">
+    {{ notification.message }}
+</w-notification>
 </div>
 </template>
 
@@ -74,6 +84,11 @@ export default {
       positions: {},
       modPositions: {},
       observer: null,
+      notification: {
+        show: false,
+        message: '',
+        success: true,
+      },
     }
   },
   computed: {
@@ -152,9 +167,9 @@ export default {
     // redraw: load background and adjutant images
     //         and pass them to drawBoth
     redraw () {
-      var background = new Image()
+      let background = new Image()
       // background.crossOrigin = 'Anonymous'
-      var adjutant = new Image()
+      let adjutant = new Image()
       // adjutant.crossOrigin = 'Anonymous'
       let remainingImages = 0
       if(this.background.url != '') {
@@ -169,7 +184,7 @@ export default {
           [adjutant, this.adjutant]
         )
       } else {
-        var loaded = () => {
+        const loaded = () => {
           remainingImages -= 1
           if(remainingImages === 0) {
             this.drawBoth(
@@ -178,8 +193,23 @@ export default {
             )
           }
         }
+        const failed = (e) => {
+          if(e.target.src.indexOf('gfwiki.org') != -1) {
+            this.notification.success = false
+            this.notification.message =
+              this.$t('message.loadFailed') + ' ' + e.target.alt + ': ' + e.target.src
+            this.notification.show = true
+            e.target.src = ''
+            setTimeout(() => loaded(), 10)
+          }
+          return true
+        }
+        background.onerror = failed
+        adjutant.onerror = failed
         background.onload = loaded
         adjutant.onload = loaded
+        background.alt = this.$t('tabAdjust.background')
+        adjutant.alt = this.$t('tabAdjust.adjutantOffset')
         background.src = this.background.url
         adjutant.src = this.adjutant.url
       }
@@ -302,7 +332,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+div#canvasContainer {
   align-items: center;
   display: flex;
   flex-direction: column;

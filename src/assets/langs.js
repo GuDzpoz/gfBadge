@@ -103,6 +103,7 @@ export const jsonTexts = {
       },
       "message": {
         "loadPictures": "图片加载中...",
+        "loadFailed": "图片加载失败...",
         "loadDone": "加载完成",
         "loadPage": "页面加载中...",
         "generatePicture": "生成图片中...",
@@ -209,6 +210,7 @@ export const jsonTexts = {
       },
       "message": {
         "loadPictures": "圖片加載中...",
+        "loadFailed": "圖片無法加載...",
         "loadDone": "加載完成",
         "loadPage": "頁面加載中...",
         "generatePicture": "生成圖片中...",
@@ -306,6 +308,7 @@ export const jsonTexts = {
       },
       "message": {
         "loadPictures": "Loading Pictures...",
+        "loadFailed": "Pictures Failed To Load...",
         "loadDone": "Loaded",
         "loadPage": "Loading Page...",
         "generatePicture": "Generating Picture...",
@@ -409,6 +412,7 @@ export const jsonTexts = {
       },
       "message": {
         "loadPictures": "画像の読み込み中...",
+        "loadFailed": "画像が読み込まれませんでした...",
         "loadDone": "ロード完了",
         "loadPage": "ページの読み込み中...",
         "generatePicture": "画像の生成...",
@@ -513,6 +517,7 @@ export const jsonTexts = {
       },
       "message": {
         "loadPictures": "사진로드 중 ...",
+        "loadFailed": "그림을로드하지 못했습니다...",
         "loadDone": "로드 완료",
         "loadPage": "페이지로드 중 ...",
         "generatePicture": "사진 생성 중 ...",
