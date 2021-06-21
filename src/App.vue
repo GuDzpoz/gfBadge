@@ -261,12 +261,19 @@ export default {
       return this.dolls.filter(doll => doll['data-tdoll-class'] === type)
     },
     filterModDolls (type) {
-      var dolls = this.dolls.filter(doll =>
+      var dolls = this.shallowCopyArray(this.dolls.filter(doll =>
         doll['data-tdoll-class'] === type && doll['data-mod'] === '1'
-      )
+      ))
       dolls.forEach(doll => doll['data-avatar'] = doll['data-avatar-mod'])
       return dolls
     },
+    shallowCopyArray (value) {
+      var copy = []
+      for(var entry of value) {
+        copy.push(Object.assign({}, entry))
+      }
+      return copy
+    }
   }
 }
 </script>
