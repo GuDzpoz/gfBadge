@@ -228,20 +228,21 @@ export default {
       var modContext = modCanvas.getContext('2d')
       this.draw(modContext, modCanvasConfig,
                 this.modPositions, this.ui.modCollection,
-                background, adjutant)
+                background, adjutant, this.ui.hexagons)
       
       var canvas = this.$refs.canvas
       var context = canvas.getContext('2d')
       this.draw(context, dollCanvasConfig,
                 this.positions, this.ui.collection,
-                background, adjutant)
+                background, adjutant, this.ui.hexagons)
     },
     // draw: dispatch config to corresponding drawing functions
     draw (context, config,
-          positions, collection, background, adjutant) {
+          positions, collection,
+          background, adjutant, hexagonConfig) {
       context.clearRect(0, 0, config.width, config.height)
       this.drawImages(context, background, adjutant, config.offsets)
-      this.drawDolls(context, positions, collection, config.radius)
+      this.drawDolls(context, positions, collection, config.radius, hexagonConfig)
       context.globalAlpha = 1
       this.drawDollTexts(context, positions, collection)
       this.drawInfoTexts(context, config.textConfig, config.avatar)
@@ -264,14 +265,14 @@ export default {
                         adjutantImage.height * adjutantConfig.scale
                        )
     },
-    drawDolls (context, positions, collection, radius) {
+    drawDolls (context, positions, collection, radius, hexagonConfig) {
       var allCollection = Object.fromEntries(
         [].concat(...
                   Object.values(collection)
                   .map(proxy => Object.entries(proxy))))
       for(var id in positions.guns) {
         var doll = positions.guns[id]
-        context.globalAlpha = this.background.opacity
+        context.globalAlpha = hexagonConfig.opacity
         drawGunBlank(context, positions.guns[id], radius, 1)
         if(allCollection[id]) {
           context.globalAlpha = 1

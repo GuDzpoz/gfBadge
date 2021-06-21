@@ -27,6 +27,11 @@
   <div class="title4 ma4">{{ $t('tabAdjust.backgroundAplha') }}</div>
   <w-slider v-model="ui.background.opacity" :min="0" :max="1"
             thumb-label />
+  
+  <div class="title3 ma4">{{ $t('tabAdjust.other') }}</div>
+  <div class="title4 ma4">{{ $t('tabAdjust.gunLiteBackgroundAlpha') }}</div>
+  <w-slider v-model="ui.hexagons.opacity" :min="0" :max="1"
+            thumb-label />
 </div>
 </template>
 

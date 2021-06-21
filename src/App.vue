@@ -161,7 +161,10 @@ export default {
           y: 100,
           scale: 0.45,
           opacity: 0.9
-        }
+        },
+        hexagons: {
+          opacity: 0.7,
+        },
       }
     }
   },
