@@ -20,7 +20,7 @@
 </template>
 
 <script>
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG']
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'Coalition']
 
 export default {
   name: 'DollSelector',

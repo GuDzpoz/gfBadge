@@ -90,7 +90,8 @@ export default {
         HG: 23,
         RF: 23,
         MG: 20,
-        SG: 20
+        SG: 20,
+        Coalition: 20
       },
       this.radius)
     this.modPositions = initGunPosition2(
@@ -101,7 +102,8 @@ export default {
         RF: 12,
         HG: 12,
         SG: 12,
-        MG: 12
+        MG: 12,
+        // Coalition: 20 // none will be modded
       }, 0)
   },
   mounted () {

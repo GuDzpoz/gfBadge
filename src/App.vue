@@ -5,7 +5,7 @@
     <w-select :items="langs" v-model="$i18n.locale" :label="t('selectLang')" class="title4 xs6" />
     <h1 class="xs12 ma5">{{ t("title") }}</h1>
     <DollCollection :ui="ui"
-                    :dolls="typedDolls" :modDolls="typedModDolls"
+                    :dolls="typedAllDolls" :modDolls="typedModDolls"
                     :background="ui.background" :adjutant="ui.adjutant"
                     :thumbnail="thumbnail" :mod="mod"
                     class="xs12" />
@@ -18,7 +18,7 @@
         {{ t('tabPoster.title') }}
       </template>
       <template v-slot:[`item-content.1`]>
-        <DollSelector v-model="ui.collection" :dolls="typedDolls" />
+        <DollSelector v-model="ui.collection" :dolls="typedAllDolls" />
       </template>
       <template v-slot:[`item-title.2`]>
         {{ t('tabBackground.title') }}
@@ -71,6 +71,7 @@ import PlayerInfo from './components/PlayerInfo'
 import { useI18n } from 'vue-i18n'
 import { jsonTexts } from './assets/langs.js'
 import { dolls } from './assets/dolls.js'
+import { coalitionDolls } from './assets/coalition.js'
 import { backgrounds } from './assets/backgrounds.js'
 
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG']
@@ -146,6 +147,11 @@ export default {
         dollTypes.forEach(type => typed[type] = this.filterDolls(type))
       }
       return typed
+    },
+    typedAllDolls () {
+      var dolls = this.typedDolls
+      dolls['Coalition'] = coalitionDolls
+      return dolls
     },
     typedModDolls () {
       var typed = {}
