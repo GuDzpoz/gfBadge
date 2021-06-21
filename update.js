@@ -347,6 +347,8 @@ const level = 2
 function getWikiMediaUrl(filename) {
   // capitalize the first letter
   filename = filename.charAt(0).toUpperCase() + filename.substring(1)
+  // replace ' ' with '_'
+  filename = filename.replaceAll(' ', '_')
   var hash = md5(filename)
   var url = '/'
   for(var i = 0; i < level; ++i) {
