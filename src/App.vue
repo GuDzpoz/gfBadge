@@ -150,7 +150,7 @@ export default {
         },
         background: {
           url: '',
-          x: 50,
+          x: -70,
           y: -230,
           scale: 1,
           opacity: 0.7

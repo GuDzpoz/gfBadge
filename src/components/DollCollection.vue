@@ -33,6 +33,10 @@ const dollCanvasConfig = {
     level: { x: 850 / 2, y: 18, prefix: 'Lv. ', show: true },
     server: { x: 30, y: 510 - 30,  prefix: '', show: true },
   },
+  offsets: {
+    background: { x: 0, y: 0 },
+    adjutant: { x: 0, y: 0 },
+  },
   avatar: { show: false },
 }
 const modCanvasConfig = {
@@ -44,6 +48,10 @@ const modCanvasConfig = {
     uid: { x: 20, y: 36, prefix: 'UID: ', show: true },
     level: { x: 20, y: 57, prefix: 'Lv. ', show: true },
     server: { x: 20, y: 78, prefix: '', show: true },
+  },
+  offsets: {
+    background: { x: 0, y: -(510 - 220)/2 },
+    adjutant: { x: 0, y: -220 / 2 },
   },
   avatar: { x: 20, y: 99, size: 100, show: true },
 }
@@ -232,26 +240,26 @@ export default {
     draw (context, config,
           positions, collection, background, adjutant) {
       context.clearRect(0, 0, config.width, config.height)
-      this.drawImages(context, background, adjutant)
+      this.drawImages(context, background, adjutant, config.offsets)
       this.drawDolls(context, positions, collection, config.radius)
       context.globalAlpha = 1
       this.drawDollTexts(context, positions, collection)
       this.drawInfoTexts(context, config.textConfig, config.avatar)
     },
-    drawImages (context, background, adjutant) {
+    drawImages (context, background, adjutant, offsets) {
       var [ backgroundImage, backgroundConfig ] = background
       var [ adjutantImage, adjutantConfig ] = adjutant
       context.globalAlpha = backgroundConfig.opacity
       context.drawImage(backgroundImage,
-                        backgroundConfig.x,
-                        backgroundConfig.y,
+                        backgroundConfig.x + offsets.background.x,
+                        backgroundConfig.y + offsets.background.y,
                         backgroundImage.width * backgroundConfig.scale,
                         backgroundImage.height * backgroundConfig.scale
                        )
       context.globalAlpha = adjutantConfig.opacity
       context.drawImage(adjutantImage,
-                        adjutantConfig.x,
-                        adjutantConfig.y,
+                        adjutantConfig.x + offsets.adjutant.x,
+                        adjutantConfig.y + offsets.adjutant.y,
                         adjutantImage.width * adjutantConfig.scale,
                         adjutantImage.height * adjutantConfig.scale
                        )
