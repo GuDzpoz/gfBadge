@@ -4,11 +4,18 @@
   <w-input :label="$t('tabGeneral.uid')" v-model="info.uid" type="number" class="xs2 ma2"/>
   <w-input :label="$t('tabGeneral.level')" v-model="info.level" type="number" class="xs2 ma2"/>
   <w-select :items="serverInfo"
-            v-model="info.server"
+            :label="$t('tabGeneral.server.name')"
+            v-model="server"
             class="xs3 ma2" />
-  {{ $t("tabGeneral.avatar.name") }}
-  <input type="file" v-on:change="changeAvatar" id="avatarInput" />
-  <w-button @click="clearAvatar">{{ $t("tabGeneral.avatar.clear") }}</w-button>
+  <w-input type="text" v-model="customServer" :label="$t('tabGeneral.server.customServer')" />
+  <span class="ma2">
+    {{ $t("tabGeneral.avatar.name") }}
+  </span>
+  <input type="file" v-on:change="changeAvatar"
+         id="avatarInput" class="ma2" />
+  <w-button @click="clearAvatar" class="ma2">
+    {{ $t("tabGeneral.avatar.clear") }}
+  </w-button>
 </w-flex>
 </template>
 
@@ -20,6 +27,8 @@ export default {
   },
   data () {
     return {
+      customServer: '',
+      server: '',
       info: {
         name: '',
         uid: 0,
@@ -37,6 +46,18 @@ export default {
         this.$emit('update:modelValue', this.info)
       },
       deep: true
+    },
+    customServer (value) {
+      if(value === '') {
+        this.info.server = this.server
+      } else {
+        this.info.server = value
+      }
+    },
+    server (value) {
+      if(this.customServer === '') {
+        this.info.server = value
+      }
     }
   },
   computed: {
