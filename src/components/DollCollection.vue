@@ -114,7 +114,7 @@ export default {
         RF: 23,
         MG: 20,
         SG: 20,
-        Coalition: 20
+        SF: 20
       },
       this.radius)
     this.modPositions = initGunPosition2(
@@ -158,9 +158,11 @@ export default {
     collectionStats (collection) {
       var stats = {}
       for(var type in collection) {
-        stats[type] = Object.values(collection[type]).reduce(
-          (sum, current) => sum + current
-        )
+        if(Object.keys(collection[type]).length !== 0) {
+          stats[type] = Object.values(collection[type]).reduce(
+            (sum, current) => sum + current
+          )
+        }
       }
       return stats
     },
@@ -180,10 +182,10 @@ export default {
       let adjutant = new Image()
       // adjutant.crossOrigin = 'Anonymous'
       let remainingImages = 0
-      if(this.background.url != '') {
+      if(this.background.url !== '') {
         remainingImages += 1
       }
-      if(this.adjutant.url != '') {
+      if(this.adjutant.url !== '') {
         remainingImages += 1
       }
       if(remainingImages === 0) {
@@ -202,24 +204,28 @@ export default {
           }
         }
         const failed = (e) => {
-          if(e.target.src.indexOf('gfwiki.org') != -1) {
+          console.log(e.target.src)
+          if(e.target.src.indexOf('/') != -1) {
             this.notification.success = false
             this.notification.message =
               this.$t('message.loadFailed') + ' ' + e.target.alt + ': ' + e.target.src
             this.notification.show = true
-            e.target.src = ''
             setTimeout(() => loaded(), 10)
           }
           return true
         }
-        background.onerror = failed
-        adjutant.onerror = failed
-        background.onload = loaded
-        adjutant.onload = loaded
-        background.alt = this.$t('tabAdjust.background')
-        adjutant.alt = this.$t('tabAdjust.adjutantOffset')
-        background.src = this.background.url
-        adjutant.src = this.adjutant.url
+        if(this.background.url !== '') {
+          background.onerror = failed
+          background.onload = loaded
+          background.alt = this.$t('tabAdjust.background')
+          background.src = this.background.url
+        }
+        if(this.adjutant.url !== '') {
+          adjutant.onerror = failed
+          adjutant.onload = loaded
+          adjutant.alt = this.$t('tabAdjust.adjutantOffset')
+          adjutant.src = this.adjutant.url
+        }
       }
     },
     // drawBoth: pass the arguments to draw, where most logic lies
@@ -251,19 +257,23 @@ export default {
       var [ backgroundImage, backgroundConfig ] = background
       var [ adjutantImage, adjutantConfig ] = adjutant
       context.globalAlpha = backgroundConfig.opacity
-      context.drawImage(backgroundImage,
-                        backgroundConfig.x + offsets.background.x,
-                        backgroundConfig.y + offsets.background.y,
-                        backgroundImage.width * backgroundConfig.scale,
-                        backgroundImage.height * backgroundConfig.scale
-                       )
+      if(backgroundImage.width != 0) {
+        context.drawImage(backgroundImage,
+                          backgroundConfig.x + offsets.background.x,
+                          backgroundConfig.y + offsets.background.y,
+                          backgroundImage.width * backgroundConfig.scale,
+                          backgroundImage.height * backgroundConfig.scale
+                         )
+      }
       context.globalAlpha = adjutantConfig.opacity
-      context.drawImage(adjutantImage,
-                        adjutantConfig.x + offsets.adjutant.x,
-                        adjutantConfig.y + offsets.adjutant.y,
-                        adjutantImage.width * adjutantConfig.scale,
-                        adjutantImage.height * adjutantConfig.scale
-                       )
+      if(adjutantImage.width != 0) {
+        context.drawImage(adjutantImage,
+                          adjutantConfig.x + offsets.adjutant.x,
+                          adjutantConfig.y + offsets.adjutant.y,
+                          adjutantImage.width * adjutantConfig.scale,
+                          adjutantImage.height * adjutantConfig.scale
+                         )
+      }
     },
     drawDolls (context, positions, collection, radius, hexagonConfig) {
       var allCollection = Object.fromEntries(

@@ -6,16 +6,16 @@
   <w-accordion :items="typedDolls" shadow>
     <template #item-title="{ item }">{{ item.type }}</template>
     <template #item-content="{ item }">
-      <w-menu v-for="doll in item.dolls" :key="doll['data-id']"
+      <w-menu v-for="doll in item.dolls" :key="doll.id"
               custom hide-on-menu-click shadow>
         <template #activator="{ on }">
           <w-button v-on="on" outline class="ma1">
-            {{ doll["data-name-ingame"] }}
+            {{ doll.cnname }}
           </w-button>
         </template>
-        <w-list :items="skinItems(skins[doll['data-id']])"
+        <w-list :items="skinItems(doll.skins)"
                 v-on:item-select="select"
-                :model-value="firstSkinItem(skins[doll['data-id']])"
+                :model-value="firstSkinItem(doll.skins)"
                 class="white--bg" />
       </w-menu>
     </template>
@@ -24,16 +24,14 @@
 </template>
 
 <script>
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG']
-import { skins } from '../assets/skins.js'
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
 import { npcs } from '../assets/npcs.js'
-import { coalitionSkins } from '../assets/coalitionSkins.js'
-import { coalitionDolls } from '../assets/coalition.js'
 
 export default {
   name: 'AdjutantSelector',
   props: {
     dolls: Object,
+    urlbase: String,
     modelValue: String,
   },
   created () {
@@ -58,7 +56,7 @@ export default {
     adjutantOn (value) {
       if(value) {
         if(this.currentSkin !== '') {
-          this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + this.currentSkin)
+          this.$emit('update:modelValue', this.urlbase + '/' + this.currentSkin)
         }
       } else {
         this.$emit('update:modelValue', '')
@@ -66,49 +64,34 @@ export default {
     }
   },
   computed: {
-    skins () {
-      return { ...skins, ...this.npcs, ...coalitionSkins }
-    },
     typedDolls () {
       var typedNPCDolls = dollTypes.map(type => { return { type, dolls: this.dolls[type]} })
       typedNPCDolls.push({
-        type: 'Coalition',
-        dolls: Object.keys(coalitionSkins).map(name => { return {
-          'data-name-ingame': this.getCoalitionName(name),
-          'data-id': name
-        }})
-      })
-      typedNPCDolls.push({
         type: 'NPC',
         dolls: Object.keys(this.npcs).map(name => { return {
-          'data-name-ingame': name,
-          'data-id': name
+          cnname: name,
+          id: name,
+          skins: Object.fromEntries(Object.keys(this.npcs[name]).map(skin =>
+            [ skin, this.npcs[name][skin]]
+          ))
         }})
       })
       return typedNPCDolls
     },
-    coalitionNames () {
-      return Object.fromEntries(coalitionDolls.map(doll => [
-        doll['data-id'], doll['data-name-ingame']
-      ]))
-    }
   },
   methods: {
-    getCoalitionName (id) {
-      return this.coalitionNames[id]
-    },
     skinItems (skins) {
-      return Object.keys(skins).map(name => {
+      return Object.keys(skins ? skins : {}).map(name => {
         return { label: name, value: skins[name] }
       })
     },
     firstSkinItem (skins) {
-      return [Object.values(skins)[0]]
+      return skins ? [Object.values(skins)[0]] : ''
     },
     select (skin) {
       this.currentSkin = skin.value
       if(this.adjutantOn) {
-        this.$emit('update:modelValue', 'http://www.gfwiki.org/images' + skin.value)
+        this.$emit('update:modelValue', this.urlbase + '/' + skin.value)
       } else {
         this.$emit('update:modelValue', '')
       }

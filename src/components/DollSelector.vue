@@ -12,25 +12,25 @@
     </w-button>
   </template>
   <template #item-content="{ item }">
-    <w-tooltip v-for="doll in item.dolls" :key="doll['data-id']" top>
+    <w-tooltip v-for="doll in item.dolls" :key="doll.id" top>
       <template #activator="{ on }">
-        <label :for="doll['data-id']" class="avatar-label" v-on="on">
+        <label :for="doll.id" class="avatar-label" v-on="on">
           <input
             v-on:input="select(doll, $event.target.checked)"
-            :checked="modelValue[doll['data-tdoll-class']][doll['data-id']]"
-            :id="doll['data-id']" class="avatar" type="checkbox"  />
-          <img :src="'http:' + doll['data-avatar']" />
-          <span>{{ doll["data-name-ingame"] }}</span>
+            :checked="modelValue[doll.type][doll.id]"
+            :id="doll.id" class="avatar" type="checkbox"  />
+          <img :src="doll.icon" />
+          <span>{{ doll.cnname }}</span>
         </label>
       </template>
-      {{ doll["data-name-ingame"] }}
+      {{ doll.cnname }}
     </w-tooltip>
   </template>
 </w-accordion>
 </template>
 
 <script>
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'Coalition']
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
 
 export default {
   name: 'DollSelector',
@@ -47,7 +47,7 @@ export default {
     this.mutableValue = this.modelValue
     for(var type of typedDolls) {
       if(this.mutableValue[type.type] == null) {
-        this.mutableValue[type.type] = Object.fromEntries(type.dolls.map(doll => [doll['data-id'], false]))
+        this.mutableValue[type.type] = Object.fromEntries(type.dolls.map(doll => [doll.id, false]))
       }
     }
     this.$emit('update:modelValue', this.mutableValue)
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     select (doll, isSelected) {
-      this.mutableValue[doll['data-tdoll-class']][doll['data-id']] = isSelected
+      this.mutableValue[doll.type][doll.id] = isSelected
       this.$emit('update:modelValue', this.mutableValue)
     },
     selectAll (dolls, event) {

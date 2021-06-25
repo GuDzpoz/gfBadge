@@ -252,6 +252,7 @@ function sleep(ms) {
 
 async function getSkins(dolls, callback) {
   var dollSkins = {}
+  var dollsInformation = {} // we are fetching extra info now
   var count = 0
   var promises = []
   for(var doll of dolls) {
@@ -261,12 +262,17 @@ async function getSkins(dolls, callback) {
       .then(response => response.json())
       .then(async json => {
         var skins = {}
+        var dollInfo = {}
         var wikitext = json.parse.wikitext['*']
             .replace(/<!--(.*?)-->/gm, '')
         var info = parseWikiTag(wikitext)
+        dollInfo.code = info.code
+        dollInfo.cnname = doll['data-name-ingame']
+        dollInfo.skins = {}
         addBothSkins(skins, doll['data-name-ingame'],
                      getDollDefaultSkinFilename(info.code))
         if(doll['data-mod'] === '1') {
+          dollInfo.modded = true
           addBothSkins(skins, doll['data-name-ingame'] + 'MOD3',
                        getDollModSkinFilename(info.code))
         }
@@ -276,10 +282,12 @@ async function getSkins(dolls, callback) {
         )) {
           var name = info[key]
           var id = info['装扮' + key.substring(2, key.length - 2) + '编号']
+          dollInfo.skins[id] = name
           addBothSkins(skins, name,
                        getDollSkinFilename(info.code, id))
         }
         dollSkins[doll['data-id']] = skins
+        dollsInformation[doll['data-id']] = dollInfo
         count += 1
         console.log(skins)
         console.log('SKINS: '
@@ -291,7 +299,12 @@ async function getSkins(dolls, callback) {
     await promise
     promises.push(promise)
   }
+  const infoJsPath = './src/assets/info.js'
   await Promise.all(promises).then(async () => {
+    await fs.writeFile(infoJsPath,
+                       'export const info = ' + JSON.stringify(dollsInformation)
+                      )
+    console.log('INFO: Saved.')
     await callback(dollSkins)
   })
 }
@@ -345,6 +358,7 @@ async function getNPCs(callback) {
 
 const level = 2
 function getWikiMediaUrl(filename) {
+  return filename.replaceAll(' ', '_').replace('Pic_', 'pic_')
   // capitalize the first letter
   filename = filename.charAt(0).toUpperCase() + filename.substring(1)
   // replace ' ' with '_'

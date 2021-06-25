@@ -196,34 +196,34 @@ function initGunPosition2(xPos, yPos, R, gunList, limitMap, gap) {
             jj = jPrev + Math.floor(i / limit),
             x = xPos + fx * R * (2 * ii + (jj + 1) % 2),
             y = yPos + jj * R * (2 - fyy) + tt * gap;
-        let stars = gunList[t][i]['data-rarity'], fillColor = "";
+        let stars = gunList[t][i].rarity, fillColor = "";
         switch (stars) {
-        case '2':
+        case 2:
           fillColor = star2;
           break;
-        case '3':
+        case 3:
           fillColor = star3;
           break;
-        case '4':
+        case 4:
           fillColor = star4;
           break;
-        case '5':
+        case 5:
           fillColor = star5;
           break;
-        case '6':
+        case 6:
           fillColor = star6;
           break;
-        case '1':
+        case 1:
           fillColor = starEx;
           break;
         default:
           fillColor = star2;
         }
-        result.guns[gunList[t][i]['data-id']] = {
+        result.guns[gunList[t][i].id] = {
           "x": Math.floor(x),
           "y": Math.floor(y),
           "fillColor": fillColor,
-          "img": 'http:' + gunList[t][i]['data-avatar']
+          "img": (gunList[t][i].icon)
         };
         if (i == 0) {
           result.text[t] = {};

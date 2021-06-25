@@ -41,10 +41,9 @@
       {{ t("btnLoadCfgJSON") }}
     </w-button>
     <w-button @click="saveToImage"
-              disabled
               bg-color="warning" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-image-move</w-icon>
-      {{ t("btnExportPNG") + ' (' + t("rightClickToSave") + ')' }}
+      {{ t("btnExportPNG") }}
     </w-button>
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
             card class="xs12 ma2 mb6">
@@ -67,7 +66,7 @@
         {{ t("tabTeam.title") }}
       </template>
       <template v-slot:[`item-content.3`]>
-        <AdjutantSelector v-model="ui.adjutant.url" :dolls="typedDolls" />
+        <AdjutantSelector v-model="ui.adjutant.url" :dolls="typedDolls" :urlbase="skinBase" />
       </template>
       <template v-slot:[`item-title.4`]>
         <w-icon class="mr2">mdi mdi-camera-image</w-icon>
@@ -97,6 +96,10 @@
         <License />
       </template>
     </w-tabs>
+    <w-notification v-model="showNotice" :timeout="noticeTimeout"
+                    warning plain round shadow>
+      {{ notice }}
+    </w-notification>
     <div class="placeholderDiv"></div>
   </w-flex>
 </w-app>
@@ -112,11 +115,12 @@ import PlayerInfo from './components/PlayerInfo'
 import { useI18n } from 'vue-i18n'
 import { fileOpen, fileSave } from 'browser-fs-access'
 import { jsonTexts } from './assets/langs.js'
-import { dolls } from './assets/dolls.js'
-import { coalitionDolls } from './assets/coalition.js'
+import { icons } from './assets/icons.js'
 import { backgrounds } from './assets/backgrounds.js'
 
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG']
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
+
+const uiVersion = '20210625'
 
 export default {
   name: 'App',
@@ -135,10 +139,16 @@ export default {
   data () {
     return {
       server: jsonTexts.servers[0],
-      dolls: dolls,
+      dolls: icons,
+      iconBase: '',
+      skinBase: '',
       thumbnail: false,
       mod: false,
+      showNotice: false,
+      notice: '',
+      noticeTimeout: 5000,
       ui: {
+        version: uiVersion,
         collection: {},
         modCollection: {},
         info: {
@@ -169,11 +179,19 @@ export default {
     }
   },
   created () {
+    this.iconBase = this.dolls['_']
+    this.skinBase = this.dolls['__']
+    delete this.dolls['_']
+    delete this.dolls['__']
+    Object.values(this.dolls).forEach(doll => {
+      doll.icon = this.iconBase + '/' + doll.icon
+      doll.moddedIcon = this.iconBase + '/' + doll.moddedIcon
+    })
   },
   computed: {
     backgrounds () {
-      return Object.keys(backgrounds).map(name => {
-        return { 'label': name, 'value': backgrounds[name] }
+      return Object.keys(backgrounds).filter(name => name !== '_').map(name => {
+        return { 'label': name, 'value': backgrounds['_'] + '/' + backgrounds[name] }
       })
     },
     langs () {
@@ -195,7 +213,6 @@ export default {
     },
     typedAllDolls () {
       var dolls = this.typedDolls
-      dolls['Coalition'] = coalitionDolls
       return dolls
     },
     typedModDolls () {
@@ -222,7 +239,8 @@ export default {
     },
     loadFromLocal () {
       if(localStorage.config) {
-        this.ui = this.deepMerge(this.ui, JSON.parse(localStorage.config))
+        var config = JSON.parse(localStorage.config)
+        this.loadConfig(config)
       }
     },
     loadFromFile () {
@@ -230,11 +248,33 @@ export default {
         mimeTypes: ['application/json']
       }).then(blob => blob.text())
         .then(text => {
-          this.ui = this.deepMerge(this.ui, JSON.parse(text))
+          this.loadConfig(JSON.parse(text))
         })
     },
-    // not until GFWiki allows CORS uses
-    // or we store the images locally
+    loadConfig (config) {
+      var incompatibility = false
+      if(config.background?.url?.indexOf('gfwiki.org') !== -1) {
+        delete config.background.url
+        incompatibility = true
+      }
+      if(config.adjutant?.url?.indexOf('gfwiki.org') !== -1) {
+        delete config.adjutant.url
+        incompatibility = true
+      }
+      if(config.version === '20210625') {
+        incompatibility = true
+      }
+
+      if(incompatibility) {
+        this.notify(this.t('versionChanged'))
+      }
+      this.ui = this.deepMerge(this.ui, config)
+      this.ui.version = uiVersion
+    },
+    notify (message) {
+      this.notice = message
+      this.showNotice = true
+    },
     saveToImage () {
       this.$refs.canvas.getCanvas().toBlob(blob => {
         fileSave(blob, {
@@ -261,15 +301,15 @@ export default {
       }
     },
     filterDolls (type) {
-      return this.dolls.filter(doll => doll['data-tdoll-class'] === type)
+      return Object.values(this.dolls).filter(doll => doll.type === type)
     },
     filterModDolls (type) {
-      var dolls = this.shallowCopyArray(this.dolls.filter(doll =>
-        doll['data-tdoll-class'] === type && doll['data-mod'] === '1'
+      var dolls = this.shallowCopyArray(Object.values(this.dolls).filter(doll =>
+        doll.type === type && doll.modded
       ))
       dolls.forEach(doll => {
-        doll['data-avatar'] = doll['data-avatar-mod']
-        doll['data-rarity'] = doll['data-mod-rarity']
+        doll.icon = doll.moddedIcon
+        doll.rarity = doll.modRarity
       })
       return dolls
     },

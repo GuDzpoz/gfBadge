@@ -25,6 +25,7 @@ export const jsonTexts = {
           { "text": "海报", "value": "poster" }
         ]
       },
+      "versionChanged": "版本已更新。您可能需要重新设置某些内容。",
       "selectLang": "语言",
       "selectServer": "服务器",
       "thumbnail": "缩略图",
@@ -135,6 +136,7 @@ export const jsonTexts = {
           { "text": "海報", "value": "poster" }
         ]
       },
+      "versionChanged": "版本已更新。您可能需要重新設置某些內容。",
       "selectLang": "語言",
       "selectServer": "伺服器",
       "btnSaveCfg": "保存配置",
@@ -243,6 +245,7 @@ export const jsonTexts = {
           { "text": "Poster", "value": "poster" }
         ]
       },
+      "versionChanged": "The software has been updated. Some settings might have been lost.",
       "selectLang": "Language",
       "selectServer": "Server",
       "thumbnail": "Thumbnail",
@@ -342,6 +345,7 @@ export const jsonTexts = {
           { "text": "ポスター", "value": "poster" }
         ]
       },
+      "versionChanged": "ソフトウェアが更新されました。いくつかの設定が失われた可能性があります。",
       "selectLang": "言語",
       "selectServer": "サーバー",
       "btnSaveCfg": "構成の保存",
@@ -447,6 +451,7 @@ export const jsonTexts = {
           { "text": "포스터", "value": "poster" }
         ]
       },
+      "versionChanged": "소프트웨어가 업데이트되었습니다. 일부 설정이 손실되었을 수 있습니다.",
       "selectLang": "언어",
       "selectServer": "서버",
       "btnSaveCfg": "구성 저장",
