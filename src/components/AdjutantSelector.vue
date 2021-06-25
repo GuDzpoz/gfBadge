@@ -35,7 +35,7 @@ export default {
     modelValue: String,
   },
   created () {
-    this.currentSkin = this.modelValue
+    this.currentSkin = this.modelValue.replace(this.urlbase + '/', '')
   },
   data () {
     return {
@@ -49,7 +49,7 @@ export default {
   watch: {
     modelValue: {
       handler () {
-        this.mutableValue = this.modelValue
+        this.mutableValue = this.modelValue.replace(this.urlbase + '/', '')
       },
       deep: true
     },

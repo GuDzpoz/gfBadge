@@ -270,7 +270,7 @@ export default {
 
       // versioned configurations
       if(config.version === '20210625') {
-        incompatibility = true
+        incompatibility = false
       }
 
       if(incompatibility) {
