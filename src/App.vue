@@ -253,6 +253,7 @@ export default {
     },
     loadConfig (config) {
       var incompatibility = false
+      // unversioned configurations
       if(config.background?.url?.indexOf('gfwiki.org') !== -1) {
         delete config.background.url
         incompatibility = true
@@ -261,6 +262,13 @@ export default {
         delete config.adjutant.url
         incompatibility = true
       }
+      if(config.collection.Coalition) {
+        config.collection.SF = config.collection.Coalition
+        delete config.collection.Coalition
+        incompatibility =true
+      }
+
+      // versioned configurations
       if(config.version === '20210625') {
         incompatibility = true
       }
