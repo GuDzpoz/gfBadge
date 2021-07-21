@@ -62,6 +62,77 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Side Notes
+
+As we are using local images now, we have to keep consistency with GFWiki, probably manually.
+
+To do so, first make sure your files in `src/assets/` are committed to git, and `yarn update-data [options]` to update data. Then use `git diff` to check for changes.
+
+I assume you are using Linux here.
+
+After applying changes, you should `sh test.sh` to check for images that are still missing.
+
+Our project here is currently requiring
+```
+src/assets/langs.js
+src/assets/icons.js
+src/assets/backgrounds.js
+src/assets/npcs.js
+```
+as data sources (and all other files in `assets/` are just historical residues). And I will explain ways to keep them up-to-date.
+
+#### `langs.js`
+
+It is not relevant to the GFWiki so just update the translations by yourself.
+
+#### `npcs.js`
+
+First, `yarn update-data npcs` to fetch the lastest NPC info. Then you will need to indent the file correctly as follows:
+```
+export const npcs = {
+    "克鲁格": {
+        "克鲁格": "NPC-Kyruger.png"
+    },
+```
+
+After this, you may `git diff src/assets/npcs.js` to chech for changes:
+```
+diff --git a/src/assets/npcs.js b/src/assets/npcs.js
+index 8830e28..f98b51c 100644
+--- a/src/assets/npcs.js
++++ b/src/assets/npcs.js
+@@ -147,12 +147,5 @@ export const npcs = {
+         "难民": "pic_NPC-Refugee_0.png",
+         "女仆人形": "NPC-Maid.png",
+         "以利亚": "NPC-Elijah(0).png"
+-    },
+-    "宝兰斯诺": {
+-        "宝兰斯诺1": "NPC_baolan_1.png",
+-        "宝兰斯诺2": "NPC_baolan_2.png",
+-        "宝兰斯诺3": "NPC_baolan_3.png",
+-        "宝兰斯诺4": "NPC_baolan_4.png",
+-        "宝兰斯诺5": "NPC_baolan_5.png"
+     }
+ }
+```
+I added images for `baolan` manually so you will see that the NPC info on GFWiki has not changed and we should want to keep the older one (or else you should merge the two files manually). Use `git restore src/assets/npcs.js` to restore the the older version.
+
+#### `backgrounds.js`
+
+First `yarn update-data backgrounds` and then `git diff --word-diff-regex='\w' src/assets/backgrounds.js` to check for changes. As a matter of fact, `yarn update-data backgrounds` is not at all acquiring data from GFWiki. Instead, it always outputs some fixed filenames. So you will most likely not find any changes.
+
+#### `icons.js`
+
+`yarn update-data [options]` does not write to the `icons.js` file, which in fact comes from `dolls.js`, `info.js`, `coalition.js` and `coalitionSkins.js`.
+
+After updating these files with `yarn update-data`, edit and rename them into their corresponding `.json` files. Then use `node processorHelper.js generate` to gather the info and generate the final `icons.js`.
+
+Remember to use `sh test.sh` to check if you need to fetch some missing images.
+
+```
+convert /tmp/Pic_{}.png -resize 1024x1024 /tmp/resized.png && pngquant /tmp/resized.png && mv /tmp/resized-fs8.png public/images/skins/pic_{}.png
+```
+
 ## License
 
 This project is licensed under `GNU Affero General Public License v3.0`.

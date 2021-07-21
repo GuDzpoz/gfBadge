@@ -12,7 +12,7 @@ do
     echo $i
   fi
 done
-for i in `cat src/assets/npcs.js | sed -e 's#":"#\n#g' | sed -e 's#.png.*$#.png#g' | grep .png`
+for i in `cat src/assets/npcs.js | sed -e 's#":\s*"#\n#g' | sed -e 's#.png.*$#.png#g' | grep .png`
 do
   if [ -f "public/images/skins/$i" ]
   then

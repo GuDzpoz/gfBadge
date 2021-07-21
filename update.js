@@ -1,8 +1,40 @@
 const fs = require('fs/promises')
 const md5 = require('blueimp-md5')
 const nodeFetch = require('node-fetch')
-const fetch = require('fetch-retry')(nodeFetch)
+var fetch = require('fetch-retry')(nodeFetch)
 const { JSDOM } = require("jsdom")
+
+const cookies = '_ga=GA1.2.1218003236.1615457660;gfwiki_mw__session=i4jnelt9rr9lkaiu934tcn97fd7ibofu;gfwiki_mw_UserID=5228;gfwiki_mw_UserName=Kanakana;gfwiki_mw_Token=c35b3528e7f6dbade64aad3c9324bd85;wikiEditor-0-toolbar-section=help;wikiEditor-0-booklet-help-page=reference;gfwiki_mw__session=i64uf78252d8ddi7r1akmlnjcfdnld42;gfwiki_mw_UserID=5228;gfwiki_mw_UserName=Kanakana;gfwiki_mw_Token=c35b3528e7f6dbade64aad3c9324bd85'
+
+const oldFetch = fetch
+
+fetch = (url, opts) => {
+  return oldFetch(url, {
+    retries: 5,
+    retryDelay: 1000,
+    retryOn: (attempt, error, response) => {
+      if(error !== null || response.status !== 200) {
+        console.log('Retrying...')
+        return true
+      } else {
+        if(opts?.type) {
+          if(!(new String(response.headers.get('content-type')).includes(opts.type))) {
+            console.log('Retrying...')
+            return true
+          }
+        } else {
+          if(!(new String(response.headers.get('content-type')).includes('json'))) {
+            console.log('Retrying...')
+            return true
+          }
+        }
+      }
+    },
+    headers: {
+      cookie: cookies
+    }
+  })
+}
 
 // or else could not use await
 async function main() {
@@ -429,7 +461,8 @@ const backgroundUrls = {
 async function getBackgrounds(callback) {
   var backgrounds = {}
   for(var i in backgroundUrls) {
-    backgrounds[i] = 'http://www.gfwiki.org/images' + getWikiMediaUrl(backgroundUrls[i])
+    // backgrounds[i] = 'http://www.gfwiki.org/images' + getWikiMediaUrl(backgroundUrls[i])
+    backgrounds[i] = getWikiMediaUrl(backgroundUrls[i])
   }
   await callback(backgrounds)
 }
