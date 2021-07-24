@@ -104,12 +104,13 @@ export default {
 
 <style scoped>
 input.avatar {
-  display: inline;
-  display: none;
+    display: inline;
+    display: none;
 }
 
 input.avatar:checked+div {
-  box-shadow: 1px 3px 0px #dc322f, 1px 1.05rem 0px #dc322f, 0px calc(1.05rem - 3px) 0px #dc322f;
+    box-shadow: 1px 3px 0px #dc322f, 1px 1.45rem 0px #dc322f, 0px calc(1.45rem - 3px) 0px #dc322f;
+    background-color: #dc322f80;
 }
 
 input.avatar+div {
@@ -196,31 +197,32 @@ input.avatar+div img {
 }
 
 input.avatar:checked~span {
-  color: white;
+    z-index: 1;
+    color: white;
 }
 
 .avatar-label {
-  display: inline-flex;
-  flex-flow: column;
-  margin: 0.25rem;
-  height: 5.4em;
-  max-width: 4em;
-  line-break: anywhere;
-  cursor: pointer;
-  border: 1px dotted gray;
-  text-align: center;
+    display: inline-flex;
+    flex-flow: column;
+    margin: 0.25rem;
+    height: 5.4em;
+    max-width: 4em;
+    line-break: anywhere;
+    cursor: pointer;
+    border: 1px dotted gray;
+    text-align: center;
 }
 
 .avatar-label img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .avatar-label span {
-  font-size: 0.7rem;
+    font-size: 0.7rem;
 }
 
 .avatar-label:hover {
-  box-shadow: 3px 3px 0px #268bd2;
+    box-shadow: 3px 3px 0px #268bd2;
 }
 </style>
