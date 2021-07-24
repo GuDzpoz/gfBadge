@@ -139,6 +139,10 @@ This project is licensed under `GNU Affero General Public License v3.0`.
 
 See [LICENSE](./LICENSE).
 
+### gfWiki
+
+The doll data (rarity, code names, etc.) mostly comes from [GFWiki](http://gfwiki.org/). The icon frame comes from one of its style sheets, which seems to be of [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 ### gfBadge
 
 This project used code from https://github.com/fc4soda/gfBadge , which is licensed under the MIT License:

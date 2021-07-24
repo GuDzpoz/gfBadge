@@ -19,7 +19,9 @@
             v-on:input="select(doll, $event.target.checked)"
             :checked="modelValue[doll.type][doll.id]"
             :id="doll.id" class="avatar" type="checkbox"  />
-          <img :src="doll.icon" />
+          <div :class="iconClass(doll)">
+            <img :src="doll.icon" />
+          </div>
           <span>{{ doll.cnname }}</span>
         </label>
       </template>
@@ -73,10 +75,11 @@ export default {
       return dollTypes
         .filter(type => this.dolls[type])
         .map(type => { return { type, dolls: this.dolls[type]} })
-    }
+    },
   },
   methods: {
     select (doll, isSelected) {
+      console.log(doll)
       this.mutableValue[doll.type][doll.id] = isSelected
       this.$emit('update:modelValue', this.mutableValue)
     },
@@ -92,6 +95,9 @@ export default {
         this.select(doll, false)
       }
     },
+    iconClass (doll) {
+      return doll.id?.startsWith('c') ? 'rareSF' : 'rare' + doll.rarity
+    }
   }
 }
 </script>
@@ -102,9 +108,91 @@ input.avatar {
   display: none;
 }
 
-input.avatar:checked+img {
+input.avatar:checked+div {
   box-shadow: 1px 3px 0px #dc322f, 1px 1.05rem 0px #dc322f, 0px calc(1.05rem - 3px) 0px #dc322f;
-  border: 1px #dc322f solid;
+}
+
+input.avatar+div {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 4em;
+    height: 4em;
+    background-color: rgba(255, 255, 255, 0);
+    display: inline-block;
+    position: relative;
+}
+
+input.avatar+div::after {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    content: "";
+}
+
+.rare2 {
+    background-image: url(../assets/Icon_2x.png);
+}
+
+.rare3 {
+    background-image: url(../assets/Icon_3x.png);
+}
+
+.rare4 {
+    background-image: url(../assets/Icon_4x.png);
+}
+
+.rare5 {
+    background-image: url(../assets/Icon_5x.png);
+}
+
+.rare6 {
+    background-image: url(../assets/Icon_6x.png);
+}
+
+.rare1 {
+    background-image: url(../assets/Icon_Ex.png);
+}
+
+.rareSF {
+    background-image: url(../assets/Icon_SF.png);
+}
+
+.rare2::after {
+    background-image: url(../assets/Icon_2x_star.png);
+}
+
+.rare3::after {
+    background-image: url(../assets/Icon_3x_star.png);
+}
+
+.rare4::after {
+    background-image: url(../assets/Icon_4x_star.png);
+}
+
+.rare5::after {
+    background-image: url(../assets/Icon_5x_star.png);
+}
+
+.rare6::after {
+    background-image: url(../assets/Icon_6x_star.png);
+}
+
+.rare1::after {
+    background-image: url(../assets/Icon_Ex_star.png);
+}
+
+.rareSF::after {
+    background-image: url(../assets/Icon_SF_star.png);
+}
+
+input.avatar+div img {
+    padding: 10%;
 }
 
 input.avatar:checked~span {
@@ -115,8 +203,8 @@ input.avatar:checked~span {
   display: inline-flex;
   flex-flow: column;
   margin: 0.25rem;
-  height: 4rem;
-  max-width: 3rem;
+  height: 5.4em;
+  max-width: 4em;
   line-break: anywhere;
   cursor: pointer;
   border: 1px dotted gray;
@@ -124,10 +212,8 @@ input.avatar:checked~span {
 }
 
 .avatar-label img {
-  width: 3rem;
-  height: 3rem;
-  background-color: white;
-  border: 1px white solid;
+  width: 100%;
+  height: 100%;
 }
 
 .avatar-label span {

@@ -10,6 +10,8 @@
   <p>
     This project utilizes icons from <a href="https://github.com/Templarian/MaterialDesign">Material Design Icons</a>.
     <br>
+    The doll data (rarity, code names, etc.) mostly comes from <a href="http://gfwiki.org/">GFWiki</a>. The icon frame comes from one of its style sheets, which seems to be of <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA</a>.
+    <br>
     SUNBORN Network Technology Co. holds the copyright on all other media files.
     <br>
   </p>
