@@ -79,7 +79,6 @@ export default {
   },
   methods: {
     select (doll, isSelected) {
-      console.log(doll)
       this.mutableValue[doll.type][doll.id] = isSelected
       this.$emit('update:modelValue', this.mutableValue)
     },

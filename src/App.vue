@@ -157,6 +157,9 @@ export default {
           level: 0,
           server: '',
           avatar: '',
+          statsForEX: true,
+          statsForSF: false,
+          highResolution: false,
         },
         background: {
           url: '',

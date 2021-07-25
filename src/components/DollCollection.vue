@@ -2,10 +2,10 @@
 <div>
   <div ref="canvasContainer" id="canvasContainer" :style="divStyle"
        :class="{ thumbnail: thumbnail || outOfView }">
-    <canvas ref="modCanvas" :width="modWidth" :height="modHeight"
+    <canvas ref="modCanvas"
             :class="{ notChosen: !mod }"
             id="modResultCanvas" />
-    <canvas ref="canvas" :width="width" :height="height"
+    <canvas ref="canvas"
             :class="{ notChosen: mod }"
             id="resultCanvas" />
   </div>
@@ -21,39 +21,75 @@
 </template>
 
 <script>
-import { initGunPosition2, drawGunBlank, drawGun, drawText } from '../lib/canvas.js'
+import { initGunPosition2, drawGunBlank, drawGun, drawText, drawBox } from '../lib/canvas.js'
 
 const dollCanvasConfig = {
   width: 850,
   height: 510,
   radius: 13,
   textConfig: {
-    name: { x: 30, y: 18, prefix: '', show: true },
-    uid: { x: 700, y: 18, prefix: 'UID: ', show: true },
-    level: { x: 477, y: 18, prefix: 'Lv. ', show: true },
-    server: { x: 253, y: 18,  prefix: '', show: true },
+    name: { x: 30, y: 18, prefix: '', show: true,
+            font: { size: 1.1, unit: 'rem', name: 'Arial', },
+          },
+    uid: { x: 700, y: 18, prefix: 'UID: ', show: true,
+           font: { size: 1.1, unit: 'rem', name: 'Arial', },
+         },
+    level: { x: 477, y: 18, prefix: 'Lv. ', show: true,
+             font: { size: 1.1, unit: 'rem', name: 'Arial', },
+           },
+    server: { x: 253, y: 18,  prefix: '', show: true,
+              font: { size: 1.1, unit: 'rem', name: 'Arial', },
+            },
   },
   offsets: {
     background: { x: 0, y: 0 },
     adjutant: { x: 0, y: 0 },
   },
   avatar: { show: false },
+  collectionRate: {
+    x: 850 - 300 - 10, y: 510 - 20, w: 300, h: 9,
+    category: {
+      nameFont: { size: 0.8, unit: 'rem', name: 'Arial', },
+      statsFont: { size: 0.8, unit: 'rem', name: 'Arial', },
+    },
+    text: { x: 845, y: 510 - 20,
+            font: { size: 1.2, unit: 'rem', name: 'Arial', },
+          },
+  },
 }
 const modCanvasConfig = {
   width: 850,
   height: 220,
   radius: 20,
   textConfig: {
-    name: { x: 20, y: 15, prefix: '', show: true },
-    uid: { x: 20, y: 36, prefix: 'UID: ', show: true },
-    level: { x: 20, y: 57, prefix: 'Lv. ', show: true },
-    server: { x: 20, y: 78, prefix: '', show: true },
+    name: { x: 20, y: 15, prefix: '', show: true,
+            font: { size: 1.1, unit: 'rem', name: 'Arial', },
+          },
+    uid: { x: 20, y: 36, prefix: 'UID: ', show: true,
+           font: { size: 1.1, unit: 'rem', name: 'Arial', },
+         },
+    level: { x: 20, y: 57, prefix: 'Lv. ', show: true,
+             font: { size: 1.1, unit: 'rem', name: 'Arial', },
+           },
+    server: { x: 20, y: 78, prefix: '', show: true,
+              font: { size: 1.1, unit: 'rem', name: 'Arial', },
+            },
   },
   offsets: {
     background: { x: 0, y: -(510 - 220)/2 },
     adjutant: { x: 0, y: -220 / 2 },
   },
-  avatar: { x: 20, y: 99, size: 100, show: true },
+  avatar: { x: 20, y: 99, size: 100, show: true, },
+  collectionRate: {
+    x: 850 - 300 - 10, y: 190, w: 300, h: 9,
+    category: {
+      nameFont: { size: 0.8, unit: 'rem', name: 'Arial', },
+      statsFont: { size: 0.8, unit: 'rem', name: 'Arial', },
+    },
+    text: { x: 845, y: 190,
+            font: { size: 1.2, unit: 'rem', name: 'Arial', },
+          },
+  },
 }
 
 var imageCache = {}
@@ -66,14 +102,6 @@ export default {
     modDolls: Object,
     thumbnail: Boolean,
     mod: Boolean,
-    radius: {
-      type: Number,
-      default: 13
-    },
-    modRadius: {
-      type: Number,
-      default: 20
-    },
     background: {
       type: Object
     },
@@ -83,6 +111,7 @@ export default {
   },
   data () {
     return {
+      lastScale: 0,
       updating: false,
       outOfView: false,
       width: dollCanvasConfig.width,
@@ -102,32 +131,16 @@ export default {
   computed: {
     divStyle () {
       return 'height: ' + this.height + 'px'
-    }
+    },
+    radius () {
+      return dollCanvasConfig.radius * this.getScale()
+    },
+    modRadius () {
+      return modCanvasConfig.radius * this.getScale()
+    },
   },
   created () {
-    this.positions = initGunPosition2(
-      80, 30, this.radius, this.dolls,
-      {
-        AR: 30,
-        SMG: 27,
-        HG: 23,
-        RF: 23,
-        MG: 20,
-        SG: 20,
-        SF: 20
-      },
-      this.radius)
-    this.modPositions = initGunPosition2(
-      200, 10, this.modRadius, this.modDolls,
-      {
-        AR: 12,
-        SMG: 12,
-        RF: 12,
-        HG: 12,
-        SG: 12,
-        MG: 12,
-        // Coalition: 20 // none will be modded
-      }, 0)
+    this.initPositions()
   },
   mounted () {
     this.redraw()
@@ -155,16 +168,91 @@ export default {
     }
   },
   methods: {
+    initPositions () {
+      this.positions = initGunPosition2(
+        80 * this.getScale(), 30 * this.getScale(), this.radius, this.dolls,
+        {
+          AR: 30,
+          SMG: 27,
+          HG: 23,
+          RF: 23,
+          MG: 20,
+          SG: 20,
+          SF: 20
+        },
+        this.radius)
+      this.modPositions = initGunPosition2(
+        200 * this.getScale(), 10 * this.getScale(), this.modRadius, this.modDolls,
+        {
+          AR: 12,
+          SMG: 12,
+          RF: 12,
+          HG: 12,
+          SG: 12,
+          MG: 12,
+          // Coalition: 20 // none will be modded
+      }, 0)
+    },
+    getScale () {
+      return this.ui.info.highResolution + 1
+    },
+    scaleConfig (config, scale) {
+      var scaledConfig = {}
+      const keywords = ['x', 'y', 'width', 'height', 'w', 'h', 'radius', 'scale', 'size']
+      for(var i in config) {
+        if(typeof config[i] === 'object') {
+          scaledConfig[i] = this.scaleConfig(config[i], scale)
+        } else {
+          if(keywords.includes(i)
+             && typeof config[i] === 'number') {
+            scaledConfig[i] = config[i] * scale
+          } else {
+            scaledConfig[i] = config[i]
+          }
+        }
+      }
+      return scaledConfig
+    },
     collectionStats (collection) {
       var stats = {}
       for(var type in collection) {
-        if(Object.keys(collection[type]).length !== 0) {
-          stats[type] = Object.values(collection[type]).reduce(
-            (sum, current) => sum + current
-          )
+        var collected = collection[type]
+        if(!this.ui.info.statsForEX) {
+          collected = Object.fromEntries(
+            Object.entries(collected)
+              .filter(entry => !this.isExtra(entry[0])))
+        }
+        if(Object.keys(collected).length !== 0) {
+          stats[type] = {
+            collected: Object.values(collected).reduce(
+              (sum, current) => sum + current),
+            total: Object.keys(collected).length,
+          }
         }
       }
       return stats
+    },
+    isExtra (id) {
+      if(typeof id === 'number') {
+        return 1000 <= id && id < 2000
+      } else {
+        id = Number.parseInt(id)
+        return 1000 <= id && id < 2000
+      }
+    },
+    isSF (id) {
+      return id?.startsWith('c')
+    },
+    getFont (font, defaultString) {
+      if(font) {
+        return '' + font.size + font.unit + ' ' + font.name
+      } else {
+        if(defaultString) {
+          return defaultString
+        } else {
+          return 'Arial'
+        }
+      }
     },
     getCanvas () {
       if(this.mod) {
@@ -173,10 +261,33 @@ export default {
         return this.$refs.canvas
       }
     },
+    updateResolution () {
+      var canvas = this.$refs.canvas
+      var modCanvas = this.$refs.modCanvas
+      canvas.width = this.width
+      canvas.height = this.height
+      modCanvas.width = this.modWidth
+      modCanvas.height = this.modHeight
+    },
+    updateScale () {
+      // setting resolution empties the canvas
+      // thus we are manually handling it instead of leaving it to vue
+      if(this.lastScale !== this.getScale()) {
+        var scale = this.getScale()
+        this.width = dollCanvasConfig.width * scale
+        this.height = dollCanvasConfig.height * scale
+        this.modWidth = modCanvasConfig.width * scale
+        this.modHeight = modCanvasConfig.height * scale
+        this.lastScale = scale
+        this.updateResolution()
+        this.initPositions()
+      }
+    },
     // reconstructed from https://github.com/fc4soda/gfBadge
     // redraw: load background and adjutant images
     //         and pass them to drawBoth
     redraw () {
+      this.updateScale()
       let background = new Image()
       // background.crossOrigin = 'Anonymous'
       let adjutant = new Image()
@@ -198,8 +309,10 @@ export default {
           remainingImages -= 1
           if(remainingImages === 0) {
             this.drawBoth(
-              [background, this.background],
-              [adjutant, this.adjutant]
+              [background,
+               this.scaleConfig(this.background, this.getScale())],
+              [adjutant,
+               this.scaleConfig(this.adjutant, this.getScale())]
             )
           }
         }
@@ -232,13 +345,17 @@ export default {
     drawBoth (background, adjutant) {
       var modCanvas = this.$refs.modCanvas
       var modContext = modCanvas.getContext('2d')
-      this.draw(modContext, modCanvasConfig,
+      modContext.clearRect(0, 0, this.modWidth, this.modHeight)
+      this.draw(modContext,
+                this.scaleConfig(modCanvasConfig, this.getScale()),
                 this.modPositions, this.ui.modCollection,
                 background, adjutant, this.ui.hexagons)
       
       var canvas = this.$refs.canvas
       var context = canvas.getContext('2d')
-      this.draw(context, dollCanvasConfig,
+      context.clearRect(0, 0, this.width, this.height)
+      this.draw(context,
+                this.scaleConfig(dollCanvasConfig, this.getScale()),
                 this.positions, this.ui.collection,
                 background, adjutant, this.ui.hexagons)
     },
@@ -246,11 +363,10 @@ export default {
     draw (context, config,
           positions, collection,
           background, adjutant, hexagonConfig) {
-      context.clearRect(0, 0, config.width, config.height)
       this.drawImages(context, background, adjutant, config.offsets)
       this.drawDolls(context, positions, collection, config.radius, hexagonConfig)
       context.globalAlpha = 1
-      this.drawDollTexts(context, positions, collection)
+      this.drawDollTexts(context, positions, collection, config.collectionRate)
       this.drawInfoTexts(context, config.textConfig, config.avatar)
     },
     drawImages (context, background, adjutant, offsets) {
@@ -275,6 +391,7 @@ export default {
                          )
       }
     },
+    // the main hexagon part
     drawDolls (context, positions, collection, radius, hexagonConfig) {
       var allCollection = Object.fromEntries(
         [].concat(...
@@ -298,29 +415,61 @@ export default {
         }
       }
     },
-    drawDollTexts (context, positions, collection) {
+    drawDollTexts (context, positions, collection, boxConfig) {
+      var collectionStats = this.collectionStats(collection)
       for(var type in positions.text) {
         var texts = positions.text[type]
         if(texts.num) {
-          var collectionStats = this.collectionStats(collection)
-          drawText(context, (collectionStats[type] ? collectionStats[type] : 0)
-                   + '/' + texts.num.text,
+          drawText(context, (collectionStats[type] ? collectionStats[type]['collected'] : 0)
+                   + '/' + (collectionStats[type] ? collectionStats[type]['total'] : texts.num.text),
                    texts.num.x + this.radius, texts.num.y,
-                   '0.8rem Arial', 'white', 2, 'black', 'left', 'middle')
+                   this.getFont(boxConfig.category.statsFont),
+                   'white', 2, 'black', 'left', 'middle')
         }
         if(texts.name) {
           drawText(context, texts.name.text,
                    texts.name.x - this.radius, texts.name.y,
-                   '0.8rem Arial', 'white', 2, 'black', 'right', 'middle')
+                   this.getFont(boxConfig.category.nameFont),
+                   'white', 2, 'black', 'right', 'middle')
         }
       }
+      this.drawCollectionRate(context, collectionStats, boxConfig)
+    },
+    drawCollectionRate (context, collectionStats, boxConfig) {
+      var total = 0
+      var collected = 0
+      for(var type in collectionStats) {
+        if(type === 'SF') {
+          if(this.ui.info.statsForSF) {
+            total += collectionStats[type]['total']
+            collected += collectionStats[type]['collected']
+          }
+        } else {
+          total += collectionStats[type]['total']
+          collected += collectionStats[type]['collected']
+        }
+      }
+      drawBox(context, boxConfig.x, boxConfig.y, boxConfig.w, boxConfig.h, 1, collected / total)
+      var textConfig = boxConfig.text
+      var text = `${collected}/${total}`
+      if(total === 0) {
+        text += ' (0%)'
+      } else {
+        text += ` (${parseFloat(collected/total*100).toFixed(0) + '%'})`
+      }
+      drawText(context,
+               text,
+               textConfig.x, textConfig.y,
+               this.getFont(textConfig.font),
+               'white', 2, 'black', 'right', 'middle')
     },
     drawInfoTexts (context, textConfig, avatarConfig) {
       for(var key in this.ui.info) {
         if(key in textConfig) {
           var config = textConfig[key]
           drawText(context, config.prefix + this.ui.info[key],
-                   config.x, config.y, '1.1rem Arial',
+                   config.x, config.y,
+                   this.getFont(config.font),
                    'white', 2, 'black', 'left', 'middle')
         }
       }

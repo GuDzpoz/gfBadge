@@ -1,5 +1,17 @@
 <template>
 <div>
+  <div class="title3 ma4">{{ $t('tabAdjust.display') }}</div>
+  <w-switch v-model="ui.info.highResolution"
+            :label="$t('tabAdjust.highResolution')"
+            class="ma4"></w-switch>
+  <div class="title3 ma4">{{ $t('tabAdjust.stats') }}</div>
+  <w-switch v-model="ui.info.statsForEX"
+            :label="$t('tabAdjust.statsForEX')"
+            class="ma4"></w-switch>
+  <br>
+  <w-switch v-model="ui.info.statsForSF"
+            :label="$t('tabAdjust.statsForSF')"
+            class="ma4"></w-switch>
   <div class="title3 ma4">{{ $t('tabAdjust.adjutantOffset') }}</div>
   <div class="title4 ma4">{{ $t('tabAdjust.adjutantOffsetX') }}</div>
   <w-slider v-model="ui.adjutant.x" :step="1" :min="0" :max="800"
