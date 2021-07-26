@@ -473,6 +473,7 @@ async function taskBackgrounds() {
   await getBackgrounds(async (backgrounds) => {
     console.log('BGs: Collected ' + Object.keys(backgrounds).length + ' background images.')
     console.log('BGs: Saving to "' + bgsJsPath + '"...')
+    backgrounds['_'] = './images/backgrounds'
     await fs.writeFile(bgsJsPath,
                        'export const backgrounds = ' + JSON.stringify(backgrounds)
                       )
