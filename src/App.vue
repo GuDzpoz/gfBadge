@@ -106,21 +106,34 @@
 </template>
 
 <script>
-import AdjutantSelector from './components/AdjutantSelector'
-import DollSelector from './components/DollSelector'
-import DollCollection from './components/DollCollection'
-import License from './components/License'
-import ParameterDashboard from './components/ParameterDashboard'
-import PlayerInfo from './components/PlayerInfo'
+import { defineAsyncComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { fileOpen, fileSave } from 'browser-fs-access'
+const AdjutantSelector = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "adjutant" */
+    './components/AdjutantSelector'))
+const DollSelector = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "dolls" */
+    './components/DollSelector'))
+const DollCollection = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "canvas" */
+    './components/DollCollection'))
+const License = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "license" */
+    './components/License'))
+const ParameterDashboard = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "dash" */
+    './components/ParameterDashboard'))
+const PlayerInfo = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "info" */
+    './components/PlayerInfo'))
 import { jsonTexts } from './assets/langs.js'
 import { icons } from './assets/icons.js'
 import { backgrounds } from './assets/backgrounds.js'
 
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
 
-const uiVersion = '20210625'
+const uiVersion = '20210726'
 
 export default {
   name: 'App',
@@ -256,24 +269,31 @@ export default {
     },
     loadConfig (config) {
       var incompatibility = false
-      // unversioned configurations
-      if(config.background?.url?.indexOf('gfwiki.org') !== -1) {
-        delete config.background.url
-        incompatibility = true
-      }
-      if(config.adjutant?.url?.indexOf('gfwiki.org') !== -1) {
-        delete config.adjutant.url
-        incompatibility = true
-      }
-      if(config.collection.Coalition) {
-        config.collection.SF = config.collection.Coalition
-        delete config.collection.Coalition
-        incompatibility =true
-      }
 
-      // versioned configurations
-      if(config.version === '20210625') {
-        incompatibility = false
+      switch(config.version) {
+      case undefined:
+        // unversioned configurations
+        if(config.background?.url?.indexOf('gfwiki.org') !== -1) {
+          delete config.background.url
+          incompatibility = true
+        }
+        if(config.adjutant?.url?.indexOf('gfwiki.org') !== -1) {
+          delete config.adjutant.url
+          incompatibility = true
+        }
+        if(config.collection.Coalition) {
+          config.collection.SF = config.collection.Coalition
+          delete config.collection.Coalition
+          incompatibility =true
+        }
+        // fall through versioned configurations
+      case '20210625':
+        // fall through
+      case '20210726':
+        break
+      default:
+        incompatibility = true
+        break
       }
 
       if(incompatibility) {
