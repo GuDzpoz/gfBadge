@@ -1,4 +1,4 @@
-<template>
+-<template>
 <div>
   <div ref="canvasContainer" id="canvasContainer" :style="divStyle"
        :class="{ thumbnail: thumbnail || outOfView }">
@@ -27,6 +27,7 @@ const dollCanvasConfig = {
   width: 850,
   height: 510,
   radius: 13,
+  lineWidth: 2,
   textConfig: {
     name: { x: 30, y: 18, prefix: '', show: true,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
@@ -61,6 +62,7 @@ const modCanvasConfig = {
   width: 850,
   height: 220,
   radius: 20,
+  lineWidth: 3,
   textConfig: {
     name: { x: 20, y: 15, prefix: '', show: true,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
@@ -111,6 +113,7 @@ export default {
   },
   data () {
     return {
+      timestamp: 0,
       lastScale: 0,
       updating: false,
       outOfView: false,
@@ -198,7 +201,7 @@ export default {
     },
     scaleConfig (config, scale) {
       var scaledConfig = {}
-      const keywords = ['x', 'y', 'width', 'height', 'w', 'h', 'radius', 'scale', 'size']
+      const keywords = ['x', 'y', 'width', 'height', 'w', 'h', 'radius', 'scale', 'size', 'lineWidth']
       for(var i in config) {
         if(typeof config[i] === 'object') {
           scaledConfig[i] = this.scaleConfig(config[i], scale)
@@ -287,6 +290,8 @@ export default {
     // redraw: load background and adjutant images
     //         and pass them to drawBoth
     redraw () {
+      let now = Date.now()
+      this.timestamp = now
       this.updateScale()
       let background = new Image()
       // background.crossOrigin = 'Anonymous'
@@ -301,8 +306,13 @@ export default {
       }
       if(remainingImages === 0) {
         this.drawBoth(
-          [background, this.background],
-          [adjutant, this.adjutant]
+          [background,
+           this.scaleConfig(this.background, this.getScale()),
+           now],
+          [adjutant,
+           this.scaleConfig(this.adjutant, this.getScale()),
+           now],
+          now
         )
       } else {
         const loaded = () => {
@@ -310,9 +320,12 @@ export default {
           if(remainingImages === 0) {
             this.drawBoth(
               [background,
-               this.scaleConfig(this.background, this.getScale())],
+               this.scaleConfig(this.background, this.getScale()),
+               now],
               [adjutant,
-               this.scaleConfig(this.adjutant, this.getScale())]
+               this.scaleConfig(this.adjutant, this.getScale()),
+               now],
+              now
             )
           }
         }
@@ -342,20 +355,24 @@ export default {
       }
     },
     // drawBoth: pass the arguments to draw, where most logic lies
-    drawBoth (background, adjutant) {
+    drawBoth (background, adjutant, now) {
       var modCanvas = this.$refs.modCanvas
       var modContext = modCanvas.getContext('2d')
+      var modConfig = this.scaleConfig(modCanvasConfig, this.getScale())
+      modConfig.now = now
       modContext.clearRect(0, 0, this.modWidth, this.modHeight)
       this.draw(modContext,
-                this.scaleConfig(modCanvasConfig, this.getScale()),
+                modConfig,
                 this.modPositions, this.ui.modCollection,
                 background, adjutant, this.ui.hexagons)
       
       var canvas = this.$refs.canvas
       var context = canvas.getContext('2d')
       context.clearRect(0, 0, this.width, this.height)
+      var config = this.scaleConfig(dollCanvasConfig, this.getScale())
+      config.now = now
       this.draw(context,
-                this.scaleConfig(dollCanvasConfig, this.getScale()),
+                config,
                 this.positions, this.ui.collection,
                 background, adjutant, this.ui.hexagons)
     },
@@ -364,16 +381,18 @@ export default {
           positions, collection,
           background, adjutant, hexagonConfig) {
       this.drawImages(context, background, adjutant, config.offsets)
-      this.drawDolls(context, positions, collection, config.radius, hexagonConfig)
+      this.drawDolls(context, positions, collection,
+                     config.radius, config.lineWidth,
+                     hexagonConfig, config.now)
       context.globalAlpha = 1
       this.drawDollTexts(context, positions, collection, config.collectionRate)
       this.drawInfoTexts(context, config.textConfig, config.avatar)
     },
     drawImages (context, background, adjutant, offsets) {
-      var [ backgroundImage, backgroundConfig ] = background
+      var [ backgroundImage, backgroundConfig, now ] = background
       var [ adjutantImage, adjutantConfig ] = adjutant
       context.globalAlpha = backgroundConfig.opacity
-      if(backgroundImage.width != 0) {
+      if(backgroundImage.width != 0 && now === this.timestamp) {
         context.drawImage(backgroundImage,
                           backgroundConfig.x + offsets.background.x,
                           backgroundConfig.y + offsets.background.y,
@@ -382,7 +401,7 @@ export default {
                          )
       }
       context.globalAlpha = adjutantConfig.opacity
-      if(adjutantImage.width != 0) {
+      if(adjutantImage.width != 0 && now === this.timestamp) {
         context.drawImage(adjutantImage,
                           adjutantConfig.x + offsets.adjutant.x,
                           adjutantConfig.y + offsets.adjutant.y,
@@ -392,7 +411,8 @@ export default {
       }
     },
     // the main hexagon part
-    drawDolls (context, positions, collection, radius, hexagonConfig) {
+    drawDolls (context, positions, collection,
+               radius, lineWidth, hexagonConfig, now) {
       var allCollection = Object.fromEntries(
         [].concat(...
                   Object.values(collection)
@@ -404,11 +424,26 @@ export default {
         if(allCollection[id]) {
           context.globalAlpha = 1
           if(doll.img in imageCache) {
-            drawGun(context, imageCache[doll.img], doll, radius, 2)()
+            let img = imageCache[doll.img]
+            let drawFunc = drawGun(context, img, doll, radius, lineWidth)
+            if(img.complete) {
+              drawFunc()
+            } else {
+              img.onload = () => {
+                if(now === this.timestamp) {
+                  drawFunc()
+                }
+              }
+            }
           } else {
             let img = new Image()
             // img.crossOrigin = 'Anonymous'
-            img.onload = drawGun(context, img, doll, radius, 2)
+            let drawFunc = drawGun(context, img, doll, radius, lineWidth)
+            img.onload = () => {
+              if(now === this.timestamp) {
+                drawFunc()
+              }
+            }
             img.src = doll.img
             imageCache[doll.img] = img
           }
