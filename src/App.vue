@@ -264,8 +264,41 @@ export default {
         mimeTypes: ['application/json']
       }).then(blob => blob.text())
         .then(text => {
-          this.loadConfig(JSON.parse(text))
+          this.loadConfigCompatibly(JSON.parse(text))
         })
+    },
+    loadConfigCompatibly (config) {
+      if('selectedPoster' in config && 'selectedMod' in config) {
+        // sodamoe's version
+        var localConfig = {
+          version: undefined,
+          collection: Object.fromEntries(dollTypes.map(type => [type, {}])),
+          modCollection: Object.fromEntries(dollTypes.map(type => [type, {}])),
+          info: {},
+        }
+        config.selectedPoster.guns.forEach(id => {
+          if(id in icons) {
+            localConfig.collection[icons[id].type][id] = true
+          }
+        })
+        config.selectedMod.guns.forEach(id => {
+          id = id.replace(/\D/g, '')
+          if(id in icons) {
+            localConfig.modCollection[icons[id].type][id] = true
+          }
+        })
+        localConfig.info['name'] = config.selectedDebounce.userName
+        localConfig.info['level'] = Number(config.selectedDebounce.userLevel).toString()
+        localConfig.info['uid'] = config.selectedDebounce.userUid
+        if(config.selectedDebounce.userServerCustom === '') {
+          localConfig.info['server'] = config.selected.userServer
+        } else {
+          localConfig.info['server'] = config.selectedDebounce.userServerCustom
+        }
+        this.loadConfig(localConfig)
+      } else {
+        this.loadConfig(config)
+      }
     },
     loadConfig (config) {
       var incompatibility = false
@@ -273,11 +306,13 @@ export default {
       switch(config.version) {
       case undefined:
         // unversioned configurations
-        if(config.background?.url?.indexOf('gfwiki.org') !== -1) {
+        if(config.background?.url
+           && config.background?.url?.indexOf('gfwiki.org') !== -1) {
           delete config.background.url
           incompatibility = true
         }
-        if(config.adjutant?.url?.indexOf('gfwiki.org') !== -1) {
+        if(config.adjutant?.url
+           && config.adjutant?.url?.indexOf('gfwiki.org') !== -1) {
           delete config.adjutant.url
           incompatibility = true
         }
