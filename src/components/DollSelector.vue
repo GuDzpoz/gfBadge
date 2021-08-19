@@ -136,59 +136,59 @@ input.avatar+div::after {
 }
 
 .rare2 {
-    background-image: url(../assets/Icon_2x.png);
+    background-image: url(/images/assets/Icon_2x.png);
 }
 
 .rare3 {
-    background-image: url(../assets/Icon_3x.png);
+    background-image: url(/images/assets/Icon_3x.png);
 }
 
 .rare4 {
-    background-image: url(../assets/Icon_4x.png);
+    background-image: url(/images/assets/Icon_4x.png);
 }
 
 .rare5 {
-    background-image: url(../assets/Icon_5x.png);
+    background-image: url(/images/assets/Icon_5x.png);
 }
 
 .rare6 {
-    background-image: url(../assets/Icon_6x.png);
+    background-image: url(/images/assets/Icon_6x.png);
 }
 
 .rare1 {
-    background-image: url(../assets/Icon_Ex.png);
+    background-image: url(/images/assets/Icon_Ex.png);
 }
 
 .rareSF {
-    background-image: url(../assets/Icon_SF.png);
+    background-image: url(/images/assets/Icon_SF.png);
 }
 
 .rare2::after {
-    background-image: url(../assets/Icon_2x_star.png);
+    background-image: url(/images/assets/Icon_2x_star.png);
 }
 
 .rare3::after {
-    background-image: url(../assets/Icon_3x_star.png);
+    background-image: url(/images/assets/Icon_3x_star.png);
 }
 
 .rare4::after {
-    background-image: url(../assets/Icon_4x_star.png);
+    background-image: url(/images/assets/Icon_4x_star.png);
 }
 
 .rare5::after {
-    background-image: url(../assets/Icon_5x_star.png);
+    background-image: url(/images/assets/Icon_5x_star.png);
 }
 
 .rare6::after {
-    background-image: url(../assets/Icon_6x_star.png);
+    background-image: url(/images/assets/Icon_6x_star.png);
 }
 
 .rare1::after {
-    background-image: url(../assets/Icon_Ex_star.png);
+    background-image: url(/images/assets/Icon_Ex_star.png);
 }
 
 .rareSF::after {
-    background-image: url(../assets/Icon_SF_star.png);
+    background-image: url(/images/assets/Icon_SF_star.png);
 }
 
 input.avatar+div img {
