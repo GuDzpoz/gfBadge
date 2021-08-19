@@ -11,7 +11,7 @@
               outline shadow class="title3 xs5 ma3"
               label-position="inside"
               inner-icon-left="mdi mdi-translate title4" />
-    <h1 class="xs12 ma5">{{ t("title") }}</h1>
+    <Title :title="t('title')"></Title>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
                     :background="ui.background" :adjutant="ui.adjutant"
@@ -109,6 +109,7 @@
 import { defineAsyncComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { fileOpen, fileSave } from 'browser-fs-access'
+import Title from './components/Title'
 const AdjutantSelector = defineAsyncComponent(() =>
   import(/* webpackChunkName: "adjutant" */
     './components/AdjutantSelector'))
@@ -143,7 +144,8 @@ export default {
     DollCollection,
     License,
     ParameterDashboard,
-    PlayerInfo
+    PlayerInfo,
+    Title,
   },
   setup() {
     const { t, locale } = useI18n()
