@@ -4,7 +4,7 @@ const nodeFetch = require('node-fetch')
 var fetch = require('fetch-retry')(nodeFetch)
 const { JSDOM } = require("jsdom")
 
-const cookies = '_ga=GA1.2.1218003236.1615457660;gfwiki_mw__session=i4jnelt9rr9lkaiu934tcn97fd7ibofu;gfwiki_mw_UserID=5228;gfwiki_mw_UserName=Kanakana;gfwiki_mw_Token=c35b3528e7f6dbade64aad3c9324bd85;wikiEditor-0-toolbar-section=help;wikiEditor-0-booklet-help-page=reference;gfwiki_mw__session=i64uf78252d8ddi7r1akmlnjcfdnld42;gfwiki_mw_UserID=5228;gfwiki_mw_UserName=Kanakana;gfwiki_mw_Token=c35b3528e7f6dbade64aad3c9324bd85'
+const cookies = ''
 
 const oldFetch = fetch
 
@@ -40,17 +40,8 @@ fetch = (url, opts) => {
 async function main() {
   if(process.argv.length > 2) {
     switch(process.argv[2]) {
-    case 'dolls':
-      await taskDolls(false)
-      break
-    case 'skins':
-      await taskDolls(true)
-      break
     case 'coalition':
       await taskCoalition(false)
-      break
-    case 'coalitionSkins':
-      await taskCoalition(true)
       break
     case 'npcs':
       await taskNPCs()
@@ -83,77 +74,10 @@ function printHelp() {
       + '\n'
       + 'Available option:\n'
       + '  --help, -h       Display this info\n'
-      + '  dolls            Fetch doll info\n'
-      + '  skins            Fetch doll skins\n'
       + '  coalition        Fetch coalition doll info\n'
-      + '  coalitionSkins   Fetch coalition doll skins\n'
       + '  npcs             Fetch npc illustrations\n'
       + '  backgrounds      Fetch background images'
   )
-}
-
-const dollCollectionPage = 'http://www.gfwiki.org/api.php?action=parse&prop=text&page=%E6%88%98%E6%9C%AF%E4%BA%BA%E5%BD%A2%E5%9B%BE%E9%89%B4&format=json'
-async function getDolls(callback) {
-  await fetch(dollCollectionPage)
-    .then(response => {
-      console.log('DOLLS: Status: ' + response.status)
-      return response.json()
-    })
-    .then(async (json) => {
-      var dom = new JSDOM(json.parse.text['*'])
-      var dolls = []
-      for(var div of
-          dom.window.document.getElementsByClassName('dolldata')) {
-        var doll = {}
-        for(var attr of div.attributes) {
-          if(attr.name.startsWith('data')) {
-            doll[attr.name] = attr.value
-          }
-        }
-        dolls.push(doll)
-      }
-      await callback(dolls)
-    })
-}
-
-function deduplicateDolls(dolls) {
-  var ids = []
-  return dolls.filter((doll) => {
-    var id = doll['data-id']
-    if(ids.includes(id)) {
-      return false
-    } else {
-      ids.push(id)
-      return true
-    }
-  })
-}
-
-async function taskDolls(wantsSkins) {
-  const dollsJsPath = './src/assets/dolls.js'
-  const skinsJsPath = './src/assets/skins.js'
-  console.log('DOLLS: Updating doll data from gfwiki...')
-  await getDolls(async (dolls) => {
-    console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
-    console.log('DOLLS: Checking duplicates...')
-    dolls = deduplicateDolls(dolls)
-    console.log('DOLLS: Collected ' + dolls.length + ' dolls.')
-    console.log('DOLLS: Saving to "' + dollsJsPath + '"...')
-    await fs.writeFile(dollsJsPath,
-                       'export const dolls = ' + JSON.stringify(dolls)
-                      )
-    console.log('DOLLS: Saved.')
-    if(wantsSkins) {
-      console.log('SKINS: Updating doll skins from gfwiki...')
-      await getSkins(dolls, async (skins) => {
-        console.log('SKINS: Saving to "' + skinsJsPath + '"...')
-        await fs.writeFile(skinsJsPath,
-                           'export const skins = ' + JSON.stringify(skins)
-                          )
-        console.log('SKINS: Saved.')
-      })
-    }
-  })
 }
 
 const coalitionCollectionPage = 'http://www.gfwiki.org/api.php?action=parse&prop=text&page=%E8%9E%8D%E5%90%88%E5%8A%BF%E5%8A%9B%E5%9B%BE%E9%89%B4&format=json'
@@ -164,181 +88,72 @@ async function getCoalitionDolls(callback) {
       return response.json()
     }).then(async json => {
       var dom = new JSDOM(json.parse.text['*'])
-      var coalitionDolls = []
+      var coalitionDolls = {}
       for(var div of
           dom.window.document.querySelectorAll('.sfdata[data-star="3"]')) {
-        var doll = {}
+        var data = {}
         for(var attr of div.attributes) {
           if(attr.name.startsWith('data')) {
             if(attr.name === 'data-id') {
-              doll['data-id'] = 'c' + attr.value
+              data['data-id'] = 'c' + attr.value
             } else {
-              doll[attr.name] = attr.value
+              data[attr.name] = attr.value
             }
           }
-          if(!('data-tdoll-class' in doll)) {
-            doll['data-tdoll-class'] = 'Coalition'
-          }
-          if(!('data-rarity' in doll)) {
-            doll['data-rarity'] = '5'
-          }
         }
-        coalitionDolls.push(doll)
+        var doll = {
+          type: 'SF',
+          rarity: 6,
+          modded: false,
+          skins: {}
+        }
+        doll.id = data['data-id']
+        doll.cnname = data['data-name-ingame']
+        console.log('Fetching the code name of ' + doll.cnname + '...')
+        var pageUrl = data['data-url'] // '/w/THE_NAME'
+        var url = 'http://gfwiki.org/api.php?action=parse&prop=wikitext&format=json&page=' + pageUrl.substring(3)
+        await fetch(url, { retries: 5, retryDelay: 1000 })
+          .then(response => response.json())
+          .then(async json => {
+            var skins = {}
+            var wikitext = json.parse.wikitext['*']
+                .replace(/<!--(.*?)-->/gm, '')
+            var info = parseWikiTag(wikitext)
+            for(var key of Object.keys(info).filter(
+              key => key.startsWith('立绘2')
+            )) {
+              var filename = info[key].replaceAll(' ', '_')
+              var start = filename.toLowerCase().indexOf('pic_') + 4
+              var end = filename.toLowerCase().lastIndexOf('_ll_1.png')
+              var code = filename.substring(start, end)
+              doll.code = code
+              console.log('- Got: ' + code)
+            }
+          })
+        doll.icon = 'Icon_' + doll.code + '_SS_1.png'
+        doll.skins[doll.cnname] = 'pic_' + doll.code + '_LL.png'
+        doll.skins[doll.cnname + '（五星）'] = 'pic_' + doll.code + '_LL_1.png'
+        coalitionDolls[doll.id] = doll
       }
       await callback(coalitionDolls)
     })
 }
 
 async function taskCoalition(wantsSkins) {
-  const coalitionJsPath = './src/assets/coalition.js'
-  const coalitionSkinsJsPath = './src/assets/coalitionSkins.js'
+  const coalitionJsPath = './utils/coalition.json'
   console.log('CDOLLS: Updating coalition doll data from gfwiki...')
   await getCoalitionDolls(async (dolls) => {
     console.log('CDOLLS: Collected ' + dolls.length + ' dolls.')
     console.log('CDOLLS: Saving to "' + coalitionJsPath + '"...')
     await fs.writeFile(coalitionJsPath,
-                       'export const coalitionDolls = ' + JSON.stringify(dolls)
+                       JSON.stringify(dolls)
                       )
     console.log('CDOLLS: Saved.')
-    if(wantsSkins) {
-      console.log('CSKINS: Updating coalition doll skins from gfwiki...')
-      await getCoalitionSkins(dolls, async (skins) => {
-        console.log('CSKINS: Saving to "' + coalitionSkinsJsPath + '"...')
-        await fs.writeFile(coalitionSkinsJsPath,
-                           'export const coalitionSkins = ' + JSON.stringify(skins)
-                          )
-        console.log('CSKINS: Saved.')
-      })
-    }
   })
-}
-
-async function getCoalitionSkins(dolls, callback) {
-  var dollSkins = {}
-  var count = 0
-  var promises = []
-  for(var doll of dolls) {
-    var pageUrl = doll['data-url'] // '/w/THE_NAME'
-    var url = 'http://gfwiki.org/api.php?action=parse&prop=wikitext&format=json&page=' + pageUrl.substring(3)
-    var promise = (fetch(url, { retries: 3, retryDelay: 1000 })
-      .then(response => response.json())
-      .then(async json => {
-        var skins = {}
-        var wikitext = json.parse.wikitext['*']
-            .replace(/<!--(.*?)-->/gm, '')
-        var info = parseWikiTag(wikitext)
-        for(var key of Object.keys(info).filter(
-          key => key.startsWith('立绘')
-        )) {
-          var name = key
-          var filename = info[key]
-          skins[name] = getWikiMediaUrl(filename)
-        }
-        dollSkins[doll['data-id']] = skins
-        count += 1
-        console.log(skins)
-        console.log('SKINS: '
-                    + count + '/' + dolls.length
-                    + ' Collected '
-                    + Object.keys(skins).length + ' skins of '
-                    + doll['data-name-ingame'] + '.')
-      }))
-    // rapid fetching might cause problems
-    await promise
-    promises.push(promise)
-  }
-  await Promise.all(promises).then(async () => {
-    await callback(dollSkins)
-  })
-}
-
-function getDollDefaultSkinFilename(code) {
-  return [
-    'Pic_' + code + '.png',
-    'Pic_' + code + '_D.png'
-  ]
-}
-
-function getDollModSkinFilename(code) {
-  return [
-    'Pic_' + code + 'Mod.png',
-    'Pic_' + code + 'Mod_D.png'
-  ]
-}
-
-function getDollSkinFilename(code, skinId) {
-  return [
-    'Pic_' + code + '_' + skinId +'.png',
-    'Pic_' + code + '_' + skinId +'_D.png'
-  ]
-}
-
-function addBothSkins(skins, name, filenames) {
-  skins[name] = getWikiMediaUrl(filenames[0])
-  skins[name + '（破）'] = getWikiMediaUrl(filenames[1])
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function getSkins(dolls, callback) {
-  var dollSkins = {}
-  var dollsInformation = {} // we are fetching extra info now
-  var count = 0
-  var promises = []
-  for(var doll of dolls) {
-    var pageUrl = doll['data-url'] // '/w/THE_NAME'
-    var url = 'http://gfwiki.org/api.php?action=parse&prop=wikitext&format=json&page=' + pageUrl.substring(3)
-    var promise = (fetch(url, { retries: 3, retryDelay: 1000 })
-      .then(response => response.json())
-      .then(async json => {
-        var skins = {}
-        var dollInfo = {}
-        var wikitext = json.parse.wikitext['*']
-            .replace(/<!--(.*?)-->/gm, '')
-        var info = parseWikiTag(wikitext)
-        dollInfo.code = info.code
-        dollInfo.cnname = doll['data-name-ingame']
-        dollInfo.skins = {}
-        addBothSkins(skins, doll['data-name-ingame'],
-                     getDollDefaultSkinFilename(info.code))
-        if(doll['data-mod'] === '1') {
-          dollInfo.modded = true
-          addBothSkins(skins, doll['data-name-ingame'] + 'MOD3',
-                       getDollModSkinFilename(info.code))
-        }
-
-        for(var key of Object.keys(info).filter(
-          key => key.startsWith('装扮') && key.endsWith('名称')
-        )) {
-          var name = info[key]
-          var id = info['装扮' + key.substring(2, key.length - 2) + '编号']
-          dollInfo.skins[id] = name
-          addBothSkins(skins, name,
-                       getDollSkinFilename(info.code, id))
-        }
-        dollSkins[doll['data-id']] = skins
-        dollsInformation[doll['data-id']] = dollInfo
-        count += 1
-        console.log(skins)
-        console.log('SKINS: '
-                    + count + '/' + dolls.length
-                    + ' Collected '
-                    + Object.keys(skins).length + ' skins of '
-                    + doll['data-name-ingame'] + '.')
-      }))
-    await promise
-    promises.push(promise)
-  }
-  const infoJsPath = './src/assets/info.js'
-  await Promise.all(promises).then(async () => {
-    await fs.writeFile(infoJsPath,
-                       'export const info = ' + JSON.stringify(dollsInformation)
-                      )
-    console.log('INFO: Saved.')
-    await callback(dollSkins)
-  })
 }
 
 function parseWikiTag(wikiString) {

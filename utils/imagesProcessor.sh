@@ -17,11 +17,11 @@ characters() {
     echo "Generating icons:"
     COUNT=1
     IFS=$'\n'
-    for doll in `node processorHelper.js characters`
+    for CARD_IMAGE in ${IMAGE_DIR}/*_N.png
     do
         echo "    ${COUNT}. ${doll}..."
         COUNT=`expr $COUNT + 1`
-        CARD_IMAGE="${IMAGE_DIR}/pic_${doll}_N.png"
+        doll=`basename "$CARD_IMAGE" | sed -e 's#^pic_##' -e 's#_N.png$##'`
         OUTPUT="${OUTPUT_DIR}/Icon_${doll}.png"
         if [ -e "${CARD_IMAGE}" ]
         then
@@ -37,11 +37,11 @@ coalition() {
     echo "Generating coalition related files:"
     COUNT=1
     IFS=$'\n'
-    for doll in `node processorHelper.js coalition`
+    for CARD_IMAGE in ${IMAGE_DIR}/pic_*_SS_1.png
     do
         echo "    ${COUNT}. ${doll}..."
         COUNT=`expr $COUNT + 1`
-        CARD_IMAGE="${IMAGE_DIR}/pic_${doll}_SS_1.png"
+        doll=`basename "$CARD_IMAGE" | sed -e 's#^pic_##' -e 's#_SS_1.png##'`
         OUTPUT="${OUTPUT_DIR}/Icon_${doll}_SS_1.png"
         convert "${CARD_IMAGE}" -crop 160x160+172+60 "${OUTPUT}"
         CARD_IMAGE="${IMAGE_DIR}/pic_${doll}_SS.png"
@@ -74,7 +74,7 @@ renameToLowerCase() {
 mergeAlpha() {
     echo "Generating skins with transparency:"
     COUNT=1
-    TOTAL=`ls "${IMAGE_DIR}/*_Alpha.png" | wc --lines`
+    TOTAL=`ls ${IMAGE_DIR}/*_Alpha.png | wc --lines`
     for alphaImage in ${IMAGE_DIR}/*_Alpha.png
     do
         image="`echo ${alphaImage} | sed -e 's#_Alpha.png$##'`"

@@ -123,15 +123,24 @@ First `yarn update-data backgrounds` and then `git diff --word-diff-regex='\w' s
 
 #### `icons.js`
 
-`yarn update-data [options]` does not write to the `icons.js` file, which in fact comes from `dolls.js`, `info.js`, `coalition.js` and `coalitionSkins.js`.
+`yarn update-data [options]` does not write to the `icons.js` file.
 
-After updating these files with `yarn update-data`, edit and rename them into their corresponding `.json` files. Then use `node processorHelper.js generate` to gather the info and generate the final `icons.js`.
+First, `yarn update-data coalition` to update `utils/coalition.json`. If coalition info is not changed, you may safely skip this.
 
-Remember to use `sh test.sh` to check if you need to fetch some missing images.
+Next, use `python3 utils/generateCompactData.py <asset_texttable.ab> /tmp utils/coalition.json` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/icons.js src/assets/icons.js`.
 
+Use `sh utils/test.sh` to check if you need to fetch some missing images. If so, `sh utils/test.sh > missings.txt` and then `mkdir /tmp/output && python3 utils/extractMissings.py missings.txt <asset_dir> /tmp/output`, where `<asset_dir>` is where you put all the `.ab` files. After this, extracted image files will be in `/tmp/output`.
+
+To get usable images, `mkdir /tmp/final && mkdir /tmp/middle` and:
 ```
-convert /tmp/Pic_{}.png -resize 1024x1024 /tmp/resized.png && pngquant /tmp/resized.png && mv /tmp/resized-fs8.png public/images/skins/pic_{}.png
+sh utils/imagesProcessor.sh /tmp/output /tmp/final character
+sh utils/imagesProcessor.sh /tmp/output /tmp/final coalition
+sh utils/imagesProcessor.sh /tmp/output /tmp/middle mergeAlpha
+sh utils/imagesProcessor.sh /tmp/middle /tmp/final optimize
+sh utils/copyMissingFiles.sh missings.txt /tmp/final public/images
 ```
+
+Now `yarn serve` to check and commit your changes.
 
 ## License
 
