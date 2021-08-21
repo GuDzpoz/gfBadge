@@ -18,8 +18,26 @@
                     ref="canvas"
                     :thumbnail="thumbnail" :mod="mod"
                     class="xs12" />
-    <w-switch v-model="mod" thin :label="t('tabMod.title')" />
-    <w-switch v-model="thumbnail" thin :label="t('thumbnail')" />
+    <div class="buttonSwitch">
+      <w-button :color="mod ? 'info-dark2' : 'white'"
+                :bg-color="mod ? 'info-light1' : 'info-dark2'"
+                :height="mod ? '1.6em' : '3em'"
+                :z-index="mod ? '0' : '1'"
+                outline
+                v-on:click="mod = !mod">
+        {{ canvasSwitch[1].text }}
+      </w-button>
+      <w-button :bg-color="mod ? 'info-dark2' : 'info-light1'"
+                :color="mod ? 'white' : 'info-dark2'"
+                :height="mod ? '3em' : '1.6em'"
+                :z-index="mod ? '1' : '0'"
+                outline
+                v-on:click="mod = !mod">
+        {{ canvasSwitch[0].text }}
+      </w-button>
+    </div>
+    <w-switch v-model="thumbnail"
+              thin :label="t('thumbnail')" label-on-left class="ml5 mr3" />
     <w-button @click="saveToLocal()"
               bg-color="success" class="ma2" height="1.6rem">
       <w-icon class="mr2">mdi mdi-database-import</w-icon>
@@ -222,6 +240,10 @@ export default {
         return { 'label': jsonTexts.servers[server], 'value': server }
       })
     },
+    canvasSwitch () {
+      return this.$i18n.messages[this.$root.$i18n.locale]
+        .canvasSwitch.options
+    },
     typedDolls () {
       var typed = {}
       if(this.dolls) {
@@ -408,5 +430,18 @@ h1 {
 div.placeholderDiv {
   height: 80vh;
   content: "";
+}
+
+.buttonSwitch {
+    display: flex;
+    height: 3em;
+}
+
+.buttonSwitch .w-button {
+  border-radius: 0;
+}
+
+.buttonSwitch .w-button:first-child {
+  margin-right: -0.6em;
 }
 </style>

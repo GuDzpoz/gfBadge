@@ -196,6 +196,7 @@ export const jsonTexts = {
         "highResolution": "高清晰度",
         "stats": "統計",
         "statsForEX": "統計量包括特典人形",
+        "statsForSF": "統計量包括融合勢力",
         "adjutantOffset": "副官",
         "adjutantOffsetX": "水平偏移",
         "adjutantOffsetY": "垂直偏移",
@@ -306,6 +307,7 @@ export const jsonTexts = {
         "highResolution": "Higher Resolution",
         "stats": "Stats",
         "statsForEX": "Include Extra T-Dolls in Stats",
+        "statsForSF": "Include Assimilable Units in Stats",
         "adjutantOffset": "Adjutant Offset",
         "adjutantOffsetX": "Adjutant Offset X",
         "adjutantOffsetY": "Adjutant Offset Y",
@@ -322,7 +324,8 @@ export const jsonTexts = {
         "backgroundCustomOffsetY": "Custom Background Image Offset Y",
         "backgroundCustomScaleFactor": "Custom Background Scale Factor",
         "backgroundCustomAlpha": "Custom Background Image Alpha",
-        "backgroundCustomStretch": "Custom Background Image Stretch"
+        "backgroundCustomStretch": "Custom Background Image Stretch",
+        "other": "Others"
       },
       "message": {
         "loadPictures": "Loading Pictures...",
@@ -391,14 +394,14 @@ export const jsonTexts = {
         }
       },
       "tabTeam": {
-        "title": "Team",
-        "showAdjutant": "Show Adjutant"
+        "title": "副官",
+        "showAdjutant": "副官表示"
       },
       "tabMod": {
-        "title": "三改进度"
+        "title": "MOD3進度"
       },
       "tabPoster": {
-        "title": "图鉴进度"
+        "title": "図鑑進度"
       },
       "tabBackground": {
         "title": "背景画像を選択"
@@ -407,13 +410,14 @@ export const jsonTexts = {
         "title": "調整とカスタマイズ",
         "display": "画面",
         "highResolution": "高解像度",
-        "stats": "統計で特典人形を含みます",
-        "statsForEX": "统计量包括特典人形",
-        "adjutantOffset": "Adjutant",
-        "adjutantOffsetX": "Horizo​​ntal Offset",
+        "stats": "統計",
+        "statsForEX": "統計で特典人形を含みます",
+        "statsForSF": "Include Assimilable Units in Stats",
+        "adjutantOffset": "アジュバント",
+        "adjutantOffsetX": "水平オフセット",
         "adjutantOffsetY": "垂直オフセット",
         "adjutantScaleFactor": "画像ズーム",
-        "adjutantCustom": "Custom Adjutant",
+        "adjutantCustom": "カスタムアジュバント",
         "adjutantCustomImg": "カスタムアジュバント画像",
         "adjutantCustomOffsetX": "水平オフセット",
         "adjutantCustomOffsetY": "垂直オフセット",
@@ -432,7 +436,6 @@ export const jsonTexts = {
         "backgroundCustomStretch": "ストレッチ",
         "other": "その他",
         "gunLiteBackgroundAlpha": "銃の背景の透明度"
-
       },
       "message": {
         "loadPictures": "画像の読み込み中...",
@@ -450,7 +453,7 @@ export const jsonTexts = {
       },
       "ui": {
         "selectTypeAll": "すべて選択",
-        "deselectTypeAll": "すべての選択を解除",
+        "deselectTypeAll": "選択解除",
         "selectAll": "すべて選択",
         "visitCount": "合計訪問数",
         "saveCfgTip": "ブラウザキャッシュに保存",
@@ -503,7 +506,7 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "중위 선택",
-        "showAdjutant": "Show Adjutant"
+        "showAdjutant": "중위 선택"
       },
       "tabMod": {
         "title": "3 가지 개선"
@@ -520,6 +523,7 @@ export const jsonTexts = {
         "highResolution": "높은 해상도",
         "stats": "통계",
         "statsForEX": "통계에 “EX T-Doll” 을 포함하십시오",
+        "statsForSF": "통계에 “혼합세력” 을 포함하십시오",
         "adjutantOffset": "Adjutant",
         "adjutantOffsetX": "가로 오프셋",
         "adjutantOffsetY": "수직 오프셋",
