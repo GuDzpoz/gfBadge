@@ -2,8 +2,7 @@
 
 ## Demo
 
-The project is live on [https://gf-badge.vercel.app/](https://gf-badge.vercel.app/) and also GitHub Pages [https://gudzpoz.github.io/gfBadge/](https://gudzpoz.github.io/gfBadge/).
-The former one (the vercle one) is recommended as is the more up-to-date one.
+The project is live on [https://gf-badge.vercel.app/](https://gf-badge.vercel.app/).
 
 ## Project setup
 ```
