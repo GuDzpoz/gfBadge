@@ -95,6 +95,7 @@ const modCanvasConfig = {
 }
 
 var imageCache = {}
+const emptyImage = new Image()
 
 export default {
   name: 'DollCollection',
@@ -114,6 +115,8 @@ export default {
   data () {
     return {
       timestamp: 0,
+      timeoutId: null,
+      queuedTimeoutId: null,
       lastScale: 0,
       updating: false,
       outOfView: false,
@@ -129,12 +132,10 @@ export default {
         message: '',
         success: true,
       },
+      divStyle: 'height: ' + dollCanvasConfig.height + 'px',
     }
   },
   computed: {
-    divStyle () {
-      return 'height: ' + this.height + 'px'
-    },
     radius () {
       return dollCanvasConfig.radius * this.getScale()
     },
@@ -158,6 +159,8 @@ export default {
     }
     this.observer.unobserve(container)
     this.observer.observe(container)
+    // DollCollection never gets unmounted, so no removal for now
+    window.addEventListener('resize', () => this.updateContainerHeight());
   },
   watch: {
     ui: {
@@ -171,6 +174,16 @@ export default {
     }
   },
   methods: {
+    updateContainerHeight () {
+      if(this.$refs?.canvasContainer) {
+        var containerWidth = this.$refs.canvasContainer.getBoundingClientRect().width
+        if(containerWidth > this.width) {
+          this.divStyle = 'height: ' + this.height + 'px'
+        } else {
+          this.divStyle = 'height: ' + this.height * containerWidth / this.width + 'px'
+        }
+      }
+    },
     initPositions () {
       this.positions = initGunPosition2(
         80 * this.getScale(), 30 * this.getScale(), this.radius, this.dolls,
@@ -283,97 +296,119 @@ export default {
         this.modHeight = modCanvasConfig.height * scale
         this.lastScale = scale
         this.updateResolution()
+        this.updateContainerHeight()
         this.initPositions()
+      }
+    },
+    getCachedOrLoadImages (namedImages, callback, onfail) {
+      let remainingCount = Object.keys(namedImages).length
+      let images = {}
+      let callbackIfFinished = () => {
+        if(remainingCount === 0) {
+          callback(images)
+        }
+      }
+
+      for(let name in namedImages) {
+        var url = namedImages[name]
+        if(url === '') {
+          remainingCount -= 1
+          images[name] = emptyImage
+        } else if(name in imageCache) {
+          let img = imageCache[name]
+          var src = img.src
+          if(src.substring(src.lastIndexOf('/')+1)
+             === url.substring(url.lastIndexOf('/')+1)) {
+            remainingCount -= 1
+            images[name] = img
+          }
+        } else {
+          let img = new Image()
+          imageCache[name] = img
+          images[name] = img
+          img.onload = () => {
+            remainingCount -= 1
+            callbackIfFinished()
+          }
+          img.onerror = (e) => {
+            remainingCount -= 1
+            delete imageCache[name]
+            onfail(e)
+            callbackIfFinished()
+          }
+          img.src = url
+        }
+      }
+      callbackIfFinished()
+    },
+    redraw() {
+      const frameGap = 10;
+      if(this.timeoutId === null) {
+        // the draw is immediate when not exceeding the fps limit
+        this.timeoutId = setTimeout(() => {
+          this.timeoutId = null
+        }, frameGap)
+        this.delayedRedraw()
+      } else {
+        // when exceeding the fps limit, ensure the "last" redraw is always up-to-date
+        if(this.queuedTimeoutId !== null) {
+          clearTimeout(this.queuedTimeoutId)
+        }
+        this.queuedTimeoutId = setTimeout(() => {
+          this.queuedTimeoutId = null
+          this.delayedRedraw()
+        }, frameGap)
       }
     },
     // reconstructed from https://github.com/fc4soda/gfBadge
     // redraw: load background and adjutant images
     //         and pass them to drawBoth
-    redraw () {
+    delayedRedraw () {
       let now = Date.now()
       this.timestamp = now
       this.updateScale()
-      let background = new Image()
-      // background.crossOrigin = 'Anonymous'
-      let adjutant = new Image()
-      // adjutant.crossOrigin = 'Anonymous'
-      let remainingImages = 0
-      if(this.background.url !== '') {
-        remainingImages += 1
-      }
-      if(this.adjutant.url !== '') {
-        remainingImages += 1
-      }
-      if(remainingImages === 0) {
+      this.getCachedOrLoadImages({
+        background: this.background.url,
+        adjutant: this.adjutant.url,
+      }, (images) => {
         this.drawBoth(
-          [background,
+          [images.background,
            this.scaleConfig(this.background, this.getScale()),
            now],
-          [adjutant,
+          [images.adjutant,
            this.scaleConfig(this.adjutant, this.getScale()),
            now],
           now
         )
-      } else {
-        const loaded = () => {
-          remainingImages -= 1
-          if(remainingImages === 0) {
-            this.drawBoth(
-              [background,
-               this.scaleConfig(this.background, this.getScale()),
-               now],
-              [adjutant,
-               this.scaleConfig(this.adjutant, this.getScale()),
-               now],
-              now
-            )
-          }
-        }
-        const failed = (e) => {
-          console.log(e.target.src)
-          if(e.target.src.indexOf('/') != -1) {
-            this.notification.success = false
-            this.notification.message =
-              this.$t('message.loadFailed') + ' ' + e.target.alt + ': ' + e.target.src
+      }, (e) => {
+        console.log(e)
+        if(e.target.src.indexOf('/') != -1) {
+          this.notification.success = false
+          this.notification.message =
+            this.$t('message.loadFailed') + ' ' + e.target.src
             this.notification.show = true
-            setTimeout(() => loaded(), 10)
           }
-          return true
-        }
-        if(this.background.url !== '') {
-          background.onerror = failed
-          background.onload = loaded
-          background.alt = this.$t('tabAdjust.background')
-          background.src = this.background.url
-        }
-        if(this.adjutant.url !== '') {
-          adjutant.onerror = failed
-          adjutant.onload = loaded
-          adjutant.alt = this.$t('tabAdjust.adjutantOffset')
-          adjutant.src = this.adjutant.url
-        }
-      }
+        return true
+      })
     },
     // drawBoth: pass the arguments to draw, where most logic lies
     drawBoth (background, adjutant, now) {
-      var modCanvas = this.$refs.modCanvas
-      var modContext = modCanvas.getContext('2d')
-      var modConfig = this.scaleConfig(modCanvasConfig, this.getScale())
-      modConfig.now = now
-      modContext.clearRect(0, 0, this.modWidth, this.modHeight)
-      this.draw(modContext,
-                modConfig,
-                this.modPositions, this.ui.modCollection,
-                background, adjutant, this.ui.hexagons)
-      
-      var canvas = this.$refs.canvas
+      this.drawCanvas(this.$refs.modCanvas, modCanvasConfig,
+                      this.modPositions, this.ui.modCollection,
+                      background, adjutant, now)
+      this.drawCanvas(this.$refs.canvas, dollCanvasConfig,
+                      this.positions, this.ui.collection,
+                      background, adjutant, now)
+    },
+    drawCanvas (canvas, baseConfig, positions, collection,
+                background, adjutant, now) {
       var context = canvas.getContext('2d')
-      context.clearRect(0, 0, this.width, this.height)
-      var config = this.scaleConfig(dollCanvasConfig, this.getScale())
+      var config = this.scaleConfig(baseConfig, this.getScale())
       config.now = now
+      context.clearRect(0, 0, canvas.width, canvas.height)
       this.draw(context,
                 config,
-                this.positions, this.ui.collection,
+                positions, collection,
                 background, adjutant, this.ui.hexagons)
     },
     // draw: dispatch config to corresponding drawing functions
@@ -551,6 +586,7 @@ canvas {
 #canvasContainer {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .thumbnail canvas {

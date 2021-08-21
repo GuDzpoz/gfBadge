@@ -185,7 +185,7 @@ export default {
         },
         adjutant: {
           url: '',
-          x: 300,
+          x: 480,
           y: 100,
           scale: 0.45,
           opacity: 0.9
