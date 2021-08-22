@@ -63,6 +63,8 @@
       <w-icon class="mr2">mdi mdi-image-move</w-icon>
       {{ t("btnExportPNG") }}
     </w-button>
+
+    <keep-alive include="DollSelector">
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
             card class="xs12 ma2 mb6">
       <template v-slot:[`item-title.1`]>
@@ -70,7 +72,7 @@
         {{ t('tabPoster.title') }}
       </template>
       <template v-slot:[`item-content.1`]>
-        <DollSelector v-model="ui.collection" :dolls="typedAllDolls" />
+          <DollSelector v-model="ui.collection" :dolls="typedAllDolls" />
       </template>
       <template v-slot:[`item-title.2`]>
         <w-icon class="mr2">mdi mdi-face-woman-shimmer</w-icon>
@@ -83,9 +85,9 @@
         <w-icon class="mr2">mdi mdi-account-alert</w-icon>
         {{ t("tabTeam.title") }}
       </template>
-      <template v-slot:[`item-content.3`]>
+      <template v-slot:[`item-content.3`]><keep-alive>
         <AdjutantSelector v-model="ui.adjutant.url" :dolls="typedDolls" :urlbase="skinBase" />
-      </template>
+      </keep-alive></template>
       <template v-slot:[`item-title.4`]>
         <w-icon class="mr2">mdi mdi-camera-image</w-icon>
         {{ t('tabBackground.title') }}
@@ -98,22 +100,23 @@
         {{ t('tabGeneral.title') }}
       </template>
       <template v-slot:[`item-content.5`]>
-        <PlayerInfo v-model="ui.info" />
+        <keep-alive><PlayerInfo v-model="ui.info" /></keep-alive>
       </template>
       <template v-slot:[`item-title.6`]>
         <w-icon class="mr2">mdi mdi-tune</w-icon>
         {{ t("tabAdjust.title") }}
       </template>
       <template v-slot:[`item-content.6`]>
-        <ParameterDashboard v-model="ui" />
+        <keep-alive><ParameterDashboard v-model="ui" /></keep-alive>
       </template>
       <template v-slot:[`item-title.7`]>
         <w-icon class="mr2">mdi mdi-license</w-icon>
       </template>
       <template v-slot:[`item-content.7`]>
-        <License />
+        <keep-alive><License /></keep-alive>
       </template>
     </w-tabs>
+    </keep-alive>
     <w-notification v-model="showNotice" :timeout="noticeTimeout"
                     warning plain round shadow>
       {{ notice }}
@@ -128,29 +131,48 @@ import { defineAsyncComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { fileOpen, fileSave } from 'browser-fs-access'
 import Title from './components/Title'
-const AdjutantSelector = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "adjutant" */
-    './components/AdjutantSelector'))
-const DollSelector = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "dolls" */
-    './components/DollSelector'))
-const DollCollection = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "canvas" */
-    './components/DollCollection'))
-const License = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "license" */
-    './components/License'))
-const ParameterDashboard = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "dash" */
-    './components/ParameterDashboard'))
-const PlayerInfo = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "info" */
-    './components/PlayerInfo'))
+import LoadingSpinner from './components/LoadingSpinner'
+const AdjutantSelector = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "adjutant" */
+    './components/AdjutantSelector'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
+const DollSelector = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "dolls" */
+    './components/DollSelector'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
+const DollCollection = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "canvas" */
+    './components/DollCollection'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
+const License = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "license" */
+    './components/License'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
+const ParameterDashboard = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "dash" */
+    './components/ParameterDashboard'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
+const PlayerInfo = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "info" */
+    './components/PlayerInfo'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
 import { jsonTexts } from './assets/langs.js'
 import { icons } from './assets/icons.js'
 import { backgrounds } from './assets/backgrounds.js'
 
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'MG', 'SG', 'SF']
 
 const uiVersion = '20210726'
 

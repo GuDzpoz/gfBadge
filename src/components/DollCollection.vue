@@ -204,8 +204,8 @@ export default {
           SMG: 12,
           RF: 12,
           HG: 12,
-          SG: 12,
           MG: 12,
+          SG: 12,
           // Coalition: 20 // none will be modded
       }, 0)
     },
