@@ -1,7 +1,10 @@
 <template>
 <w-accordion :items="typedDolls" shadow>
   <template #item-title="{ item }">
-    <span class="ma2">{{ item.type }}</span>
+    <div class="typeIconWrapper mr3 ml2">
+      <img :src="typeIcons[item.type]" :alt="item.type"
+           class="typeIcon"/>
+    </div>
     <w-button @click="selectAll(item.dolls, $event)" outline class="ma2">
       <w-icon class="mr2">mdi mdi-select-all</w-icon>
       {{ $t('ui.selectTypeAll') }}
@@ -32,7 +35,8 @@
 </template>
 
 <script>
-const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
+const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'MG', 'SG', 'SF']
+import { typeIcons } from '../assets/typeIcons.js'
 
 export default {
   name: 'DollSelector',
@@ -45,6 +49,7 @@ export default {
     }
   },
   created () {
+    console.log('Created again')
     var typedDolls = this.typedDolls
     this.mutableValue = this.modelValue
     for(var type of typedDolls) {
@@ -56,7 +61,8 @@ export default {
   },
   data () {
     return {
-      mutableValue: {}
+      mutableValue: {},
+      typeIcons,
     }
   },
   watch: {
@@ -223,5 +229,15 @@ input.avatar:checked~span {
 
 .avatar-label:hover {
     box-shadow: 3px 3px 0px #268bd2;
+}
+
+.typeIconWrapper {
+    display: flex;
+    filter: drop-shadow(0 0 2px black);
+}
+
+.typeIcon {
+    height: 1.6em;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 84% 100%, 0 100%);
 }
 </style>

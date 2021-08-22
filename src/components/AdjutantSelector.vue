@@ -4,7 +4,11 @@
   <w-switch v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
             class="ma3" />
   <w-accordion :items="typedDolls" shadow>
-    <template #item-title="{ item }">{{ item.type }}</template>
+    <template #item-title="{ item }">
+      <div class="typeIconWrapper">
+        <img :src="typeIcons[item.type]" :alt="item.type" class="typeIcon"/>
+      </div>
+    </template>
     <template #item-content="{ item }">
       <w-menu v-for="doll in item.dolls" :key="doll.id"
               custom hide-on-menu-click shadow>
@@ -25,6 +29,7 @@
 
 <script>
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
+import { typeIcons } from '../assets/typeIcons.js'
 import { npcs } from '../assets/npcs.js'
 
 export default {
@@ -43,7 +48,8 @@ export default {
       adjutantOn: true,
       urls: [],
       currentSkin: '',
-      npcs: npcs
+      npcs: npcs,
+      typeIcons: typeIcons,
     }
   },
   watch: {
@@ -101,4 +107,16 @@ export default {
 </script>
 
 <style scoped>
+.typeIconWrapper {
+    display: flex;
+    filter: drop-shadow(0 0 2px black);
+    justify-content: center;
+    width: 3.23em;
+}
+
+.typeIcon {
+    height: 1.6em;
+    line-height: 1.6em;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 84% 100%, 0 100%);
+}
 </style>
