@@ -23,6 +23,7 @@
                 :bg-color="mod ? 'info-light1' : 'info-dark2'"
                 :height="mod ? '1.6em' : '3em'"
                 :z-index="mod ? '0' : '1'"
+                :class="mod ? 'buttonOff' : 'buttonOn'"
                 outline
                 v-on:click="mod = !mod">
         {{ canvasSwitch[1].text }}
@@ -31,10 +32,12 @@
                 :color="mod ? 'white' : 'info-dark2'"
                 :height="mod ? '3em' : '1.6em'"
                 :z-index="mod ? '1' : '0'"
+                :class="mod ? 'buttonOn' : 'buttonOff'"
                 outline
                 v-on:click="mod = !mod">
         {{ canvasSwitch[0].text }}
       </w-button>
+      <w-switch v-model="mod" thin color="info-dark2" class="ml1" />
     </div>
     <w-switch v-model="thumbnail"
               thin :label="t('thumbnail')" label-on-left class="ml5 mr3" />
@@ -463,12 +466,13 @@ div.placeholderDiv {
 }
 
 .buttonSwitch {
-    display: flex;
-    height: 3em;
+  display: flex;
+  height: 3em;
 }
 
 .buttonSwitch .w-button {
   border-radius: 0;
+  transition: all .2s;
 }
 
 .buttonSwitch .w-button:first-child {
