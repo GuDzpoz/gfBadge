@@ -64,7 +64,6 @@
       {{ t("btnExportPNG") }}
     </w-button>
 
-    <keep-alive include="DollSelector">
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
             card class="xs12 ma2 mb6">
       <template v-slot:[`item-title.1`]>
@@ -72,22 +71,32 @@
         {{ t('tabPoster.title') }}
       </template>
       <template v-slot:[`item-content.1`]>
-          <DollSelector v-model="ui.collection" :dolls="typedAllDolls" />
+        <DollSelector v-model="ui.collection"
+                      :dolls="typedAllDolls"
+                      :keepAlive="'doll'" />
+        <!-- until w-tabs supports <keep-alive> -->
       </template>
       <template v-slot:[`item-title.2`]>
         <w-icon class="mr2">mdi mdi-face-woman-shimmer</w-icon>
         {{ t("tabMod.title") }}
       </template>
       <template v-slot:[`item-content.2`]>
-        <DollSelector v-model="ui.modCollection" :dolls="typedModDolls" />
+        <DollSelector v-model="ui.modCollection"
+                      :dolls="typedModDolls"
+                      :keepAlive="'mod'" />
+        <!-- until w-tabs supports <keep-alive> -->
       </template>
       <template v-slot:[`item-title.3`]>
         <w-icon class="mr2">mdi mdi-account-alert</w-icon>
         {{ t("tabTeam.title") }}
       </template>
-      <template v-slot:[`item-content.3`]><keep-alive>
-        <AdjutantSelector v-model="ui.adjutant.url" :dolls="typedDolls" :urlbase="skinBase" />
-      </keep-alive></template>
+      <template v-slot:[`item-content.3`]>
+        <AdjutantSelector v-model="ui.adjutant.url"
+                          :dolls="typedDolls"
+                          :urlbase="skinBase"
+                          :keepAlive="'adjutant'" />
+        <!-- until w-tabs supports <keep-alive> -->
+      </template>
       <template v-slot:[`item-title.4`]>
         <w-icon class="mr2">mdi mdi-camera-image</w-icon>
         {{ t('tabBackground.title') }}
@@ -100,23 +109,22 @@
         {{ t('tabGeneral.title') }}
       </template>
       <template v-slot:[`item-content.5`]>
-        <keep-alive><PlayerInfo v-model="ui.info" /></keep-alive>
+        <PlayerInfo v-model="ui.info" />
       </template>
       <template v-slot:[`item-title.6`]>
         <w-icon class="mr2">mdi mdi-tune</w-icon>
         {{ t("tabAdjust.title") }}
       </template>
       <template v-slot:[`item-content.6`]>
-        <keep-alive><ParameterDashboard v-model="ui" /></keep-alive>
+        <ParameterDashboard v-model="ui" />
       </template>
       <template v-slot:[`item-title.7`]>
         <w-icon class="mr2">mdi mdi-license</w-icon>
       </template>
       <template v-slot:[`item-content.7`]>
-        <keep-alive><License /></keep-alive>
+        <License />
       </template>
     </w-tabs>
-    </keep-alive>
     <w-notification v-model="showNotice" :timeout="noticeTimeout"
                     warning plain round shadow>
       {{ notice }}

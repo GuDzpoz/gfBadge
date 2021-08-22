@@ -1,5 +1,5 @@
 <template>
-<w-accordion :items="typedDolls" shadow>
+<w-accordion :items="typedDolls" shadow v-model="keepAliveCache[keepAlive]">
   <template #item-title="{ item }">
     <div class="typeIconWrapper mr3 ml2">
       <img :src="typeIcons[item.type]" :alt="item.type"
@@ -38,6 +38,8 @@
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'MG', 'SG', 'SF']
 import { typeIcons } from '../assets/typeIcons.js'
 
+var keepAliveCache = {}
+
 export default {
   name: 'DollSelector',
   props: {
@@ -46,10 +48,10 @@ export default {
     multiple: {
       type: Boolean,
       default: true
-    }
+    },
+    keepAlive: String,
   },
   created () {
-    console.log('Created again')
     var typedDolls = this.typedDolls
     this.mutableValue = this.modelValue
     for(var type of typedDolls) {
@@ -63,6 +65,7 @@ export default {
     return {
       mutableValue: {},
       typeIcons,
+      keepAliveCache,
     }
   },
   watch: {

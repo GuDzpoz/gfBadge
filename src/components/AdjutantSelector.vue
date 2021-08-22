@@ -3,7 +3,7 @@
   <!-- w-switch cannot be used with label-on-left now -->
   <w-switch v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
             class="ma3" />
-  <w-accordion :items="typedDolls" shadow>
+  <w-accordion :items="typedDolls" shadow v-model="keepAliveCache[keepAlive]">
     <template #item-title="{ item }">
       <div class="typeIconWrapper">
         <img :src="typeIcons[item.type]" :alt="item.type" class="typeIcon"/>
@@ -32,12 +32,15 @@ const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'SG', 'MG', 'SF']
 import { typeIcons } from '../assets/typeIcons.js'
 import { npcs } from '../assets/npcs.js'
 
+var keepAliveCache = {}
+
 export default {
   name: 'AdjutantSelector',
   props: {
     dolls: Object,
     urlbase: String,
     modelValue: String,
+    keepAlive: String,
   },
   created () {
     this.currentSkin = this.modelValue.replace(this.urlbase + '/', '')
@@ -48,8 +51,9 @@ export default {
       adjutantOn: true,
       urls: [],
       currentSkin: '',
-      npcs: npcs,
-      typeIcons: typeIcons,
+      npcs,
+      typeIcons,
+      keepAliveCache,
     }
   },
   watch: {
