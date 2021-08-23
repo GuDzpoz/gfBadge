@@ -5,11 +5,11 @@
       <img :src="typeIcons[item.type]" :alt="item.type"
            class="typeIcon"/>
     </div>
-    <w-button @click="selectAll(item.dolls, $event)" outline class="ma2">
+    <w-button @click="selectAll(item.dolls, $event)" outline class="ma2 gf-tag">
       <w-icon class="mr2">mdi mdi-select-all</w-icon>
       {{ $t('ui.selectTypeAll') }}
     </w-button>
-    <w-button @click="deselectAll(item.dolls, $event)" outline>
+    <w-button @click="deselectAll(item.dolls, $event)" outline class="gf-tag">
       <w-icon class="mr2">mdi mdi-selection-off</w-icon>
       {{ $t('ui.deselectTypeAll') }}
     </w-button>
@@ -242,5 +242,15 @@ input.avatar:checked~span {
 .typeIcon {
     height: 1.6em;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 84% 100%, 0 100%);
+}
+
+button.w-button.gf-tag {
+  box-shadow: 0 0 2px black;
+  border-radius: 0;
+  color: #323232;
+  background-color: white;
+  font-family: serif;
+  font-weight: bold;
+  border: none;
 }
 </style>

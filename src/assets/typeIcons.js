@@ -6,4 +6,5 @@ export const typeIcons = {
   SG: '/images/assets/Icon_SG.png',
   MG: '/images/assets/Icon_MG.png',
   SF: '/images/assets/Icon_conSF.png',
+  NPC: '/images/assets/Icon_NPC.png',
 }

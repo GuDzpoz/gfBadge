@@ -1,76 +1,66 @@
 <template>
 <w-app>
-  <w-flex wrap>
+  <w-flex wrap class="column">
+    <Title :title="t('title')"></Title>
+    <w-flex wrap class="row justify-center">
     <w-select :items="servers" v-model="server"
               :label="t('selectServer')"
-              outline shadow class="title3 xs5 ma3"
-              label-position="inside"
+              outline shadow class="title3 xs5 ma3 gf-select"
+              label-position="left"
               inner-icon-left="mdi mdi-server title4" />
     <w-select :items="langs" v-model="$i18n.locale"
               :label="t('selectLang')"
-              outline shadow class="title3 xs5 ma3"
-              label-position="inside"
+              outline shadow class="title3 xs5 ma3 gf-select"
+              label-position="left"
               inner-icon-left="mdi mdi-translate title4" />
-    <Title :title="t('title')"></Title>
+    </w-flex>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
                     :background="ui.background" :adjutant="ui.adjutant"
                     ref="canvas"
-                    :thumbnail="thumbnail" :mod="mod"
+                    :thumbnail="thumbnail" :mod="mod === 'mod'"
                     class="xs12" />
-    <div class="buttonSwitch">
-      <w-button :color="mod ? 'info-dark2' : 'white'"
-                :bg-color="mod ? 'info-light1' : 'info-dark2'"
-                :height="mod ? '1.6em' : '3em'"
-                :z-index="mod ? '0' : '1'"
-                :class="mod ? 'buttonOff' : 'buttonOn'"
-                outline
-                v-on:click="mod = !mod">
-        {{ canvasSwitch[1].text }}
-      </w-button>
-      <w-button :bg-color="mod ? 'info-dark2' : 'info-light1'"
-                :color="mod ? 'white' : 'info-dark2'"
-                :height="mod ? '3em' : '1.6em'"
-                :z-index="mod ? '1' : '0'"
-                :class="mod ? 'buttonOn' : 'buttonOff'"
-                outline
-                v-on:click="mod = !mod">
-        {{ canvasSwitch[0].text }}
-      </w-button>
-      <w-switch v-model="mod" thin color="info-dark2" class="ml1" />
-    </div>
-    <w-switch v-model="thumbnail"
-              thin :label="t('thumbnail')" label-on-left class="ml5 mr3" />
-    <w-button @click="saveToLocal()"
-              bg-color="success" class="ma2" height="1.6rem">
+
+    <w-flex wrap class="row">
+    <w-flex class="row" wrap>
+    <gf-switch :labels="{iop: canvasSwitch[1].text, mod: canvasSwitch[0].text}"
+               v-model="mod"/>
+    <gf-checkbox v-model="thumbnail"
+                 :label="t('thumbnail')" class="ml5 mr3" />
+    </w-flex>
+    <w-flex class="shadowDropper row" wrap>
+    <w-button @click="saveToLocal()" lg
+              bg-color="success" class="ma2 gf-button gf-cancel">
       <w-icon class="mr2">mdi mdi-database-import</w-icon>
       {{ t("btnSaveCfg") }}
     </w-button>
-    <w-button @click="loadFromLocal()"
-              bg-color="success" class="ma2" height="1.6rem">
+    <w-button @click="loadFromLocal()" lg
+              bg-color="success" class="ma2 gf-button gf-cancel">
       <w-icon class="mr2">mdi mdi-database-export</w-icon>
       {{ t("btnLoadCfg") }}
     </w-button>
-    <w-button @click="saveToFile"
-              bg-color="info" class="ma2" height="1.6rem">
+    <w-button @click="saveToFile" lg
+              bg-color="info" class="ma2 gf-button gf-cancel">
       <w-icon class="mr2">mdi mdi-download</w-icon>
       {{ t("btnSaveCfgJSON") }}
     </w-button>
-    <w-button @click="loadFromFile"
-              bg-color="info" class="ma2" height="1.6rem">
+    <w-button @click="loadFromFile" lg
+              bg-color="info" class="ma2 gf-button gf-cancel">
       <w-icon class="mr2">mdi mdi-upload</w-icon>
       {{ t("btnLoadCfgJSON") }}
     </w-button>
-    <w-button @click="saveToImage"
-              bg-color="warning" class="ma2" height="1.6rem">
+    <w-button @click="saveToImage" lg
+              bg-color="warning" class="ma2 gf-button gf-ok">
       <w-icon class="mr2">mdi mdi-image-move</w-icon>
       {{ t("btnExportPNG") }}
     </w-button>
+    </w-flex>
+    </w-flex>
 
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
-            card class="xs12 ma2 mb6">
+            card class="xs12 ma2 mb6 gf-tabs">
       <template v-slot:[`item-title.1`]>
-        <w-icon class="mr2">mdi mdi-face-woman</w-icon>
+        <img src="/images/assets/doll.png" class="gf-icon mr2" />
         {{ t('tabPoster.title') }}
       </template>
       <template v-slot:[`item-content.1`]>
@@ -80,7 +70,7 @@
         <!-- until w-tabs supports <keep-alive> -->
       </template>
       <template v-slot:[`item-title.2`]>
-        <w-icon class="mr2">mdi mdi-face-woman-shimmer</w-icon>
+        <img src="/images/assets/mod3.png" class="gf-icon mr2" />
         {{ t("tabMod.title") }}
       </template>
       <template v-slot:[`item-content.2`]>
@@ -90,7 +80,7 @@
         <!-- until w-tabs supports <keep-alive> -->
       </template>
       <template v-slot:[`item-title.3`]>
-        <w-icon class="mr2">mdi mdi-account-alert</w-icon>
+        <w-icon class="mr2">mdi mdi-face-woman</w-icon>
         {{ t("tabTeam.title") }}
       </template>
       <template v-slot:[`item-content.3`]>
@@ -196,6 +186,7 @@ export default {
     License,
     ParameterDashboard,
     PlayerInfo,
+
     Title,
   },
   setup() {
@@ -209,7 +200,7 @@ export default {
       iconBase: '',
       skinBase: '',
       thumbnail: false,
-      mod: false,
+      mod: 'iop',
       showNotice: false,
       notice: '',
       noticeTimeout: 5000,
@@ -447,7 +438,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -465,17 +456,118 @@ div.placeholderDiv {
   content: "";
 }
 
-.buttonSwitch {
-  display: flex;
-  height: 3em;
+.w-accordion__item-title {
+    flex-wrap: wrap;
 }
 
-.buttonSwitch .w-button {
-  border-radius: 0;
-  transition: all .2s;
+.w-flex.wrap.row-reverse {
+    flex-direction: row-reverse;
 }
 
-.buttonSwitch .w-button:first-child {
-  margin-right: -0.6em;
+$SimSun: "Noto Serif SC", "SimSun", "宋体", "NSimSun", "STSong", "FangSong", "serif";
+.gf-tabs .w-tabs__bar-item {
+    font-family: $SimSun;
+    font-weight: bold;
+    background-color: #8d8d8d;
+    border-radius: 3px 3px 0 0;
+    margin-right: 0.2em;
+    color: #313131;
+    box-shadow: 0 -0.5em 0.5em #818183 inset;
+    text-shadow: 0 0 3px white;
+}
+
+.gf-tabs .w-tabs__bar-item.w-tabs__bar-item--active {
+    color: #313131;
+    background-color: #f4ab00;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.gf-tabs .w-tabs__bar {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right,#f4ab00, #f4ab00 50%, #f4ab0000 80%) 1;
+}
+
+img.gf-icon {
+    height: 1.2em;
+}
+
+$gf-button-corner-clip: 0.4em;
+button.w-button.gf-button {
+    border-radius: 0;
+    color: #323232;
+    clip-path: #{'polygon(0 0, 0 100%, calc(100% - '}$gf-button-corner-clip#{') 100%, 100% calc(100% - '}$gf-button-corner-clip#{'), 100% 0)'};
+    font-family: $SimSun;
+    font-weight: bold;
+}
+
+button.w-button.gf-ok {
+    background: linear-gradient(#ffe31d, #ffc802 50%, #fdb300 50%, #fdb300);
+    border: 1px solid #fdb300;
+}
+
+button.w-button.gf-cancel {
+    background: linear-gradient(#ffffff, #ffffff 50%, #e3e3e3 50%, #e3e3e3);
+    border: 1px solid #ffffff;
+}
+
+.shadowDropper {
+    filter: drop-shadow(0 0 2px black);
+}
+
+$gf-slider-height: 2em;
+$gf-slider-gap: 0.2em;
+.w-slider.gf-slider {
+    height: $gf-slider-height;
+    background-color: #6c6c6c;
+    /* @function divide is from _variables.scss in wave-ui */
+    border-left: divide($gf-slider-height, 2) solid #6c6c6c;
+    border-right: divide($gf-slider-height, 2) solid #6c6c6c;
+}
+
+.w-slider.gf-slider .w-slider__track {
+    background-color: #6c6c6c;
+}
+
+.w-slider.gf-slider .w-slider__thumb {
+    width: $gf-slider-height - $gf-slider-gap*2;
+    height: $gf-slider-height - $gf-slider-gap*2;
+}
+
+.w-slider.gf-slider .w-slider__thumb button {
+    border-radius: 0;
+    background: url(/images/assets/slider.png);
+    background-size: contain;
+}
+
+.w-slider.gf-slider .w-slider__range {
+    display: none;
+}
+
+.gf-select.w-select {
+    flex-flow: column;
+    align-items: flex-start;
+    max-width: 10em;
+    min-width: 6em;
+    box-shadow: 0 0 3px black;
+    padding: 0.6em;
+    font-family: $SimSun;
+    font-weight: bold;
+    background-image: url(/images/assets/arrow.png);
+    background-repeat: no-repeat;
+    background-size: calc(2 * .97em) calc(2 *.86em);
+    color: #313231;
+    background-position: right 0 top 0;
+}
+
+.gf-select.w-select>label {
+    margin-right: calc(2 * .97em);
+    margin-bottom: 1em;
+}
+
+.gf-select.w-select .primary, .w-menu.w-select__menu.w-menu--bottom, .gf-select.w-select input, .w-menu.w-select__menu.w-menu--bottom .w-list__item-label.primary {
+    color: #313231;
+    font-family: $SimSun;
+    font-weight: bold;
 }
 </style>

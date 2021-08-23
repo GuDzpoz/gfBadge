@@ -1,8 +1,7 @@
 <template>
 <div>
-  <!-- w-switch cannot be used with label-on-left now -->
-  <w-switch v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
-            class="ma3" />
+  <gf-checkbox v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
+             class="ma3" />
   <w-accordion :items="typedDolls" shadow v-model="keepAliveCache[keepAlive]">
     <template #item-title="{ item }">
       <div class="typeIconWrapper">

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="xs12 ma5">{{ title }}</h1>
+  <h1 class="ma5">{{ title }}</h1>
 </template>
 
 
