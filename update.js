@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const fs = require('fs/promises')
 const md5 = require('blueimp-md5')
 const nodeFetch = require('node-fetch')

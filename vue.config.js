@@ -19,4 +19,11 @@ module.exports = {
       },
     },
   },
+  pwa: {
+    name: '少女前线签名图生成器',
+    appleMobileWebAppCapable: 'yes',
+    workboxPluginMode: 'GenerateSW',
+    workboxOptions: {
+    },
+  },
 }

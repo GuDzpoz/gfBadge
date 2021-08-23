@@ -6,6 +6,7 @@ import { jsonTexts } from './assets/langs.js'
 import { createI18n } from 'vue-i18n'
 import WaveUI from 'wave-ui/src/wave-ui'
 import '@mdi/font/css/materialdesignicons.min.css'
+import './registerServiceWorker'
 
 const i18n = createI18n(jsonTexts)
 
