@@ -5,19 +5,19 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/compat-data@7.14.5": {
+    "@babel/compat-data@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/core@7.14.6": {
+    "@babel/core@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/generator@7.14.5": {
+    "@babel/generator@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -35,13 +35,13 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-compilation-targets@7.14.5": {
+    "@babel/helper-compilation-targets@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-create-class-features-plugin@7.14.6": {
+    "@babel/helper-create-class-features-plugin@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -83,7 +83,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-member-expression-to-functions@7.14.5": {
+    "@babel/helper-member-expression-to-functions@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -95,7 +95,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-module-transforms@7.14.5": {
+    "@babel/helper-module-transforms@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -119,13 +119,13 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-replace-supers@7.14.5": {
+    "@babel/helper-replace-supers@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-simple-access@7.14.5": {
+    "@babel/helper-simple-access@7.14.8": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -143,7 +143,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helper-validator-identifier@7.14.5": {
+    "@babel/helper-validator-identifier@7.14.9": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -161,7 +161,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/helpers@7.14.6": {
+    "@babel/helpers@7.15.3": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -173,7 +173,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/parser@7.14.6": {
+    "@babel/parser@7.15.3": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -185,7 +185,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-proposal-async-generator-functions@7.14.5": {
+    "@babel/plugin-proposal-async-generator-functions@7.14.9": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -245,7 +245,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-proposal-object-rest-spread@7.14.5": {
+    "@babel/plugin-proposal-object-rest-spread@7.14.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -395,13 +395,13 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-block-scoping@7.14.5": {
+    "@babel/plugin-transform-block-scoping@7.15.3": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-classes@7.14.5": {
+    "@babel/plugin-transform-classes@7.14.9": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -413,7 +413,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-destructuring@7.14.5": {
+    "@babel/plugin-transform-destructuring@7.14.7": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -467,7 +467,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-modules-commonjs@7.14.5": {
+    "@babel/plugin-transform-modules-commonjs@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -485,7 +485,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-named-capturing-groups-regex@7.14.5": {
+    "@babel/plugin-transform-named-capturing-groups-regex@7.14.9": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -527,7 +527,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/plugin-transform-runtime@7.14.5": {
+    "@babel/plugin-transform-runtime@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -575,7 +575,7 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/preset-env@7.14.5": {
+    "@babel/preset-env@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -585,7 +585,7 @@
         "licenses": "MIT",
         "parents": "gfwiki-badge"
     },
-    "@babel/runtime@7.14.6": {
+    "@babel/runtime@7.15.3": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -597,13 +597,13 @@
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/traverse@7.14.5": {
+    "@babel/traverse@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@babel/types@7.14.5": {
+    "@babel/types@7.15.0": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel",
         "licenseUrl": "https://github.com/babel/babel/raw/master/LICENSE",
@@ -645,43 +645,43 @@
         "licenseUrl": "https://github.com/intervolga/optimize-cssnano-plugin/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/core-base@9.1.6": {
+    "@intlify/core-base@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/devtools-if@9.1.6": {
+    "@intlify/devtools-if@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/message-compiler@9.1.6": {
+    "@intlify/message-compiler@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/message-resolver@9.1.6": {
+    "@intlify/message-resolver@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/runtime@9.1.6": {
+    "@intlify/runtime@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/shared@9.1.6": {
+    "@intlify/shared@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@intlify/vue-devtools@9.1.6": {
+    "@intlify/vue-devtools@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
@@ -705,12 +705,6 @@
         "licenseUrl": "https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.stat",
         "parents": "gfwiki-badge"
     },
-    "@npmcli/move-file@1.1.2": {
-        "licenses": "MIT",
-        "repository": "https://github.com/npm/move-file",
-        "licenseUrl": "https://github.com/npm/move-file/raw/master/LICENSE.md",
-        "parents": "gfwiki-badge"
-    },
     "@soda/friendly-errors-webpack-plugin@1.8.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sodatea/friendly-errors-webpack-plugin",
@@ -729,49 +723,55 @@
         "licenseUrl": "https://github.com/TooTallNate/once",
         "parents": "gfwiki-badge"
     },
-    "@types/body-parser@1.19.0": {
+    "@types/body-parser@1.19.1": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/connect-history-api-fallback@1.3.4": {
+    "@types/connect-history-api-fallback@1.3.5": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/connect@3.4.34": {
+    "@types/connect@3.4.35": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/express-serve-static-core@4.17.21": {
+    "@types/estree@0.0.48": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/express@4.17.12": {
+    "@types/express-serve-static-core@4.17.24": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/glob@7.1.3": {
+    "@types/express@4.17.13": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/http-proxy@1.17.6": {
+    "@types/glob@7.1.4": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/json-schema@7.0.7": {
+    "@types/http-proxy@1.17.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "@types/json-schema@7.0.9": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
@@ -783,49 +783,49 @@
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/minimatch@3.0.4": {
+    "@types/minimatch@3.0.5": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/minimist@1.2.1": {
+    "@types/minimist@1.2.2": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/node@15.12.3": {
+    "@types/node@16.7.1": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/normalize-package-data@2.4.0": {
-        "licenses": "MIT",
-        "repository": "https://wwwhub.com/DefinitelyTyped/DefinitelyTyped",
-        "licenseUrl": "https://wwwhub.com/DefinitelyTyped/DefinitelyTyped",
-        "parents": "gfwiki-badge"
-    },
-    "@types/q@1.5.4": {
+    "@types/normalize-package-data@2.4.1": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/qs@6.9.6": {
+    "@types/q@1.5.5": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/range-parser@1.2.3": {
+    "@types/qs@6.9.7": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/serve-static@1.13.9": {
+    "@types/range-parser@1.2.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "@types/serve-static@1.13.10": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
@@ -837,37 +837,37 @@
         "licenseUrl": "https://wwwhub.com/DefinitelyTyped/DefinitelyTyped",
         "parents": "gfwiki-badge"
     },
-    "@types/tapable@1.0.7": {
+    "@types/tapable@1.0.8": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/uglify-js@3.13.0": {
+    "@types/uglify-js@3.13.1": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/webpack-dev-server@3.11.4": {
+    "@types/webpack-dev-server@3.11.5": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/webpack-sources@0.1.8": {
+    "@types/webpack-sources@0.1.9": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@types/webpack-sources@2.1.0": {
+    "@types/webpack-sources@3.2.0": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
         "parents": "@types/webpack:gfwiki-badge"
     },
-    "@types/webpack@4.41.29": {
+    "@types/webpack@4.41.30": {
         "licenses": "MIT",
         "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
         "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
@@ -961,6 +961,12 @@
         "licenseUrl": "https://github.com/vuejs/vue-cli/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "@vue/cli-plugin-pwa@4.5.13": {
+        "licenses": "MIT",
+        "repository": "https://github.com/vuejs/vue-cli",
+        "licenseUrl": "https://github.com/vuejs/vue-cli/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "@vue/cli-plugin-router@4.5.13": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-cli",
@@ -985,25 +991,25 @@
         "licenseUrl": "https://github.com/vuejs/vue-cli/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/compiler-core@3.1.1": {
+    "@vue/compiler-core@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/compiler-dom@3.1.1": {
+    "@vue/compiler-dom@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/compiler-sfc@3.1.1": {
+    "@vue/compiler-sfc@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/compiler-ssr@3.1.1": {
+    "@vue/compiler-ssr@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
@@ -1015,7 +1021,7 @@
         "licenseUrl": "https://github.com/vuejs/component-compiler-utils",
         "parents": "gfwiki-badge"
     },
-    "@vue/devtools-api@6.0.0-beta.14": {
+    "@vue/devtools-api@6.0.0-beta.15": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-devtools",
         "licenseUrl": "https://github.com/vuejs/vue-devtools",
@@ -1027,25 +1033,25 @@
         "licenseUrl": "https://github.com/vuejs/preload-webpack-plugin/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/reactivity@3.1.1": {
+    "@vue/reactivity@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/runtime-core@3.1.1": {
+    "@vue/runtime-core@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/runtime-dom@3.1.1": {
+    "@vue/runtime-dom@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "@vue/shared@3.1.1": {
+    "@vue/shared@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
@@ -1187,7 +1193,7 @@
         "licenseUrl": "https://github.com/ForbesLindesay/acorn-globals/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "acorn-jsx@5.3.1": {
+    "acorn-jsx@5.3.2": {
         "licenses": "MIT",
         "repository": "https://github.com/acornjs/acorn-jsx",
         "licenseUrl": "https://github.com/acornjs/acorn-jsx/raw/master/LICENSE",
@@ -1211,7 +1217,7 @@
         "licenseUrl": "https://github.com/acornjs/acorn/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "acorn@8.4.0": {
+    "acorn@8.4.1": {
         "licenses": "MIT",
         "repository": "https://github.com/acornjs/acorn",
         "licenseUrl": "https://github.com/acornjs/acorn/raw/master/LICENSE",
@@ -1227,12 +1233,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/TooTallNate/node-agent-base",
         "licenseUrl": "https://github.com/TooTallNate/node-agent-base",
-        "parents": "gfwiki-badge"
-    },
-    "aggregate-error@3.1.0": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/aggregate-error",
-        "licenseUrl": "https://github.com/sindresorhus/aggregate-error/raw/master/license",
         "parents": "gfwiki-badge"
     },
     "ajv-errors@1.0.1": {
@@ -1397,6 +1397,12 @@
         "licenseUrl": "https://github.com/jonschlinkert/array-unique/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "asap@2.0.6": {
+        "licenses": "MIT",
+        "repository": "https://github.com/kriskowal/asap",
+        "licenseUrl": "https://github.com/kriskowal/asap/raw/master/LICENSE.md",
+        "parents": "gfwiki-badge"
+    },
     "asn1.js@5.4.1": {
         "licenses": "MIT",
         "repository": "https://github.com/indutny/asn1.js",
@@ -1407,6 +1413,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/joyent/node-asn1",
         "licenseUrl": "https://github.com/joyent/node-asn1/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "assert-never@1.2.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/aikoven/assert-never",
+        "licenseUrl": "https://github.com/aikoven/assert-never",
         "parents": "gfwiki-badge"
     },
     "assert-plus@1.0.0": {
@@ -1487,6 +1499,12 @@
         "licenseUrl": "https://github.com/babel/babel-eslint/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "babel-extract-comments@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jonschlinkert/babel-extract-comments",
+        "licenseUrl": "https://github.com/jonschlinkert/babel-extract-comments/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "babel-loader@8.2.2": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel-loader",
@@ -1505,7 +1523,7 @@
         "licenseUrl": "https://github.com/babel/babel-polyfills/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "babel-plugin-polyfill-corejs3@0.2.3": {
+    "babel-plugin-polyfill-corejs3@0.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel-polyfills",
         "licenseUrl": "https://github.com/babel/babel-polyfills/raw/master/LICENSE",
@@ -1515,6 +1533,36 @@
         "licenses": "MIT",
         "repository": "https://github.com/babel/babel-polyfills",
         "licenseUrl": "https://github.com/babel/babel-polyfills/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "babel-plugin-syntax-object-rest-spread@6.13.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread",
+        "licenseUrl": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread",
+        "parents": "gfwiki-badge"
+    },
+    "babel-plugin-transform-object-rest-spread@6.26.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-object-rest-spread",
+        "licenseUrl": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-object-rest-spread",
+        "parents": "gfwiki-badge"
+    },
+    "babel-runtime@6.26.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/babel/babel/tree/master/packages/babel-runtime",
+        "licenseUrl": "https://github.com/babel/babel/tree/master/packages/babel-runtime",
+        "parents": "gfwiki-badge"
+    },
+    "babel-walk@3.0.0-canary-5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/babel-walk",
+        "licenseUrl": "https://github.com/pugjs/babel-walk/raw/master/LICENSE.md",
+        "parents": "gfwiki-badge"
+    },
+    "babylon@6.18.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/babel/babylon",
+        "licenseUrl": "https://github.com/babel/babylon/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "balanced-match@1.0.2": {
@@ -1691,13 +1739,13 @@
         "licenseUrl": "https://github.com/devongovett/browserify-zlib/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "browserslist@4.16.6": {
+    "browserslist@4.16.8": {
         "licenses": "MIT",
         "repository": "https://github.com/browserslist/browserslist",
         "licenseUrl": "https://github.com/browserslist/browserslist/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "buffer-from@1.1.1": {
+    "buffer-from@1.1.2": {
         "licenses": "MIT",
         "repository": "https://github.com/LinusU/buffer-from",
         "licenseUrl": "https://github.com/LinusU/buffer-from/raw/master/LICENSE",
@@ -1750,12 +1798,6 @@
         "repository": "https://github.com/npm/cacache",
         "licenseUrl": "https://github.com/npm/cacache/raw/master/LICENSE.md",
         "parents": "gfwiki-badge"
-    },
-    "cacache@15.2.0": {
-        "licenses": "ISC",
-        "repository": "https://github.com/npm/cacache",
-        "licenseUrl": "https://github.com/npm/cacache/raw/master/LICENSE.md",
-        "parents": "compression-webpack-plugin:gfwiki-badge"
     },
     "cache-base@1.0.1": {
         "licenses": "MIT",
@@ -1829,7 +1871,7 @@
         "licenseUrl": "https://github.com/nyalab/caniuse-api/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "caniuse-lite@1.0.30001238": {
+    "caniuse-lite@1.0.30001251": {
         "licenses": "CC-BY-4.0",
         "repository": "https://github.com/browserslist/caniuse-lite",
         "licenseUrl": "https://github.com/browserslist/caniuse-lite/raw/master/LICENSE",
@@ -1853,11 +1895,17 @@
         "licenseUrl": "https://github.com/chalk/chalk/raw/master/license",
         "parents": "gfwiki-badge"
     },
-    "chalk@4.1.1": {
+    "chalk@4.1.2": {
         "licenses": "MIT",
         "repository": "https://github.com/chalk/chalk",
         "licenseUrl": "https://github.com/chalk/chalk/raw/master/license",
         "parents": "inquirer:gfwiki-badge"
+    },
+    "character-parser@2.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ForbesLindesay/character-parser",
+        "licenseUrl": "https://github.com/ForbesLindesay/character-parser/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
     },
     "chardet@0.7.0": {
         "licenses": "MIT",
@@ -1884,12 +1932,6 @@
         "parents": "watchpack:gfwiki-badge"
     },
     "chownr@1.1.4": {
-        "licenses": "ISC",
-        "repository": "https://github.com/isaacs/chownr",
-        "licenseUrl": "https://github.com/isaacs/chownr/raw/master/LICENSE",
-        "parents": "cacache:gfwiki-badge"
-    },
-    "chownr@2.0.0": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/chownr",
         "licenseUrl": "https://github.com/isaacs/chownr/raw/master/LICENSE",
@@ -1923,12 +1965,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/jakubpawlowicz/clean-css",
         "licenseUrl": "https://github.com/jakubpawlowicz/clean-css/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
-    },
-    "clean-stack@2.2.0": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/clean-stack",
-        "licenseUrl": "https://github.com/sindresorhus/clean-stack/raw/master/license",
         "parents": "gfwiki-badge"
     },
     "cli-cursor@2.1.0": {
@@ -2027,19 +2063,19 @@
         "licenseUrl": "https://github.com/colorjs/color-name/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "color-string@1.5.5": {
+    "color-string@1.6.0": {
         "licenses": "MIT",
         "repository": "https://github.com/Qix-/color-string",
         "licenseUrl": "https://github.com/Qix-/color-string/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "color@3.1.3": {
+    "color@3.2.1": {
         "licenses": "MIT",
         "repository": "https://github.com/Qix-/color",
         "licenseUrl": "https://github.com/Qix-/color/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "colorette@1.2.2": {
+    "colorette@1.3.0": {
         "licenses": "MIT",
         "repository": "https://github.com/jorgebucaran/colorette",
         "licenseUrl": "https://github.com/jorgebucaran/colorette/raw/master/LICENSE.md",
@@ -2069,6 +2105,12 @@
         "licenseUrl": "https://github.com/tj/commander.js/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "common-tags@1.8.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/declandewet/common-tags",
+        "licenseUrl": "https://github.com/declandewet/common-tags/raw/master/license.md",
+        "parents": "gfwiki-badge"
+    },
     "commondir@1.0.1": {
         "licenses": "MIT",
         "repository": "http://github.com/substack/node-commondir",
@@ -2085,12 +2127,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/compressible",
         "licenseUrl": "https://github.com/jshttp/compressible/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
-    },
-    "compression-webpack-plugin@6.1.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/webpack-contrib/compression-webpack-plugin",
-        "licenseUrl": "https://github.com/webpack-contrib/compression-webpack-plugin/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "compression@1.7.4": {
@@ -2135,6 +2171,12 @@
         "licenseUrl": "https://github.com/tj/consolidate.js",
         "parents": "gfwiki-badge"
     },
+    "constantinople@4.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ForbesLindesay/constantinople",
+        "licenseUrl": "https://github.com/ForbesLindesay/constantinople/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "constants-browserify@1.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/juliangruber/constants-browserify",
@@ -2153,7 +2195,7 @@
         "licenseUrl": "https://github.com/jshttp/content-type/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "convert-source-map@1.7.0": {
+    "convert-source-map@1.8.0": {
         "licenses": "MIT",
         "repository": "https://github.com/thlorenz/convert-source-map",
         "licenseUrl": "https://github.com/thlorenz/convert-source-map/raw/master/LICENSE",
@@ -2189,13 +2231,19 @@
         "licenseUrl": "https://github.com/webpack-contrib/copy-webpack-plugin/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "core-js-compat@3.14.0": {
+    "core-js-compat@3.16.2": {
         "licenses": "MIT",
         "repository": "https://github.com/zloirock/core-js",
         "licenseUrl": "https://github.com/zloirock/core-js/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "core-js@3.14.0": {
+    "core-js@2.6.12": {
+        "licenses": "MIT",
+        "repository": "https://github.com/zloirock/core-js",
+        "licenseUrl": "https://github.com/zloirock/core-js/raw/master/LICENSE",
+        "parents": "babel-runtime:gfwiki-badge"
+    },
+    "core-js@3.16.2": {
         "licenses": "MIT",
         "repository": "https://github.com/zloirock/core-js",
         "licenseUrl": "https://github.com/zloirock/core-js/raw/master/LICENSE",
@@ -2417,7 +2465,7 @@
         "licenseUrl": "https://github.com/visionmedia/debug/raw/master/LICENSE",
         "parents": "portfinder:gfwiki-badge"
     },
-    "debug@4.3.1": {
+    "debug@4.3.2": {
         "licenses": "MIT",
         "repository": "https://github.com/visionmedia/debug",
         "licenseUrl": "https://github.com/visionmedia/debug/raw/master/LICENSE",
@@ -2429,7 +2477,7 @@
         "licenseUrl": "https://github.com/sindresorhus/decamelize/raw/master/license",
         "parents": "gfwiki-badge"
     },
-    "decimal.js@10.2.1": {
+    "decimal.js@10.3.1": {
         "licenses": "MIT",
         "repository": "https://github.com/MikeMcl/decimal.js",
         "licenseUrl": "https://github.com/MikeMcl/decimal.js/raw/master/LICENCE.md",
@@ -2573,6 +2621,12 @@
         "licenseUrl": "https://github.com/eslint/doctrine/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "doctypes@1.1.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/doctypes",
+        "licenseUrl": "https://github.com/pugjs/doctypes/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "dom-converter@0.2.0": {
         "licenses": "MIT",
         "repository": "https://github.com/AriaMinaei/dom-converter",
@@ -2685,7 +2739,7 @@
         "licenseUrl": "https://github.com/mde/ejs/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "electron-to-chromium@1.3.752": {
+    "electron-to-chromium@1.3.814": {
         "licenses": "ISC",
         "repository": "https://github.com/kilian/electron-to-chromium/",
         "licenseUrl": "https://github.com/kilian/electron-to-chromium//raw/master/LICENSE",
@@ -2769,7 +2823,7 @@
         "licenseUrl": "https://github.com/stacktracejs/error-stack-parser/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "es-abstract@1.18.3": {
+    "es-abstract@1.18.5": {
         "licenses": "MIT",
         "repository": "https://github.com/ljharb/es-abstract",
         "licenseUrl": "https://github.com/ljharb/es-abstract/raw/master/LICENSE",
@@ -2811,7 +2865,7 @@
         "licenseUrl": "https://github.com/webpack-contrib/eslint-loader/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "eslint-plugin-vue@7.11.1": {
+    "eslint-plugin-vue@7.16.0": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/eslint-plugin-vue",
         "licenseUrl": "https://github.com/vuejs/eslint-plugin-vue/raw/master/LICENSE",
@@ -3069,19 +3123,13 @@
         "licenseUrl": "https://github.com/webpack-contrib/file-loader/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "filename-reserved-regex@1.0.0": {
+    "filename-reserved-regex@2.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/filename-reserved-regex",
         "licenseUrl": "https://github.com/sindresorhus/filename-reserved-regex/raw/master/license",
         "parents": "gfwiki-badge"
     },
-    "filenamify-url@1.0.0": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/filenamify-url",
-        "licenseUrl": "https://github.com/sindresorhus/filenamify-url/raw/master/license",
-        "parents": "gfwiki-badge"
-    },
-    "filenamify@1.2.1": {
+    "filenamify@4.3.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/filenamify",
         "licenseUrl": "https://github.com/sindresorhus/filenamify/raw/master/license",
@@ -3165,7 +3213,7 @@
         "licenseUrl": "https://github.com/mafintosh/flush-write-stream/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "follow-redirects@1.14.1": {
+    "follow-redirects@1.14.2": {
         "licenses": "MIT",
         "repository": "https://github.com/follow-redirects/follow-redirects",
         "licenseUrl": "https://github.com/follow-redirects/follow-redirects/raw/master/LICENSE",
@@ -3219,6 +3267,12 @@
         "licenseUrl": "https://github.com/hughsk/from2/raw/master/LICENSE.md",
         "parents": "gfwiki-badge"
     },
+    "fs-extra@4.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jprichardson/node-fs-extra",
+        "licenseUrl": "https://github.com/jprichardson/node-fs-extra/raw/master/LICENSE",
+        "parents": "workbox-build:gfwiki-badge"
+    },
     "fs-extra@7.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/jprichardson/node-fs-extra",
@@ -3230,12 +3284,6 @@
         "repository": "https://github.com/jprichardson/node-fs-extra",
         "licenseUrl": "https://github.com/jprichardson/node-fs-extra/raw/master/LICENSE",
         "parents": "gh-pages:gfwiki-badge"
-    },
-    "fs-minipass@2.1.0": {
-        "licenses": "ISC",
-        "repository": "https://github.com/npm/fs-minipass",
-        "licenseUrl": "https://github.com/npm/fs-minipass/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
     },
     "fs-write-stream-atomic@1.0.10": {
         "licenses": "ISC",
@@ -3285,6 +3333,12 @@
         "licenseUrl": "https://github.com/ljharb/get-intrinsic/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "get-own-enumerable-property-symbols@3.0.2": {
+        "licenses": "ISC",
+        "repository": "https://github.com/mightyiam/get-own-enumerable-property-symbols",
+        "licenseUrl": "https://github.com/mightyiam/get-own-enumerable-property-symbols/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "get-stream@3.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/get-stream",
@@ -3315,7 +3369,7 @@
         "licenseUrl": "https://github.com/arekinath/node-getpass/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "gh-pages@3.2.2": {
+    "gh-pages@3.2.3": {
         "licenses": "MIT",
         "repository": "https://github.com/tschaub/gh-pages",
         "licenseUrl": "https://github.com/tschaub/gh-pages/raw/master/LICENSE",
@@ -3375,7 +3429,7 @@
         "licenseUrl": "https://github.com/sindresorhus/globby/raw/master/license",
         "parents": "@vue/cli-plugin-eslint:gfwiki-badge"
     },
-    "graceful-fs@4.2.6": {
+    "graceful-fs@4.2.8": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/node-graceful-fs",
         "licenseUrl": "https://github.com/isaacs/node-graceful-fs/raw/master/LICENSE",
@@ -3427,6 +3481,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/has-symbols",
         "licenseUrl": "https://github.com/inspect-js/has-symbols/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "has-tostringtag@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/has-tostringtag",
+        "licenseUrl": "https://github.com/inspect-js/has-tostringtag/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "has-value@0.3.1": {
@@ -3657,12 +3717,6 @@
         "licenseUrl": "https://github.com/ehmicky/human-signals/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "humanize-url@1.0.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/humanize-url",
-        "licenseUrl": "https://github.com/sindresorhus/humanize-url/raw/master/license",
-        "parents": "gfwiki-badge"
-    },
     "iconv-lite@0.4.24": {
         "licenses": "MIT",
         "repository": "https://github.com/ashtuchkin/iconv-lite",
@@ -3747,12 +3801,6 @@
         "licenseUrl": "https://github.com/jensyt/imurmurhash-js",
         "parents": "gfwiki-badge"
     },
-    "indent-string@4.0.0": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/indent-string",
-        "licenseUrl": "https://github.com/sindresorhus/indent-string/raw/master/license",
-        "parents": "gfwiki-badge"
-    },
     "indexes-of@1.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/dominictarr/indexes-of",
@@ -3801,6 +3849,12 @@
         "licenseUrl": "https://github.com/sindresorhus/internal-ip/raw/master/license",
         "parents": "gfwiki-badge"
     },
+    "internal-slot@1.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/internal-slot",
+        "licenseUrl": "https://github.com/ljharb/internal-slot/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "ip-regex@2.1.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/ip-regex",
@@ -3843,7 +3897,7 @@
         "licenseUrl": "https://github.com/jonschlinkert/is-accessor-descriptor/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "is-arguments@1.1.0": {
+    "is-arguments@1.1.1": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-arguments",
         "licenseUrl": "https://github.com/inspect-js/is-arguments/raw/master/LICENSE",
@@ -3861,7 +3915,7 @@
         "licenseUrl": "https://github.com/qix-/node-is-arrayish/raw/master/LICENSE",
         "parents": "simple-swizzle:gfwiki-badge"
     },
-    "is-bigint@1.0.2": {
+    "is-bigint@1.0.4": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-bigint",
         "licenseUrl": "https://github.com/inspect-js/is-bigint/raw/master/LICENSE",
@@ -3879,7 +3933,7 @@
         "licenseUrl": "https://github.com/sindresorhus/is-binary-path/raw/master/license",
         "parents": "watchpack:gfwiki-badge"
     },
-    "is-boolean-object@1.1.1": {
+    "is-boolean-object@1.1.2": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-boolean-object",
         "licenseUrl": "https://github.com/inspect-js/is-boolean-object/raw/master/LICENSE",
@@ -3891,10 +3945,10 @@
         "licenseUrl": "https://github.com/feross/is-buffer/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "is-callable@1.2.3": {
+    "is-callable@1.2.4": {
         "licenses": "MIT",
-        "repository": "https://github.com/ljharb/is-callable",
-        "licenseUrl": "https://github.com/ljharb/is-callable/raw/master/LICENSE",
+        "repository": "https://github.com/inspect-js/is-callable",
+        "licenseUrl": "https://github.com/inspect-js/is-callable/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "is-ci@1.2.1": {
@@ -3909,7 +3963,7 @@
         "licenseUrl": "https://github.com/pigcan/is-color-stop/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "is-core-module@2.4.0": {
+    "is-core-module@2.6.0": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-core-module",
         "licenseUrl": "https://github.com/inspect-js/is-core-module/raw/master/LICENSE",
@@ -3927,7 +3981,7 @@
         "licenseUrl": "https://github.com/jonschlinkert/is-data-descriptor/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "is-date-object@1.0.4": {
+    "is-date-object@1.0.5": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-date-object",
         "licenseUrl": "https://github.com/inspect-js/is-date-object/raw/master/LICENSE",
@@ -3955,6 +4009,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-docker",
         "licenseUrl": "https://github.com/sindresorhus/is-docker/raw/master/license",
+        "parents": "gfwiki-badge"
+    },
+    "is-expression@4.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/is-expression",
+        "licenseUrl": "https://github.com/pugjs/is-expression/raw/master/LICENSE.md",
         "parents": "gfwiki-badge"
     },
     "is-extendable@0.1.1": {
@@ -4005,7 +4065,7 @@
         "licenseUrl": "https://github.com/inspect-js/is-negative-zero/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "is-number-object@1.0.5": {
+    "is-number-object@1.0.6": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-number-object",
         "licenseUrl": "https://github.com/inspect-js/is-number-object/raw/master/LICENSE",
@@ -4023,11 +4083,17 @@
         "licenseUrl": "https://github.com/jonschlinkert/is-number/raw/master/LICENSE",
         "parents": "watchpack:gfwiki-badge"
     },
-    "is-obj@2.0.0": {
+    "is-obj@1.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-obj",
         "licenseUrl": "https://github.com/sindresorhus/is-obj/raw/master/license",
         "parents": "gfwiki-badge"
+    },
+    "is-obj@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/is-obj",
+        "licenseUrl": "https://github.com/sindresorhus/is-obj/raw/master/license",
+        "parents": "dot-prop:gfwiki-badge"
     },
     "is-path-cwd@2.2.0": {
         "licenses": "MIT",
@@ -4051,13 +4117,13 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-plain-obj",
         "licenseUrl": "https://github.com/sindresorhus/is-plain-obj/raw/master/license",
-        "parents": "gfwiki-badge"
+        "parents": "sort-keys:gfwiki-badge"
     },
     "is-plain-obj@3.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-plain-obj",
         "licenseUrl": "https://github.com/sindresorhus/is-plain-obj/raw/master/license",
-        "parents": "@types/webpack-dev-server:gfwiki-badge"
+        "parents": "gfwiki-badge"
     },
     "is-plain-object@2.0.4": {
         "licenses": "MIT",
@@ -4071,10 +4137,22 @@
         "licenseUrl": "https://github.com/mathiasbynens/is-potential-custom-element-name/raw/master/LICENSE-MIT.txt",
         "parents": "gfwiki-badge"
     },
-    "is-regex@1.1.3": {
+    "is-promise@2.2.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/then/is-promise",
+        "licenseUrl": "https://github.com/then/is-promise/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "is-regex@1.1.4": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/is-regex",
         "licenseUrl": "https://github.com/inspect-js/is-regex/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "is-regexp@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/is-regexp",
+        "licenseUrl": "https://github.com/sindresorhus/is-regexp",
         "parents": "gfwiki-badge"
     },
     "is-resolvable@1.1.0": {
@@ -4089,13 +4167,13 @@
         "licenseUrl": "https://github.com/sindresorhus/is-stream/raw/master/license",
         "parents": "gfwiki-badge"
     },
-    "is-stream@2.0.0": {
+    "is-stream@2.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-stream",
         "licenseUrl": "https://github.com/sindresorhus/is-stream/raw/master/license",
         "parents": "default-gateway:gfwiki-badge"
     },
-    "is-string@1.0.6": {
+    "is-string@1.0.7": {
         "licenses": "MIT",
         "repository": "https://github.com/ljharb/is-string",
         "licenseUrl": "https://github.com/ljharb/is-string/raw/master/LICENSE",
@@ -4179,6 +4257,12 @@
         "licenseUrl": "https://github.com/RIAEvangelist/js-queue/raw/master/licence.md",
         "parents": "gfwiki-badge"
     },
+    "js-stringify@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jadejs/js-stringify",
+        "licenseUrl": "https://github.com/jadejs/js-stringify/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "js-tokens@4.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/lydell/js-tokens",
@@ -4197,7 +4281,7 @@
         "licenseUrl": "https://github.com/andyperlitch/jsbn/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "jsdom@16.6.0": {
+    "jsdom@16.7.0": {
         "licenses": "MIT",
         "repository": "https://github.com/jsdom/jsdom",
         "licenseUrl": "https://github.com/jsdom/jsdom/raw/master/LICENSE.txt",
@@ -4245,6 +4329,12 @@
         "licenseUrl": "https://github.com/samn/json-stable-stringify/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "json-stable-stringify@1.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/substack/json-stable-stringify",
+        "licenseUrl": "https://github.com/substack/json-stable-stringify/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "json-stringify-safe@5.0.1": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/json-stringify-safe",
@@ -4281,10 +4371,22 @@
         "licenseUrl": "https://github.com/jprichardson/node-jsonfile/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "jsonify@0.0.0": {
+        "licenses": "Public Domain",
+        "repository": "http://github.com/substack/jsonify",
+        "licenseUrl": "http://github.com/substack/jsonify",
+        "parents": "gfwiki-badge"
+    },
     "jsprim@1.4.1": {
         "licenses": "MIT",
         "repository": "https://github.com/joyent/node-jsprim",
         "licenseUrl": "https://github.com/joyent/node-jsprim/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "jstransformer@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jstransformers/jstransformer",
+        "licenseUrl": "https://github.com/jstransformers/jstransformer/raw/master/LICENSE.md",
         "parents": "gfwiki-badge"
     },
     "killable@1.0.1": {
@@ -4317,6 +4419,12 @@
         "licenseUrl": "https://github.com/jonschlinkert/kind-of/raw/master/LICENSE",
         "parents": "is-accessor-descriptor:gfwiki-badge"
     },
+    "klona@2.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lukeed/klona",
+        "licenseUrl": "https://github.com/lukeed/klona/raw/master/license",
+        "parents": "gfwiki-badge"
+    },
     "launch-editor-middleware@2.2.1": {
         "licenses": "MIT",
         "repository": "https://github.com/yyx990803/launch-editor",
@@ -4335,7 +4443,7 @@
         "licenseUrl": "https://github.com/gkz/levn/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "license-webpack-plugin@2.3.19": {
+    "license-webpack-plugin@2.3.21": {
         "licenses": "ISC",
         "repository": "https://github.com/xz64/license-webpack-plugin",
         "licenseUrl": "https://github.com/xz64/license-webpack-plugin/raw/master/LICENSE",
@@ -4389,6 +4497,12 @@
         "licenseUrl": "https://github.com/sindresorhus/locate-path/raw/master/license",
         "parents": "find-cache-dir:gfwiki-badge"
     },
+    "lodash._reinterpolate@3.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE.txt",
+        "parents": "gfwiki-badge"
+    },
     "lodash.camelcase@4.3.0": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
@@ -4420,6 +4534,18 @@
         "parents": "gfwiki-badge"
     },
     "lodash.memoize@4.1.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "lodash.template@4.5.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lodash/lodash",
+        "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "lodash.templatesettings@4.2.0": {
         "licenses": "MIT",
         "repository": "https://github.com/lodash/lodash",
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
@@ -4477,7 +4603,7 @@
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/node-lru-cache",
         "licenseUrl": "https://github.com/isaacs/node-lru-cache/raw/master/LICENSE",
-        "parents": "compression-webpack-plugin:gfwiki-badge"
+        "parents": "sass-loader:gfwiki-badge"
     },
     "magic-string@0.25.7": {
         "licenses": "MIT",
@@ -4593,13 +4719,13 @@
         "licenseUrl": "https://github.com/indutny/miller-rabin",
         "parents": "gfwiki-badge"
     },
-    "mime-db@1.48.0": {
+    "mime-db@1.49.0": {
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/mime-db",
         "licenseUrl": "https://github.com/jshttp/mime-db/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "mime-types@2.1.31": {
+    "mime-types@2.1.32": {
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/mime-types",
         "licenseUrl": "https://github.com/jshttp/mime-types/raw/master/LICENSE",
@@ -4659,30 +4785,10 @@
         "licenseUrl": "https://github.com/substack/minimist/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "minipass-collect@1.0.2": {
-        "licenses": "ISC",
-        "parents": "gfwiki-badge"
-    },
-    "minipass-flush@1.0.5": {
-        "licenses": "ISC",
-        "repository": "https://github.com/isaacs/minipass-flush",
-        "licenseUrl": "https://github.com/isaacs/minipass-flush/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
-    },
-    "minipass-pipeline@1.2.4": {
-        "licenses": "ISC",
-        "parents": "gfwiki-badge"
-    },
     "minipass@3.1.3": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/minipass",
         "licenseUrl": "https://github.com/isaacs/minipass/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
-    },
-    "minizlib@2.1.2": {
-        "licenses": "MIT",
-        "repository": "https://github.com/isaacs/minizlib",
-        "licenseUrl": "https://github.com/isaacs/minizlib/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "mississippi@3.0.0": {
@@ -4702,12 +4808,6 @@
         "repository": "https://github.com/substack/node-mkdirp",
         "licenseUrl": "https://github.com/substack/node-mkdirp/raw/master/LICENSE",
         "parents": "gfwiki-badge"
-    },
-    "mkdirp@1.0.4": {
-        "licenses": "MIT",
-        "repository": "https://github.com/isaacs/node-mkdirp",
-        "licenseUrl": "https://github.com/isaacs/node-mkdirp/raw/master/LICENSE",
-        "parents": "@npmcli/move-file:gfwiki-badge"
     },
     "move-concurrently@1.0.1": {
         "licenses": "ISC",
@@ -4763,7 +4863,7 @@
         "licenseUrl": "https://github.com/normalize/mz/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "nanoid@3.1.23": {
+    "nanoid@3.1.25": {
         "licenses": "MIT",
         "repository": "https://github.com/ai/nanoid",
         "licenseUrl": "https://github.com/ai/nanoid/raw/master/LICENSE",
@@ -4817,7 +4917,7 @@
         "licenseUrl": "https://github.com/digitalbazaar/forge/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "node-ipc@9.1.4": {
+    "node-ipc@9.2.1": {
         "licenses": "MIT",
         "repository": "https://github.com/RIAEvangelist/node-ipc",
         "licenseUrl": "https://github.com/RIAEvangelist/node-ipc/raw/master/licence",
@@ -4829,7 +4929,7 @@
         "licenseUrl": "https://github.com/webpack/node-libs-browser/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "node-releases@1.1.73": {
+    "node-releases@1.1.75": {
         "licenses": "MIT",
         "repository": "https://github.com/chicoxyzzy/node-releases",
         "licenseUrl": "https://github.com/chicoxyzzy/node-releases/raw/master/LICENSE",
@@ -4937,7 +5037,7 @@
         "licenseUrl": "https://github.com/puleos/object-hash/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "object-inspect@1.10.3": {
+    "object-inspect@1.11.0": {
         "licenses": "MIT",
         "repository": "https://github.com/inspect-js/object-inspect",
         "licenseUrl": "https://github.com/inspect-js/object-inspect/raw/master/LICENSE",
@@ -5104,12 +5204,6 @@
         "repository": "https://github.com/sindresorhus/p-map",
         "licenseUrl": "https://github.com/sindresorhus/p-map/raw/master/license",
         "parents": "gfwiki-badge"
-    },
-    "p-map@4.0.0": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/p-map",
-        "licenseUrl": "https://github.com/sindresorhus/p-map/raw/master/license",
-        "parents": "compression-webpack-plugin:gfwiki-badge"
     },
     "p-retry@3.0.1": {
         "licenses": "MIT",
@@ -5333,7 +5427,7 @@
         "licenseUrl": "https://github.com/sindresorhus/pkg-dir/raw/master/license",
         "parents": "find-cache-dir:gfwiki-badge"
     },
-    "pnp-webpack-plugin@1.6.4": {
+    "pnp-webpack-plugin@1.7.0": {
         "licenses": "MIT",
         "repository": "https://github.com/arcanis/pnp-webpack-plugin",
         "licenseUrl": "https://github.com/arcanis/pnp-webpack-plugin",
@@ -5489,7 +5583,7 @@
         "licenseUrl": "https://github.com/css-modules/postcss-modules-values/raw/master/LICENSE",
         "parents": "@vue/compiler-sfc:gfwiki-badge"
     },
-    "postcss-modules@4.1.3": {
+    "postcss-modules@4.2.2": {
         "licenses": "MIT",
         "repository": "https://github.com/css-modules/postcss-modules",
         "licenseUrl": "https://github.com/css-modules/postcss-modules/raw/master/LICENSE",
@@ -5609,7 +5703,7 @@
         "licenseUrl": "https://github.com/postcss/postcss/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "postcss@8.3.5": {
+    "postcss@8.3.6": {
         "licenses": "MIT",
         "repository": "https://github.com/postcss/postcss",
         "licenseUrl": "https://github.com/postcss/postcss/raw/master/LICENSE",
@@ -5631,6 +5725,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/prettier/prettier",
         "licenseUrl": "https://github.com/prettier/prettier/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pretty-bytes@5.6.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/pretty-bytes",
+        "licenseUrl": "https://github.com/sindresorhus/pretty-bytes/raw/master/license",
         "parents": "gfwiki-badge"
     },
     "pretty-error@2.1.2": {
@@ -5663,6 +5763,12 @@
         "licenseUrl": "https://github.com/iarna/promise-inflight/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "promise@7.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/then/promise",
+        "licenseUrl": "https://github.com/then/promise/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "proxy-addr@2.0.7": {
         "licenses": "MIT",
         "repository": "https://github.com/jshttp/proxy-addr",
@@ -5691,6 +5797,84 @@
         "licenses": "MIT",
         "repository": "https://github.com/crypto-browserify/publicEncrypt",
         "licenseUrl": "https://github.com/crypto-browserify/publicEncrypt/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-attrs@3.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-attrs",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-attrs/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-code-gen@3.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-code-gen",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-code-gen/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-error@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-error",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-error/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-filters@4.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-filters",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-filters/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-lexer@5.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-lexer",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-lexer/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-linker@4.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-linker",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-linker/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-load@3.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-load",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-load/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-parser@6.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-parser",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-parser/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-plain-loader@1.1.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/yyx990803/pug-plain-loader",
+        "licenseUrl": "https://github.com/yyx990803/pug-plain-loader/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-runtime@3.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-runtime",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-runtime/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug-strip-comments@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-strip-comments",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-strip-comments/raw/master/LICENSE.md",
+        "parents": "gfwiki-badge"
+    },
+    "pug-walk@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug-walk",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug-walk/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "pug@3.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/pug/tree/master/packages/pug",
+        "licenseUrl": "https://github.com/pugjs/pug/tree/master/packages/pug/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "pump@2.0.1": {
@@ -5837,10 +6021,16 @@
         "licenseUrl": "https://github.com/mathiasbynens/regenerate/raw/master/LICENSE-MIT.txt",
         "parents": "gfwiki-badge"
     },
-    "regenerator-runtime@0.13.7": {
+    "regenerator-runtime@0.11.1": {
         "licenses": "MIT",
         "repository": "https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime",
-        "licenseUrl": "https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime/raw/master/LICENSE",
+        "licenseUrl": "https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime",
+        "parents": "babel-runtime:gfwiki-badge"
+    },
+    "regenerator-runtime@0.13.9": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/regenerator/tree/master/packages/runtime",
+        "licenseUrl": "https://github.com/facebook/regenerator/tree/master/packages/runtime/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "regenerator-transform@0.14.5": {
@@ -5871,6 +6061,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/mathiasbynens/regexpu-core",
         "licenseUrl": "https://github.com/mathiasbynens/regexpu-core/raw/master/LICENSE-MIT.txt",
+        "parents": "gfwiki-badge"
+    },
+    "register-service-worker@1.7.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/yyx990803/register-service-worker",
+        "licenseUrl": "https://github.com/yyx990803/register-service-worker/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "regjsgen@0.5.2": {
@@ -6017,12 +6213,6 @@
         "licenseUrl": "https://github.com/isaacs/rimraf/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "rimraf@3.0.2": {
-        "licenses": "ISC",
-        "repository": "https://github.com/isaacs/rimraf",
-        "licenseUrl": "https://github.com/isaacs/rimraf/raw/master/LICENSE",
-        "parents": "@npmcli/move-file:gfwiki-badge"
-    },
     "ripemd160@2.0.2": {
         "licenses": "MIT",
         "repository": "https://github.com/crypto-browserify/ripemd160",
@@ -6071,6 +6261,18 @@
         "licenseUrl": "https://github.com/ChALkeR/safer-buffer/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "sass-loader@10.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/webpack-contrib/sass-loader",
+        "licenseUrl": "https://github.com/webpack-contrib/sass-loader/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "sass@1.38.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sass/dart-sass",
+        "licenseUrl": "https://github.com/sass/dart-sass/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "sax@1.2.4": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/sax-js",
@@ -6095,11 +6297,11 @@
         "licenseUrl": "https://github.com/webpack/schema-utils/raw/master/LICENSE",
         "parents": "babel-loader:gfwiki-badge"
     },
-    "schema-utils@3.0.0": {
+    "schema-utils@3.1.1": {
         "licenses": "MIT",
         "repository": "https://github.com/webpack/schema-utils",
         "licenseUrl": "https://github.com/webpack/schema-utils/raw/master/LICENSE",
-        "parents": "compression-webpack-plugin:gfwiki-badge"
+        "parents": "sass-loader:gfwiki-badge"
     },
     "select-hose@2.0.0": {
         "licenses": "MIT",
@@ -6135,7 +6337,7 @@
         "licenses": "ISC",
         "repository": "https://github.com/npm/node-semver",
         "licenseUrl": "https://github.com/npm/node-semver/raw/master/LICENSE",
-        "parents": "eslint-plugin-vue:gfwiki-badge"
+        "parents": "sass-loader:gfwiki-badge"
     },
     "send@0.17.1": {
         "licenses": "MIT",
@@ -6148,12 +6350,6 @@
         "repository": "https://github.com/yahoo/serialize-javascript",
         "licenseUrl": "https://github.com/yahoo/serialize-javascript/raw/master/LICENSE",
         "parents": "gfwiki-badge"
-    },
-    "serialize-javascript@5.0.1": {
-        "licenses": "BSD-3-Clause",
-        "repository": "https://github.com/yahoo/serialize-javascript",
-        "licenseUrl": "https://github.com/yahoo/serialize-javascript/raw/master/LICENSE",
-        "parents": "compression-webpack-plugin:gfwiki-badge"
     },
     "serve-index@1.9.1": {
         "licenses": "MIT",
@@ -6231,6 +6427,12 @@
         "licenses": "MIT",
         "repository": "http://github.com/substack/node-shell-quote",
         "licenseUrl": "http://github.com/substack/node-shell-quote/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "side-channel@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/side-channel",
+        "licenseUrl": "https://github.com/ljharb/side-channel/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "signal-exit@3.0.3": {
@@ -6371,7 +6573,7 @@
         "licenseUrl": "https://github.com/jslicense/spdx-expression-parse.js/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "spdx-license-ids@3.0.9": {
+    "spdx-license-ids@3.0.10": {
         "licenses": "CC0-1.0",
         "repository": "https://github.com/jslicense/spdx-license-ids",
         "licenseUrl": "https://github.com/jslicense/spdx-license-ids",
@@ -6521,6 +6723,12 @@
         "licenseUrl": "https://github.com/nodejs/string_decoder/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
+    "stringify-object@3.3.0": {
+        "licenses": "BSD-2-Clause",
+        "repository": "https://github.com/yeoman/stringify-object",
+        "licenseUrl": "https://github.com/yeoman/stringify-object/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "strip-ansi@3.0.1": {
         "licenses": "MIT",
         "repository": "https://github.com/chalk/strip-ansi",
@@ -6543,6 +6751,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/chalk/strip-ansi",
         "licenseUrl": "https://github.com/chalk/strip-ansi/raw/master/license",
+        "parents": "gfwiki-badge"
+    },
+    "strip-comments@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jonschlinkert/strip-comments",
+        "licenseUrl": "https://github.com/jonschlinkert/strip-comments/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "strip-eof@1.0.0": {
@@ -6573,12 +6787,6 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/strip-outer",
         "licenseUrl": "https://github.com/sindresorhus/strip-outer/raw/master/license",
-        "parents": "gfwiki-badge"
-    },
-    "strip-url-auth@1.0.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/sindresorhus/strip-url-auth",
-        "licenseUrl": "https://github.com/sindresorhus/strip-url-auth/raw/master/license",
         "parents": "gfwiki-badge"
     },
     "stylehacks@4.0.3": {
@@ -6633,12 +6841,6 @@
         "licenses": "MIT",
         "repository": "http://github.com/webpack/tapable",
         "licenseUrl": "http://github.com/webpack/tapable/raw/master/LICENSE",
-        "parents": "gfwiki-badge"
-    },
-    "tar@6.1.0": {
-        "licenses": "ISC",
-        "repository": "https://github.com/npm/node-tar",
-        "licenseUrl": "https://github.com/npm/node-tar/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "terser-webpack-plugin@1.4.5": {
@@ -6753,6 +6955,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/component/toidentifier",
         "licenseUrl": "https://github.com/component/toidentifier/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "token-stream@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/token-stream",
+        "licenseUrl": "https://github.com/pugjs/token-stream/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "toposort@1.0.7": {
@@ -6977,7 +7185,7 @@
         "licenseUrl": "https://github.com/webpack-contrib/url-loader/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "url-parse@1.5.1": {
+    "url-parse@1.5.3": {
         "licenses": "MIT",
         "repository": "https://github.com/unshiftio/url-parse",
         "licenseUrl": "https://github.com/unshiftio/url-parse/raw/master/LICENSE",
@@ -7079,13 +7287,13 @@
         "licenseUrl": "http://github.com/substack/vm-browserify/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "vue-cli-plugin-compression@1.1.3": {
+    "void-elements@3.1.0": {
         "licenses": "MIT",
-        "repository": "https://github.com/AnWeber/vue-cli-plugin-compression",
-        "licenseUrl": "https://github.com/AnWeber/vue-cli-plugin-compression",
+        "repository": "https://github.com/pugjs/void-elements",
+        "licenseUrl": "https://github.com/pugjs/void-elements/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "vue-eslint-parser@7.6.0": {
+    "vue-eslint-parser@7.10.0": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-eslint-parser",
         "licenseUrl": "https://github.com/vuejs/vue-eslint-parser/raw/master/LICENSE",
@@ -7097,19 +7305,19 @@
         "licenseUrl": "https://github.com/vuejs/vue-hot-reload-api/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "vue-i18n@9.1.6": {
+    "vue-i18n@9.1.7": {
         "licenses": "MIT",
         "repository": "https://github.com/intlify/vue-i18n-next",
         "licenseUrl": "https://github.com/intlify/vue-i18n-next/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "vue-loader@15.9.7": {
+    "vue-loader@15.9.8": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-loader",
         "licenseUrl": "https://github.com/vuejs/vue-loader/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "vue-loader@16.2.0": {
+    "vue-loader@16.5.0": {
         "licenses": "MIT",
         "parents": "gfwiki-badge"
     },
@@ -7125,7 +7333,7 @@
         "licenseUrl": "https://github.com/vuejs/vue-template-es2015-compiler",
         "parents": "gfwiki-badge"
     },
-    "vue@3.1.1": {
+    "vue@3.2.4": {
         "licenses": "MIT",
         "repository": "https://github.com/vuejs/vue-next",
         "licenseUrl": "https://github.com/vuejs/vue-next/raw/master/LICENSE",
@@ -7155,7 +7363,7 @@
         "licenseUrl": "https://github.com/webpack/watchpack/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "wave-ui@2.19.6": {
+    "wave-ui@2.23.0": {
         "licenses": "MIT",
         "repository": "https://github.com/antoniandre/wave-ui",
         "licenseUrl": "https://github.com/antoniandre/wave-ui/raw/master/LICENSE",
@@ -7257,7 +7465,7 @@
         "licenseUrl": "https://github.com/jsdom/whatwg-mimetype/raw/master/LICENSE.txt",
         "parents": "gfwiki-badge"
     },
-    "whatwg-url@8.6.0": {
+    "whatwg-url@8.7.0": {
         "licenses": "MIT",
         "repository": "https://github.com/jsdom/whatwg-url",
         "licenseUrl": "https://github.com/jsdom/whatwg-url/raw/master/LICENSE.txt",
@@ -7287,10 +7495,112 @@
         "licenseUrl": "https://github.com/isaacs/node-which/raw/master/LICENSE",
         "parents": "default-gateway:gfwiki-badge"
     },
+    "with@7.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/pugjs/with",
+        "licenseUrl": "https://github.com/pugjs/with/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
     "word-wrap@1.2.3": {
         "licenses": "MIT",
         "repository": "https://github.com/jonschlinkert/word-wrap",
         "licenseUrl": "https://github.com/jonschlinkert/word-wrap/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-background-sync@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-broadcast-update@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-build@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-cacheable-response@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-core@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-expiration@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-google-analytics@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-navigation-preload@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-precaching@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-range-requests@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-routing@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-strategies@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-streams@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-sw@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-webpack-plugin@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
+        "parents": "gfwiki-badge"
+    },
+    "workbox-window@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/googlechrome/workbox",
+        "licenseUrl": "https://github.com/googlechrome/workbox/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
     "worker-farm@1.7.0": {
@@ -7335,7 +7645,7 @@
         "licenseUrl": "https://github.com/websockets/ws/raw/master/LICENSE",
         "parents": "gfwiki-badge"
     },
-    "ws@7.5.0": {
+    "ws@7.5.3": {
         "licenses": "MIT",
         "repository": "https://github.com/websockets/ws",
         "licenseUrl": "https://github.com/websockets/ws/raw/master/LICENSE",
@@ -7395,7 +7705,7 @@
         "licenseUrl": "https://github.com/yargs/yargs-parser/raw/master/LICENSE.txt",
         "parents": "gfwiki-badge"
     },
-    "yargs-parser@20.2.7": {
+    "yargs-parser@20.2.9": {
         "licenses": "ISC",
         "repository": "https://github.com/yargs/yargs-parser",
         "licenseUrl": "https://github.com/yargs/yargs-parser/raw/master/LICENSE.txt",
