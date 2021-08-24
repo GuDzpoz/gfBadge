@@ -6,22 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <style>
-      #loading {
-          width: 3em;
-          height: 3em;
-          margin: 3em;
-          background-color: darkcyan;
-          animation: rotation 1s infinite;
-          position: absolute;
-          left: calc(50vw - 4.5em);
-          top: calc(50vh - 4.5em);
-      }
-      @keyframes rotation {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(90deg); }
-      }
-    </style>
+    <style>body{background-color:#6c6c6c;}[v-cloak],.v-cloak{position:absolute;left:calc(50vw - 4.5em);top:calc(50vh - 4.5em);width:9em;color:white;}#loading{width:3em;height:3em;margin:3em;background-color:#00b0b0;animation:rotation 1s infinite;position:absolute;z-index:-1;}@keyframes rotation{from{transform: rotate(0deg);}to{transform:rotate(90deg);}}</style>
   </head>
   <body>
     <noscript>
@@ -30,6 +15,7 @@
     <div id="app">
       <div v-cloak>
         <div id="loading"></div>
+        <p>Web Worker 技术可能仍有故障。无响应请刷新页面。</p>
       </div>
     </div>
     <!-- built files will be auto injected -->

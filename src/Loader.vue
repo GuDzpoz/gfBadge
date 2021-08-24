@@ -4,11 +4,11 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
-import LoadingSpinner from './components/LoadingSpinner'
+import BoxLoadingSpinner from './components/BoxLoadingSpinner'
 const App = defineAsyncComponent({
   loader: () => import(/* webpackChunkName: "app" */
     './App'),
-  loadingComponent: LoadingSpinner,
+  loadingComponent: BoxLoadingSpinner,
   delay: 0,
 })
  
