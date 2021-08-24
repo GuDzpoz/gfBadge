@@ -219,6 +219,7 @@ export default {
           statsForEX: true,
           statsForSF: false,
           highResolution: false,
+          dateStamp: false,
         },
         background: {
           url: '',

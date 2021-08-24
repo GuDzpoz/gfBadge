@@ -30,17 +30,25 @@ const dollCanvasConfig = {
   lineWidth: 2,
   textConfig: {
     name: { x: 30, y: 18, prefix: '', show: true,
+            lineWidth: 2,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
           },
     uid: { x: 700, y: 18, prefix: 'UID: ', show: true,
+           lineWidth: 2,
            font: { size: 1.1, unit: 'rem', name: 'Arial', },
          },
     level: { x: 477, y: 18, prefix: 'Lv. ', show: true,
+             lineWidth: 2,
              font: { size: 1.1, unit: 'rem', name: 'Arial', },
            },
     server: { x: 253, y: 18,  prefix: '', show: true,
+              lineWidth: 2,
               font: { size: 1.1, unit: 'rem', name: 'Arial', },
             },
+    dateStamp: { x: 5, y: 500,  prefix: '', show: true,
+                 lineWidth: 1,
+                 font: { size: 0.6, unit: 'rem', name: 'Arial', },
+               },
   },
   offsets: {
     background: { x: 0, y: 0 },
@@ -65,17 +73,25 @@ const modCanvasConfig = {
   lineWidth: 3,
   textConfig: {
     name: { x: 20, y: 15, prefix: '', show: true,
+            lineWidth: 2,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
           },
     uid: { x: 20, y: 36, prefix: 'UID: ', show: true,
+           lineWidth: 2,
            font: { size: 1.1, unit: 'rem', name: 'Arial', },
          },
     level: { x: 20, y: 57, prefix: 'Lv. ', show: true,
+             lineWidth: 2,
              font: { size: 1.1, unit: 'rem', name: 'Arial', },
            },
     server: { x: 20, y: 78, prefix: '', show: true,
+              lineWidth: 2,
               font: { size: 1.1, unit: 'rem', name: 'Arial', },
             },
+    dateStamp: { x: 5, y: 210,  prefix: '', show: true,
+                 lineWidth: 1,
+                 font: { size: 0.6, unit: 'rem', name: 'Arial', },
+               },
   },
   offsets: {
     background: { x: 0, y: -(510 - 220)/2 },
@@ -544,10 +560,20 @@ export default {
       for(var key in this.ui.info) {
         if(key in textConfig) {
           var config = textConfig[key]
-          drawText(context, config.prefix + this.ui.info[key],
+          var text = this.ui.info[key]
+          if(key === 'dateStamp') {
+            if(text) {
+              var date = new Date()
+              text = date.toLocaleDateString(this.$i18n.locale)
+                + ' Girls\' Frontline'
+            } else {
+              continue
+            }
+          }
+          drawText(context, config.prefix + text,
                    config.x, config.y,
                    this.getFont(config.font),
-                   'white', 2, 'black', 'left', 'middle')
+                   'white', config.lineWidth, 'black', 'left', 'middle')
         }
       }
       if(avatarConfig.show) {
