@@ -24,6 +24,11 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
+      exclude: [
+        '/images/skins',
+        '/images/icons',
+        '/images/backgrounds',
+      ]
     },
   },
 }

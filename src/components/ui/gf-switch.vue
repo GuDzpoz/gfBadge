@@ -55,8 +55,8 @@ export default {
   display: flex;
   margin: 1em;
   padding: 0.2em;
-  font-family: serif;
-  font-weight: bold;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 900;
 }
 
 .gf-switch div {

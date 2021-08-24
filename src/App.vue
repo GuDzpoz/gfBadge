@@ -1,16 +1,16 @@
 <template>
 <w-app>
+  <Title :title="t('title')"></Title>
   <w-flex wrap class="column">
-    <Title :title="t('title')"></Title>
-    <w-flex wrap class="row justify-center">
+    <w-flex class="row justify-end fill-width">
     <w-select :items="servers" v-model="server"
               :label="t('selectServer')"
-              outline shadow class="title3 xs5 ma3 gf-select"
+              outline class="title3 xs5 ma3 gf-select server-later white"
               label-position="left"
               inner-icon-left="mdi mdi-server title4" />
     <w-select :items="langs" v-model="$i18n.locale"
               :label="t('selectLang')"
-              outline shadow class="title3 xs5 ma3 gf-select"
+              outline class="title3 xs5 ma3 gf-select language-later white"
               label-position="left"
               inner-icon-left="mdi mdi-translate title4" />
     </w-flex>
@@ -21,8 +21,8 @@
                     :thumbnail="thumbnail" :mod="mod === 'mod'"
                     class="xs12" />
 
-    <w-flex wrap class="row">
-    <w-flex class="row" wrap>
+    <w-flex wrap class="row fill-width">
+    <w-flex class="row fill-width" wrap>
     <gf-switch :labels="{iop: canvasSwitch[1].text, mod: canvasSwitch[0].text}"
                v-model="mod"/>
     <gf-checkbox v-model="thumbnail"
@@ -58,7 +58,7 @@
     </w-flex>
 
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
-            card class="xs12 ma2 mb6 gf-tabs">
+            card class="pa4 mb6 gf-tabs white-tabs fill-width">
       <template v-slot:[`item-title.1`]>
         <img src="/images/assets/doll.png" class="gf-icon mr2" />
         {{ t('tabPoster.title') }}
@@ -87,7 +87,8 @@
         <AdjutantSelector v-model="ui.adjutant.url"
                           :dolls="typedDolls"
                           :urlbase="skinBase"
-                          :keepAlive="'adjutant'" />
+                          :keepAlive="'adjutant'"
+                          class="pa4" />
         <!-- until w-tabs supports <keep-alive> -->
       </template>
       <template v-slot:[`item-title.4`]>
@@ -95,27 +96,28 @@
         {{ t('tabBackground.title') }}
       </template>
       <template v-slot:[`item-content.4`]>
-        <w-radios :items="backgrounds" v-model="ui.background.url" inline />
+        <w-radios :items="backgrounds" v-model="ui.background.url"
+                  inline class="pa4" />
       </template>
       <template v-slot:[`item-title.5`]>
         <w-icon class="mr2">mdi mdi-information</w-icon>
         {{ t('tabGeneral.title') }}
       </template>
       <template v-slot:[`item-content.5`]>
-        <PlayerInfo v-model="ui.info" />
+        <PlayerInfo v-model="ui.info" class="pa4" />
       </template>
       <template v-slot:[`item-title.6`]>
         <w-icon class="mr2">mdi mdi-tune</w-icon>
         {{ t("tabAdjust.title") }}
       </template>
       <template v-slot:[`item-content.6`]>
-        <ParameterDashboard v-model="ui" />
+        <ParameterDashboard v-model="ui" class="pa4" />
       </template>
       <template v-slot:[`item-title.7`]>
         <w-icon class="mr2">mdi mdi-license</w-icon>
       </template>
       <template v-slot:[`item-content.7`]>
-        <License />
+        <License class="pa4" />
       </template>
     </w-tabs>
     <w-notification v-model="showNotice" :timeout="noticeTimeout"
@@ -439,14 +441,19 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.proxy.ustclug.org/css2?family=Noto+Serif+SC:wght@700&display=swap');
+@import url('https://fonts.proxy.ustclug.org/css2?family=Noto+Serif+SC:wght@700;900&display=swap');
+@import url('https://fonts.proxy.ustclug.org/css2?family=Michroma&display=swap');
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 1em;
+  margin: 0;
+  background: url(/images/assets/BG_factory.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
 h1 {
@@ -459,7 +466,7 @@ div.placeholderDiv {
 }
 
 .w-accordion__item-title {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .w-flex.wrap.row-reverse {
@@ -469,7 +476,7 @@ div.placeholderDiv {
 $SimSun: "Noto Serif SC", "SimSun", "宋体", "NSimSun", "STSong", "FangSong", "serif";
 .gf-tabs .w-tabs__bar-item {
     font-family: $SimSun;
-    font-weight: bold;
+    font-weight: 900;
     background-color: #8d8d8d;
     border-radius: 3px 3px 0 0;
     margin-right: 0.2em;
@@ -500,7 +507,7 @@ button.w-button.gf-button {
     color: #323232;
     clip-path: #{'polygon(0 0, 0 100%, calc(100% - '}$gf-button-corner-clip#{') 100%, 100% calc(100% - '}$gf-button-corner-clip#{'), 100% 0)'};
     font-family: $SimSun;
-    font-weight: bold;
+    font-weight: 900;
 }
 
 button.w-button.gf-ok {
@@ -546,30 +553,62 @@ $gf-slider-gap: 0.2em;
     display: none;
 }
 
+$bg-arrow-scale: 2.5;
 .gf-select.w-select {
     flex-flow: column;
     align-items: flex-start;
-    max-width: 10em;
+    max-width: 8em;
     min-width: 6em;
     box-shadow: 0 0 3px black;
-    padding: 0.6em;
+    padding: 0.1em 0.8em 0.4em 0.4em;
     font-family: $SimSun;
-    font-weight: bold;
+    font-weight: 900;
+    color: #313231ea;
     background-image: url(/images/assets/arrow.png);
     background-repeat: no-repeat;
-    background-size: calc(2 * .97em) calc(2 *.86em);
-    color: #313231;
+    background-size: $bg-arrow-scale * 0.97em #{' '} $bg-arrow-scale * 0.86em;
     background-position: right 0 top 0;
 }
 
 .gf-select.w-select>label {
-    margin-right: calc(2 * .97em);
-    margin-bottom: 1em;
+    display: block;
+    margin: 0 #{' '} $bg-arrow-scale * 0.97em #{' '} 0.3em 0;
 }
 
-.gf-select.w-select .primary, .w-menu.w-select__menu.w-menu--bottom, .gf-select.w-select input, .w-menu.w-select__menu.w-menu--bottom .w-list__item-label.primary {
+.gf-select.w-select>label::after {
+    font-family: "Michroma", sans-serif;
+    font-size: 0.6em;
+    display: block;
+    white-space: nowrap;
+}
+
+.gf-select.w-select.server-later>label::after {
+    content: "SERVER HOST";
+}
+
+.gf-select.w-select.language-later>label::after {
+    content: "LOCALIZATION";
+}
+
+.gf-select.w-select, .gf-select.w-select>div {
+    box-shadow: 0 0 6px #7f7f7f;
+}
+
+.gf-select.w-select .primary,
+.gf-select.w-select input,
+.w-menu.w-select__menu.w-menu--bottom,
+.w-menu.w-select__menu.w-menu--bottom .w-list__item-label.primary {
     color: #313231;
     font-family: $SimSun;
     font-weight: bold;
+}
+
+.white, .white-tabs .w-tabs__content>* {
+    background-color: white;
+    box-shadow: 0 0 6px black;
+}
+
+.white-tabs .w-tabs__content {
+    background-color: #ffffff7f;
 }
 </style>
