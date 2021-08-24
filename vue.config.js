@@ -28,6 +28,12 @@ module.exports = {
         '/images/skins',
         '/images/icons',
         '/images/backgrounds',
+        'images/skins',
+        'images/icons',
+        'images/backgrounds',
+        /images(\/|\\)skins/gim,
+        /images(\/|\\)icons/gim,
+        /images(\/|\\)backgrounds/gim,
       ]
     },
   },
