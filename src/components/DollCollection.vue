@@ -308,21 +308,8 @@ export default {
           callback(images)
         }
       }
-
-      for(let name in namedImages) {
-        var url = namedImages[name]
-        if(url === '') {
-          remainingCount -= 1
-          images[name] = emptyImage
-        } else if(name in imageCache) {
-          let img = imageCache[name]
-          var src = img.src
-          if(src.substring(src.lastIndexOf('/')+1)
-             === url.substring(url.lastIndexOf('/')+1)) {
-            remainingCount -= 1
-            images[name] = img
-          }
-        } else {
+      let fetchNewImage = (name, url) => {
+        return () => {
           let img = new Image()
           imageCache[name] = img
           images[name] = img
@@ -337,6 +324,26 @@ export default {
             callbackIfFinished()
           }
           img.src = url
+        }
+      }
+
+      for(let name in namedImages) {
+        var url = namedImages[name]
+        if(url === '') {
+          remainingCount -= 1
+          images[name] = emptyImage
+        } else if(name in imageCache) {
+          let img = imageCache[name]
+          var src = img.src
+          if(src.substring(src.lastIndexOf('/')+1)
+             === url.substring(url.lastIndexOf('/')+1)) {
+            remainingCount -= 1
+            images[name] = img
+          } else {
+            fetchNewImage(name, url)()
+          }
+        } else {
+          fetchNewImage(name, url)()
         }
       }
       callbackIfFinished()
