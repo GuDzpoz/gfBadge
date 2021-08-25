@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="gf-dashboard">
   <div class="title3 ma4">{{ $t('tabAdjust.display') }}</div>
   <w-flex wrap class="row">
     <gf-checkbox v-model="ui.info.highResolution"

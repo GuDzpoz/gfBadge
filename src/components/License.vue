@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="gf-dashboard">
   <h3>License</h3>
   <p>
     The code part of this project is licensed under <a href="https://github.com/GuDzpoz/gfBadge/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.

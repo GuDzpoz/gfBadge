@@ -612,4 +612,12 @@ $bg-arrow-scale: 2.5;
 .white-tabs .w-tabs__content {
     background-color: #ffffff7f;
 }
+
+.w-tabs .w-tabs__content .gf-dashboard {
+  background-color: #c0c0c0;
+  background-image: url(/images/assets/Panel_GK.png);
+  background-repeat: no-repeat;
+  background-size: 14em;
+  background-position: right 6em top min(50vh, 90%);
+}
 </style>
