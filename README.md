@@ -13,11 +13,8 @@ yarn install
 
 You would probably want to refresh information of dolls, illustrations, backgrounds etc.
 
-Run
-```
-yarn update-data
-```
-to fetch such information from [GFWiki](www.gfwiki.org). It is going to take a while, especially when it comes to skins.
+#### Files
+`yarn update-data` calls `update.js` to fetch information from [GFWiki](www.gfwiki.org).
 
 More usages:
 ```
@@ -28,13 +25,11 @@ Usage: 1) node update.js [option]
 
 Available option:
   --help, -h       Display this info
-  dolls            Fetch doll info
-  skins            Fetch doll skins
-  coalition        Fetch coalition doll info
-  coalitionSkins   Fetch coalition doll skins
   npcs             Fetch npc illustrations
   backgrounds      Fetch background images
 ```
+
+Files in `utils/` are explaint below in `#sidenotes`.
 
 ### Compiles and hot-reloads for development
 ```
@@ -65,7 +60,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 As we are using local images now, we have to keep consistency with GFWiki, probably manually.
 
-To do so, first make sure your files in `src/assets/` are committed to git, and `yarn update-data [options]` to update data. Then use `git diff` to check for changes.
+To do so, make sure your files in `src/assets/` are committed to git, update data and then use `git diff` to check for changes.
 
 I assume you are using Linux here.
 
@@ -119,6 +114,13 @@ I added images for `baolan` manually so you will see that the NPC info on GFWiki
 #### `backgrounds.js`
 
 First `yarn update-data backgrounds` and then `git diff --word-diff-regex='\w' src/assets/backgrounds.js` to check for changes. As a matter of fact, `yarn update-data backgrounds` is not at all acquiring data from GFWiki. Instead, it always outputs some fixed filenames. So you will most likely not find any changes.
+
+To add backgrounds, put the new `.png` file (1024x1024 or at least square) in `public/images/backgrounds/` and run:
+```
+sh utils/imagesProcessor.sh public/images/backgrounds public/images/backgrounds/thumbnails thumbnails
+yarn update-data backgrounds
+```
+(You cannot use `utils/test.sh` to test for missing thumbnails for now. So always run imageProcessor.sh to confirm.)
 
 #### `icons.js`
 

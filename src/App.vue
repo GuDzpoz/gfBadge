@@ -116,8 +116,7 @@
         {{ t('tabBackground.title') }}
       </template>
       <template v-slot:[`item-content.4`]>
-        <w-radios :items="backgrounds" v-model="ui.background.url"
-                  inline class="pa4" />
+        <Backgrounds v-model="ui.background.url" class="pa4" />
       </template>
       <template v-slot:[`item-title.5`]>
         <w-icon class="mr2">mdi mdi-information</w-icon>
@@ -161,6 +160,12 @@ const AdjutantSelector = defineAsyncComponent({
   loadingComponent: LoadingSpinner,
   delay: 50,
 })
+const Backgrounds = defineAsyncComponent({
+  loader: () => import(/* webpackChunkName: "dolls" */
+    './components/Backgrounds'),
+  loadingComponent: LoadingSpinner,
+  delay: 50,
+})
 const DollSelector = defineAsyncComponent({
   loader: () => import(/* webpackChunkName: "dolls" */
     './components/DollSelector'),
@@ -193,7 +198,6 @@ const PlayerInfo = defineAsyncComponent({
 })
 import { jsonTexts } from './assets/langs.js'
 import { icons } from './assets/icons.js'
-import { backgrounds } from './assets/backgrounds.js'
 
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'MG', 'SG', 'SF']
 
@@ -203,6 +207,7 @@ export default {
   name: 'App',
   components: {
     AdjutantSelector,
+    Backgrounds,
     DollSelector,
     DollCollection,
     License,
@@ -272,11 +277,6 @@ export default {
     })
   },
   computed: {
-    backgrounds () {
-      return Object.keys(backgrounds).filter(name => name !== '_').map(name => {
-        return { 'label': name, 'value': backgrounds['_'] + '/' + backgrounds[name] }
-      })
-    },
     langs () {
       return Object.keys(jsonTexts.langs).map((locale) => {
         return { 'label': jsonTexts.langs[locale], 'value': locale }

@@ -2,7 +2,7 @@
 
 if [ "$#" -lt 2 ]
 then
-    echo "Usage: $0 IMAGE_DIRECTORY OUTPUT_DIRECTORY [characters|skins|coalition|mergeAlpha|renameToLowerCase|optimize]"
+    echo "Usage: $0 IMAGE_DIRECTORY OUTPUT_DIRECTORY [characters|skins|coalition|mergeAlpha|renameToLowerCase|optimize|thumbnails]"
     exit 1
 fi
 
@@ -86,6 +86,25 @@ mergeAlpha() {
     done
 }
 
+thumbnails() {
+    echo "Generating thumbnails:"
+    COUNT=1
+    TOTAL=`ls ${IMAGE_DIR}/*.png | wc --lines`
+    for image in ${IMAGE_DIR}/*.png
+    do
+        imageName=`basename "${image}"`
+        output="${OUTPUT_DIR}/${imageName}"
+        if test -f "$output"
+        then
+            echo "    ${COUNT}/${TOTAL}: ${image} exists. Skipping..."
+        else
+            echo "    ${COUNT}/${TOTAL}: ${image}"
+            convert "${image}" -resize 128x128 "$output"
+        fi
+        COUNT=`expr $COUNT + 1`
+    done
+}
+
 if [ "$#" -eq 2 ]
 then
     characters
@@ -111,5 +130,8 @@ then
     elif [ "$3" = "optimize" ]
     then
         optimize
+    elif [ "$3" = "thumbnails" ]
+    then
+        thumbnails
     fi
 fi
