@@ -29,26 +29,46 @@
                  :label="t('thumbnail')" class="ml5 mr3" />
     </w-flex>
     <w-flex class="shadowDropper row" wrap>
-    <w-button @click="saveToLocal()" lg
-              bg-color="success" class="ma2 gf-button gf-cancel">
-      <w-icon class="mr2">mdi mdi-database-import</w-icon>
-      {{ t("btnSaveCfg") }}
-    </w-button>
-    <w-button @click="loadFromLocal()" lg
-              bg-color="success" class="ma2 gf-button gf-cancel">
-      <w-icon class="mr2">mdi mdi-database-export</w-icon>
-      {{ t("btnLoadCfg") }}
-    </w-button>
-    <w-button @click="saveToFile" lg
-              bg-color="info" class="ma2 gf-button gf-cancel">
-      <w-icon class="mr2">mdi mdi-download</w-icon>
-      {{ t("btnSaveCfgJSON") }}
-    </w-button>
-    <w-button @click="loadFromFile" lg
-              bg-color="info" class="ma2 gf-button gf-cancel">
-      <w-icon class="mr2">mdi mdi-upload</w-icon>
-      {{ t("btnLoadCfgJSON") }}
-    </w-button>
+    <w-tooltip top :detach-to="true">
+      <template #activator="{ on }">
+        <w-button @click="saveToLocal()" lg v-on="on"
+                  bg-color="success" class="ma2 gf-button gf-cancel">
+          <w-icon class="mr2">mdi mdi-database-import</w-icon>
+          {{ t("btnSaveCfg") }}
+        </w-button>
+      </template>
+      {{ $t('ui.saveCfgTip') }}
+    </w-tooltip>
+    <w-tooltip top :detach-to="true">
+      <template #activator="{ on }">
+        <w-button @click="loadFromLocal()" lg v-on="on"
+                  bg-color="success" class="ma2 gf-button gf-cancel">
+          <w-icon class="mr2">mdi mdi-database-export</w-icon>
+          {{ t("btnLoadCfg") }}
+        </w-button>
+      </template>
+      {{ $t('ui.loadCfgTip') }}
+    </w-tooltip>
+    <w-tooltip top :detach-to="true">
+      <template #activator="{ on }">
+        <w-button @click="saveToFile" lg v-on="on"
+                  bg-color="info" class="ma2 gf-button gf-cancel">
+          <w-icon class="mr2">mdi mdi-download</w-icon>
+          {{ t("btnSaveCfgJSON") }}
+        </w-button>
+      </template>
+      {{ $t('ui.saveCfgJSONTip') }}
+    </w-tooltip>
+    <w-tooltip top :detach-to="true">
+      <template #activator="{ on }">
+        <w-button @click="loadFromFile" lg v-on="on"
+                  bg-color="info" class="ma2 gf-button gf-cancel">
+          <w-icon class="mr2">mdi mdi-upload</w-icon>
+          {{ t("btnLoadCfgJSON") }}
+        </w-button>
+      </template>
+      {{ $t('ui.loadCfgJSONTip') }}
+    </w-tooltip>
     <w-button @click="saveToImage" lg
               bg-color="warning" class="ma2 gf-button gf-ok">
       <w-icon class="mr2">mdi mdi-image-move</w-icon>

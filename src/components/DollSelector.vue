@@ -28,7 +28,7 @@
           <span>{{ getLocalizedName(doll) }}</span>
         </label>
       </template>
-      {{ doll.cnname }}
+      {{ getLocalizedName(doll) }}
     </w-tooltip>
   </template>
 </w-accordion>
