@@ -215,4 +215,12 @@ if __name__ == "__main__":
         icons["_"] = "/images/icons"
         icons["__"] = "/images/skins"
         with open(os.path.join(outputDir, "icons.js"), "wb") as f:
-            f.write(bytes("export const icons = " + json.dumps(icons, ensure_ascii=False, separators=(',', ':')), "utf-8"))
+            f.write(
+                bytes("export const icons = "
+                      + json.dumps(
+                          icons,
+                          ensure_ascii=False,
+                          indent=4,
+                          sort_keys=True
+                      ),
+                      "utf-8"))
