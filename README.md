@@ -124,9 +124,7 @@ First `yarn update-data backgrounds` and then `git diff --word-diff-regex='\w' s
 
 `yarn update-data [options]` does not write to the `icons.js` file.
 
-First, `yarn update-data coalition` to update `utils/coalition.json`. If coalition info is not changed, you may safely skip this.
-
-Next, use `python3 utils/generateCompactData.py <asset_texttable.ab> /tmp utils/coalition.json` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/icons.js src/assets/icons.js`.
+Use `mkdir /tmp/out && python3 utils/generateCompactData.py <asset_texttable.ab> /tmp/out` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/output/icons.js src/assets/icons.js`.
 
 Use `sh utils/test.sh` to check if you need to fetch some missing images. If so, `sh utils/test.sh > missings.txt` and then `mkdir /tmp/output && python3 utils/extractMissings.py missings.txt <asset_dir> /tmp/output`, where `<asset_dir>` is where you put all the `.ab` files. After this, extracted image files will be in `/tmp/output`.
 

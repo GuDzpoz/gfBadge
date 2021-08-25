@@ -13,7 +13,7 @@
               custom hide-on-menu-click shadow>
         <template #activator="{ on }">
           <w-button v-on="on" outline class="ma1">
-            {{ doll.cnname }}
+            {{ getLocalizedName(doll) }}
           </w-button>
         </template>
         <w-list :items="skinItems(doll.skins)"
@@ -78,10 +78,10 @@ export default {
       typedNPCDolls.push({
         type: 'NPC',
         dolls: Object.keys(this.npcs).map(name => { return {
-          cnname: name,
+          cn: name,
           id: name,
           skins: Object.fromEntries(Object.keys(this.npcs[name]).map(skin =>
-            [ skin, this.npcs[name][skin]]
+            [ this.npcs[name][skin], { cn: skin,}, ]
           ))
         }})
       })
@@ -90,12 +90,15 @@ export default {
   },
   methods: {
     skinItems (skins) {
-      return Object.keys(skins ? skins : {}).map(name => {
-        return { label: name, value: skins[name] }
+      return Object.keys(skins ? skins : {}).map(filename => {
+        return {
+          label: this.getLocalizedName(skins[filename]),
+          value: filename,
+        }
       })
     },
     firstSkinItem (skins) {
-      return skins ? [Object.values(skins)[0]] : ''
+      return skins ? [Object.keys(skins)[0]] : ''
     },
     select (skin) {
       this.currentSkin = skin.value
@@ -104,7 +107,16 @@ export default {
       } else {
         this.$emit('update:modelValue', '')
       }
-    }
+    },
+    getLocalizedName(doll) {
+      var lang = this.$i18n.locale
+      if(lang in doll) {
+        if(doll[lang] !== '') {
+          return doll[lang]
+        }
+      }
+      return doll['cn']
+    },
   }
 }
 </script>

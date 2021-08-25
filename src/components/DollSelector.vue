@@ -25,7 +25,7 @@
           <div :class="iconClass(doll)">
             <img :src="doll.icon" />
           </div>
-          <span>{{ doll.cnname }}</span>
+          <span>{{ getLocalizedName(doll) }}</span>
         </label>
       </template>
       {{ doll.cnname }}
@@ -105,7 +105,16 @@ export default {
     },
     iconClass (doll) {
       return doll.id?.startsWith('c') ? 'rareSF' : 'rare' + doll.rarity
-    }
+    },
+    getLocalizedName(doll) {
+      var lang = this.$i18n.locale
+      if(lang in doll) {
+        if(doll[lang] !== '') {
+          return doll[lang]
+        }
+      }
+      return doll['cn']
+    },
   }
 }
 </script>

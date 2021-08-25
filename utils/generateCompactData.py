@@ -26,19 +26,87 @@ def parseAndMergeTable(contents):
                 table[pair[0]] = pair[1]
     return table
 
-cdnUrl = "https://cdn.jsdelivr.net/gh/Innnsane/GFwiki-Automation@main/w_stc_data/"
+cdnStcUrl = "https://cdn.jsdelivr.net/gh/randomqwerty/GFLData@main/ch/stc/"
+#cdnUrl = "https://cdn.jsdelivr.net/gh/Innnsane/GFwiki-Automation@main/w_stc_data/"
 def downloadStcJsonData(files, outputDir):
     data = {}
     for name in files:
-        url = cdnUrl + name
+        url = cdnStcUrl + name
+        print("Downloading %s..." % url)
         r = requests.get(url)
         data[name] = r.json()
         with open(os.path.join(outputDir, name), "wb") as f:
             f.write(r.content)
     return data
 
+cdnTextUrl = "https://cdn.jsdelivr.net/gh/randomqwerty/GFLData@main/%s/text/table/"
+translationTables = {
+    "gun.json": "gun",
+    "enemy_illustration.json": "coalition",
+    "skin.json": "skin",
+}
+translations = ["kr", "jp", "en"]
+def downloadTranslationTables(outputDir):
+    langs = {}
+    for lang in translations:
+        data = {}
+        langDir = os.path.join(outputDir, lang)
+        if not os.path.exists(langDir):
+            os.mkdir(langDir)
+        else:
+            if not os.path.isdir(langDir):
+                print("Please remove %s." % langDir)
+                exit(-1)
+        for name in translationTables:
+            url = (cdnTextUrl % lang) + name
+            print("Downloading %s..." % url)
+            r = requests.get(url)
+            data[translationTables[name]] = r.json()
+            with open(os.path.join(langDir, name), "wb") as f:
+                f.write(r.content)
+        langs[lang] = data
+    return langs
+
+def translateObject(obj, group, key, translationTables, suffix=""):
+    for lang in translations:
+        if key in translationTables[lang][group]:
+            obj[lang] = translationTables[lang][group][key] + suffix
+    return obj
+
+def getDefaultSkin(doll, languages, defaultLanguage, suffix=""):
+    skin = {defaultLanguage: doll[defaultLanguage] + suffix}
+    for lang in languages:
+        if lang in doll:
+            skin[lang] = doll[lang] + suffix
+    return skin
+
+def generateCoalitionData(coalitionInfo, textTable, translationTables):
+    data = {}
+    for info in reversed(coalitionInfo):
+        if info["type"] == 1 and info["if_capture"] == 1:
+            dollId =  "c" + str(info["id"])
+            cnname = textTable[info["name"]]
+            code = info["code"]
+            doll = {
+                "type": "SF",
+                "rarity": 6,
+                "modded": False,
+                "skins": {},
+                "id": dollId,
+                "cn": cnname,
+                "code": code,
+                "icon": "Icon_%s_SS_1.png" % code,
+            }
+            translateObject(doll, "coalition", info["name"], translationTables)
+            doll["skins"]["pic_%s_LL.png" % code] = getDefaultSkin(
+                doll, translations, "cn")
+            doll["skins"]["pic_%s_LL_1.png" % code] = getDefaultSkin(
+                doll, translations, "cn", "(*)")
+            data[dollId] = doll
+    return data
+
 gunTypes = [None, "HG", "SMG", "RF", "AR", "MG", "SG"]
-def generateCompactData(gunInfo, skinInfo, textTable, coalition):
+def generateCompactData(gunInfo, skinInfo, textTable, coalition, translationTables):
     def getGunType(gunTypeNum):
         return gunTypes[int(gunTypeNum)]
     def isExtra(gunId):
@@ -72,64 +140,78 @@ def generateCompactData(gunInfo, skinInfo, textTable, coalition):
             return int(rarity)
     data = coalition
     for gun in gunInfo:
-        gunId = gun["id"]
+        gunId = str(gun["id"])
         if isGunDoll(gunId):
             cnName = textTable[gun["name"]]
-            enName = gun["en_name"]
             code = gun["code"]
             rarity = getGeneralRarity(gunId, gun["rank"])
             gunType = getGunType(gun["type"])
             data[gunId] = {
                 "type": gunType,
                 "id": gunId,
-                "cnname": cnName,
-                "enname": enName,
+                "cn": cnName,
                 "code": code,
                 "icon": "Icon_%s.png" % code,
                 "modded": False,
                 "rarity": rarity,
                 #"moddedIcon": ,
                 #"modRarity": rarity,
-                "skins": {
-                    cnName: "pic_%s.png" % code,
-                    (cnName + "（破）"): "pic_%s_D.png" % code,
-                },
+                "skins": {},
             }
+            translateObject(data[gunId], "gun", gun["name"], translationTables)
+            data[gunId]["skins"]["pic_%s.png" % code] = getDefaultSkin(
+                data[gunId], translations, "cn")
+            data[gunId]["skins"]["pic_%s_D.png" % code] = getDefaultSkin(
+                data[gunId], translations, "cn", "(D)")
     for gun in gunInfo:
-        gunId = gun["id"]
+        gunId = str(gun["id"])
         if isModded(gunId):
             originalId = getOriginalId(gunId)
             gunData = data[originalId]
             gunData["modded"] = True
             gunData["moddedIcon"] = "Icon_%sMod.png" % gunData["code"]
             gunData["modRarity"] = getGeneralRarity(originalId, gun["rank"])
-            gunData["skins"][gunData["cnname"] + " Mod3"] = "pic_%sMod.png" % gunData["code"]
-            gunData["skins"][gunData["cnname"] + " Mod3（破）"] = "pic_%sMod_D.png" % gunData["code"]
+            gunData["skins"]["pic_%sMod.png" % gunData["code"]] = getDefaultSkin(
+                gunData, translations, "cn", " Mod3")
+            gunData["skins"]["pic_%sMod_D.png" % gunData["code"]] = getDefaultSkin(
+                gunData, translations, "cn", " Mod3(D)")
     for skin in skinInfo:
-        gunId = skin["fit_gun"]
+        gunId = str(skin["fit_gun"])
         if gunId != "-1" and isGunDoll(gunId):
             gun = data[gunId]
             cnName = textTable[skin["name"]]
-            firstName = "pic_%s_%s" % (gun["code"], skin["id"])
-            gun["skins"][cnName] = firstName + ".png"
-            gun["skins"][cnName + "（破）"] = firstName + "_D.png"
+            firstName = "pic_%s_%s" % (gun["code"], str(skin["id"]))
+            gun["skins"][firstName + ".png"] = translateObject(
+                {"cn": cnName,}, "skin", skin["name"], translationTables)
+            gun["skins"][firstName + "_D.png"] = translateObject(
+                {"cn": cnName + "(D)",}, "skin", skin["name"],
+                translationTables, "(D)")
     return data
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 3:
         print("Usage:")
-        print("  python3 %s <asset_texttable.ab> <output_dir> <coalition>" % sys.argv[0])
+        print("  python3 %s <asset_texttable.ab> <output_dir>" % sys.argv[0])
         exit(-1)
     else:
         outputDir = sys.argv[2]
-        table = parseAndMergeTable(exportTextTable(sys.argv[1], ["skin", "gun"], outputDir))
-        data = downloadStcJsonData(["gun_info.json", "skin_info.json"], outputDir)
-        gunInfo = data["gun_info.json"]
-        skinInfo = data["skin_info.json"]
-        icons = None
-        with open(sys.argv[3]) as f:
-            icons = json.load(f)
-        icons = generateCompactData(gunInfo, skinInfo, table, icons)
+        table = parseAndMergeTable(exportTextTable(sys.argv[1], ["skin", "gun", "enemy_illustration"], outputDir))
+        data = downloadStcJsonData(
+            ["gun.json", "skin.json", "enemy_illustration.json"],
+            outputDir)
+        translationTables = downloadTranslationTables(outputDir)
+        gunInfo = data["gun.json"]
+        skinInfo = data["skin.json"]
+        icons = generateCoalitionData(
+            data["enemy_illustration.json"],
+            table,
+            translationTables
+        )
+        icons = generateCompactData(gunInfo,
+                                    skinInfo,
+                                    table,
+                                    icons,
+                                    translationTables)
         icons["_"] = "/images/icons"
         icons["__"] = "/images/skins"
         with open(os.path.join(outputDir, "icons.js"), "wb") as f:
