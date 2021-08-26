@@ -3,6 +3,7 @@ import sys
 import os
 import requests
 import json
+from collections import OrderedDict
 
 def exportTextTable(path, wanted, outputDir):    
     env = UnityPy.load(path)
@@ -188,6 +189,25 @@ def generateCompactData(gunInfo, skinInfo, textTable, coalition, translationTabl
                 }, "skin", skin["name"], translationTables)
     return data
 
+def getOrderedDict(icons):
+    def keyingId(key):
+        if key[0] == "c":
+            return int(key[1:]) - 100000
+        elif key == "_":
+            return 0
+        elif key == "__":
+            return 0.5
+        else:
+            try:
+                return int(key)
+            except Exception:
+                return 0
+    data = OrderedDict(
+        map(lambda key: (key, icons[key]),
+            sorted(icons.keys(), key=keyingId)
+            ))
+    return data
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage:")
@@ -214,13 +234,13 @@ if __name__ == "__main__":
                                     translationTables)
         icons["_"] = "/images/icons"
         icons["__"] = "/images/skins"
+        icons = getOrderedDict(icons)
         with open(os.path.join(outputDir, "icons.js"), "wb") as f:
             f.write(
                 bytes("export const icons = "
                       + json.dumps(
                           icons,
                           ensure_ascii=False,
-                          indent=4,
-                          sort_keys=True
+                          indent=4
                       ),
                       "utf-8"))

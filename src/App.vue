@@ -457,7 +457,7 @@ export default {
         copy.push(Object.assign({}, entry))
       }
       return copy
-    }
+    },
   }
 }
 </script>
