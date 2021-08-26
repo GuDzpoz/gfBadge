@@ -1,6 +1,6 @@
 
 IFS=$'\n'
-for i in `cat src/assets/icons.js | tr -cd '\11\12\15\40-\176' | sed -e 's#"pic_#\npic_#g' -e 's#"Icon_#\nIcon_#g' | sed -e 's#.png.*$#.png#g' | grep --regexp='pic_\|Icon'`
+for i in `cat src/assets/icons.js | tr -cd '\11\12\15\40-\176' | sed -e 's#"pic_#\npic_#g' -e 's#"Icon_#\nIcon_#g' | sed -e 's#.png.*$#.png#g' | grep --regexp='pic_\|Icon' | grep --invert-match moddedIcon`
 do
   if [ -f "public/images/skins/$i" ]
   then

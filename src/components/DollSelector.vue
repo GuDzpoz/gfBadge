@@ -236,6 +236,8 @@ input.avatar:checked~span {
 }
 
 .avatar-label span {
+    overflow: clip;
+    white-space: nowrap;
     font-size: 0.7rem;
 }
 

@@ -51,12 +51,14 @@ def findMatchingString(string, stringSet):
     return result
 
 def matchFile(dollName, missingType, skinId, allAssets):
-    filename = "character" + dollName.replace(' ', '').replace('_', '').lower()
+    filename = "character" + (
+        dollName.replace(" ", "").replace("_", "").replace("-", "").lower()
+    )
     if missingType == "skin":
         filename += skinId
-    match = findMatchingString(filename + ".ab", allAssets)
+    match = findMatchingString(filename + "he.ab", allAssets)
     if match == None:
-        match = findMatchingString(filename + "he.ab", allAssets)
+        match = findMatchingString(filename + ".ab", allAssets)
     return match
 
 def extractSelectedTextures(path, isWanted, outputDir):
@@ -69,9 +71,9 @@ def extractSelectedTextures(path, isWanted, outputDir):
                 data.image.save(imagePath)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 4 and len(sys.argv) != 5:
         print("Usage:")
-        print("    python %s <missings.txt> <asset_dir> <output_dir>" % sys.argv[0])
+        print("    python %s <missings.txt> <asset_dir> <output_dir> [--all]" % sys.argv[0])
     else:
         missings = []
         with open(sys.argv[1], "r") as f:
@@ -81,6 +83,7 @@ if __name__ == "__main__":
         allAssets = os.listdir(assetDir)
         assets = {}
         assetNames = {}
+        wantAll = True if "--all" in sys.argv else False
         for filename in missings:
             filename = filename.strip()
             if filename != "":
@@ -108,11 +111,15 @@ if __name__ == "__main__":
             else:
                 dollName = assetNames[asset]
                 def selectedNeed(assetName):
+                    if wantAll:
+                        return True
                     assetName = assetName.lower()
                     if assetName.endswith("_alpha"):
                         assetName = assetName[:-6]
                     if assetName.endswith("_d"):
                         assetName = assetName[:-2]
+                    if assetName.endswith("_mod"):
+                        assetName = assetName[:-4]
                     if assetName.endswith("_n"):
                         return "icon" in assets[asset]
                     elif assetName.endswith(dollName.lower()):

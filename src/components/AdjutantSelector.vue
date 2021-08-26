@@ -1,7 +1,7 @@
 <template>
 <div>
   <gf-checkbox v-model="adjutantOn" :label="$t('tabTeam.showAdjutant')"
-             class="ma3" />
+               class="ma3" />
   <w-accordion :items="typedDolls" shadow v-model="keepAliveCache[keepAlive]">
     <template #item-title="{ item }">
       <div class="typeIconWrapper">
@@ -9,7 +9,26 @@
       </div>
     </template>
     <template #item-content="{ item }">
-      <w-menu v-for="doll in item.dolls" :key="doll.id"
+      <w-flex wrap class="row">
+        <w-tooltip v-for="skin in allSkins(item.dolls)" :key="skin.cn"
+                   :detach-to="true" top>
+          <template #activator="{ on }">
+            <div>
+              <div class="avatar-label" v-on="on">
+                <div :class="'avatar ' + iconClass(skin)" @click="select(skin)">
+                  <img :src="getIcon(skin)" />
+                </div>
+                <span>{{ getLocalizedName(skin) }}</span>
+              </div>
+              <div @click="select(skin, true)" class="damaged">？</div>
+            </div>
+          </template>
+          {{ getLocalizedName(skin) }}
+        </w-tooltip>
+      </w-flex>
+    </template>
+    <template v-slot:[`item-content.npc`]>
+      <w-menu v-for="doll in npcItem.dolls" :key="doll.id"
               custom hide-on-menu-click shadow>
         <template #activator="{ on }">
           <w-button v-on="on" outline class="ma1">
@@ -40,6 +59,7 @@ export default {
     urlbase: String,
     modelValue: String,
     keepAlive: String,
+    iconurlbase: String,
   },
   created () {
     this.currentSkin = this.modelValue.replace(this.urlbase + '/', '')
@@ -73,9 +93,9 @@ export default {
     }
   },
   computed: {
-    typedDolls () {
-      var typedNPCDolls = dollTypes.map(type => { return { type, dolls: this.dolls[type]} })
-      typedNPCDolls.push({
+    npcItem () {
+      return {
+        id: 'npc',
         type: 'NPC',
         dolls: Object.keys(this.npcs).map(name => { return {
           cn: name,
@@ -84,7 +104,11 @@ export default {
             [ this.npcs[name][skin], { cn: skin,}, ]
           ))
         }})
-      })
+      }
+    },
+    typedDolls () {
+      var typedNPCDolls = dollTypes.map(type => { return { type, dolls: this.dolls[type]} })
+      typedNPCDolls.push(this.npcItem)
       return typedNPCDolls
     },
   },
@@ -97,13 +121,40 @@ export default {
         }
       })
     },
+    iconClass (skin) {
+      return skin.parent.id?.startsWith('c') ? 'rareSF' : 'rare' + skin.parent.rarity
+    },
+    allSkins (skins) {
+      return [].concat(...skins.map(doll => {
+        return Object.keys(doll.skins).map(file =>
+          Object.assign({ value: file, parent: doll }, doll.skins[file])
+        )
+      }))
+    },
+    getIcon (skin) {
+      if('icon' in skin) {
+        if(skin['icon'] === 'mod') {
+          return skin.parent.moddedIcon
+        } else {
+          return this.iconurlbase + '/' + skin.icon
+        }
+      } else {
+        return skin.parent.icon
+      }
+    },
     firstSkinItem (skins) {
       return skins ? [Object.keys(skins)[0]] : ''
     },
-    select (skin) {
+    select (skin, damaged) {
       this.currentSkin = skin.value
       if(this.adjutantOn) {
-        this.$emit('update:modelValue', this.urlbase + '/' + skin.value)
+        var value
+        if(damaged) {
+          value = skin.alt
+        } else {
+          value = skin.value
+        }
+        this.$emit('update:modelValue', this.urlbase + '/' + value)
       } else {
         this.$emit('update:modelValue', '')
       }
@@ -133,5 +184,127 @@ export default {
     height: 1.6em;
     line-height: 1.6em;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 84% 100%, 0 100%);
+}
+
+.avatar-label .avatar {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 4em;
+    height: 4em;
+    background-color: rgba(255, 255, 255, 0);
+    display: inline-block;
+    position: relative;
+}
+
+.avatar-label .avatar::after {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    content: "";
+}
+
+.rare2 {
+    background-image: url(/images/assets/Icon_2x.png);
+}
+
+.rare3 {
+    background-image: url(/images/assets/Icon_3x.png);
+}
+
+.rare4 {
+    background-image: url(/images/assets/Icon_4x.png);
+}
+
+.rare5 {
+    background-image: url(/images/assets/Icon_5x.png);
+}
+
+.rare6 {
+    background-image: url(/images/assets/Icon_6x.png);
+}
+
+.rare1 {
+    background-image: url(/images/assets/Icon_Ex.png);
+}
+
+.rareSF {
+    background-image: url(/images/assets/Icon_SF.png);
+}
+
+.rare2::after {
+    background-image: url(/images/assets/Icon_2x_star.png);
+}
+
+.rare3::after {
+    background-image: url(/images/assets/Icon_3x_star.png);
+}
+
+.rare4::after {
+    background-image: url(/images/assets/Icon_4x_star.png);
+}
+
+.rare5::after {
+    background-image: url(/images/assets/Icon_5x_star.png);
+}
+
+.rare6::after {
+    background-image: url(/images/assets/Icon_6x_star.png);
+}
+
+.rare1::after {
+    background-image: url(/images/assets/Icon_Ex_star.png);
+}
+
+.rareSF::after {
+    background-image: url(/images/assets/Icon_SF_star.png);
+}
+
+.avatar-label {
+    display: inline-flex;
+    flex-flow: column;
+    margin: 0.25rem;
+    height: 5.4em;
+    max-width: 4em;
+    line-break: anywhere;
+    cursor: pointer;
+    border: 1px dotted gray;
+    text-align: center;
+}
+
+.avatar-label img {
+    padding: 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.avatar-label span {
+    overflow: clip;
+    white-space: nowrap;
+    font-size: 0.7rem;
+}
+
+.damaged {
+    position: absolute;
+    transform: translate(4em, -100%);
+    background-color: white;
+    border: 1px dashed black;
+    padding: 2px;
+    color: black;
+    cursor: pointer;
+}
+
+.damaged:hover {
+    background-color: #dc322f;
+    color: white;
+}
+
+.avatar-label:hover {
+    box-shadow: 3px 3px 0px #268bd2;
 }
 </style>

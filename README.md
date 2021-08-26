@@ -132,7 +132,7 @@ Use `sh utils/test.sh` to check if you need to fetch some missing images. If so,
 
 To get usable images, `mkdir /tmp/final && mkdir /tmp/middle` and:
 ```
-sh utils/imagesProcessor.sh /tmp/output /tmp/final character
+sh utils/imagesProcessor.sh /tmp/output /tmp/final characters
 sh utils/imagesProcessor.sh /tmp/output /tmp/final coalition
 sh utils/imagesProcessor.sh /tmp/output /tmp/middle mergeAlpha
 sh utils/imagesProcessor.sh /tmp/middle /tmp/final optimize

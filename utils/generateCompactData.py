@@ -73,11 +73,15 @@ def translateObject(obj, group, key, translationTables, suffix=""):
             obj[lang] = translationTables[lang][group][key] + suffix
     return obj
 
-def getDefaultSkin(doll, languages, defaultLanguage, suffix=""):
-    skin = {defaultLanguage: doll[defaultLanguage] + suffix}
+def getDefaultSkin(doll, languages, defaultLanguage, icon=None, alt=None):
+    skin = {defaultLanguage: doll[defaultLanguage]}
     for lang in languages:
         if lang in doll:
-            skin[lang] = doll[lang] + suffix
+            skin[lang] = doll[lang]
+    if icon != None:
+        skin['icon'] = icon
+    if alt != None:
+        skin['alt'] = alt
     return skin
 
 def generateCoalitionData(coalitionInfo, textTable, translationTables):
@@ -99,9 +103,7 @@ def generateCoalitionData(coalitionInfo, textTable, translationTables):
             }
             translateObject(doll, "coalition", info["name"], translationTables)
             doll["skins"]["pic_%s_LL.png" % code] = getDefaultSkin(
-                doll, translations, "cn")
-            doll["skins"]["pic_%s_LL_1.png" % code] = getDefaultSkin(
-                doll, translations, "cn", "(*)")
+                doll, translations, "cn", None, "pic_%s_LL_1.png" % code)
             data[dollId] = doll
     return data
 
@@ -160,9 +162,7 @@ def generateCompactData(gunInfo, skinInfo, textTable, coalition, translationTabl
             }
             translateObject(data[gunId], "gun", gun["name"], translationTables)
             data[gunId]["skins"]["pic_%s.png" % code] = getDefaultSkin(
-                data[gunId], translations, "cn")
-            data[gunId]["skins"]["pic_%s_D.png" % code] = getDefaultSkin(
-                data[gunId], translations, "cn", "(D)")
+                data[gunId], translations, "cn", None, "pic_%s_D.png" % code)
     for gun in gunInfo:
         gunId = str(gun["id"])
         if isModded(gunId):
@@ -172,9 +172,8 @@ def generateCompactData(gunInfo, skinInfo, textTable, coalition, translationTabl
             gunData["moddedIcon"] = "Icon_%sMod.png" % gunData["code"]
             gunData["modRarity"] = getGeneralRarity(originalId, gun["rank"])
             gunData["skins"]["pic_%sMod.png" % gunData["code"]] = getDefaultSkin(
-                gunData, translations, "cn", " Mod3")
-            gunData["skins"]["pic_%sMod_D.png" % gunData["code"]] = getDefaultSkin(
-                gunData, translations, "cn", " Mod3(D)")
+                gunData, translations, "cn", "mod",
+                "pic_%sMod_D.png" % gunData["code"])
     for skin in skinInfo:
         gunId = str(skin["fit_gun"])
         if gunId != "-1" and isGunDoll(gunId):
@@ -182,10 +181,11 @@ def generateCompactData(gunInfo, skinInfo, textTable, coalition, translationTabl
             cnName = textTable[skin["name"]]
             firstName = "pic_%s_%s" % (gun["code"], str(skin["id"]))
             gun["skins"][firstName + ".png"] = translateObject(
-                {"cn": cnName,}, "skin", skin["name"], translationTables)
-            gun["skins"][firstName + "_D.png"] = translateObject(
-                {"cn": cnName + "(D)",}, "skin", skin["name"],
-                translationTables, "(D)")
+                {
+                    "cn": cnName,
+                    "icon": "Icon_%s_%s.png" % (gun["code"], str(skin["id"])),
+                    "alt": firstName + "_D.png",
+                }, "skin", skin["name"], translationTables)
     return data
 
 if __name__ == "__main__":

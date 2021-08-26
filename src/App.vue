@@ -107,6 +107,7 @@
         <AdjutantSelector v-model="ui.adjutant.url"
                           :dolls="typedDolls"
                           :urlbase="skinBase"
+                          :iconurlbase="iconBase"
                           :keepAlive="'adjutant'"
                           class="pa4" />
         <!-- until w-tabs supports <keep-alive> -->
