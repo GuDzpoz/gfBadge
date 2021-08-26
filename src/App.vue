@@ -319,7 +319,7 @@ export default {
     },
     saveToFile () {
       var blob = new Blob([JSON.stringify(this.ui)],
-                           {type: "application/json;charset=utf-8"})
+                           {type: "application/json"})
       fileSave(blob, {
         fileName: 'gfBadgeConfig.json',
         extensions: ['.json']
