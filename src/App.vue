@@ -438,13 +438,22 @@ export default {
         return normal
       }
     },
+    keyingId (id) {
+      if(id[0] === 'c') {
+        return parseInt(id.substring(1))
+      } else {
+        return parseInt(id)
+      }
+    },
     filterDolls (type) {
-      return Object.values(this.dolls).filter(doll => doll.type === type)
+      return Object.values(this.dolls)
+        .filter(doll => doll.type === type)
+        .sort((a, b) => this.keyingId(a.id) - this.keyingId(b.id))
     },
     filterModDolls (type) {
       var dolls = this.shallowCopyArray(Object.values(this.dolls).filter(doll =>
         doll.type === type && doll.modded
-      ))
+      )).sort((a, b) => this.keyingId(a.id) - this.keyingId(b.id))
       dolls.forEach(doll => {
         doll.icon = doll.moddedIcon
         doll.rarity = doll.modRarity
