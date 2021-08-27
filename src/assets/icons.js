@@ -11255,6 +11255,81 @@ export const icons = {
         "kr": "TKB-408",
         "jp": "TKB-408"
     },
+    "341": {
+        "type": "SMG",
+        "id": "341",
+        "cn": "SP9",
+        "code": "SP9",
+        "icon": "Icon_SP9.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_SP9.png": {
+                "cn": "SP9",
+                "alt": "pic_SP9_D.png"
+            }
+        }
+    },
+    "342": {
+        "type": "AR",
+        "id": "342",
+        "cn": "KH2002",
+        "code": "KH2002",
+        "icon": "Icon_KH2002.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_KH2002.png": {
+                "cn": "KH2002",
+                "alt": "pic_KH2002_D.png"
+            }
+        }
+    },
+    "343": {
+        "type": "AR",
+        "id": "343",
+        "cn": "APC556",
+        "code": "APC556",
+        "icon": "Icon_APC556.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_APC556.png": {
+                "cn": "APC556",
+                "alt": "pic_APC556_D.png"
+            }
+        }
+    },
+    "344": {
+        "type": "AR",
+        "id": "344",
+        "cn": "FARA 83",
+        "code": "FARA83",
+        "icon": "Icon_FARA83.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_FARA83.png": {
+                "cn": "FARA 83",
+                "alt": "pic_FARA83_D.png"
+            }
+        }
+    },
+    "345": {
+        "type": "MG",
+        "id": "345",
+        "cn": "MG338",
+        "code": "MG338",
+        "icon": "Icon_MG338.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_MG338.png": {
+                "cn": "MG338",
+                "alt": "pic_MG338_D.png"
+            }
+        }
+    },
     "1001": {
         "type": "HG",
         "id": "1001",
