@@ -29,15 +29,12 @@ def parseAndMergeTable(contents):
 
 cdnStcUrl = "https://cdn.jsdelivr.net/gh/randomqwerty/GFLData@main/ch/stc/"
 #cdnUrl = "https://cdn.jsdelivr.net/gh/Innnsane/GFwiki-Automation@main/w_stc_data/"
-def downloadStcJsonData(files, outputDir):
+def downloadStcJsonData(files, stcJsonDir):
     data = {}
     for name in files:
-        url = cdnStcUrl + name
-        print("Downloading %s..." % url)
-        r = requests.get(url)
-        data[name] = r.json()
-        with open(os.path.join(outputDir, name), "wb") as f:
-            f.write(r.content)
+        path = os.path.join(stcJsonDir, name)
+        with open(path, "r") as f:
+            data[name] = json.load(f)
     return data
 
 cdnTextUrl = "https://cdn.jsdelivr.net/gh/randomqwerty/GFLData@main/%s/text/table/"
@@ -209,16 +206,16 @@ def getOrderedDict(icons):
     return data
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Usage:")
-        print("  python3 %s <asset_texttable.ab> <output_dir>" % sys.argv[0])
+        print("  python3 %s <asset_texttable.ab> <stc_json_dir> <output_dir>" % sys.argv[0])
         exit(-1)
     else:
-        outputDir = sys.argv[2]
+        outputDir = sys.argv[3]
         table = parseAndMergeTable(exportTextTable(sys.argv[1], ["skin", "gun", "enemy_illustration"], outputDir))
         data = downloadStcJsonData(
             ["gun.json", "skin.json", "enemy_illustration.json"],
-            outputDir)
+            sys.argv[2])
         translationTables = downloadTranslationTables(outputDir)
         gunInfo = data["gun.json"]
         skinInfo = data["skin.json"]
