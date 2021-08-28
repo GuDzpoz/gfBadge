@@ -24,6 +24,7 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
+      importWorkboxFrom: 'local',
       exclude: [
         '/images/skins',
         '/images/icons',
