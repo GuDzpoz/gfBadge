@@ -701,6 +701,18 @@ $bg-arrow-scale: 2.5;
     overflow: clip;
 }
 
+.gf-dialog .w-card::before {
+    background: url(/images/assets/BG_Friend.png);
+    content: "";
+    width: 5em;
+    height: 5em;
+    position: absolute;
+    opacity: 0.3;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 0;
+}
+
 .gf-dialog .w-card * {
     text-align: center;
     justify-content: center;
