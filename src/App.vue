@@ -3,16 +3,16 @@
   <Title :title="t('title')"></Title>
   <w-flex wrap class="column">
     <w-flex class="row justify-end fill-width">
-    <w-select :items="servers" v-model="server"
-              :label="t('selectServer')"
-              outline class="title3 xs5 ma3 gf-select server-later white"
-              label-position="left"
-              inner-icon-left="mdi mdi-server title4" />
-    <w-select :items="langs" v-model="$i18n.locale"
-              :label="t('selectLang')"
-              outline class="title3 xs5 ma3 gf-select language-later white"
-              label-position="left"
-              inner-icon-left="mdi mdi-translate title4" />
+      <w-select :items="servers" v-model="server"
+                :label="t('selectServer')"
+                outline class="title3 xs5 ma3 gf-select server-later white"
+                label-position="left"
+                inner-icon-left="mdi mdi-server title4" />
+      <w-select :items="langs" v-model="$i18n.locale"
+                :label="t('selectLang')"
+                outline class="title3 xs5 ma3 gf-select language-later white"
+                label-position="left"
+                inner-icon-left="mdi mdi-translate title4" />
     </w-flex>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
@@ -20,63 +20,63 @@
                     ref="canvas"
                     :thumbnail="thumbnail" :mod="mod === 'mod'"
                     class="xs12" />
-
+    
     <w-flex wrap class="row fill-width">
-    <w-flex class="row fill-width" wrap>
-    <gf-switch :labels="{iop: canvasSwitch[1].text, mod: canvasSwitch[0].text}"
-               v-model="mod"/>
-    <gf-checkbox v-model="thumbnail"
-                 :label="t('thumbnail')" class="ml5 mr3" />
+      <w-flex class="row fill-width" wrap>
+        <gf-switch :labels="{iop: canvasSwitch[1].text, mod: canvasSwitch[0].text}"
+                   v-model="mod"/>
+        <gf-checkbox v-model="thumbnail"
+                     :label="t('thumbnail')" class="ml5 mr3" />
+      </w-flex>
+      <w-flex class="shadowDropper row" wrap>
+        <w-tooltip top :detach-to="true">
+          <template #activator="{ on }">
+            <w-button @click="saveToLocal()" lg v-on="on"
+                      bg-color="success" class="ma2 gf-button gf-cancel">
+              <w-icon class="mr2">mdi mdi-database-import</w-icon>
+              {{ t("btnSaveCfg") }}
+            </w-button>
+          </template>
+          {{ $t('ui.saveCfgTip') }}
+        </w-tooltip>
+        <w-tooltip top :detach-to="true">
+          <template #activator="{ on }">
+            <w-button @click="loadFromLocal()" lg v-on="on"
+                      bg-color="success" class="ma2 gf-button gf-cancel">
+              <w-icon class="mr2">mdi mdi-database-export</w-icon>
+              {{ t("btnLoadCfg") }}
+            </w-button>
+          </template>
+          {{ $t('ui.loadCfgTip') }}
+        </w-tooltip>
+        <w-tooltip top :detach-to="true">
+          <template #activator="{ on }">
+            <w-button @click="saveToFile" lg v-on="on"
+                      bg-color="info" class="ma2 gf-button gf-cancel">
+              <w-icon class="mr2">mdi mdi-download</w-icon>
+              {{ t("btnSaveCfgJSON") }}
+            </w-button>
+          </template>
+          {{ $t('ui.saveCfgJSONTip') }}
+        </w-tooltip>
+        <w-tooltip top :detach-to="true">
+          <template #activator="{ on }">
+            <w-button @click="loadFromFile" lg v-on="on"
+                      bg-color="info" class="ma2 gf-button gf-cancel">
+              <w-icon class="mr2">mdi mdi-upload</w-icon>
+              {{ t("btnLoadCfgJSON") }}
+            </w-button>
+          </template>
+          {{ $t('ui.loadCfgJSONTip') }}
+        </w-tooltip>
+        <w-button @click="saveToImage" lg
+                  bg-color="warning" class="ma2 gf-button gf-ok">
+          <w-icon class="mr2">mdi mdi-image-move</w-icon>
+          {{ t("btnExportPNG") }}
+        </w-button>
+      </w-flex>
     </w-flex>
-    <w-flex class="shadowDropper row" wrap>
-    <w-tooltip top :detach-to="true">
-      <template #activator="{ on }">
-        <w-button @click="saveToLocal()" lg v-on="on"
-                  bg-color="success" class="ma2 gf-button gf-cancel">
-          <w-icon class="mr2">mdi mdi-database-import</w-icon>
-          {{ t("btnSaveCfg") }}
-        </w-button>
-      </template>
-      {{ $t('ui.saveCfgTip') }}
-    </w-tooltip>
-    <w-tooltip top :detach-to="true">
-      <template #activator="{ on }">
-        <w-button @click="loadFromLocal()" lg v-on="on"
-                  bg-color="success" class="ma2 gf-button gf-cancel">
-          <w-icon class="mr2">mdi mdi-database-export</w-icon>
-          {{ t("btnLoadCfg") }}
-        </w-button>
-      </template>
-      {{ $t('ui.loadCfgTip') }}
-    </w-tooltip>
-    <w-tooltip top :detach-to="true">
-      <template #activator="{ on }">
-        <w-button @click="saveToFile" lg v-on="on"
-                  bg-color="info" class="ma2 gf-button gf-cancel">
-          <w-icon class="mr2">mdi mdi-download</w-icon>
-          {{ t("btnSaveCfgJSON") }}
-        </w-button>
-      </template>
-      {{ $t('ui.saveCfgJSONTip') }}
-    </w-tooltip>
-    <w-tooltip top :detach-to="true">
-      <template #activator="{ on }">
-        <w-button @click="loadFromFile" lg v-on="on"
-                  bg-color="info" class="ma2 gf-button gf-cancel">
-          <w-icon class="mr2">mdi mdi-upload</w-icon>
-          {{ t("btnLoadCfgJSON") }}
-        </w-button>
-      </template>
-      {{ $t('ui.loadCfgJSONTip') }}
-    </w-tooltip>
-    <w-button @click="saveToImage" lg
-              bg-color="warning" class="ma2 gf-button gf-ok">
-      <w-icon class="mr2">mdi mdi-image-move</w-icon>
-      {{ t("btnExportPNG") }}
-    </w-button>
-    </w-flex>
-    </w-flex>
-
+    
     <w-tabs :items="[{}, {}, {}, {}, {}, {}, {}]"
             card class="pa4 mb6 gf-tabs white-tabs fill-width">
       <template v-slot:[`item-title.1`]>
@@ -140,6 +140,23 @@
         <License class="pa4" />
       </template>
     </w-tabs>
+    <w-dialog v-model="workerNotice" persistent persistent-no-animation>
+      发现了签名图生成器的新版本（可能包含新人形或是错漏修复）。是否更新缓存使用新版本？
+      <LoadingSpinner v-if="messageSent" />
+      <template #actions>
+        <w-button @click="workerNotice = false" lg
+                  bg-color="info" class="ma2 gf-button gf-cancel">
+          <w-icon class="mr2">mdi mdi-close-box</w-icon>
+          使用旧版本
+        </w-button>
+        
+        <w-button @click="skipToNewWorker" lg
+                  bg-color="sucess" class="ma2 gf-button gf-ok">
+          <w-icon class="mr2">mdi mdi-checkbox-marked</w-icon>
+          加载新版本
+        </w-button>
+      </template>
+    </w-dialog>
     <w-notification v-model="showNotice" :timeout="noticeTimeout"
                     warning plain round shadow>
       {{ notice }}
@@ -216,6 +233,7 @@ export default {
     PlayerInfo,
 
     Title,
+    LoadingSpinner,
   },
   setup() {
     const { t, locale } = useI18n()
@@ -230,6 +248,8 @@ export default {
       thumbnail: false,
       mod: 'iop',
       showNotice: false,
+      workerNotice: true,
+      messageSent: false,
       notice: '',
       noticeTimeout: 5000,
       ui: {
@@ -276,6 +296,11 @@ export default {
       doll.icon = this.iconBase + '/' + doll.icon
       doll.moddedIcon = this.iconBase + '/' + doll.moddedIcon
     })
+    if(this.$workbox) {
+      this.$workbox.addEventListener('waiting', () => {
+        this.workerNotice = true
+      })
+    }
   },
   computed: {
     langs () {
@@ -314,6 +339,10 @@ export default {
     },
   },
   methods: {
+    skipToNewWorker () {
+      this.messageSent = true
+      this.$workbox.messageSW({ type: "SKIP_WAITING" })
+    },
     saveToLocal () {
       localStorage.config = JSON.stringify(this.ui)
     },
@@ -476,28 +505,27 @@ export default {
 @import url('https://fonts.proxy.ustclug.org/css2?family=Michroma&display=swap');
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 0;
-  background: url(/images/assets/BG_factory.png);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+    margin: 0;
+    /* webpackIgnore: true */
+    background: url(/images/assets/BG_factory.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 div.placeholderDiv {
-  height: 80vh;
-  content: "";
+    height: 80vh;
+    content: "";
 }
 
 .w-accordion__item-title {
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .w-flex.wrap.row-reverse {
@@ -576,6 +604,7 @@ $gf-slider-gap: 0.2em;
 
 .w-slider.gf-slider .w-slider__thumb button {
     border-radius: 0;
+    /* webpackIgnore: true */
     background: url(/images/assets/slider.png);
     background-size: contain;
 }
@@ -595,6 +624,7 @@ $bg-arrow-scale: 2.5;
     font-family: $SimSun;
     font-weight: 900;
     color: #313231ea;
+    /* webpackIgnore: true */
     background-image: url(/images/assets/arrow.png);
     background-repeat: no-repeat;
     background-size: $bg-arrow-scale * 0.97em #{' '} $bg-arrow-scale * 0.86em;
@@ -644,10 +674,11 @@ $bg-arrow-scale: 2.5;
 }
 
 .w-tabs .w-tabs__content .gf-dashboard {
-  background-color: #c0c0c0;
-  background-image: url(/images/assets/Panel_GK.png);
-  background-repeat: no-repeat;
-  background-size: 14em;
-  background-position: right 6em top min(50vh, 90%);
+    background-color: #c0c0c0;
+    /* webpackIgnore: true */
+    background-image: url(/images/assets/Panel_GK.png);
+    background-repeat: no-repeat;
+    background-size: 14em;
+    background-position: right 6em top min(50vh, 90%);
 }
 </style>
