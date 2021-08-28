@@ -1163,6 +1163,11 @@
   resolved "https://registry.nlark.com/@types/tapable/download/@types/tapable-1.0.8.tgz#b94a4391c85666c7b73299fd3ad79d4faa435310"
   integrity sha1-uUpDkchWZse3Mpn9OtedT6pDUxA=
 
+"@types/trusted-types@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.nlark.com/@types/trusted-types/download/@types/trusted-types-2.0.2.tgz#fc25ad9943bcac11cceb8168db4f275e0e72e756"
+  integrity sha1-/CWtmUO8rBHM64Fo208nXg5y51Y=
+
 "@types/uglify-js@*":
   version "3.13.1"
   resolved "https://registry.nlark.com/@types/uglify-js/download/@types/uglify-js-3.13.1.tgz#5e889e9e81e94245c75b6450600e1c5ea2878aea"
@@ -9423,6 +9428,11 @@ workbox-cacheable-response@^4.3.1:
   dependencies:
     workbox-core "^4.3.1"
 
+workbox-core@6.2.4:
+  version "6.2.4"
+  resolved "https://registry.nlark.com/workbox-core/download/workbox-core-6.2.4.tgz?cache=0&sync_timestamp=1628707176296&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fworkbox-core%2Fdownload%2Fworkbox-core-6.2.4.tgz#0ffb4f0ce6d8e36f10bf4aabd96a6f55705ccd80"
+  integrity sha1-D/tPDObY428Qv0qr2WpvVXBczYA=
+
 workbox-core@^4.3.1:
   version "4.3.1"
   resolved "https://registry.nlark.com/workbox-core/download/workbox-core-4.3.1.tgz?cache=0&sync_timestamp=1628707176296&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fworkbox-core%2Fdownload%2Fworkbox-core-4.3.1.tgz#005d2c6a06a171437afd6ca2904a5727ecd73be6"
@@ -9507,6 +9517,14 @@ workbox-window@^4.3.1:
   integrity sha1-7mBRvxDwavpUg8m436BTGZTt4PM=
   dependencies:
     workbox-core "^4.3.1"
+
+workbox-window@^6.2.4:
+  version "6.2.4"
+  resolved "https://registry.nlark.com/workbox-window/download/workbox-window-6.2.4.tgz#377e792158ec83670b6f810e0077a45c1a948d1b"
+  integrity sha1-N355IVjsg2cLb4EOAHekXBqUjRs=
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+    workbox-core "6.2.4"
 
 worker-farm@^1.7.0:
   version "1.7.0"
