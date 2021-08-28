@@ -119,7 +119,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import "@/scss/avatar";
+
 input.avatar {
     display: inline;
     display: none;
@@ -151,62 +153,6 @@ input.avatar+div::after {
     pointer-events: none;
     position: absolute;
     content: "";
-}
-
-.rare2 {
-    background-image: url(/images/assets/Icon_2x.png);
-}
-
-.rare3 {
-    background-image: url(/images/assets/Icon_3x.png);
-}
-
-.rare4 {
-    background-image: url(/images/assets/Icon_4x.png);
-}
-
-.rare5 {
-    background-image: url(/images/assets/Icon_5x.png);
-}
-
-.rare6 {
-    background-image: url(/images/assets/Icon_6x.png);
-}
-
-.rare1 {
-    background-image: url(/images/assets/Icon_Ex.png);
-}
-
-.rareSF {
-    background-image: url(/images/assets/Icon_SF.png);
-}
-
-.rare2::after {
-    background-image: url(/images/assets/Icon_2x_star.png);
-}
-
-.rare3::after {
-    background-image: url(/images/assets/Icon_3x_star.png);
-}
-
-.rare4::after {
-    background-image: url(/images/assets/Icon_4x_star.png);
-}
-
-.rare5::after {
-    background-image: url(/images/assets/Icon_5x_star.png);
-}
-
-.rare6::after {
-    background-image: url(/images/assets/Icon_6x_star.png);
-}
-
-.rare1::after {
-    background-image: url(/images/assets/Icon_Ex_star.png);
-}
-
-.rareSF::after {
-    background-image: url(/images/assets/Icon_SF_star.png);
 }
 
 input.avatar+div img {
