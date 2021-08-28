@@ -30,6 +30,11 @@
                      :label="t('thumbnail')" class="ml5 mr3" />
       </w-flex>
       <w-flex class="shadowDropper row" wrap>
+        <w-button @click="this.workerNotice = true" lg v-if="hasNewWorker"
+                  bg-color="warning" class="ma2 gf-button gf-ok">
+          <w-icon class="mr2">mdi mdi-cloud-refresh</w-icon>
+          {{ t("btnUpdate") }}
+        </w-button>
         <w-tooltip top :detach-to="true">
           <template #activator="{ on }">
             <w-button @click="saveToLocal()" lg v-on="on"
@@ -255,6 +260,7 @@ export default {
       thumbnail: false,
       mod: 'iop',
       showNotice: false,
+      hasNewWorker: false,
       workerNotice: false,
       messageSent: false,
       notice: '',
@@ -305,6 +311,7 @@ export default {
     })
     if(this.$workbox) {
       this.$workbox.addEventListener('waiting', () => {
+        this.hasNewWorker = true
         this.workerNotice = true
       })
     }
