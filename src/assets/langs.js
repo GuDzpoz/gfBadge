@@ -121,6 +121,7 @@ export const jsonTexts = {
         "loadCfgDone": "加载配置完成",
         "loadCfgTime": "加载的配置创建于",
         "loadCfgEmpty": "加载的配置为空!",
+        "sw": "发现了签名图生成器的新版本（可能包含新人形或是错漏修复）。是否更新缓存使用新版本？",
       },
       "ui": {
         "selectTypeAll": "全选",
@@ -130,7 +131,9 @@ export const jsonTexts = {
         "saveCfgTip": "保存到浏览器缓存",
         "loadCfgTip": "从浏览器缓存读取",
         "saveCfgJSONTip": "保存为配置文件",
-        "loadCfgJSONTip": "从文件读取配置"
+        "loadCfgJSONTip": "从文件读取配置",
+        "swCancel": "本次保持旧版本",
+        "swLoad": "加载新版本",
       },
     },
     "tw": {
@@ -237,6 +240,7 @@ export const jsonTexts = {
         "loadCfgDone": "加載配置完成",
         "loadCfgTime": "加載的配置創建於",
         "loadCfgEmpty": "加載的配置為空!",
+        "sw": "發現了簽名圖生成器的新版本（可能包含新人形或是錯漏修復）。是否更新緩存使用新版本？",
       },
       "ui": {
         "selectTypeAll": "全選",
@@ -246,7 +250,9 @@ export const jsonTexts = {
         "saveCfgTip": "保存到瀏覽器緩存",
         "loadCfgTip": "從瀏覽器緩存讀取",
         "saveCfgJSONTip": "保存為配置文件",
-        "loadCfgJSONTip": "從文件讀取配置"
+        "loadCfgJSONTip": "從文件讀取配置",
+        "swCancel": "本次保持舊版本",
+        "swLoad": "加載新版本",
       },
     },
     "en": {
@@ -344,6 +350,7 @@ export const jsonTexts = {
         "loadCfgDone": "Config Loaded",
         "loadCfgTime": "Loaded config created at",
         "loadCfgEmpty": "Loaded configuration is empty!",
+        "sw": "A new version of GF Badge has been released (probably containing new doll data or bug fixes). Do you want to update the cache to the newer version?",
       },
       "ui": {
         "selectTypeAll": "Select All",
@@ -353,7 +360,9 @@ export const jsonTexts = {
         "saveCfgTip": "Save to browser cache",
         "loadCfgTip": "Load from browser cache",
         "saveCfgJSONTip": "Save to config file",
-        "loadCfgJSONTip": "Load from config file"
+        "loadCfgJSONTip": "Load from config file",
+        "swCancel": "Not this time",
+        "swLoad": "Update to the version",
       },
     },
     "jp": {
@@ -455,7 +464,8 @@ export const jsonTexts = {
         "loadCfg": "設定を読み込んでいます...",
         "loadCfgDone": "ロード設定が完了しました",
         "loadCfgTime": "ロードされた構成が作成されました",
-        "loadCfgEmpty": "プロファイルがありません"
+        "loadCfgEmpty": "プロファイルがありません",
+        "sw": "新しいバージョンがリリースされました（おそらく新しい人形データやバグ修正を含む）。キャッシュを新しいバージョンに更新しますか？",
       },
       "ui": {
         "selectTypeAll": "すべて選択",
@@ -465,7 +475,9 @@ export const jsonTexts = {
         "saveCfgTip": "ブラウザキャッシュに保存",
         "loadCfgTip": "ブラウザキャッシュから読み取り",
         "saveCfgJSONTip": "設定ファイルとして保存",
-        "loadCfgJSONTip": "ファイルから構成を読み取る"
+        "loadCfgJSONTip": "ファイルから構成を読み取る",
+        "swCancel": "まだ今度",
+        "swLoad": "バージョンを更新する",
       },
     },
     "kr": {
@@ -570,6 +582,7 @@ export const jsonTexts = {
         "loadCfgDone": "로드 구성 완료",
         "loadCfgTime": "로드 된 구성이 작성되었습니다",
         "loadCfgEmpty": "프로필이 없습니다!",
+        "sw": "새 버전이 출시되었습니다 (아마도 새로운 인형 데이터 또는 버그 수정 사항이 포함되어 있음). 캐시를 최신 버전으로 업데이트 하시겠습니까?",
       },
       "ui": {
         "selectTypeAll": "모두 선택",
@@ -579,7 +592,9 @@ export const jsonTexts = {
         "saveCfgTip": "브라우저 캐시에 저장",
         "loadCfgTip": "브라우저 캐시에서 읽기",
         "saveCfgJSONTip": "구성 파일로 저장",
-        "loadCfgJSONTip": "파일에서 구성 읽기"
+        "loadCfgJSONTip": "파일에서 구성 읽기",
+        "swCancel": "이번에는 아닙니다",
+        "swLoad": "버전으로 업데이트하십시오",
       },
     }
   }

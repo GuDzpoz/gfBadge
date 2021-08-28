@@ -142,19 +142,19 @@
     </w-tabs>
     <w-dialog v-model="workerNotice" persistent persistent-no-animation
               class="gf-dialog" width="50vw">
-      发现了签名图生成器的新版本（可能包含新人形或是错漏修复）。是否更新缓存使用新版本？
+      {{ t("message.sw") }}
       <LoadingSpinner v-if="messageSent" />
       <template #actions>
         <w-button @click="workerNotice = false" lg
                   bg-color="info" class="ma2 gf-button gf-cancel">
           <w-icon class="mr2">mdi mdi-close-box</w-icon>
-          使用旧版本
+          {{ t("ui.swCancel") }}
         </w-button>
         
         <w-button @click="skipToNewWorker" lg
                   bg-color="sucess" class="ma2 gf-button gf-ok">
           <w-icon class="mr2">mdi mdi-checkbox-marked</w-icon>
-          加载新版本
+          {{ t("ui.swLoad") }}
         </w-button>
       </template>
     </w-dialog>
