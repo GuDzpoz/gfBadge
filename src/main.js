@@ -8,6 +8,11 @@ import '@mdi/font/css/materialdesignicons.min.css'
 import workbox from './registerServiceWorker'
 import WaveUI from 'wave-ui/src/wave-ui'
 
+var lang = localStorage.getItem('lang')
+if(lang) {
+  jsonTexts.locale = lang
+}
+
 const i18n = createI18n(jsonTexts)
 
 const app = createApp(Loader)

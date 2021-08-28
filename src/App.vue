@@ -12,7 +12,8 @@
                 :label="t('selectLang')"
                 outline class="title3 xs5 ma3 gf-select language-later white"
                 label-position="left"
-                inner-icon-left="mdi mdi-translate title4" />
+                inner-icon-left="mdi mdi-translate title4"
+                v-on:update:model-value="langChanged" />
     </w-flex>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
@@ -345,6 +346,9 @@ export default {
     },
   },
   methods: {
+    langChanged (val) {
+      localStorage?.setItem('lang', val)
+    },
     skipToNewWorker () {
       this.messageSent = true
       this.$workbox.messageSW({ type: "SKIP_WAITING" })
