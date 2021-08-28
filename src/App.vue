@@ -236,6 +236,11 @@ export default {
     Title,
     LoadingSpinner,
   },
+  inject: {
+    $workbox: {
+      from: '$workbox',
+    },
+  },
   setup() {
     const { t, locale } = useI18n()
     return { t, locale }
