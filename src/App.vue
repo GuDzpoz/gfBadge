@@ -140,7 +140,8 @@
         <License class="pa4" />
       </template>
     </w-tabs>
-    <w-dialog v-model="workerNotice" persistent persistent-no-animation>
+    <w-dialog v-model="workerNotice" persistent persistent-no-animation
+              class="gf-dialog" width="50vw">
       发现了签名图生成器的新版本（可能包含新人形或是错漏修复）。是否更新缓存使用新版本？
       <LoadingSpinner v-if="messageSent" />
       <template #actions>
@@ -248,7 +249,7 @@ export default {
       thumbnail: false,
       mod: 'iop',
       showNotice: false,
-      workerNotice: true,
+      workerNotice: false,
       messageSent: false,
       notice: '',
       noticeTimeout: 5000,
@@ -680,5 +681,23 @@ $bg-arrow-scale: 2.5;
     background-repeat: no-repeat;
     background-size: 14em;
     background-position: right 6em top min(50vh, 90%);
+}
+
+.gf-dialog .w-card {
+    /* webpackIgnore: true */
+    background: url(/images/assets/BG_dotted.png);
+    color: white;
+    background-repeat: repeat;
+    background-size: 0.3em 0.3em;
+    text-align: center;
+    justify-content: center;
+    max-width: 500px;
+    border: 2px solid #c0c0c0c0;
+    overflow: clip;
+}
+
+.gf-dialog .w-card * {
+    text-align: center;
+    justify-content: center;
 }
 </style>
