@@ -121,7 +121,9 @@ export default {
 
 <style lang="scss">
 @import "@/scss/avatar";
+</style>
 
+<style scoped>
 input.avatar {
     display: inline;
     display: none;
