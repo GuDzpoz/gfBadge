@@ -26,7 +26,7 @@ export const icons = {
         "modded": false,
         "skins": {
             "pic_Excutioner_LL.png": {
-                "cn": "刽子手",
+                "cn": "行裁者",
                 "kr": "엑스큐셔너",
                 "jp": "エクスキューショナー",
                 "en": "Executioner",
@@ -34,7 +34,7 @@ export const icons = {
             }
         },
         "id": "c8",
-        "cn": "刽子手",
+        "cn": "行裁者",
         "code": "Excutioner",
         "icon": "Icon_Excutioner_SS_1.png",
         "kr": "엑스큐셔너",
@@ -2583,7 +2583,8 @@ export const icons = {
                 "cn": "HK416-敲击波丽露",
                 "icon": "Icon_HK416_557.png",
                 "alt": "pic_HK416_557_D.png",
-                "kr": "HK416 - 볼레로 스냅"
+                "kr": "HK416 - 볼레로 스냅",
+                "jp": "打奏のアフロレーロ"
             },
             "pic_HK416_805.png": {
                 "cn": "HK416-星之茧",
@@ -3821,7 +3822,8 @@ export const icons = {
                 "cn": "UMP9-波莱罗舞雀",
                 "icon": "Icon_UMP9_556.png",
                 "alt": "pic_UMP9_556_D.png",
-                "kr": "UMP9 - 볼레로 댄스"
+                "kr": "UMP9 - 볼레로 댄스",
+                "jp": "ボレロを舞う雀"
             },
             "pic_UMP9_2106.png": {
                 "cn": "UMP9-世界之歌",
@@ -3874,7 +3876,8 @@ export const icons = {
                 "cn": "UMP40-克莱因间奏",
                 "icon": "Icon_UMP40_559.png",
                 "alt": "pic_UMP40_559_D.png",
-                "kr": "UMP40 - 클라인 인터루드"
+                "kr": "UMP40 - 클라인 인터루드",
+                "jp": "クラインの間奏曲"
             }
         },
         "kr": "UMP40",
@@ -3933,7 +3936,8 @@ export const icons = {
                 "cn": "UMP45-旋转彭罗斯",
                 "icon": "Icon_UMP45_555.png",
                 "alt": "pic_UMP45_555_D.png",
-                "kr": "UMP45 - 펜로즈 스핀"
+                "kr": "UMP45 - 펜로즈 스핀",
+                "jp": "回るペンローズ"
             },
             "pic_UMP45_2107.png": {
                 "cn": "UMP45-钻石之花",
@@ -4644,7 +4648,8 @@ export const icons = {
                 "cn": "G11-混乱交响曲",
                 "icon": "Icon_G11_558.png",
                 "alt": "pic_G11_558_D.png",
-                "kr": "G11 - 카오스 심포니"
+                "kr": "G11 - 카오스 심포니",
+                "jp": "混迷のシンフォニー"
             },
             "pic_G11_1602.png": {
                 "cn": "G11-我最美丽的礼物",
@@ -8125,14 +8130,14 @@ export const icons = {
     "226": {
         "type": "RF",
         "id": "226",
-        "cn": "Mk 12",
+        "cn": "Mk 12",
         "code": "Mk12",
         "icon": "Icon_Mk12.png",
         "modded": false,
         "rarity": 4,
         "skins": {
             "pic_Mk12.png": {
-                "cn": "Mk 12",
+                "cn": "Mk 12",
                 "kr": "Mk 12",
                 "jp": "Mk 12",
                 "en": "Mk 12",
@@ -10865,6 +10870,7 @@ export const icons = {
                 "cn": "QSB-91",
                 "kr": "QSB-91",
                 "jp": "QSB-91",
+                "en": "QSB-91",
                 "alt": "pic_QSB91_D.png"
             },
             "pic_QSB91_6108.png": {
@@ -10876,7 +10882,8 @@ export const icons = {
             }
         },
         "kr": "QSB-91",
-        "jp": "QSB-91"
+        "jp": "QSB-91",
+        "en": "QSB-91"
     },
     "323": {
         "type": "SG",
@@ -10891,6 +10898,7 @@ export const icons = {
                 "cn": "LTLX7000",
                 "kr": "LTLX7000",
                 "jp": "LTLX7000",
+                "en": "LTLX7000",
                 "alt": "pic_LTLX7000_D.png"
             },
             "pic_LTLX7000_6101.png": {
@@ -10902,7 +10910,8 @@ export const icons = {
             }
         },
         "kr": "LTLX7000",
-        "jp": "LTLX7000"
+        "jp": "LTLX7000",
+        "en": "LTLX7000"
     },
     "324": {
         "type": "SG",
@@ -10917,11 +10926,13 @@ export const icons = {
                 "cn": "M6 ASW",
                 "kr": "M6 ASW",
                 "jp": "M6 ASW",
+                "en": "M6 ASW",
                 "alt": "pic_M6ASW_D.png"
             }
         },
         "kr": "M6 ASW",
-        "jp": "M6 ASW"
+        "jp": "M6 ASW",
+        "en": "M6 ASW"
     },
     "325": {
         "type": "SG",
@@ -10936,6 +10947,7 @@ export const icons = {
                 "cn": "V-PM5",
                 "kr": "V-PM5",
                 "jp": "PM5",
+                "en": "PM5",
                 "alt": "pic_VPM5_D.png"
             },
             "pic_VPM5_6107.png": {
@@ -10947,7 +10959,8 @@ export const icons = {
             }
         },
         "kr": "V-PM5",
-        "jp": "PM5"
+        "jp": "PM5",
+        "en": "PM5"
     },
     "326": {
         "type": "SG",
@@ -10962,11 +10975,13 @@ export const icons = {
                 "cn": "HK512",
                 "kr": "HK512",
                 "jp": "512",
+                "en": "512",
                 "alt": "pic_HK512_D.png"
             }
         },
         "kr": "HK512",
-        "jp": "512"
+        "jp": "512",
+        "en": "512"
     },
     "327": {
         "type": "SMG",
@@ -10981,11 +10996,13 @@ export const icons = {
                 "cn": "SUB-2000",
                 "kr": "SUB-2000",
                 "jp": "SUB-2000",
+                "en": "SUB-2000",
                 "alt": "pic_SUB2000_D.png"
             }
         },
         "kr": "SUB-2000",
-        "jp": "SUB-2000"
+        "jp": "SUB-2000",
+        "en": "SUB-2000"
     },
     "328": {
         "type": "SMG",
@@ -11000,11 +11017,13 @@ export const icons = {
                 "cn": "AR-57",
                 "kr": "AR-57",
                 "jp": "AR-57",
+                "en": "AR-57",
                 "alt": "pic_AR57_D.png"
             }
         },
         "kr": "AR-57",
-        "jp": "AR-57"
+        "jp": "AR-57",
+        "en": "AR-57"
     },
     "329": {
         "type": "RF",
@@ -11019,11 +11038,13 @@ export const icons = {
                 "cn": "SVCh",
                 "kr": "SVCh",
                 "jp": "SVCh",
+                "en": "SVCh",
                 "alt": "pic_SVCh_D.png"
             }
         },
         "kr": "SVCh",
-        "jp": "SVCh"
+        "jp": "SVCh",
+        "en": "SVCh"
     },
     "330": {
         "type": "AR",
@@ -11038,6 +11059,7 @@ export const icons = {
                 "cn": "FX-05",
                 "kr": "FX-05",
                 "jp": "FX-05",
+                "en": "FX-05",
                 "alt": "pic_FX05_D.png"
             },
             "pic_FX05_5806.png": {
@@ -11049,7 +11071,8 @@ export const icons = {
             }
         },
         "kr": "FX-05",
-        "jp": "FX-05"
+        "jp": "FX-05",
+        "en": "FX-05"
     },
     "331": {
         "type": "HG",
@@ -11064,11 +11087,13 @@ export const icons = {
                 "cn": "蜂鸟",
                 "kr": "콜리브리",
                 "jp": "コリブリ",
+                "en": "Kolibri",
                 "alt": "pic_Kolibri_D.png"
             }
         },
         "kr": "콜리브리",
-        "jp": "コリブリ"
+        "jp": "コリブリ",
+        "en": "Kolibri"
     },
     "332": {
         "type": "HG",
@@ -11083,11 +11108,13 @@ export const icons = {
                 "cn": "德林加",
                 "kr": "데린저",
                 "jp": "デリンジャー",
+                "en": "Derringer",
                 "alt": "pic_Derringer_D.png"
             }
         },
         "kr": "데린저",
-        "jp": "デリンジャー"
+        "jp": "デリンジャー",
+        "en": "Derringer"
     },
     "333": {
         "type": "SMG",
@@ -11102,11 +11129,13 @@ export const icons = {
                 "cn": "VP1915",
                 "kr": "VP1915",
                 "jp": "VP1915",
+                "en": "VP1915",
                 "alt": "pic_VP1915_D.png"
             }
         },
         "kr": "VP1915",
-        "jp": "VP1915"
+        "jp": "VP1915",
+        "en": "VP1915"
     },
     "334": {
         "type": "RF",
@@ -11121,11 +11150,13 @@ export const icons = {
                 "cn": "沙维奇99型",
                 "kr": "Savage 99",
                 "jp": "Model 99",
+                "en": "Model 99",
                 "alt": "pic_Savage99_D.png"
             }
         },
         "kr": "Savage 99",
-        "jp": "Model 99"
+        "jp": "Model 99",
+        "en": "Model 99"
     },
     "335": {
         "type": "AR",
@@ -11140,11 +11171,13 @@ export const icons = {
                 "cn": "菲德洛夫",
                 "kr": "표도로프",
                 "jp": "フェドロフ",
+                "en": "Fedorov Avtomat",
                 "alt": "pic_Fedorov_D.png"
             }
         },
         "kr": "표도로프",
-        "jp": "フェドロフ"
+        "jp": "フェドロフ",
+        "en": "Fedorov Avtomat"
     },
     "336": {
         "type": "SMG",
@@ -11159,6 +11192,7 @@ export const icons = {
                 "cn": "PPD-40",
                 "kr": "PPD-40",
                 "jp": "PPD-40",
+                "en": "PPD-40",
                 "alt": "pic_PPD40_D.png"
             },
             "pic_PPD40_6105.png": {
@@ -11170,7 +11204,8 @@ export const icons = {
             }
         },
         "kr": "PPD-40",
-        "jp": "PPD-40"
+        "jp": "PPD-40",
+        "en": "PPD-40"
     },
     "337": {
         "type": "RF",
@@ -11185,11 +11220,13 @@ export const icons = {
                 "cn": "德利尔",
                 "kr": "드 라일",
                 "jp": "デ・リーズル",
+                "en": "De Lisle",
                 "alt": "pic_Delisle_D.png"
             }
         },
         "kr": "드 라일",
-        "jp": "デ・リーズル"
+        "jp": "デ・リーズル",
+        "en": "De Lisle"
     },
     "338": {
         "type": "AR",
@@ -11204,11 +11241,13 @@ export const icons = {
                 "cn": "SIG MCX",
                 "kr": "SIG MCX",
                 "jp": "SIG MCX",
+                "en": "SIG MCX",
                 "alt": "pic_SIGMCX_D.png"
             }
         },
         "kr": "SIG MCX",
-        "jp": "SIG MCX"
+        "jp": "SIG MCX",
+        "en": "SIG MCX"
     },
     "339": {
         "type": "MG",
@@ -11223,6 +11262,7 @@ export const icons = {
                 "cn": "RPK-203",
                 "kr": "RPK-203",
                 "jp": "RPK-203",
+                "en": "RPK-203",
                 "alt": "pic_RPK203_D.png"
             },
             "pic_RPK203_5901.png": {
@@ -11234,7 +11274,8 @@ export const icons = {
             }
         },
         "kr": "RPK-203",
-        "jp": "RPK-203"
+        "jp": "RPK-203",
+        "en": "RPK-203"
     },
     "340": {
         "type": "AR",
@@ -11249,11 +11290,13 @@ export const icons = {
                 "cn": "TKB-408",
                 "kr": "TKB-408",
                 "jp": "TKB-408",
+                "en": "TKB-408",
                 "alt": "pic_TKB408_D.png"
             }
         },
         "kr": "TKB-408",
-        "jp": "TKB-408"
+        "jp": "TKB-408",
+        "en": "TKB-408"
     },
     "341": {
         "type": "SMG",

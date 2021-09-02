@@ -126,7 +126,7 @@ yarn update-data backgrounds
 
 `yarn update-data [options]` does not write to the `icons.js` file.
 
-First, generate `.json` file by parsing `5000.stc`, `5048.stc` and `5090.stc` using `utils/parseStc.py`.
+First, generate `.json` file by parsing `5005.stc`, `5048.stc` and `5090.stc` using `utils/parseStc.py`.
 
 Use `mkdir /tmp/out && python3 utils/generateCompactData.py <asset_texttable.ab> <str_json_path> /tmp/out` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/out/icons.js src/assets/icons.js`.
 
