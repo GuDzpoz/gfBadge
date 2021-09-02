@@ -527,6 +527,11 @@ export const icons = {
                 "kr": "토카레프 - 괴도 스위티",
                 "jp": "",
                 "en": ""
+            },
+            "pic_TT33_6205.png": {
+                "cn": "托卡列夫-深巷的落雪",
+                "icon": "Icon_TT33_6205.png",
+                "alt": "pic_TT33_6205_D.png"
             }
         },
         "kr": "토카레프",
@@ -4496,6 +4501,11 @@ export const icons = {
                 "kr": "9A-91 - 꿈을 담은 화살",
                 "jp": "花と夢の破魔矢",
                 "en": "Purifying Arrow, Flowers and Dreams"
+            },
+            "pic_9A91_6204.png": {
+                "cn": "9A-91-忠友同游",
+                "icon": "Icon_9A91_6204.png",
+                "alt": "pic_9A91_6204_D.png"
             }
         },
         "kr": "9A-91",
@@ -5493,6 +5503,11 @@ export const icons = {
                 "kr": "OTs-44 - 맑음 때때로 꿀꿀",
                 "jp": "異能少女ぶうりん",
                 "en": "Super Piggy"
+            },
+            "pic_OC44_6207.png": {
+                "cn": "OTs-44-深郊遇白兔",
+                "icon": "Icon_OC44_6207.png",
+                "alt": "pic_OC44_6207_D.png"
             }
         },
         "kr": "OTs-44",
@@ -8142,6 +8157,11 @@ export const icons = {
                 "jp": "Mk 12",
                 "en": "Mk 12",
                 "alt": "pic_Mk12_D.png"
+            },
+            "pic_Mk12_6203.png": {
+                "cn": "Mk 12-食劫者的正义",
+                "icon": "Icon_Mk12_6203.png",
+                "alt": "pic_Mk12_6203_D.png"
             }
         },
         "kr": "Mk 12",
@@ -9112,6 +9132,11 @@ export const icons = {
                 "jp": "PM-9",
                 "en": "PM-9",
                 "alt": "pic_PM9_D.png"
+            },
+            "pic_PM9_6201.png": {
+                "cn": "PM-9-不败的金色龙卷",
+                "icon": "Icon_PM9_6201.png",
+                "alt": "pic_PM9_6201_D.png"
             }
         },
         "kr": "PM-9",
@@ -10396,6 +10421,11 @@ export const icons = {
                 "kr": "타부크 - 혼백 주방장",
                 "jp": "魂の板前",
                 "en": "Culinarian of the Souleaters"
+            },
+            "pic_Tabuk_6206.png": {
+                "cn": "塔布克-三只小猪来租房",
+                "icon": "Icon_Tabuk_6206.png",
+                "alt": "pic_Tabuk_6206_D.png"
             }
         },
         "kr": "타부크 저격소총",
@@ -11222,6 +11252,11 @@ export const icons = {
                 "jp": "デ・リーズル",
                 "en": "De Lisle",
                 "alt": "pic_Delisle_D.png"
+            },
+            "pic_Delisle_6202.png": {
+                "cn": "德利尔-郊狼蓝调",
+                "icon": "Icon_Delisle_6202.png",
+                "alt": "pic_Delisle_6202_D.png"
             }
         },
         "kr": "드 라일",
