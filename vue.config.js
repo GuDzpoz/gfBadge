@@ -25,6 +25,15 @@ module.exports = {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
       importWorkboxFrom: 'local',
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'google-fonts-webfonts',
+          },
+        },
+      ],
       exclude: [
         '/images/skins',
         '/images/icons',
