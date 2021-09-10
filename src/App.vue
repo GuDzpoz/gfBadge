@@ -682,7 +682,7 @@ $bg-arrow-scale: 2.5;
 }
 
 .white, .white-tabs .w-tabs__content>* {
-    background-color: white;
+    background-color: #ffffffa0;
     box-shadow: 0 0 6px black;
 }
 

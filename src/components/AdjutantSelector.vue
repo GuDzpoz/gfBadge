@@ -13,14 +13,14 @@
         <w-tooltip v-for="skin in allSkins(item.dolls)" :key="skin.cn"
                    :detach-to="true" top>
           <template #activator="{ on }">
-            <div>
-              <div class="avatar-label" v-on="on">
+            <div class="avatar-group">
+              <button class="avatar-label" v-on="on">
                 <div :class="'avatar ' + iconClass(skin)" @click="select(skin)">
                   <img :src="getIcon(skin)" />
                 </div>
                 <span>{{ getLocalizedName(skin) }}</span>
-              </div>
-              <div @click="select(skin, true)" class="damaged">？</div>
+              </button>
+              <button @click="select(skin, true)" class="damaged">？</button>
             </div>
           </template>
           {{ getLocalizedName(skin) }}
@@ -176,7 +176,9 @@ export default {
 @import "@/scss/avatar";
 </style>
 
-<style scoped>
+<style scoped lang="scss">
+$avatar-width: 4.5em;
+$avatar-margin: 0.25rem;
 
 .typeIconWrapper {
     display: flex;
@@ -194,8 +196,8 @@ export default {
 .avatar-label .avatar {
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 4em;
-    height: 4em;
+    width: $avatar-width;
+    height: $avatar-width;
     background-color: rgba(255, 255, 255, 0);
     display: inline-block;
     position: relative;
@@ -217,9 +219,9 @@ export default {
 .avatar-label {
     display: inline-flex;
     flex-flow: column;
-    margin: 0.25rem;
-    height: 5.4em;
-    max-width: 4em;
+    margin: 0 $avatar-margin $avatar-margin 0;
+    height: 1.35 * $avatar-width;
+    max-width: $avatar-width;
     line-break: anywhere;
     cursor: pointer;
     border: 1px dotted gray;
@@ -239,21 +241,50 @@ export default {
 }
 
 .damaged {
-    position: absolute;
-    transform: translate(4em, -100%);
-    background-color: white;
     border: 1px dashed black;
+    text-aligh: center;
+    margin: 0 $avatar-margin $avatar-margin $avatar-margin;
     padding: 2px;
     color: black;
     cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
 }
 
-.damaged:hover {
+.damaged:hover, .damaged:focus {
     background-color: #dc322f;
     color: white;
 }
 
+.damaged:active:focus {
+    background-color: #d21411;
+}
+
 .avatar-label:hover {
     box-shadow: 3px 3px 0px #268bd2;
+}
+
+.avatar-label:hover {
+    box-shadow: 3px 3px 0px #268bd2;
+}
+
+.avatar-label:focus {
+    background-color: #dc322f;
+    box-shadow: $avatar-margin 0 0 #dc322f;
+    color: white;
+}
+
+.avatar-label:active:focus {
+    background-color: #d21411;
+    box-shadow: $avatar-margin 0 0 #d21411;
+    color: white;
+}
+
+.avatar-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    margin-right: $avatar-margin;
+    box-shadow: 1px 1px 5px gray;
 }
 </style>
