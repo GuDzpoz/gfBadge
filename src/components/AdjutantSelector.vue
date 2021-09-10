@@ -20,7 +20,9 @@
                 </div>
                 <span>{{ getLocalizedName(skin) }}</span>
               </button>
-              <button @click="select(skin, true)" class="damaged">？</button>
+              <button @click="select(skin, true)" class="damaged">
+                {{ $t('tabTeam.damaged') }}
+              </button>
             </div>
           </template>
           {{ getLocalizedName(skin) }}
@@ -247,7 +249,8 @@ $avatar-margin: 0.25rem;
     padding: 2px;
     color: black;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    color: #000000b0;
     line-height: 0.8rem;
 }
 

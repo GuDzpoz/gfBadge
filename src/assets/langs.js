@@ -65,7 +65,8 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "选择副官",
-        "showAdjutant": "显示副官"
+        "showAdjutant": "显示副官",
+        "damaged": "重创"
       },
       "tabMod": {
         "title": "三改进度"
@@ -186,7 +187,8 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "選擇副官",
-        "showAdjutant": "顯示副官"
+        "showAdjutant": "顯示副官",
+        "damaged": "重創"
       },
       "tabMod": {
         "title": "三改進度"
@@ -302,7 +304,8 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "Team",
-        "showAdjutant": "Show Adjutant"
+        "showAdjutant": "Show Adjutant",
+        "damaged": "Damaged"
       },
       "tabMod": {
         "title": "Mod"
@@ -413,7 +416,8 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "副官",
-        "showAdjutant": "副官表示"
+        "showAdjutant": "副官表示",
+        "damaged": "重傷"
       },
       "tabMod": {
         "title": "MOD3進度"
@@ -530,7 +534,8 @@ export const jsonTexts = {
       },
       "tabTeam": {
         "title": "중위 선택",
-        "showAdjutant": "중위 선택"
+        "showAdjutant": "중위 선택",
+        "damaged": "중상"
       },
       "tabMod": {
         "title": "3 가지 개선"
