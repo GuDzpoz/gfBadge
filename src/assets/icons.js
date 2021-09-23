@@ -8086,6 +8086,11 @@ export const icons = {
                 "kr": "Model L - 흑야연옥찰",
                 "jp": "宵闇の執行者",
                 "en": "Nocturnal Executioner"
+            },
+            "pic_CETME556_6306.png": {
+                "cn": "Model L-向着碧空漾去",
+                "icon": "Icon_CETME556_6306.png",
+                "alt": "pic_CETME556_6306_D.png"
             }
         },
         "kr": "Model L",
@@ -10186,6 +10191,11 @@ export const icons = {
                 "kr": "SL8 - 붉은 달의 추격자",
                 "jp": "赤月のチェイサー",
                 "en": "SL8 - Red Moon Stalker"
+            },
+            "pic_SL8_6302.png": {
+                "cn": "SL8-在世界的一角等你",
+                "icon": "Icon_SL8_6302.png",
+                "alt": "pic_SL8_6302_D.png"
             }
         },
         "kr": "SL8",
@@ -10554,6 +10564,11 @@ export const icons = {
                 "jp": "Rex Zero 1",
                 "en": "Rex Zero 1",
                 "alt": "pic_RexZero1_D.png"
+            },
+            "pic_RexZero1_6305.png": {
+                "cn": "Rex-0-1-怦动三部曲",
+                "icon": "Icon_RexZero1_6305.png",
+                "alt": "pic_RexZero1_6305_D.png"
             }
         },
         "kr": "Rex Zero 1",
@@ -10710,6 +10725,11 @@ export const icons = {
                 "alt": "pic_AUGPARA_5503_D.png",
                 "kr": "AUG Para - 보옥을 이끄는 향",
                 "jp": ""
+            },
+            "pic_AUGPARA_6301.png": {
+                "cn": "AUG SMG-溯溪踏秋时",
+                "icon": "Icon_AUGPARA_6301.png",
+                "alt": "pic_AUGPARA_6301_D.png"
             }
         },
         "kr": "AUG Para ",
@@ -10774,6 +10794,11 @@ export const icons = {
                 "alt": "pic_MondragonM1908_5704_D.png",
                 "kr": "몬드라곤 M1908 - 숙명의 추적자",
                 "jp": "宿命の修理人"
+            },
+            "pic_MondragonM1908_6304.png": {
+                "cn": "蒙德拉贡M1908-残雨暝烟",
+                "icon": "Icon_MondragonM1908_6304.png",
+                "alt": "pic_MondragonM1908_6304_D.png"
             }
         },
         "kr": "몬드라곤 M1908",
@@ -11344,9 +11369,16 @@ export const icons = {
         "skins": {
             "pic_SP9.png": {
                 "cn": "SP9",
+                "en": "",
                 "alt": "pic_SP9_D.png"
+            },
+            "pic_SP9_6303.png": {
+                "cn": "SP9-星河中沉睡的梦",
+                "icon": "Icon_SP9_6303.png",
+                "alt": "pic_SP9_6303_D.png"
             }
-        }
+        },
+        "en": ""
     },
     "342": {
         "type": "AR",
@@ -11359,9 +11391,11 @@ export const icons = {
         "skins": {
             "pic_KH2002.png": {
                 "cn": "KH2002",
+                "en": "",
                 "alt": "pic_KH2002_D.png"
             }
-        }
+        },
+        "en": ""
     },
     "343": {
         "type": "AR",
@@ -11374,9 +11408,11 @@ export const icons = {
         "skins": {
             "pic_APC556.png": {
                 "cn": "APC556",
+                "en": "",
                 "alt": "pic_APC556_D.png"
             }
-        }
+        },
+        "en": ""
     },
     "344": {
         "type": "AR",
@@ -11389,9 +11425,11 @@ export const icons = {
         "skins": {
             "pic_FARA83.png": {
                 "cn": "FARA 83",
+                "en": "",
                 "alt": "pic_FARA83_D.png"
             }
-        }
+        },
+        "en": ""
     },
     "345": {
         "type": "MG",
@@ -11404,7 +11442,69 @@ export const icons = {
         "skins": {
             "pic_MG338.png": {
                 "cn": "MG338",
+                "en": "",
                 "alt": "pic_MG338_D.png"
+            }
+        },
+        "en": ""
+    },
+    "346": {
+        "type": "HG",
+        "id": "346",
+        "cn": "CZ 100",
+        "code": "CZ100",
+        "icon": "Icon_CZ100.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_CZ100.png": {
+                "cn": "CZ 100",
+                "alt": "pic_CZ100_D.png"
+            }
+        }
+    },
+    "347": {
+        "type": "SMG",
+        "id": "347",
+        "cn": "SR-2",
+        "code": "SR2",
+        "icon": "Icon_SR2.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_SR2.png": {
+                "cn": "SR-2",
+                "alt": "pic_SR2_D.png"
+            }
+        }
+    },
+    "348": {
+        "type": "RF",
+        "id": "348",
+        "cn": "HS.50",
+        "code": "HS50",
+        "icon": "Icon_HS50.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_HS50.png": {
+                "cn": "HS.50",
+                "alt": "pic_HS50_D.png"
+            }
+        }
+    },
+    "349": {
+        "type": "AR",
+        "id": "349",
+        "cn": "AK74M",
+        "code": "AK74M",
+        "icon": "Icon_AK74M.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_AK74M.png": {
+                "cn": "AK74M",
+                "alt": "pic_AK74M_D.png"
             }
         }
     },

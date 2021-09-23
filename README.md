@@ -134,7 +134,7 @@ python3 utils/parseStc.py /tmp/stc/5048.stc utils/formats/5048.format utils/stcJ
 python3 utils/parseStc.py /tmp/stc/5090.stc utils/formats/5090.format utils/stcJson
 ```
 
-Use `mkdir /tmp/out && python3 utils/generateCompactData.py <asset_texttable.ab> <str_json_path> /tmp/out` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/out/icons.js src/assets/icons.js`.
+Use `mkdir /tmp/out && python3 utils/generateCompactData.py <asset_texttable.ab> utils/stcJson /tmp/out` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/out/icons.js src/assets/icons.js`.
 
 Use `sh utils/test.sh` to check if you need to fetch some missing images. If so, `sh utils/test.sh > missings.txt` and then `mkdir /tmp/output && python3 utils/extractMissings.py missings.txt <asset_dir> /tmp/output`, where `<asset_dir>` is where you put all the `.ab` files. After this, extracted image files will be in `/tmp/output`.
 
