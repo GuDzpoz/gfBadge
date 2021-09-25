@@ -14,6 +14,12 @@
                 label-position="left"
                 inner-icon-left="mdi mdi-translate title4"
                 v-on:update:model-value="langChanged" />
+      <div class="powered">
+        <a href="http://gfwiki.org">
+          <img src="images/assets/Gfwiki_link.png"
+               alt="Proudly Powered by GF Wiki" />
+        </a>
+      </div>
     </w-flex>
     <DollCollection :ui="ui"
                     :dolls="typedAllDolls" :modDolls="typedModDolls"
