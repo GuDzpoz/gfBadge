@@ -127,7 +127,13 @@ export default {
       return skin.parent.id?.startsWith('c')
     },
     iconClass (skin) {
-      return this.isSF(skin) ? 'rareSF' : 'rare' + skin.parent.rarity
+      if(skin.icon === 'mod') {
+        return 'rare' + skin.parent.modRarity
+      } else if(this.isSF(skin)) {
+        return 'rareSF'
+      } else {
+        return 'rare' + skin.parent.rarity
+      }
     },
     allSkins (skins) {
       return [].concat(...skins.map(doll => {
