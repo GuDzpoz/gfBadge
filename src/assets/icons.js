@@ -312,6 +312,23 @@ export const icons = {
         "kr": "아키텍트-NVW형",
         "jp": ""
     },
+    "c140": {
+        "type": "SF",
+        "rarity": 6,
+        "modded": false,
+        "skins": {
+            "pic_Intruder_Halloween_LL.png": {
+                "cn": "干扰者-终幕魔女",
+                "kr": "인트루더-종막의 마녀",
+                "alt": "pic_Intruder_Halloween_LL_1.png"
+            }
+        },
+        "id": "c140",
+        "cn": "干扰者-终幕魔女",
+        "code": "Intruder_Halloween",
+        "icon": "Icon_Intruder_Halloween_SS_1.png",
+        "kr": "인트루더-종막의 마녀"
+    },
     "_": "/images/icons",
     "__": "/images/skins",
     "1": {
@@ -532,7 +549,8 @@ export const icons = {
                 "cn": "托卡列夫-深巷的落雪",
                 "icon": "Icon_TT33_6205.png",
                 "alt": "pic_TT33_6205_D.png",
-                "kr": "토카레프 - 눈 내리는 오솔길"
+                "kr": "토카레프 - 눈 내리는 오솔길",
+                "jp": ""
             }
         },
         "kr": "토카레프",
@@ -2607,6 +2625,11 @@ export const icons = {
                 "kr": "HK416 - 고양이의 선물",
                 "jp": "くろねこの贈りもの",
                 "en": "Black Kitty's Gift"
+            },
+            "pic_HK416_6505.png": {
+                "cn": "HK416-子夜福音",
+                "icon": "Icon_HK416_6505.png",
+                "alt": "pic_HK416_6505_D.png"
             }
         },
         "kr": "HK416",
@@ -3075,6 +3098,14 @@ export const icons = {
                 "kr": "LWMMG - 12월은 나의 거짓말",
                 "jp": "12月は私の嘘",
                 "en": "My Lie in December"
+            },
+            "pic_LWMMG_6406.png": {
+                "cn": "LWMMG-拼凑者的独白",
+                "icon": "Icon_LWMMG_6406.png",
+                "alt": "pic_LWMMG_6406_D.png",
+                "kr": "LWMMG - 누더기의 독백",
+                "jp": "ツギハギの怪物の独白",
+                "en": "Patchworker's Soliloquy"
             }
         },
         "kr": "LWMMG",
@@ -3525,6 +3556,11 @@ export const icons = {
                 "kr": "한양조 88식 - 메이드단의 광란질주",
                 "jp": "メイド隊怒涛の真夜中",
                 "en": ""
+            },
+            "pic_88type_6503.png": {
+                "cn": "汉阳造88式-纯白流星负愿而行",
+                "icon": "Icon_88type_6503.png",
+                "alt": "pic_88type_6503_D.png"
             }
         },
         "kr": "한양조 88식",
@@ -4517,7 +4553,8 @@ export const icons = {
                 "cn": "9A-91-忠友同游",
                 "icon": "Icon_9A91_6204.png",
                 "alt": "pic_9A91_6204_D.png",
-                "kr": "9A-91 - 충성스러운 길동무"
+                "kr": "9A-91 - 충성스러운 길동무",
+                "jp": ""
             }
         },
         "kr": "9A-91",
@@ -4968,6 +5005,14 @@ export const icons = {
                 "alt": "pic_95type_5604_D.png",
                 "kr": "95식 - 리시안셔스의 계절",
                 "jp": ""
+            },
+            "pic_95type_6401.png": {
+                "cn": "95式-素白濯清涟",
+                "icon": "Icon_95type_6401.png",
+                "alt": "pic_95type_6401_D.png",
+                "kr": "95식 - 티끌 없는 물결",
+                "jp": "純白、清漣に濯はれて",
+                "en": "White Lotus in Limpid Waters"
             }
         },
         "kr": "95식",
@@ -5520,7 +5565,8 @@ export const icons = {
                 "cn": "OTs-44-深郊遇白兔",
                 "icon": "Icon_OC44_6207.png",
                 "alt": "pic_OC44_6207_D.png",
-                "kr": "OTs-44 - 깊은 숲속 흰토끼"
+                "kr": "OTs-44 - 깊은 숲속 흰토끼",
+                "jp": ""
             }
         },
         "kr": "OTs-44",
@@ -6692,6 +6738,11 @@ export const icons = {
                 "kr": "F1 - 블랙 위치 아카데미",
                 "jp": "ウィッチアカデミア",
                 "en": "Dark Sorceress Academy"
+            },
+            "pic_F1_6507.png": {
+                "cn": "F1-荒漠的龙与诗",
+                "icon": "Icon_F1_6507.png",
+                "alt": "pic_F1_6507_D.png"
             }
         },
         "kr": "F1",
@@ -7865,6 +7916,14 @@ export const icons = {
                 "kr": "C-MS - 날치 대행진",
                 "jp": "進撃の飛魚",
                 "en": "Flying Fish Assault"
+            },
+            "pic_CBJMS_6403.png": {
+                "cn": "C-MS-献给乔安娜",
+                "icon": "Icon_CBJMS_6403.png",
+                "alt": "pic_CBJMS_6403_D.png",
+                "kr": "C-MS - 요한나를 위하여",
+                "jp": "ヨアンナに捧ぐ",
+                "en": "To Matka Joanna"
             }
         },
         "kr": "C-MS",
@@ -8030,6 +8089,14 @@ export const icons = {
                 "en": "MP-443",
                 "icon": "mod",
                 "alt": "pic_MP443Mod_D.png"
+            },
+            "pic_MP443_6405.png": {
+                "cn": "MP-443-迷途引渡人",
+                "icon": "Icon_MP443_6405.png",
+                "alt": "pic_MP443_6405_D.png",
+                "kr": "MP-443 - 미궁의 안내인",
+                "jp": "迷える案内人",
+                "en": "Shepherd of the Lost"
             }
         },
         "kr": "MP-443",
@@ -8134,7 +8201,8 @@ export const icons = {
                 "cn": "Model L-向着碧空漾去",
                 "icon": "Icon_CETME556_6306.png",
                 "alt": "pic_CETME556_6306_D.png",
-                "kr": "Model L - 푸른 하늘로 두둥실"
+                "kr": "Model L - 푸른 하늘로 두둥실",
+                "jp": ""
             }
         },
         "kr": "Model L",
@@ -8211,7 +8279,8 @@ export const icons = {
                 "cn": "Mk 12-食劫者的正义",
                 "icon": "Icon_Mk12_6203.png",
                 "alt": "pic_Mk12_6203_D.png",
-                "kr": "Mk 12 - 정의로운 식량털이"
+                "kr": "Mk 12 - 정의로운 식량털이",
+                "jp": ""
             }
         },
         "kr": "Mk 12",
@@ -9187,7 +9256,8 @@ export const icons = {
                 "cn": "PM-9-不败的金色龙卷",
                 "icon": "Icon_PM9_6201.png",
                 "alt": "pic_PM9_6201_D.png",
-                "kr": "PM-9 - 백전불패 황금빛"
+                "kr": "PM-9 - 백전불패 황금빛",
+                "jp": ""
             }
         },
         "kr": "PM-9",
@@ -9364,6 +9434,11 @@ export const icons = {
                 "kr": "MG36 - 대나무숲 검객",
                 "jp": "竹影清兵衛",
                 "en": "Bamboo Samurai"
+            },
+            "pic_MG36_6504.png": {
+                "cn": "MG36-苍龙屹立09区之上",
+                "icon": "Icon_MG36_6504.png",
+                "alt": "pic_MG36_6504_D.png"
             }
         },
         "kr": "MG36",
@@ -9601,6 +9676,11 @@ export const icons = {
                 "jp": "デザートイーグル",
                 "en": "Desert Eagle",
                 "alt": "pic_DesertEagle_D.png"
+            },
+            "pic_DesertEagle_6501.png": {
+                "cn": "沙漠之鹰-苍穹的迦楼罗",
+                "icon": "Icon_DesertEagle_6501.png",
+                "alt": "pic_DesertEagle_6501_D.png"
             }
         },
         "kr": "데저트 이글",
@@ -9973,6 +10053,14 @@ export const icons = {
                 "kr": "KAC-PDW - 달콤한 마음",
                 "jp": "スイートハート",
                 "en": "Sweetheart in Love"
+            },
+            "pic_KAC_6404.png": {
+                "cn": "KAC-PDW-偷心魔不眠",
+                "icon": "Icon_KAC_6404.png",
+                "alt": "pic_KAC_6404_D.png",
+                "kr": "KAC-PDW - 불면의 사랑 도둑",
+                "jp": "魅了の悪魔は眠らない",
+                "en": "No Rest for the Heart Thief"
             }
         },
         "kr": "KAC-PDW",
@@ -10242,7 +10330,8 @@ export const icons = {
                 "cn": "SL8-在世界的一角等你",
                 "icon": "Icon_SL8_6302.png",
                 "alt": "pic_SL8_6302_D.png",
-                "kr": "SL8 - 세상 한 구석에서 기다릴게"
+                "kr": "SL8 - 세상 한 구석에서 기다릴게",
+                "jp": ""
             }
         },
         "kr": "SL8",
@@ -10483,7 +10572,8 @@ export const icons = {
                 "cn": "塔布克-三只小猪来租房",
                 "icon": "Icon_Tabuk_6206.png",
                 "alt": "pic_Tabuk_6206_D.png",
-                "kr": "타부크 - 돼지 3형제가 부동산에"
+                "kr": "타부크 - 돼지 3형제가 부동산에",
+                "jp": ""
             }
         },
         "kr": "타부크 저격소총",
@@ -10617,7 +10707,8 @@ export const icons = {
                 "cn": "Rex-0-1-怦动三部曲",
                 "icon": "Icon_RexZero1_6305.png",
                 "alt": "pic_RexZero1_6305_D.png",
-                "kr": "Rex Zero 1 - 두근두근 트릴로지"
+                "kr": "Rex Zero 1 - 두근두근 트릴로지",
+                "jp": ""
             }
         },
         "kr": "Rex Zero 1",
@@ -10779,7 +10870,8 @@ export const icons = {
                 "cn": "AUG SMG-溯溪踏秋时",
                 "icon": "Icon_AUGPARA_6301.png",
                 "alt": "pic_AUGPARA_6301_D.png",
-                "kr": "AUG Para - 가을 계곡 소풍"
+                "kr": "AUG Para - 가을 계곡 소풍",
+                "jp": ""
             }
         },
         "kr": "AUG Para ",
@@ -10849,7 +10941,8 @@ export const icons = {
                 "cn": "蒙德拉贡M1908-残雨暝烟",
                 "icon": "Icon_MondragonM1908_6304.png",
                 "alt": "pic_MondragonM1908_6304_D.png",
-                "kr": "몬드라곤 M1908 - 안개비 내리는 밤"
+                "kr": "몬드라곤 M1908 - 안개비 내리는 밤",
+                "jp": ""
             }
         },
         "kr": "몬드라곤 M1908",
@@ -11146,6 +11239,14 @@ export const icons = {
                 "jp": "SVCh",
                 "en": "SVCh",
                 "alt": "pic_SVCh_D.png"
+            },
+            "pic_SVCh_6402.png": {
+                "cn": "SVCh-猩红夜猎手",
+                "icon": "Icon_SVCh_6402.png",
+                "alt": "pic_SVCh_6402_D.png",
+                "kr": "SVCh - 스칼렛 나이트 헌터",
+                "jp": "紅夜のハンター",
+                "en": "Scarlet Night Huntress"
             }
         },
         "kr": "SVCh",
@@ -11333,7 +11434,8 @@ export const icons = {
                 "cn": "德利尔-郊狼蓝调",
                 "icon": "Icon_Delisle_6202.png",
                 "alt": "pic_Delisle_6202_D.png",
-                "kr": "드 라일 - 코요테 블루스"
+                "kr": "드 라일 - 코요테 블루스",
+                "jp": ""
             }
         },
         "kr": "드 라일",
@@ -11355,6 +11457,11 @@ export const icons = {
                 "jp": "SIG MCX",
                 "en": "SIG MCX",
                 "alt": "pic_SIGMCX_D.png"
+            },
+            "pic_SIGMCX_6502.png": {
+                "cn": "SIG MCX-真红陨星",
+                "icon": "Icon_SIGMCX_6502.png",
+                "alt": "pic_SIGMCX_6502_D.png"
             }
         },
         "kr": "SIG MCX",
@@ -11429,7 +11536,8 @@ export const icons = {
                 "cn": "SP9-星河中沉睡的梦",
                 "icon": "Icon_SP9_6303.png",
                 "alt": "pic_SP9_6303_D.png",
-                "kr": "SP9 - 은하수에 잠든 꿈"
+                "kr": "SP9 - 은하수에 잠든 꿈",
+                "jp": ""
             }
         },
         "kr": "SP9",
@@ -11578,6 +11686,66 @@ export const icons = {
             }
         },
         "kr": "AK74M"
+    },
+    "350": {
+        "type": "SG",
+        "id": "350",
+        "cn": "FO-12",
+        "code": "FO12",
+        "icon": "Icon_FO12.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_FO12.png": {
+                "cn": "FO-12",
+                "alt": "pic_FO12_D.png"
+            }
+        }
+    },
+    "351": {
+        "type": "SG",
+        "id": "351",
+        "cn": "M26-MASS",
+        "code": "M26MASS",
+        "icon": "Icon_M26MASS.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_M26MASS.png": {
+                "cn": "M26-MASS",
+                "alt": "pic_M26MASS_D.png"
+            }
+        }
+    },
+    "352": {
+        "type": "SG",
+        "id": "352",
+        "cn": "新星",
+        "code": "Nova",
+        "icon": "Icon_Nova.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_Nova.png": {
+                "cn": "新星",
+                "alt": "pic_Nova_D.png"
+            }
+        }
+    },
+    "353": {
+        "type": "SG",
+        "id": "353",
+        "cn": "MAG-7",
+        "code": "MAG7",
+        "icon": "Icon_MAG7.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_MAG7.png": {
+                "cn": "MAG-7",
+                "alt": "pic_MAG7_D.png"
+            }
+        }
     },
     "1001": {
         "type": "HG",
@@ -12242,6 +12410,8 @@ export const icons = {
             "pic_Jashinchan.png": {
                 "cn": "邪神酱",
                 "kr": "사신짱",
+                "jp": "邪神ちゃん",
+                "en": "Jashin-chan",
                 "alt": "pic_Jashinchan_D.png"
             },
             "pic_Jashinchan_567.png": {
@@ -12249,10 +12419,13 @@ export const icons = {
                 "icon": "Icon_Jashinchan_567.png",
                 "alt": "pic_Jashinchan_567_D.png",
                 "kr": "사신짱 - 흑비둘기 남작",
-                "jp": ""
+                "jp": "",
+                "en": "Pigeon Baron"
             }
         },
-        "kr": "사신짱"
+        "kr": "사신짱",
+        "jp": "邪神ちゃん",
+        "en": "Jashin-chan"
     },
     "1031": {
         "type": "RF",
@@ -12266,6 +12439,8 @@ export const icons = {
             "pic_Pekora.png": {
                 "cn": "佩可拉",
                 "kr": "페코라",
+                "jp": "ぺこら",
+                "en": "Pekola",
                 "alt": "pic_Pekora_D.png"
             },
             "pic_Pekora_570.png": {
@@ -12273,10 +12448,13 @@ export const icons = {
                 "icon": "Icon_Pekora_570.png",
                 "alt": "pic_Pekora_570_D.png",
                 "kr": "페코라 - 알바 뛰는 천사님!",
-                "jp": ""
+                "jp": "",
+                "en": "The Angel is a Part-Timer!"
             }
         },
-        "kr": "페코라"
+        "kr": "페코라",
+        "jp": "ぺこら",
+        "en": "Pekola"
     },
     "1032": {
         "type": "AR",
@@ -12290,6 +12468,8 @@ export const icons = {
             "pic_Medusa.png": {
                 "cn": "美杜莎",
                 "kr": "메두사",
+                "jp": "メデューサ",
+                "en": "Medusa",
                 "alt": "pic_Medusa_D.png"
             },
             "pic_Medusa_569.png": {
@@ -12297,10 +12477,13 @@ export const icons = {
                 "icon": "Icon_Medusa_569.png",
                 "alt": "pic_Medusa_569_D.png",
                 "kr": "메두사 - 정성 듬뿍 파티셰",
-                "jp": ""
+                "jp": "",
+                "en": "Chocolatier"
             }
         },
-        "kr": "메두사"
+        "kr": "메두사",
+        "jp": "メデューサ",
+        "en": "Medusa"
     },
     "1033": {
         "type": "MG",
@@ -12314,6 +12497,8 @@ export const icons = {
             "pic_Yurine.png": {
                 "cn": "花园百合铃",
                 "kr": "하나조노 유리네",
+                "jp": "花園ゆりね",
+                "en": "Hanazono Yurine",
                 "alt": "pic_Yurine_D.png"
             },
             "pic_Yurine_568.png": {
@@ -12321,10 +12506,13 @@ export const icons = {
                 "icon": "Icon_Yurine_568.png",
                 "alt": "pic_Yurine_568_D.png",
                 "kr": "하나조노 유리네 - 악마가 곁에 있어",
-                "jp": ""
+                "jp": "",
+                "en": "Devil By Your Side"
             }
         },
-        "kr": "하나조노 유리네"
+        "kr": "하나조노 유리네",
+        "jp": "花園ゆりね",
+        "en": "Hanazono Yurine"
     },
     "1034": {
         "type": "SG",
@@ -12338,6 +12526,8 @@ export const icons = {
             "pic_Minosu.png": {
                 "cn": "米诺斯",
                 "kr": "미노스",
+                "jp": "ミノス",
+                "en": "Minos",
                 "alt": "pic_Minosu_D.png"
             },
             "pic_Minosu_571.png": {
@@ -12345,9 +12535,12 @@ export const icons = {
                 "icon": "Icon_Minosu_571.png",
                 "alt": "pic_Minosu_571_D.png",
                 "kr": "미노스 - 호숫가에서 한잔",
-                "jp": ""
+                "jp": "",
+                "en": "Lakeside Drinking Night"
             }
         },
-        "kr": "미노스"
+        "kr": "미노스",
+        "jp": "ミノス",
+        "en": "Minos"
     }
 }
