@@ -21,7 +21,7 @@
                 <span>{{ getLocalizedName(skin) }}</span>
               </button>
               <button @click="select(skin, true)" class="damaged">
-                {{ $t('tabTeam.damaged') }}
+                {{ isSF(skin) ? '★★★★★' : $t('tabTeam.damaged') }}
               </button>
             </div>
           </template>
@@ -123,8 +123,11 @@ export default {
         }
       })
     },
+    isSF (skin) {
+      return skin.parent.id?.startsWith('c')
+    },
     iconClass (skin) {
-      return skin.parent.id?.startsWith('c') ? 'rareSF' : 'rare' + skin.parent.rarity
+      return this.isSF(skin) ? 'rareSF' : 'rare' + skin.parent.rarity
     },
     allSkins (skins) {
       return [].concat(...skins.map(doll => {
@@ -148,6 +151,7 @@ export default {
       return skins ? [Object.keys(skins)[0]] : ''
     },
     select (skin, damaged) {
+      console.log(skin)
       this.currentSkin = skin.value
       if(this.adjutantOn) {
         var value
@@ -249,9 +253,11 @@ $avatar-margin: 0.25rem;
     padding: 2px;
     color: black;
     cursor: pointer;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: #000000b0;
     line-height: 0.8rem;
+    max-width: 1.29 * $avatar-width;
+    overflow: clip;
 }
 
 .damaged:hover, .damaged:focus {
