@@ -136,7 +136,7 @@ python3 utils/parseStc.py /tmp/stc/5090.stc utils/formats/5090.format utils/stcJ
 
 Use `mkdir /tmp/out && python3 utils/generateCompactData.py <asset_texttable.ab> utils/stcJson /tmp/out` to generate the `icons.js`. You will need to get the newest version of `<asset_texttable.ab>` yourself. Move the file in place: `mv /tmp/out/icons.js src/assets/icons.js`.
 
-Use `sh utils/test.sh` to check if you need to fetch some missing images. If so, `sh utils/test.sh > missings.txt` and then `mkdir /tmp/output && python3 utils/extractMissings.py missings.txt <asset_dir> /tmp/output`, where `<asset_dir>` is where you put all the `.ab` files. After this, extracted image files will be in `/tmp/output`.
+Use `sh utils/test.sh` to check if you need to fetch some missing images. If so, `sh utils/test.sh > /tmp/missings.txt` and then `mkdir /tmp/output && python3 utils/extractMissings.py /tmp/missings.txt <asset_dir> /tmp/output`, where `<asset_dir>` is where you put all the `.ab` files. After this, extracted image files will be in `/tmp/output`.
 
 To get usable images, `mkdir /tmp/final && mkdir /tmp/middle` and:
 ```
@@ -144,7 +144,7 @@ sh utils/imagesProcessor.sh /tmp/output /tmp/final characters
 sh utils/imagesProcessor.sh /tmp/output /tmp/final coalition
 sh utils/imagesProcessor.sh /tmp/output /tmp/middle mergeAlpha
 sh utils/imagesProcessor.sh /tmp/middle /tmp/final optimize
-sh utils/copyMissingFiles.sh missings.txt /tmp/final public/images
+sh utils/copyMissingFiles.sh /tmp/missings.txt /tmp/final public/images
 ```
 
 Now `yarn serve` to check and commit your changes.
