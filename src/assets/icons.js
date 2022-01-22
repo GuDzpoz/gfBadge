@@ -329,6 +329,23 @@ export const icons = {
         "icon": "Icon_Intruder_Halloween_SS_1.png",
         "kr": "인트루더-종막의 마녀"
     },
+    "c147": {
+        "type": "SF",
+        "rarity": 6,
+        "modded": false,
+        "skins": {
+            "pic_Destroyer_Christmas_LL.png": {
+                "cn": "破坏者-浮掠麋影",
+                "kr": "디스트로이어 - 폭주사슴",
+                "alt": "pic_Destroyer_Christmas_LL_1.png"
+            }
+        },
+        "id": "c147",
+        "cn": "破坏者-浮掠麋影",
+        "code": "Destroyer_Christmas",
+        "icon": "Icon_Destroyer_Christmas_SS_1.png",
+        "kr": "디스트로이어 - 폭주사슴"
+    },
     "_": "/images/icons",
     "__": "/images/skins",
     "1": {
@@ -457,7 +474,9 @@ export const icons = {
             "pic_Python_6603.png": {
                 "cn": "蟒蛇-狩猎时刻",
                 "icon": "Icon_Python_6603.png",
-                "alt": "pic_Python_6603_D.png"
+                "alt": "pic_Python_6603_D.png",
+                "kr": "콜트 파이슨 - 추위사냥",
+                "en": ""
             }
         },
         "kr": "콜트 파이슨",
@@ -981,6 +1000,14 @@ export const icons = {
                 "kr": "Vector- 맹목적인 믿음",
                 "jp": "盲信者",
                 "en": "Ardent Devotion"
+            },
+            "pic_Vector_6701.png": {
+                "cn": "维克托-携枝踏玉尘",
+                "icon": "Icon_Vector_6701.png",
+                "alt": "pic_Vector_6701_D.png",
+                "kr": "Vector - 눈밭을 즈려밟으며",
+                "jp": "枝を携え玉塵を踏む",
+                "en": ""
             }
         },
         "kr": "Vector",
@@ -993,7 +1020,7 @@ export const icons = {
         "cn": "PPSh-41",
         "code": "PPsh41",
         "icon": "Icon_PPsh41.png",
-        "modded": false,
+        "modded": true,
         "rarity": 2,
         "skins": {
             "pic_PPsh41.png": {
@@ -1002,6 +1029,14 @@ export const icons = {
                 "jp": "PPSh-41",
                 "en": "PPSh-41",
                 "alt": "pic_PPsh41_D.png"
+            },
+            "pic_PPsh41Mod.png": {
+                "cn": "PPSh-41",
+                "kr": "PPSh-41",
+                "jp": "PPSh-41",
+                "en": "PPSh-41",
+                "icon": "mod",
+                "alt": "pic_PPsh41Mod_D.png"
             },
             "pic_PPsh41_602.png": {
                 "cn": "PPsh-41-契约时刻",
@@ -1021,7 +1056,9 @@ export const icons = {
         },
         "kr": "PPSh-41",
         "jp": "PPSh-41",
-        "en": "PPSh-41"
+        "en": "PPSh-41",
+        "moddedIcon": "Icon_PPsh41Mod.png",
+        "modRarity": 4
     },
     "22": {
         "type": "SMG",
@@ -1516,6 +1553,14 @@ export const icons = {
                 "kr": "M14 - 성탄절 퍼레이드 의상",
                 "jp": "クリスマス・ドレス",
                 "en": "Xmas Parade"
+            },
+            "pic_M14_6707.png": {
+                "cn": "M14-幼虎祈丰年",
+                "icon": "Icon_M14_6707.png",
+                "alt": "pic_M14_6707_D.png",
+                "kr": "M14 - 풍년을 부르는 아기 범",
+                "jp": "豊年祈る幼虎",
+                "en": ""
             }
         },
         "kr": "M14",
@@ -2636,7 +2681,8 @@ export const icons = {
                 "cn": "HK416-子夜福音",
                 "icon": "Icon_HK416_6505.png",
                 "alt": "pic_HK416_6505_D.png",
-                "kr": "HK416 - 흑야의 복음"
+                "kr": "HK416 - 흑야의 복음",
+                "en": ""
             }
         },
         "kr": "HK416",
@@ -2775,7 +2821,10 @@ export const icons = {
             "pic_FNFNC_6608.png": {
                 "cn": "FNC-圣夜精灵高高挂",
                 "icon": "Icon_FNFNC_6608.png",
-                "alt": "pic_FNFNC_6608_D.png"
+                "alt": "pic_FNFNC_6608_D.png",
+                "kr": "FNC - 성야의 정령 높이높이",
+                "jp": "妖精のクリスマスリース",
+                "en": "Raise the Christmas Elf"
             }
         },
         "kr": "FNC",
@@ -3573,7 +3622,8 @@ export const icons = {
                 "cn": "汉阳造88式-纯白流星负愿而行",
                 "icon": "Icon_88type_6503.png",
                 "alt": "pic_88type_6503_D.png",
-                "kr": "한양조 88식 - 하얀 유성은 소망을 품고"
+                "kr": "한양조 88식 - 하얀 유성은 소망을 품고",
+                "en": ""
             }
         },
         "kr": "한양조 88식",
@@ -3896,6 +3946,14 @@ export const icons = {
                 "kr": "UMP9 - 킁킁 수사관",
                 "jp": "柴犬すかうたー",
                 "en": "Shiba Investigator"
+            },
+            "pic_UMP9_6704.png": {
+                "cn": "UMP9-幽玄旅人",
+                "icon": "Icon_UMP9_6704.png",
+                "alt": "pic_UMP9_6704_D.png",
+                "kr": "UMP9 - 유현의 여행객",
+                "jp": "幽玄の旅人",
+                "en": ""
             }
         },
         "kr": "UMP9",
@@ -4491,6 +4549,12 @@ export const icons = {
                 "en": "Z-62",
                 "alt": "pic_Z62_D.png"
             },
+            "pic_Z62_573.png": {
+                "cn": "Z-62-午后闲弈",
+                "icon": "Icon_Z62_573.png",
+                "alt": "pic_Z62_573_D.png",
+                "kr": "Z-62 - 오후 느긋하게 한 판"
+            },
             "pic_Z62_3507.png": {
                 "cn": "Z-62-游泳课题",
                 "icon": "Icon_Z62_3507.png",
@@ -4731,7 +4795,8 @@ export const icons = {
                 "cn": "G11-秋眠·随想Ⅺ",
                 "icon": "Icon_G11_572.png",
                 "alt": "pic_G11_572_D.png",
-                "kr": "G11 - 가을 잠·프리스타일Ⅺ"
+                "kr": "G11 - 가을 잠·프리스타일Ⅺ",
+                "en": ""
             },
             "pic_G11_1602.png": {
                 "cn": "G11-我最美丽的礼物",
@@ -6766,7 +6831,8 @@ export const icons = {
                 "cn": "F1-荒漠的龙与诗",
                 "icon": "Icon_F1_6507.png",
                 "alt": "pic_F1_6507_D.png",
-                "kr": "F1 - 황야의 용의 시"
+                "kr": "F1 - 황야의 용의 시",
+                "en": ""
             }
         },
         "kr": "F1",
@@ -7659,7 +7725,7 @@ export const icons = {
         "cn": "AN-94",
         "code": "AN94",
         "icon": "Icon_AN94.png",
-        "modded": false,
+        "modded": true,
         "rarity": 5,
         "skins": {
             "pic_AN94.png": {
@@ -7668,6 +7734,14 @@ export const icons = {
                 "jp": "AN-94",
                 "en": "AN-94",
                 "alt": "pic_AN94_D.png"
+            },
+            "pic_AN94Mod.png": {
+                "cn": "AN-94",
+                "kr": "AN-94",
+                "jp": "AN-94",
+                "en": "AN-94",
+                "icon": "mod",
+                "alt": "pic_AN94Mod_D.png"
             },
             "pic_AN94_2404.png": {
                 "cn": "AN-94-潜水钟与人偶",
@@ -7688,7 +7762,9 @@ export const icons = {
         },
         "kr": "AN-94",
         "jp": "AN-94",
-        "en": "AN-94"
+        "en": "AN-94",
+        "moddedIcon": "Icon_AN94Mod.png",
+        "modRarity": 6
     },
     "206": {
         "type": "AR",
@@ -8026,7 +8102,7 @@ export const icons = {
         "cn": "XM8",
         "code": "XM8",
         "icon": "Icon_XM8.png",
-        "modded": false,
+        "modded": true,
         "rarity": 4,
         "skins": {
             "pic_XM8.png": {
@@ -8035,6 +8111,14 @@ export const icons = {
                 "jp": "XM8",
                 "en": "XM8",
                 "alt": "pic_XM8_D.png"
+            },
+            "pic_XM8Mod.png": {
+                "cn": "XM8",
+                "kr": "XM8",
+                "jp": "XM8",
+                "en": "XM8",
+                "icon": "mod",
+                "alt": "pic_XM8Mod_D.png"
             },
             "pic_XM8_5606.png": {
                 "cn": "XM8-玫瑰棋手的告白",
@@ -8046,7 +8130,9 @@ export const icons = {
         },
         "kr": "XM8",
         "jp": "XM8",
-        "en": "XM8"
+        "en": "XM8",
+        "moddedIcon": "Icon_XM8Mod.png",
+        "modRarity": 5
     },
     "217": {
         "type": "RF",
@@ -8281,7 +8367,9 @@ export const icons = {
             "pic_Cx4Storm_6606.png": {
                 "cn": "Cx4 风暴-泳池边的圣诞奇遇",
                 "icon": "Icon_Cx4Storm_6606.png",
-                "alt": "pic_Cx4Storm_6606_D.png"
+                "alt": "pic_Cx4Storm_6606_D.png",
+                "kr": "Cx4 스톰 - 성탄절 풀장에서의 만남",
+                "en": ""
             }
         },
         "kr": "Cx4 스톰",
@@ -9468,7 +9556,8 @@ export const icons = {
                 "cn": "MG36-苍龙屹立09区之上",
                 "icon": "Icon_MG36_6504.png",
                 "alt": "pic_MG36_6504_D.png",
-                "kr": "MG36 - 창룡 S09에 서다"
+                "kr": "MG36 - 창룡 S09에 서다",
+                "en": ""
             }
         },
         "kr": "MG36",
@@ -9711,7 +9800,8 @@ export const icons = {
                 "cn": "沙漠之鹰-苍穹的迦楼罗",
                 "icon": "Icon_DesertEagle_6501.png",
                 "alt": "pic_DesertEagle_6501_D.png",
-                "kr": "데저트 이글 - 창공의 가루라"
+                "kr": "데저트 이글 - 창공의 가루라",
+                "en": ""
             }
         },
         "kr": "데저트 이글",
@@ -10138,7 +10228,9 @@ export const icons = {
             "pic_CR21_6605.png": {
                 "cn": "CR-21-浪巅决骤",
                 "icon": "Icon_CR21_6605.png",
-                "alt": "pic_CR21_6605_D.png"
+                "alt": "pic_CR21_6605_D.png",
+                "kr": "CR-21 - 파도 꼭대기",
+                "en": ""
             }
         },
         "kr": "CR-21",
@@ -10193,7 +10285,9 @@ export const icons = {
             "pic_HowaType89_6601.png": {
                 "cn": "89式自-麋鹿宣言",
                 "icon": "Icon_HowaType89_6601.png",
-                "alt": "pic_HowaType89_6601_D.png"
+                "alt": "pic_HowaType89_6601_D.png",
+                "kr": "89식 소총 - 순록 선언",
+                "en": ""
             }
         },
         "kr": "89식 소총",
@@ -10248,7 +10342,7 @@ export const icons = {
         "cn": "AK-15",
         "code": "AK15",
         "icon": "Icon_AK15.png",
-        "modded": false,
+        "modded": true,
         "rarity": 5,
         "skins": {
             "pic_AK15.png": {
@@ -10257,11 +10351,21 @@ export const icons = {
                 "jp": "AK-15",
                 "en": "AK-15",
                 "alt": "pic_AK15_D.png"
+            },
+            "pic_AK15Mod.png": {
+                "cn": "AK-15",
+                "kr": "AK-15",
+                "jp": "AK-15",
+                "en": "AK-15",
+                "icon": "mod",
+                "alt": "pic_AK15Mod_D.png"
             }
         },
         "kr": "AK-15",
         "jp": "AK-15",
-        "en": "AK-15"
+        "en": "AK-15",
+        "moddedIcon": "Icon_AK15Mod.png",
+        "modRarity": 6
     },
     "294": {
         "type": "HG",
@@ -10583,7 +10687,9 @@ export const icons = {
             "pic_SAF_6607.png": {
                 "cn": "SAF-暖冬速递员",
                 "icon": "Icon_SAF_6607.png",
-                "alt": "pic_SAF_6607_D.png"
+                "alt": "pic_SAF_6607_D.png",
+                "kr": "SAF - 겨울 산뜻 택배",
+                "en": ""
             }
         },
         "kr": "SAF",
@@ -10783,6 +10889,14 @@ export const icons = {
                 "alt": "pic_Lusa_5902_D.png",
                 "kr": "Lusa - 수비수 꿈나무",
                 "jp": ""
+            },
+            "pic_Lusa_6703.png": {
+                "cn": "卢萨-竹剑扫落雪",
+                "icon": "Icon_Lusa_6703.png",
+                "alt": "pic_Lusa_6703_D.png",
+                "kr": "Lusa - 죽도로 눈바닥 쓸기",
+                "jp": "竹剣雪を薙ぐ",
+                "en": ""
             }
         },
         "kr": "Lusa",
@@ -11152,6 +11266,14 @@ export const icons = {
                 "alt": "pic_LTLX7000_6101_D.png",
                 "kr": "LTLX7000 - 밀물 데이트",
                 "jp": ""
+            },
+            "pic_LTLX7000_6702.png": {
+                "cn": "LTLX7000-巫姬翩舞起",
+                "icon": "Icon_LTLX7000_6702.png",
+                "alt": "pic_LTLX7000_6702_D.png",
+                "kr": "LTLX7000 - 하늘하늘 춤추는 무녀",
+                "jp": "巫女舞ひらひらり",
+                "en": ""
             }
         },
         "kr": "LTLX7000",
@@ -11201,6 +11323,14 @@ export const icons = {
                 "alt": "pic_VPM5_6107_D.png",
                 "kr": "V-PM5 - 날아라 불가사리",
                 "jp": "天翔けるヒトデ"
+            },
+            "pic_VPM5_6706.png": {
+                "cn": "V-PM5-初梦见飞羽",
+                "icon": "Icon_VPM5_6706.png",
+                "alt": "pic_VPM5_6706_D.png",
+                "kr": "V-PM5 - 첫 꿈은 제기치기",
+                "jp": "風切羽を夢む元旦",
+                "en": ""
             }
         },
         "kr": "V-PM5",
@@ -11264,6 +11394,14 @@ export const icons = {
                 "jp": "AR-57",
                 "en": "AR-57",
                 "alt": "pic_AR57_D.png"
+            },
+            "pic_AR57_6705.png": {
+                "cn": "AR-57-三友伴岁寒",
+                "icon": "Icon_AR57_6705.png",
+                "alt": "pic_AR57_6705_D.png",
+                "kr": "AR-57 - 눈속에도 푸르게",
+                "jp": "三友歳寒に相伴す",
+                "en": ""
             }
         },
         "kr": "AR-57",
@@ -11388,7 +11526,9 @@ export const icons = {
             "pic_VP1915_6604.png": {
                 "cn": "VP1915-与帕罗莎同座",
                 "icon": "Icon_VP1915_6604.png",
-                "alt": "pic_VP1915_6604_D.png"
+                "alt": "pic_VP1915_6604_D.png",
+                "kr": "VP1915 - 페로사와 한자리",
+                "en": ""
             }
         },
         "kr": "VP1915",
@@ -11513,7 +11653,8 @@ export const icons = {
                 "cn": "SIG MCX-真红陨星",
                 "icon": "Icon_SIGMCX_6502.png",
                 "alt": "pic_SIGMCX_6502_D.png",
-                "kr": "SIG MCX - 스칼렛 메테오"
+                "kr": "SIG MCX - 스칼렛 메테오",
+                "en": ""
             }
         },
         "kr": "SIG MCX",
@@ -11818,9 +11959,11 @@ export const icons = {
         "skins": {
             "pic_ZIP22.png": {
                 "cn": "ZiP .22",
+                "kr": "ZiP .22",
                 "alt": "pic_ZIP22_D.png"
             }
-        }
+        },
+        "kr": "ZiP .22"
     },
     "355": {
         "type": "SMG",
@@ -11833,9 +11976,11 @@ export const icons = {
         "skins": {
             "pic_VigneronM2.png": {
                 "cn": "维涅龙M2",
+                "kr": "비뉴홍 M2",
                 "alt": "pic_VigneronM2_D.png"
             }
-        }
+        },
+        "kr": "비뉴홍 M2"
     },
     "356": {
         "type": "AR",
@@ -11848,7 +11993,99 @@ export const icons = {
         "skins": {
             "pic_A545.png": {
                 "cn": "A-545",
+                "kr": "A-545",
                 "alt": "pic_A545_D.png"
+            }
+        },
+        "kr": "A-545"
+    },
+    "357": {
+        "type": "HG",
+        "id": "357",
+        "cn": "芮诺",
+        "code": "Rhino",
+        "icon": "Icon_Rhino.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_Rhino.png": {
+                "cn": "芮诺",
+                "alt": "pic_Rhino_D.png"
+            }
+        }
+    },
+    "358": {
+        "type": "HG",
+        "id": "358",
+        "cn": "PPQ",
+        "code": "PPQ",
+        "icon": "Icon_PPQ.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_PPQ.png": {
+                "cn": "PPQ",
+                "alt": "pic_PPQ_D.png"
+            }
+        }
+    },
+    "359": {
+        "type": "SMG",
+        "id": "359",
+        "cn": "斯特林",
+        "code": "Sterling",
+        "icon": "Icon_Sterling.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_Sterling.png": {
+                "cn": "斯特林",
+                "alt": "pic_Sterling_D.png"
+            }
+        }
+    },
+    "360": {
+        "type": "RF",
+        "id": "360",
+        "cn": "TF-Q",
+        "code": "TFQ",
+        "icon": "Icon_TFQ.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_TFQ.png": {
+                "cn": "TF-Q",
+                "alt": "pic_TFQ_D.png"
+            }
+        }
+    },
+    "361": {
+        "type": "AR",
+        "id": "361",
+        "cn": "QBZ-191",
+        "code": "QBZ191",
+        "icon": "Icon_QBZ191.png",
+        "modded": false,
+        "rarity": 5,
+        "skins": {
+            "pic_QBZ191.png": {
+                "cn": "QBZ-191",
+                "alt": "pic_QBZ191_D.png"
+            }
+        }
+    },
+    "362": {
+        "type": "MG",
+        "id": "362",
+        "cn": "LS26",
+        "code": "LS26",
+        "icon": "Icon_LS26.png",
+        "modded": false,
+        "rarity": 4,
+        "skins": {
+            "pic_LS26.png": {
+                "cn": "LS26",
+                "alt": "pic_LS26_D.png"
             }
         }
     },
