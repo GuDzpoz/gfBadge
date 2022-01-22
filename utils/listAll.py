@@ -1,6 +1,7 @@
 import UnityPy
 import os
 import sys
+from UnityPy.enums import ClassIDType
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 and len(sys.argv) != 3:
@@ -18,6 +19,7 @@ if __name__ == "__main__":
             else:
                 types = sys.argv[2].split(",")
         allAssets = os.listdir(assetDir)
+        typeEnums = [ClassIDType[name] for name in types]
         for asset in allAssets:
             if asset.endswith(".ab"):
                 message = "===== %s =====" % asset
@@ -25,6 +27,6 @@ if __name__ == "__main__":
                 print(message, file=sys.stderr)
                 env = UnityPy.load(os.path.join(assetDir, asset))
                 for obj in env.objects:
-                    if getAll or obj.type in types:
+                    if getAll or obj.type in typeEnums:
                         data = obj.read()
                         print(data.name)

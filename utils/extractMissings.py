@@ -2,6 +2,7 @@ import UnityPy
 import os
 import sys
 import re
+from UnityPy.enums import ClassIDType
 
 trailingNumberPattern = re.compile(r"_\d+$")
 def splitFilename(filename):
@@ -64,7 +65,7 @@ def matchFile(dollName, missingType, skinId, allAssets):
 def extractSelectedTextures(path, isWanted, outputDir):
     env = UnityPy.load(path)
     for obj in env.objects:
-        if obj.type == "Texture2D":
+        if obj.type == ClassIDType.Texture2D:
             data = obj.read()
             if isWanted(data.name):
                 imagePath = os.path.join(outputDir, data.name + ".png")

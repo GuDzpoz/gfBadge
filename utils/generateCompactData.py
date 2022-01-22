@@ -4,6 +4,7 @@ import os
 import requests
 import json
 from collections import OrderedDict
+from UnityPy.enums import ClassIDType
 
 def exportTextTable(path, wanted, outputDir):    
     env = UnityPy.load(path)
@@ -11,7 +12,7 @@ def exportTextTable(path, wanted, outputDir):
     for obj in env.objects:
         data = obj.read()
         if data.name in wanted:
-            if obj.type == "TextAsset":
+            if obj.type == ClassIDType.TextAsset:
                 with open(os.path.join(outputDir, data.name), "wb") as f:
                     content = bytes(data.script)
                     f.write(content)
