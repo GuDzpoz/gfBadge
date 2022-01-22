@@ -72,19 +72,19 @@ const modCanvasConfig = {
   radius: 20,
   lineWidth: 3,
   textConfig: {
-    name: { x: 20, y: 15, prefix: '', show: true,
+    name: { x: 14, y: 15, prefix: '', show: true,
             lineWidth: 2,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
           },
-    uid: { x: 20, y: 36, prefix: 'UID: ', show: true,
+    uid: { x: 14, y: 36, prefix: 'UID: ', show: true,
            lineWidth: 2,
            font: { size: 1.1, unit: 'rem', name: 'Arial', },
          },
-    level: { x: 20, y: 57, prefix: 'Lv. ', show: true,
+    level: { x: 14, y: 57, prefix: 'Lv. ', show: true,
              lineWidth: 2,
              font: { size: 1.1, unit: 'rem', name: 'Arial', },
            },
-    server: { x: 20, y: 78, prefix: '', show: true,
+    server: { x: 14, y: 78, prefix: '', show: true,
               lineWidth: 2,
               font: { size: 1.1, unit: 'rem', name: 'Arial', },
             },
@@ -97,7 +97,7 @@ const modCanvasConfig = {
     background: { x: 0, y: -(510 - 220)/2 },
     adjutant: { x: 0, y: -220 / 2 },
   },
-  avatar: { x: 20, y: 99, size: 100, show: true, },
+  avatar: { x: 14, y: 99, size: 100, show: true, },
   collectionRate: {
     x: 850 - 300 - 10, y: 190, w: 300, h: 9,
     category: {
@@ -206,7 +206,7 @@ export default {
         {
           AR: 30,
           SMG: 27,
-          HG: 23,
+          HG: 24,
           RF: 23,
           MG: 20,
           SG: 20,
@@ -214,10 +214,10 @@ export default {
         },
         this.radius)
       this.modPositions = initGunPosition2(
-        200 * this.getScale(), 10 * this.getScale(), this.modRadius, this.modDolls,
+        180 * this.getScale(), 10 * this.getScale(), this.modRadius, this.modDolls,
         {
-          AR: 12,
-          SMG: 12,
+          AR: 14,
+          SMG: 13,
           RF: 12,
           HG: 12,
           MG: 12,
