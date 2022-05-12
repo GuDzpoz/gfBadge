@@ -1,47 +1,61 @@
 <template>
-<w-accordion :items="typedDolls" shadow v-model="keepAliveCache[keepAlive]">
-  <template #item-title="{ item }">
-    <div class="typeIconWrapper mr3 ml2">
-      <img :src="typeIcons[item.type]" :alt="item.type"
-           class="typeIcon"/>
-    </div>
-    <w-button @click="selectAll(item.dolls, $event)" outline class="ma2 gf-tag">
-      <w-icon class="mr2">mdi mdi-select-all</w-icon>
-      {{ $t('ui.selectTypeAll') }}
-    </w-button>
-    <w-button @click="deselectAll(item.dolls, $event)" outline class="gf-tag">
-      <w-icon class="mr2">mdi mdi-selection-off</w-icon>
-      {{ $t('ui.deselectTypeAll') }}
-    </w-button>
-  </template>
-  <template #item-content="{ item }">
-    <w-tooltip v-for="doll in item.dolls" :key="doll.id" top>
-      <template #activator="{ on }">
-        <label :for="doll.id" class="avatar-label" v-on="on">
-          <input
-            v-on:input="select(doll, $event.target.checked)"
-            :checked="modelValue[doll.type][doll.id]"
-            :id="doll.id" class="avatar" type="checkbox"  />
-          <div :class="iconClass(doll)">
-            <img :src="doll.icon" />
-          </div>
-          <span>{{ getLocalizedName(doll) }}</span>
-        </label>
+<n-config-provider :theme-overrides="themeOverrides">
+  <n-collapse :items="typedDolls" display-directive="show">
+    <n-collapse-item v-for="item in typedDolls" :key="item.type"
+                     class="collapse-item">
+      <template #header>
+        <div class="typeIconWrapper mr3 ml2">
+          <img :src="typeIcons[item.type]" :alt="item.type"
+               class="typeIcon"/>
+        </div>
+        <w-button @click="selectAll(item.dolls, $event)" outline class="ma2 gf-tag">
+          <w-icon class="mr2">mdi mdi-select-all</w-icon>
+          {{ $t('ui.selectTypeAll') }}
+        </w-button>
+        <w-button @click="deselectAll(item.dolls, $event)" outline class="gf-tag">
+          <w-icon class="mr2">mdi mdi-selection-off</w-icon>
+          {{ $t('ui.deselectTypeAll') }}
+        </w-button>
       </template>
-      {{ getLocalizedName(doll) }}
-    </w-tooltip>
-  </template>
-</w-accordion>
+      <w-tooltip v-for="doll in item.dolls" :key="doll.id" top>
+        <template #activator="{ on }">
+          <label :for="doll.id" class="avatar-label" v-on="on">
+            <input
+              v-on:input="select(doll, $event.target.checked)"
+              :checked="modelValue[doll.type][doll.id]"
+              :id="doll.id" class="avatar" type="checkbox"  />
+            <div :class="iconClass(doll)">
+              <img :src="doll.icon" />
+            </div>
+            <span>{{ getLocalizedName(doll) }}</span>
+          </label>
+        </template>
+        {{ getLocalizedName(doll) }}
+      </w-tooltip>
+    </n-collapse-item>
+  </n-collapse>
+</n-config-provider>
 </template>
 
 <script>
 const dollTypes = ['AR', 'SMG', 'RF', 'HG', 'MG', 'SG', 'SF']
+import { NCollapse, NCollapseItem, NConfigProvider } from 'naive-ui'
 import { typeIcons } from '../assets/typeIcons.js'
 
-var keepAliveCache = {}
+const themeOverrides = {
+  Collapse: {
+    fontSize: '17px',
+    titleFontSize: '17px',
+  },
+}
 
 export default {
   name: 'DollSelector',
+  components: {
+    NCollapse,
+    NCollapseItem,
+    NConfigProvider,
+  },
   props: {
     dolls: Object,
     modelValue: Object,
@@ -49,7 +63,6 @@ export default {
       type: Boolean,
       default: true
     },
-    keepAlive: String,
   },
   created () {
     var typedDolls = this.typedDolls
@@ -65,7 +78,7 @@ export default {
     return {
       mutableValue: {},
       typeIcons,
-      keepAliveCache,
+      themeOverrides,
     }
   },
   watch: {
@@ -121,6 +134,16 @@ export default {
 
 <style lang="scss">
 @import "@/scss/avatar";
+</style>
+
+<style>
+.gf-tabs .collapse-item {
+    margin: 0 1em 0 1em;
+}
+
+.gf-tabs .n-collapse .collapse-item > * {
+    padding: 0;
+}
 </style>
 
 <style scoped>

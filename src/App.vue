@@ -97,9 +97,7 @@
       </template>
       <template v-slot:[`item-content.1`]>
         <DollSelector v-model="ui.collection"
-                      :dolls="typedAllDolls"
-                      :keepAlive="'doll'" />
-        <!-- until w-tabs supports <keep-alive> -->
+                      :dolls="typedAllDolls" />
       </template>
       <template v-slot:[`item-title.2`]>
         <img src="/images/assets/mod3.png" class="gf-icon mr2" />
@@ -107,9 +105,7 @@
       </template>
       <template v-slot:[`item-content.2`]>
         <DollSelector v-model="ui.modCollection"
-                      :dolls="typedModDolls"
-                      :keepAlive="'mod'" />
-        <!-- until w-tabs supports <keep-alive> -->
+                      :dolls="typedModDolls" />
       </template>
       <template v-slot:[`item-title.3`]>
         <w-icon class="mr2">mdi mdi-face-woman</w-icon>

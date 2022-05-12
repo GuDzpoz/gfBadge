@@ -7,6 +7,7 @@ import { createI18n } from 'vue-i18n'
 import '@mdi/font/css/materialdesignicons.min.css'
 import workbox from './registerServiceWorker'
 import WaveUI from 'wave-ui/src/wave-ui'
+import naive from 'naive-ui'
 
 var lang = localStorage.getItem('lang')
 if(lang) {
@@ -20,6 +21,7 @@ const app = createApp(Loader)
 app.component('gf-checkbox', GfCheckbox)
 app.component('gf-switch', GfSwitch)
 app.use(WaveUI, {})
+app.use(naive)
 new WaveUI(app, {})
 app.provide('$workbox', workbox)
 app.use(i18n)
