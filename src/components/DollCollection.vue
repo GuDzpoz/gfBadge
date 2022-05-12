@@ -214,10 +214,10 @@ export default {
         },
         this.radius)
       this.modPositions = initGunPosition2(
-        180 * this.getScale(), 10 * this.getScale(), this.modRadius, this.modDolls,
+        180 * this.getScale(), 6 * this.getScale(), this.modRadius, this.modDolls,
         {
           AR: 14,
-          SMG: 13,
+          SMG: 14,
           RF: 12,
           HG: 12,
           MG: 12,
