@@ -209,7 +209,7 @@ export default {
           HG: 24,
           RF: 23,
           MG: 20,
-          SG: 20,
+          SG: 22,
           SF: 20
         },
         this.radius)
