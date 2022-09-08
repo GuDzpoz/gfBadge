@@ -68,11 +68,11 @@ const dollCanvasConfig = {
 }
 const modCanvasConfig = {
   width: 850,
-  height: 220,
+  height: 280,
   radius: 20,
   lineWidth: 3,
   textConfig: {
-    name: { x: 14, y: 15, prefix: '', show: true,
+    name: { x: 14, y: 225, prefix: '', show: true,
             lineWidth: 2,
             font: { size: 1.1, unit: 'rem', name: 'Arial', },
           },
@@ -84,7 +84,7 @@ const modCanvasConfig = {
              lineWidth: 2,
              font: { size: 1.1, unit: 'rem', name: 'Arial', },
            },
-    server: { x: 14, y: 78, prefix: '', show: true,
+    server: { x: 14, y: 246, prefix: '', show: true,
               lineWidth: 2,
               font: { size: 1.1, unit: 'rem', name: 'Arial', },
             },
@@ -99,12 +99,12 @@ const modCanvasConfig = {
   },
   avatar: { x: 14, y: 99, size: 100, show: true, },
   collectionRate: {
-    x: 850 - 300 - 10, y: 190, w: 300, h: 9,
+    x: 850 - 300 - 10, y: 250, w: 300, h: 9,
     category: {
       nameFont: { size: 0.8, unit: 'rem', name: 'Arial', },
       statsFont: { size: 0.8, unit: 'rem', name: 'Arial', },
     },
-    text: { x: 845, y: 190,
+    text: { x: 845, y: 250,
             font: { size: 1.2, unit: 'rem', name: 'Arial', },
           },
   },
@@ -216,10 +216,10 @@ export default {
       this.modPositions = initGunPosition2(
         180 * this.getScale(), 6 * this.getScale(), this.modRadius, this.modDolls,
         {
-          AR: 14,
+          AR: 15,
           SMG: 14,
-          RF: 12,
-          HG: 12,
+          RF: 10,
+          HG: 10,
           MG: 12,
           SG: 12,
           // Coalition: 20 // none will be modded
