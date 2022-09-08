@@ -1,7 +1,11 @@
 let commitHash = require('child_process')
     .execSync('git rev-parse --short HEAD')
     .toString()
+let commitTime = require('child_process')
+    .execSync('git log -1 --format=%ct')
+    .toString()
 process.env.VUE_APP_COMMIT_HASH = commitHash
+process.env.VUE_APP_COMMIT_TIME = parseInt(commitTime)
 
 module.exports = {
   publicPath: './',

@@ -4,7 +4,7 @@
   <p>
     The code part of this project is licensed under <a href="https://github.com/GuDzpoz/gfBadge/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.
     <br>
-    The source code is available at <a href="https://github.com/GuDzpoz/gfBadge">https://github.com/GuDzpoz/gfBadge</a>. You are currently using version <a :href="commitUrl">{{ commit }}</a>.
+    The source code is available at <a href="https://github.com/GuDzpoz/gfBadge">https://github.com/GuDzpoz/gfBadge</a>. You are currently using version <a :href="commitUrl">{{ commit }}</a>. Last update: {{ commitTime }}.
   </p>
   <h3>Media files</h3>
   <p>
@@ -59,11 +59,15 @@ export default {
     return {
       licenses,
       commit: process.env.VUE_APP_COMMIT_HASH,
+      commitTimestamp: process.env.VUE_APP_COMMIT_TIME * 1000,
     }
   },
   computed: {
     commitUrl () {
       return commitBaseUrl + this.commit
+    },
+    commitTime() {
+      return new Date(this.commitTimestamp).toLocaleDateString()
     },
   },
 }
